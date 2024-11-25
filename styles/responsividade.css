@@ -1,0 +1,832 @@
+/* IMPORTACAO FONTES */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+
+
+/* RESET MARGEM E PADDING */
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+
+
+/* ROOTS DE PADRONIZACAO DO SITE */
+:root{
+    --cor-background: #ffff;
+    --cor-background-cinza: #dddddd;
+    --cor-background-cinza-claro: #f7f7f7;
+    --cor-principal: #134596;
+    --cor-secundaria: #5c5c5c;
+    --cor-terciaria: #818181;
+    --cor-botoes: #6ec1e4;
+    --cor-botoes-hover: #8fcce6;
+    --cor-brasil-verde: #009440;
+    --cor-brasil-amarelo: #ffcb00;
+
+    --cor-degrade-verde-amarelo-azulNotus: linear-gradient(180deg, var(--cor-brasil-verde) 40%, var(--cor-principal) 65%);
+    --cor-degrade-azulnotus-azulclaro1: linear-gradient(150deg, var(--cor-principal) 45%, var(--cor-botoes) 135%);
+    --cor-degrade-azulnotus-azulclaro2: linear-gradient(120deg, var(--cor-principal) 35%, var(--cor-botoes) 70%);
+
+    --font-principal: "Roboto", sans-serif;
+    --font-secundaria: "Montserrat", sans-serif;
+}
+
+
+
+body {
+    /* height: 100vh; */
+    box-sizing: border-box;
+    background-color: var(--cor-background);
+    font-family: var(--font-principal);
+    color: var(--cor-secundaria);
+}
+
+/* LINKS ICONES */
+.fa-envelope,
+.fa-phone,
+.fa-instagram,
+.fa-facebook,
+.fa-youtube,
+.fa-linkedin,
+.fa-magnifying-glass,
+.fa-clipboard,
+.fa-list-check,
+.fa-star,
+.fa-money-bill,
+.fa-location-arrow {
+    color: var(--cor-principal);
+    font-size: 120%;
+}
+
+strong {
+    color: var(--cor-principal);
+}
+
+
+
+/* RESPONSIVIDADE - 360PX */
+/* RESPONSIVIDADE - 360PX */
+/* RESPONSIVIDADE - 360PX */
+
+
+
+@media (max-width: 360px) {
+    /* HEADER */
+    .header-container {
+        display: flex;
+        flex-direction: column;
+        font-family: var(--font-secundaria);
+    }
+
+    .nav-contacts {
+        padding: 1% 7%;
+        display: flex;
+        justify-content: space-between;
+        background-color: var(--cor-background-cinza);
+    }
+
+    .header-contatos {
+        display: flex;
+        align-items: center;
+        gap: 0.7rem;
+    }
+
+    .header-redessociais {
+        display: flex;
+        gap: 0.5rem;
+    }
+
+    .header-contacts-text {
+        display: none;
+        font-size: 1rem;
+        text-decoration: none;
+        color: var(--cor-secundaria);
+        white-space: nowrap;
+    }
+
+    .header-contacts-text:hover {
+        color: var(--cor-principal);
+    }
+
+    .nav-navegacao {
+        padding: 1% 7%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .header-logo {
+        width: 9rem;
+    }
+
+    .nav-navegacao-container-text {
+        display: flex;
+        gap: 1rem;
+    }
+
+    .nav-navegacao-text {
+        display: none;
+        text-decoration: none;
+        font-size: 1rem;
+        font-weight: 400;
+        color: var(--cor-secundaria);
+        white-space: nowrap;
+    }
+
+    .nav-navegacao-text:hover {
+        color: var(--cor-principal);
+    }
+
+    .nav-navegacao-catalogo {
+        padding: 0.5rem 1rem;
+        display: flex;
+        text-decoration: none;
+        font-size: 0.8rem;
+        color: var(--cor-background);
+        background-color: var(--cor-principal);
+        border-radius: 2rem;
+    }
+
+    .nav-navegacao-catalogo:hover {
+        padding: 0.9375rem 1.9375rem;
+        color: var(--cor-principal);
+        background-color: transparent;
+        border: solid 1px var(--cor-principal);
+    }
+
+    #menu {
+        z-index: 2;
+      }
+      
+      #menu-bar {
+        width: 1.5rem;
+        height: auto;
+        cursor: pointer;
+      }
+      
+      .bar {
+        height: 5px;
+        width: 100%;
+        background-color: #134596;
+        display: block;
+        border-radius: 5px;
+        transition: 0.3s ease;
+      }
+      
+      #bar1 {
+        transform: translateY(-4px);
+      }
+      
+      #bar3 {
+        transform: translateY(4px);
+      }
+      
+      .nav {
+        transition: 0.3s ease;
+        display: none;
+      }
+      
+      .nav ul {
+        padding: 0 22px;
+      }
+      
+      .nav li {
+        list-style: none;
+        padding: 12px 0;
+      }
+      
+      .nav li a {
+        color: white;
+        font-size: 20px;
+        text-decoration: none;
+      }
+      
+      .nav li a:hover {
+        font-weight: bold;
+      }
+      
+      .menu-bg, #menu {
+        top: 0;
+        right: 0;
+      }
+      
+      .menu-bg {
+        z-index: 1;
+        width: 0;
+        height: 0;
+        background: radial-gradient(circle, #134596, #1753b4);
+        border-radius: 50%;
+        transition: 0.3s ease;
+      }
+      
+      .change {
+        display: block;
+      }
+      
+      .change .bar {
+        background-color: white;
+      }
+      
+      .change #bar1 {
+        transform: translateY(4px) rotateZ(-45deg);
+      }
+      
+      .change #bar2 {
+        opacity: 0;
+      }
+      
+      .change #bar3 {
+        transform: translateY(-6px) rotateZ(45deg);
+      }
+      
+      .change-bg {
+        width: 520px;
+        height: 460px;
+        transform: translate(-60%,-30%);
+      }
+    /* /HEADER */
+
+
+
+    /* SECAO 1 - APRESENTACAO */
+    .container-secao1 {
+        display: flex;
+        position: relative;
+        overflow: hidden;
+        height: 65vh;
+    }
+
+    .secao1-grid {
+        padding: 15% 7%;
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        position: relative;
+        z-index: 1;
+        color: var(--cor-background);
+    }
+
+    .secao1-video {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        transform: translate(-50%, -50%);
+        z-index: -1;
+    }
+
+    .secao1-overlay {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(19, 69, 150, 0.7);
+        z-index: 0;
+    }
+
+    .secao1-grid-div-text {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .secao1-grid-h1 {
+        font-size: 2.2rem;
+        font-weight: 700;
+    }
+
+    .secao1-grid-text {
+        font-size: 1rem;
+        font-weight: 300;
+    }
+
+    .secao1-botao {
+        padding: 0.75rem 1rem;
+        max-width: 6.5rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-decoration: none;
+        color: var(--cor-background);
+        font-size: 0.8rem;
+        background-color: var(--cor-botoes);
+        border-radius: 0.5rem;
+    }
+
+    .secao1-botao-img {
+        width: 1rem;
+    }
+
+    .secao1-botao:hover {
+        background-color: var(--cor-botoes-hover);
+    }
+    /* /SECAO 1 - APRESENTACAO */
+
+
+
+    /* SECAO 2 - TITULO CARDS */
+    .secao2-container {
+        padding: 2.8% 15% 1.8% 15%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .secao2-titulo {
+        font-size: 1.8rem;
+        font-weight: 550;
+    }
+
+    .secao2-titulo-cinza {
+        color: var(--cor-secundaria);
+    }
+
+    .secao2-titulo-azul {
+        color: var(--cor-principal);
+    }
+
+    .secao2-titulo-degrade {
+        background-image: var(--cor-degrade-verde-amarelo-azulNotus);
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+    }
+    /* /SECAO 2 - TITULO CARDS */
+
+
+
+    /* SECAO 2 - CARDS */
+    .container-cards-secao2 {
+        padding: 0% 3%;
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        gap: 1rem;
+    }
+
+    .secao2-cards {
+        padding: 1rem 2.7rem 1rem 2rem;
+        background-color: var(--cor-principal);
+        border-radius: 2rem;
+        background-image: url(../images/card-radiador.svg);
+        background-size: 60%;
+        background-repeat: no-repeat;
+        background-position-y: center;
+        background-position-x: right;
+        min-height: 40rem;
+    }
+
+    .secao2-cards-div1 {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .secao2-cards-h3 {
+        font-size: 1.8rem;
+        font-weight: 600;
+        color: var(--cor-background);
+    }
+
+    .secao2-cards-div2 {
+        padding-top: 1.3rem;
+        display: flex;
+        gap: 1rem;
+    }
+
+    .secao2-cards-icon {
+        width: 3rem;
+    }
+
+    .secao2-cards-div2-conteudo {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .secao2-cards-h4 {
+        font-size: 1.3rem;
+        font-weight: 500;
+        color: var(--cor-background);
+    }
+
+    .secao2-cards-text {
+        font-size: 1rem;
+        font-weight: 300;
+        color: var(--cor-background);
+    }
+    /* /SECAO 2 - TITULO CARDS */
+
+
+
+    /* SECAO 3 - BANNER */
+    .container-banner-secao3 {
+        padding: 5% 7%;
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        align-items: center;
+        min-height: 25rem;
+        position: relative;
+        gap: 0.5rem;
+    }
+
+    .container-banner-secao3::before {
+        content: '';
+        position: absolute;
+        filter: brightness(20%);
+        background-image: url(../images/imagem-fabrica-vistadoescritorio.webp);
+        background-position-y: 85%;
+        background-repeat: no-repeat;
+        inset: 0;
+    }
+
+    .secao3-banner-div1 {
+        isolation: isolate;
+        display: flex;
+        text-align: center;
+    }
+
+    .secao3-banner-h3 {
+        font-size: 2rem;
+        font-weight: 500;
+        color: var(--cor-background);
+    }
+
+    .secao3-banner-div2 {
+        isolation: isolate;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+
+    .secao3-banner-h4 {
+        font-size: 1.3rem;
+        font-weight: 400;
+        color: var(--cor-background);
+    }
+
+    .secao3-banner-text {
+        font-size: 1rem;
+        font-weight: 300;
+        color: var(--cor-background);
+    }
+    /* /SECAO 3 - BANNER */
+
+
+
+    /* SECAO 4 - LINHAS DE PRODUTOS */
+    .container-grid-secao4 {
+        padding: 0% 3%;
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: repeat(10, 1fr);
+        gap: 1rem;
+    }
+
+    .secao4-grid-card {
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        background: var(--cor-degrade-azulnotus-azulclaro1);
+        position: relative;
+    }
+
+    .secao4-grid-card-h3 {
+        font-size: 1.7rem;
+        font-weight: 400;
+        text-align: center;
+        color: var(--cor-background);
+    }
+
+    .secao4-grid-card-img {
+        transition: transform 0.25s ease;
+        max-width: 16rem;
+        max-height: 10rem;
+    }
+
+    .secao4-grid-card-img:hover {
+        transform: scale(1.1);
+    }
+
+    .secao4-grid-card-transparente {
+        padding: 1rem;
+        height: 15rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .secao4-grid-card-transparente-text {
+        display: flex;
+        font-size: 2.9rem;
+        font-weight: 600;
+        background: var(--cor-degrade-azulnotus-azulclaro2);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+
+    .secao4-grid-card-transparente-div2 {
+        display: flex;
+    }
+
+    .secao4-grid-card-transparente-botao {
+        padding: 0.8rem 2rem;
+        text-decoration: none;
+        font-size: 1.3rem;
+        color: var(--cor-background);
+        background-color: var(--cor-botoes);
+        border-radius: 0.5rem;
+    }
+    /* /SECAO 4 - LINHAS DE PRODUTOS */
+
+
+
+    /* SECAO 5 - POR QUE ESCOLHER NOTUS? */
+    .container-secao5 {
+        padding: 5% 3% 7% 3%;
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: repeat(1, 1fr);
+        align-items: center;
+        position: relative;
+        overflow: visible;
+        background-image: url(../images/background-fabrica-desfoque.webp);
+        background-repeat: no-repeat;
+    }
+
+    .secao5-overlay {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(255, 255, 255, 0.5);
+        z-index: 2;
+    }
+
+    .secao5-divcarrossel {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        isolation: isolate;
+        gap: 1rem;
+        z-index: 3;
+    }
+
+    .secao5-divcarrossel-div {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .secao5-h3 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: var(--cor-terciaria);
+    }
+
+    .secao5-text {
+        font-size: 1rem;
+        font-weight: 400;
+        color: var(--cor-terciaria);
+    }
+
+    .secao5-divimg {
+        display: none;
+        justify-content: center;
+        isolation: isolate;
+        z-index: 3;
+    }
+
+    .secao5-img {
+        width: 15rem;
+    }
+
+    .secao5-selo {
+        bottom: -1.3rem;
+        left: 80%;
+        transform: translateX(-50%);
+        width: 90px;
+        height: auto;
+        display: block;
+        position: absolute;
+        z-index: 3;
+    }
+
+    .secao5-hr {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: 0;
+        padding: 0;
+        z-index: 3;
+    }
+
+    .secao5-hr-amarelo {
+        height: 0.7rem;
+        display: flex;
+        border: none;
+        background-color: var(--cor-brasil-amarelo);
+    }
+
+    .secao5-hr-verde {
+        height: 0.7rem;
+        display: flex;
+        border: none;
+        background-color: var(--cor-brasil-verde);
+    }
+    /* /SECAO 5 - POR QUE ESCOLHER NOTUS? */
+
+
+
+    /* SECAO 6 - BLOG */
+
+    /* /SECAO 6 - BLOG */
+
+
+
+    /* SECAO 7 - NEWSLETTER */
+    .container-secao7 {
+        margin-top: 2rem;
+        padding: 5% 7%;
+        height: auto;
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        position: relative;
+        gap: 1rem;
+    }
+
+    .container-secao7::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: url(../images/imagem-estoque1.webp);
+        background-size: cover;
+        background-repeat: no-repeat;
+        filter: blur(15px);
+        z-index: 1;
+        opacity: 0.7;
+    }
+
+    .secao7-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(255, 255, 255, 0.5);
+        filter: blur(5px);
+        z-index: 1;
+    }
+
+    .secao7-div1 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        z-index: 2;
+    }
+
+    .secao7-div1 h2 {
+        font-size: 2rem;
+        font-weight: 600;
+        color: var(--cor-background);
+    }
+
+    .secao7-form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: relative;
+        gap: 1rem;
+        z-index: 2;
+    }
+
+    .form-text {
+        padding-left: 1rem;
+        height: 2rem;
+        width: auto;
+        text-decoration: none;
+        background-color: var(--cor-background);
+        border: solid 1px var(--cor-principal);
+        border-radius: 0.5rem;
+    }
+
+    .form-botao {
+        height: 2rem;
+        width: 10rem;
+        max-width: 7rem;
+        text-decoration: none;
+        font-size: 1rem;
+        font-weight: 400;
+        color: var(--cor-background);
+        background-color: var(--cor-botoes);
+        border: none;
+        border-radius: 0.5rem;
+    }
+
+    .form-botao:hover {
+        background-color: var(--cor-botoes-hover);
+    }
+    /* /SECAO 7 - NEWSLETTER */
+
+
+
+    /* FOOTER */
+    .container-footer {
+        height: auto;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .footer-containersub {
+        padding: 5% 7%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 2rem;
+    }
+
+    .footer-containersub-div {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .footer-containersub-div h3 {
+        text-decoration: none;
+        font-size: 1.5rem;
+        font-weight: 600;
+    }
+
+    .footer-lista {
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+    }
+
+    .footer-lista a {
+        text-decoration: none;
+        font-size: 1rem;
+        color: var(--cor-terciaria);
+    }
+
+    .footer-lista a:hover {
+        color: var(--cor-principal);
+    }
+
+    .footer-lista-faleconosco-separador {
+        display: flex;
+        gap: 1rem;
+    }
+
+    .footer-lista-faleconosco-separador i {
+        font-size: 1rem;
+    }
+
+    .footer-redessociais {
+        display: flex;
+        gap: 1rem;
+        font-size: 1.1rem;
+    }
+
+    .footer-faixa {
+        right: 0;
+        left: 0;
+        bottom: 0;
+        height: 2.5rem;
+        padding: 0% 7%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: var(--cor-principal);
+    }
+
+    .footer-faixa p {
+        padding: 0 7%;
+        font-size: 0.7rem;
+        font-weight: 300;
+        color: var(--cor-background);
+        text-align: center;
+    }
+    /* /FOOTER */
+}
