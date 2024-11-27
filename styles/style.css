@@ -22,6 +22,7 @@
     --cor-botoes-hover: #8fcce6;
     --cor-brasil-verde: #009440;
     --cor-brasil-amarelo: #ffcb00;
+    --cor-whatsapp: #27b64e;
 
     --cor-degrade-verde-amarelo-azulNotus: linear-gradient(180deg, var(--cor-brasil-verde) 40%, var(--cor-principal) 65%);
     --cor-degrade-azulnotus-azulclaro1: linear-gradient(150deg, var(--cor-principal) 45%, var(--cor-botoes) 135%);
@@ -262,6 +263,165 @@ strong {
 
 
 
+/* SECAO 2 - WHATSAPP */
+.whatsapp-container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 4;
+}
+
+.whatsapp-botao {
+    right: 2.5vh;
+    bottom: 7vh;
+    max-height: 42px;
+    max-width: 42px;
+    height: 42px;
+    width: 42px;
+    padding: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    object-fit: contain;
+    background-color: var(--cor-whatsapp);
+    border-radius: 100%;
+    box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.5);
+    position: fixed;
+}
+
+.whatsapp-icone {
+    display: flex;
+    width: 35px;
+    transform: rotate(0deg);
+    transition: ease 0.125s;
+}
+
+.whatsapp-icone:hover {
+    transform: rotate(150deg);
+    opacity: 0;
+}
+
+.whatsapp-text-cta {
+    right: 9.1vh;
+    bottom: 6.5vh;
+    height: 3.2rem;
+    width: 7rem;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.8rem;
+    font-weight: 500;
+    line-height: 1rem;
+    background-color: var(--cor-background-cinza-claro);
+    border-radius: 0.5rem;
+    box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.5);
+    position: fixed;
+}
+
+.card-whatsapp-container {
+    bottom: 15vh;
+    right: 3vh;
+    max-height: 30rem;
+    max-width: 20rem;
+    height: 30rem;
+    width: 20rem;
+    display: none;
+    flex-direction: column;
+    background-color: var(--cor-background);
+    border-radius: 1rem;
+    box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.5);
+    position: fixed;
+}
+
+.card-whatsapp-sup {
+    padding: 0.5rem 1rem;
+    display: flex;
+    background-color: var(--cor-whatsapp);
+    border-radius: 1rem 1rem 0 0;
+    gap: 0.7rem;
+}
+
+.card-whatsapp-sup-text-container {
+    display: flex;
+    flex-direction: column;
+    color: var(--cor-background);
+    gap: 0.3rem;
+}
+
+.card-whatsapp-sup img {
+    width: 45px;
+}
+
+.card-whatsapp-sup h2 {
+    display: flex;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+.card-whatsapp-sup p {
+    display: flex;
+    text-align: start;
+    font-size: 0.8rem;
+    line-height: 1rem;
+}
+
+.card-whatsapp-bottom {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.card-whatsapp-bottom p {
+    display: flex;
+    font-size: 0.75rem;
+}
+
+.card-whatsapp-bottom-botao {
+    height: 53px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    background-color: var(--cor-background-cinza-claro);
+    border-radius: 0.5rem;
+    gap: 1rem;
+}
+
+.card-whatsapp-bottom-botao hr {
+    height: 49px;
+    border: 2px solid var(--cor-whatsapp);
+    border-radius: 1rem 0 0 1rem;
+}
+
+.card-whatsapp-bottom-botao img {
+    width: 45px;
+    background-color: var(--cor-whatsapp);
+    border-radius: 100%;
+}
+
+.card-whatsapp-bottom-botao-text {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 0.3rem;
+}
+
+.card-whatsapp-bottom-botao-text h3 {
+    color: var(--cor-secundaria);
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.card-whatsapp-bottom-botao-text p {
+    color: var(--cor-terciaria);
+    font-size: 0.7rem;
+    font-weight: 300;
+}
+/* /SECAO 2 - WHATSAPP */
+
+
+
 /* SECAO 2 - CARDS */
 .container-cards-secao2 {
     padding: 0% 10%;
@@ -388,6 +548,7 @@ strong {
 }
 
 .secao4-grid-card {
+    height: 15.5rem;
     padding: 1rem;
     display: flex;
     flex-direction: column;

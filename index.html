@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./styles/responsividade.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="icon" href="./images/icone-logosite-quadrado-mask1.svg">
+    <link rel="stylesheet" href="./js/scripts.js">
     <title>Notus do Brasil</title>
 </head>
 <body>
@@ -61,7 +62,7 @@
             <div>
                 <a class="nav-navegacao-catalogo" href="#">Catálogo</a>
             </div>
-            <div id="menu">
+            <!-- <div id="menu">
                 <div id="menu-bar" onclick="menuOnClick()">
                   <div id="bar1" class="bar"></div>
                   <div id="bar2" class="bar"></div>
@@ -80,7 +81,7 @@
                 </nav> 
             </div>
               
-            <div class="menu-bg" id="menu-bg"></div>
+            <div class="menu-bg" id="menu-bg"></div> -->
         </nav>
     </header>
     <!-- MAIN -->
@@ -99,15 +100,81 @@
                     <a class="secao1-botao" href="#">
                         <img class="secao1-botao-img" src="./images/logo-whatsapp.webp" alt="Logo Whatsapp">
                         Fale Conosco!
+                        <!-- <div>
+                            <a href="https://wa.me/5511945478542">Alex</a>
+                            <a href="https://wa.me/5511975174745">Carlos</a>
+                            <a href="https://wa.me/551142101998">Luciano</a>
+                            <a href="https://wa.me/551142101997">Viviane</a>
+                            <a href="https://wa.me/551124136550">Welton</a>
+                        </div> -->
                     </a>
                 </div>
             </div>
         </section>
-        <!-- SECAO 2 - TITULO CARDS -->
+        <!-- SECAO 2 - TITULO CARDS + WHATSAPP -->
         <section class="secao2-container">
             <h2 class="secao2-titulo">
                 <strong>Notus</strong> Sistemas Térmicos,<br><strong>Orgulhosamente</strong><br><strong class="secao2-titulo-degrade">Brasileira!</strong>
             </h2>
+            <div class="whatsapp-container">
+                <div>
+                    <a class="whatsapp-botao" href="#"><img class="whatsapp-icone" src="./images/icone-whatsapp.svg" alt="Entrar em contato por Whatsapp"></a>
+                    <p class="whatsapp-text-cta">Precisa de ajuda? Fale conosco pelo <strong class="secao2-titulo-cinza" style="font-weight: 700;">Whatsapp!</strong></p>
+                </div>
+                <div class="card-whatsapp-container">
+                    <div class="card-whatsapp-sup">
+                        <img src="./images/icone-whatsapp.svg" alt="Entrar em contato por Whatsapp">
+                        <div class="card-whatsapp-sup-text-container">
+                            <h2>Fale Conosco!</h2>
+                            <p>Olá! Clique em um de nossos membros da equipe para ser atendido imediatamente pelo Whatsapp!</p>
+                        </div>
+                    </div>
+                    <div class="card-whatsapp-bottom">
+                        <!-- Os minutos podem ser calculados automaticamente sobre o quanto eles demoram para iniciar os atendimentos? -->
+                        <p>A equipe normalmente responde em alguns minutos.</p>
+                        <a class="card-whatsapp-bottom-botao" href="https://wa.me/5511945478542" target="_blank">
+                            <hr>
+                            <img src="./images/icone-whatsapp.svg" alt="Entrar em contato por Whatsapp">
+                            <div class="card-whatsapp-bottom-botao-text">
+                                <h3>Alex</h3>
+                                <p>Comercial</p>
+                            </div>
+                        </a>
+                        <a class="card-whatsapp-bottom-botao" href="https://wa.me/5511975174745" target="_blank">
+                            <hr>
+                            <img src="./images/icone-whatsapp.svg" alt="Entrar em contato por Whatsapp">
+                            <div class="card-whatsapp-bottom-botao-text">
+                                <h3>Carlos</h3>
+                                <p>Comercial</p>
+                            </div>
+                        </a>
+                        <a class="card-whatsapp-bottom-botao" href="https://wa.me/551142101998" target="_blank">
+                            <hr>
+                            <img src="./images/icone-whatsapp.svg" alt="Entrar em contato por Whatsapp">
+                            <div class="card-whatsapp-bottom-botao-text">
+                                <h3>Luciano</h3>
+                                <p>Comercial</p>
+                            </div>
+                        </a>
+                        <a class="card-whatsapp-bottom-botao" href="https://wa.me/551142101997" target="_blank">
+                            <hr>
+                            <img src="./images/icone-whatsapp.svg" alt="Entrar em contato por Whatsapp">
+                            <div class="card-whatsapp-bottom-botao-text">
+                                <h3>Viviane</h3>
+                                <p>Comercial</p>
+                            </div>
+                        </a>
+                        <a class="card-whatsapp-bottom-botao" href="https://wa.me/551124136550" target="_blank">
+                            <hr>
+                            <img src="./images/icone-whatsapp.svg" alt="Entrar em contato por Whatsapp">
+                            <div class="card-whatsapp-bottom-botao-text">
+                                <h3>Welton</h3>
+                                <p>Comercial</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </section>
         <!-- SECAO 2 - CARDS -->
         <section class="container-cards-secao2">
@@ -444,4 +511,5 @@
         </div>
     </footer>
 </body>
+<script src="./js/scripts.js"></script>
 </html>
