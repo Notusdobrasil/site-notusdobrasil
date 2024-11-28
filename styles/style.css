@@ -651,6 +651,8 @@ strong {
 
 .secao4-grid-card-transparente-botao:hover {
   background-color: var(--cor-botoes-hover);
+  color: white;
+  text-decoration: none;
 }
 /* /SECAO 4 - LINHAS DE PRODUTOS */
 
