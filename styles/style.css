@@ -168,6 +168,20 @@ strong {
   box-shadow: none;
 }
 
+.drop-down-burger {
+  box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.5);
+}
+
+.dropdown-menu-right ul,
+.dropdown-menu-right li {
+  background-color: white;
+}
+
+.dropdown-menu-right li a {
+  color: var(--cor-principal);
+  text-decoration: none;
+}
+
 .nav-navegacao-catalogo:hover {
   padding: 0.9375rem 1.9375rem;
   color: var(--cor-principal);
