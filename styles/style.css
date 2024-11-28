@@ -103,6 +103,7 @@ strong {
 
 .header-contacts-text:hover {
   color: var(--cor-principal);
+  text-decoration: none;
 }
 
 .nav-navegacao {
