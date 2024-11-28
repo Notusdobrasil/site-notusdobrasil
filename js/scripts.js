@@ -23,3 +23,24 @@ function animationDropDown() {
     secao1_botao.style.backgroundColor = "#6ec1e4";
   }
 }
+
+const hamburgerButton = document.querySelector("#hamburger-menu");
+const nav_navegacao_catalogo_burguer = document.querySelector(
+  ".nav-navegacao-catalogo-burguer"
+);
+const drop_down_burger = document.querySelector(".drop-down-burger");
+
+// Função para verificar a largura da tela e mostrar/ocultar o botão
+function checkScreenWidth() {
+  if (window.innerWidth <= 767) {
+    hamburgerButton.style.display = "block";
+    drop_down_burger.style.display = "block";
+  } else {
+    hamburgerButton.style.display = "none";
+    drop_down_burger.style.display = "none";
+  }
+}
+
+// Executa a verificação ao carregar a página e ao redimensionar
+checkScreenWidth();
+window.addEventListener("resize", checkScreenWidth);

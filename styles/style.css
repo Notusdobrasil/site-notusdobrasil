@@ -137,6 +137,11 @@ strong {
   text-decoration: none;
 }
 
+.nav-navegacao-catalogo-burguer {
+  display: flex;
+  gap: 1rem;
+}
+
 .nav-navegacao-catalogo {
   padding: 1rem 2rem;
   display: flex;
@@ -145,6 +150,22 @@ strong {
   color: var(--cor-background);
   background-color: var(--cor-principal);
   border-radius: 2rem;
+}
+
+#hamburger-menu {
+  display: none; /* Começa oculto */
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #134596;
+  font-weight: bold;
+}
+
+#hamburger-menu:focus,
+.focus-visible:focus:not(:focus-visible) {
+  outline: 0;
+  box-shadow: none;
 }
 
 .nav-navegacao-catalogo:hover {
@@ -215,8 +236,7 @@ strong {
 
 .secao1-botao {
   padding: 1rem 1.5rem;
-  min-width: 13rem;
-  max-width: 13rem;
+  max-width: 10rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
