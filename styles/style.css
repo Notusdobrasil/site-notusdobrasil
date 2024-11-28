@@ -151,6 +151,7 @@ strong {
   color: var(--cor-principal);
   background-color: transparent;
   border: solid 1px var(--cor-principal);
+  text-decoration: none;
 }
 /* /HEADER */
 
