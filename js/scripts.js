@@ -47,36 +47,8 @@ function toggleMenu(element) {
   element.classList.toggle("open"); // Adiciona ou remove a classe "open"
 }
 
-// const carrossel = document.querySelector(".secao5-divcarrossel");
-// const slides = document.querySelectorAll(".secao5-divcarrossel-div");
-// const prevButton = document.querySelector(".carrossel-btn.prev");
-// const nextButton = document.querySelector(".carrossel-btn.next");
 
-// let currentIndex = 0;
-// const maxIndex = 4; // Máximo índice visível (equivalente a -200%)
-
-// function updateCarrossel() {
-//   const offset = -currentIndex * 50;
-//   carrossel.style.transform = `translateX(${offset}%)`;
-// }
-
-// prevButton.addEventListener("click", () => {
-//   if (currentIndex === 0) {
-//     currentIndex = maxIndex; // Vai para o último slide visível (loop circular)
-//   } else {
-//     currentIndex -= 1; // Decrementa normalmente
-//   }
-//   updateCarrossel();
-// });
-
-// nextButton.addEventListener("click", () => {
-//   if (currentIndex === maxIndex) {
-//     currentIndex = 0; // Volta para o primeiro slide (loop circular)
-//   } else {
-//     currentIndex += 1; // Incrementa normalmente
-//   }
-//   updateCarrossel();
-// });
+// Seção do Carrossel da Seção 5
 
 const carrossel = document.querySelector(".secao5-divcarrossel");
 const slides = document.querySelectorAll(".secao5-divcarrossel-div");
