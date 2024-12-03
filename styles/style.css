@@ -15,6 +15,7 @@
 :root{
     --cor-background: #ffff;
     --cor-background-cinza: #dddddd;
+    --cor-background-cinza-claro1: #f0f0f0;
     --cor-principal: #134596;
     --cor-secundaria: #5c5c5c;
     --cor-terciaria: #818181;
@@ -73,7 +74,7 @@ strong {
 }
 
 .nav-contacts {
-    padding: 1% 15%;
+    padding: 1rem 15%;
     display: flex;
     justify-content: space-between;
     background-color: var(--cor-background-cinza);
@@ -91,7 +92,7 @@ strong {
 }
 
 .header-contacts-text {
-    font-size: 1rem;
+    font-size: clamp(0.9rem, 0.7176rem + 0.2353vw, 1rem);
     text-decoration: none;
     color: var(--cor-secundaria);
     white-space: nowrap;
@@ -102,26 +103,26 @@ strong {
 }
 
 .nav-navegacao {
-    padding: 1% 15%;
+    padding: 1rem 15%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 1rem;
+    gap: clamp(0.5rem, -0.0714rem + 0.8929vw, 1rem);
 }
 
 .header-logo {
-    width: 15rem;
+    width: clamp(10rem, 0.8824rem + 11.7647vw, 15rem);
 }
 
 .nav-navegacao-container-text {
     display: flex;
-    gap: 1rem;
+    gap: clamp(0.4rem, -2.5176rem + 3.7647vw, 2rem);
 }
 
 .nav-navegacao-text {
     display: flex;
     text-decoration: none;
-    font-size: 1rem;
+    font-size: clamp(0.9rem, 0.6714rem + 0.3571vw, 1.1rem);
     font-weight: 400;
     color: var(--cor-secundaria);
     white-space: nowrap;
@@ -132,17 +133,17 @@ strong {
 }
 
 .nav-navegacao-catalogo {
-    padding: 1rem 2rem;
+    padding: clamp(0.5rem, -0.0714rem + 0.8929vw, 1rem) clamp(0.7rem, -1.6706rem + 3.0588vw, 2rem);
     display: flex;
     text-decoration: none;
-    font-size: 1rem;
+    font-size: clamp(0.8rem, 0.2529rem + 0.7059vw, 1.1rem);
     color: var(--cor-background);
     background-color: var(--cor-principal);
-    border-radius: 2rem;
+    border-radius: clamp(1rem, -0.8235rem + 2.3529vw, 2rem);
 }
 
 .nav-navegacao-catalogo:hover {
-    padding: 0.9375rem 1.9375rem;
+    padding: clamp(0.4375rem, -0.1339rem + 0.8929vw, 0.9375rem) clamp(0.625rem, -1.7684rem + 3.0882vw, 1.9375rem);
     color: var(--cor-principal);
     background-color: transparent;
     border: solid 1px var(--cor-principal);
@@ -156,11 +157,11 @@ strong {
     display: flex;
     position: relative;
     overflow: hidden;
-    height: 65vh;
+    min-height: 65vh;
 }
 
 .secao1-grid {
-    padding: 5% 15%;
+    padding: 5rem 15%;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     position: relative;
@@ -198,30 +199,31 @@ strong {
 }
 
 .secao1-grid-h1 {
-    font-size: 3.5rem;
+    font-size: clamp(2rem, 1.6538rem + 1.5385vw, 3.5rem);
     font-weight: 700;
 }
 
 .secao1-grid-text {
-    font-size: 1.3rem;
+    font-size: clamp(0.9rem, 0.8077rem + 0.4103vw, 1.3rem);
     font-weight: 300;
 }
 
 .secao1-botao {
     padding: 1rem 1.5rem;
     max-width: 10rem;
+    width: clamp(7rem, 6.3077rem + 3.0769vw, 10rem);
     display: flex;
     justify-content: space-between;
     align-items: center;
     text-decoration: none;
     color: var(--cor-background);
-    font-size: 1.3rem;
+    font-size: clamp(0.9rem, 0.8077rem + 0.4103vw, 1.3rem);
     background-color: var(--cor-botoes);
     border-radius: 0.5rem;
 }
 
 .secao1-botao-img {
-    width: 1.3rem;
+    width: clamp(0.9rem, 0.8077rem + 0.4103vw, 1.3rem);
 }
 
 .secao1-botao:hover {
@@ -233,7 +235,7 @@ strong {
 
 /* SECAO 2 - TITULO CARDS */
 .secao2-container {
-    padding: 2.8% 15% 1.8% 15%;
+    padding: 2.5rem 15% 1.8rem 15%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -241,7 +243,7 @@ strong {
 }
 
 .secao2-titulo {
-    font-size: 2.7rem;
+    font-size: clamp(1.8rem, 1.5923rem + 0.9231vw, 2.7rem);
     font-weight: 550;
 }
 
@@ -276,8 +278,8 @@ strong {
     bottom: 7vh;
     max-height: 42px;
     max-width: 42px;
-    height: 42px;
-    width: 42px;
+    height: clamp(1.5625rem, 1.3173rem + 1.0897vw, 2.625rem);
+    width: clamp(1.5625rem, 1.3173rem + 1.0897vw, 2.625rem);
     padding: 0.5rem;
     display: flex;
     justify-content: center;
@@ -291,7 +293,7 @@ strong {
 
 .whatsapp-icone {
     display: flex;
-    width: 35px;
+    width: clamp(1.25rem, 1.0337rem + 0.9615vw, 2.1875rem);
     transform: rotate(0deg);
     transition: ease 0.125s;
 }
@@ -314,7 +316,7 @@ strong {
     font-size: 0.8rem;
     font-weight: 500;
     line-height: 1rem;
-    background-color: var(--cor-background-cinza-claro);
+    background-color: var(--cor-background);
     border-radius: 0.5rem;
     box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.5);
     position: fixed;
@@ -426,20 +428,22 @@ strong {
 .container-cards-secao2 {
     padding: 0% 10%;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(23.72rem, 1fr));
     gap: 1rem;
 }
 
 .secao2-cards {
-    padding: 1rem 3.7rem 1rem 2rem;
+    /* padding: 1rem 3.7rem 1rem 2rem; */
+    padding: clamp(0.5rem, 0.3846rem + 0.5128vw, 1rem) clamp(3rem, 2.8385rem + 0.7179vw, 3.7rem) clamp(0.5rem, 0.3846rem + 0.5128vw, 1rem) clamp(1rem, 0.7692rem + 1.0256vw, 2rem);
     background-color: var(--cor-principal);
-    border-radius: 2rem;
+    border-radius: clamp(1rem, 0.7692rem + 1.0256vw, 2rem);
     background-image: url(../images/card-radiador.svg);
     background-size: 60%;
     background-repeat: no-repeat;
     background-position-y: center;
     background-position-x: right;
     min-height: 40rem;
+    max-height: fit-content;
 }
 
 .secao2-cards-div1 {
@@ -449,7 +453,7 @@ strong {
 }
 
 .secao2-cards-h3 {
-    font-size: 2rem;
+    font-size: clamp(1.8rem, 1.7538rem + 0.2051vw, 2rem);
     font-weight: 600;
     color: var(--cor-background);
 }
@@ -461,7 +465,7 @@ strong {
 }
 
 .secao2-cards-icon {
-    width: 4rem;
+    width: clamp(2.5rem, 2.1538rem + 1.5385vw, 4rem);
 }
 
 .secao2-cards-div2-conteudo {
@@ -471,13 +475,13 @@ strong {
 }
 
 .secao2-cards-h4 {
-    font-size: 1.5rem;
+    font-size: clamp(1.3rem, 1.2538rem + 0.2051vw, 1.5rem);
     font-weight: 500;
     color: var(--cor-background);
 }
 
 .secao2-cards-text {
-    font-size: 1.3rem;
+    font-size: clamp(1rem, 0.9308rem + 0.3077vw, 1.3rem);
     font-weight: 300;
     color: var(--cor-background);
 }
@@ -487,11 +491,12 @@ strong {
 
 /* SECAO 3 - BANNER */
 .container-banner-secao3 {
+    min-height: 30rem;
+    height: auto;
     padding: 0% 15%;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     align-items: center;
-    min-height: 30rem;
     position: relative;
 }
 
@@ -511,7 +516,7 @@ strong {
 }
 
 .secao3-banner-h3 {
-    font-size: 3.5rem;
+    font-size: clamp(2rem, 1.6538rem + 1.5385vw, 3.5rem);
     font-weight: 500;
     color: var(--cor-background);
 }
@@ -524,13 +529,13 @@ strong {
 }
 
 .secao3-banner-h4 {
-    font-size: 2rem;
+    font-size: clamp(1.5rem, 1.3846rem + 0.5128vw, 2rem);
     font-weight: 400;
     color: var(--cor-background);
 }
 
 .secao3-banner-text {
-    font-size: 1.3rem;
+    font-size: clamp(1rem, 0.9308rem + 0.3077vw, 1.3rem);
     font-weight: 300;
     color: var(--cor-background);
 }
@@ -542,13 +547,13 @@ strong {
 .container-grid-secao4 {
     padding: 0% 15%;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(294px, 1fr));
+    grid-template-rows: auto;
     gap: 1rem;
 }
 
 .secao4-grid-card {
-    height: 15.5rem;
+    height: clamp(12rem, 11.1923rem + 3.5897vw, 15.5rem);
     padding: 1rem;
     display: flex;
     flex-direction: column;
@@ -559,7 +564,7 @@ strong {
 }
 
 .secao4-grid-card-h3 {
-    font-size: 1.7rem;
+    font-size: clamp(1.5rem, 1.4538rem + 0.2051vw, 1.7rem);
     font-weight: 400;
     text-align: center;
     color: var(--cor-background);
@@ -567,8 +572,8 @@ strong {
 
 .secao4-grid-card-img {
     transition: transform 0.25s ease;
-    max-width: 16rem;
-    max-height: 10rem;
+    max-width: clamp(12rem, 11.0769rem + 4.1026vw, 16rem);
+    max-height: clamp(8rem, 7.5385rem + 2.0513vw, 10rem);
 }
 
 .secao4-grid-card-img:hover {
@@ -585,7 +590,7 @@ strong {
 
 .secao4-grid-card-transparente-text {
     display: flex;
-    font-size: 2.9rem;
+    font-size: clamp(1.9rem, 1.6692rem + 1.0256vw, 2.9rem);
     font-weight: 600;
     background: var(--cor-degrade-azulnotus-azulclaro2);
     -webkit-background-clip: text;
@@ -600,7 +605,7 @@ strong {
 .secao4-grid-card-transparente-botao {
     padding: 0.8rem 2rem;
     text-decoration: none;
-    font-size: 1.3rem;
+    font-size: clamp(1rem, 0.9308rem + 0.3077vw, 1.3rem);
     color: var(--cor-background);
     background-color: var(--cor-botoes);
     border-radius: 0.5rem;
@@ -615,7 +620,7 @@ strong {
 
 /* SECAO 5 - POR QUE ESCOLHER NOTUS? */
 .container-secao5 {
-    padding: 5% 15%;
+    padding: 5rem 15%;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     align-items: center;
@@ -651,13 +656,13 @@ strong {
 }
 
 .secao5-h3 {
-    font-size: 2rem;
+    font-size: clamp(1.5rem, 1.3846rem + 0.5128vw, 2rem);
     font-weight: 600;
     color: var(--cor-terciaria);
 }
 
 .secao5-text {
-    font-size: 1.3rem;
+    font-size: clamp(1rem, 0.9308rem + 0.3077vw, 1.3rem);
     font-weight: 400;
     color: var(--cor-terciaria);
 }
@@ -670,14 +675,14 @@ strong {
 }
 
 .secao5-img {
-    width: 30rem;
+    width: clamp(15rem, 5rem + 20.8333vw, 30rem);
 }
 
 .secao5-selo {
-    bottom: -5rem;
+    bottom: -2rem;
     left: 80%;
     transform: translateX(-50%);
-    width: 150px;
+    width: clamp(4.6875rem, 3.6058rem + 4.8077vw, 9.375rem);
     height: auto;
     display: block;
     position: absolute;
@@ -722,8 +727,8 @@ strong {
 /* SECAO 7 - NEWSLETTER */
 .container-secao7 {
     margin-top: 2rem;
-    padding: 5% 15%;
-    height: 35vh;
+    padding: 5rem 15%;
+    min-height: 35vh;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     position: relative;
@@ -764,7 +769,7 @@ strong {
 }
 
 .secao7-div1 h2 {
-    font-size: 3rem;
+    font-size: clamp(2rem, 1.7692rem + 1.0256vw, 3rem);
     font-weight: 600;
     color: var(--cor-background);
 }
@@ -780,24 +785,24 @@ strong {
 
 .form-text {
     padding-left: 1rem;
-    height: 3rem;
-    width: 25rem;
+    height: clamp(1.5rem, 1.1538rem + 1.5385vw, 3rem);
+    width: clamp(15rem, 12.6923rem + 10.2564vw, 25rem) max-content;
     text-decoration: none;
     background-color: var(--cor-background);
     border: solid 1px var(--cor-principal);
-    border-radius: 1rem;
+    border-radius: clamp(0.5rem, 0.3846rem + 0.5128vw, 1rem);
 }
 
 .form-botao {
-    height: 3rem;
-    width: 10rem;
+    height: clamp(1.5rem, 1.1538rem + 1.5385vw, 3rem);
+    width: clamp(8rem, 7.5385rem + 2.0513vw, 10rem);
     text-decoration: none;
-    font-size: 1.3rem;
+    font-size: clamp(1rem, 0.9308rem + 0.3077vw, 1.3rem);
     font-weight: 400;
     color: var(--cor-background);
     background-color: var(--cor-botoes);
     border: none;
-    border-radius: 1rem;
+    border-radius: clamp(0.3rem, 0.1385rem + 0.7179vw, 1rem);
     cursor: pointer;
 }
 
@@ -810,15 +815,16 @@ strong {
 
 /* FOOTER */
 .container-footer {
-    height: 35vh;
+    height: auto;
     display: flex;
     flex-direction: column;
 }
 
 .footer-containersub {
-    padding: 5% 7%;
+    padding: 5rem 7%;
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
     gap: 2rem;
 }
 
@@ -830,7 +836,7 @@ strong {
 
 .footer-containersub-div h3 {
     text-decoration: none;
-    font-size: 1.8rem;
+    font-size: clamp(1.5rem, 1.4308rem + 0.3077vw, 1.8rem);
     font-weight: 600;
 }
 
@@ -842,7 +848,7 @@ strong {
 
 .footer-lista a {
     text-decoration: none;
-    font-size: 1.3rem;
+    font-size: clamp(1rem, 0.9308rem + 0.3077vw, 1.3rem);
     color: var(--cor-terciaria);
 }
 
@@ -856,7 +862,7 @@ strong {
 }
 
 .footer-lista-faleconosco-separador i {
-    font-size: 1.3rem;
+    font-size: clamp(1rem, 0.9308rem + 0.3077vw, 1.3rem);
 }
 
 .footer-redessociais {
@@ -870,7 +876,7 @@ strong {
     left: 0;
     bottom: 0;
     height: 2.5rem;
-    padding: 0% 7%;
+    padding: 0.7rem 7%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -920,7 +926,7 @@ strong {
 }
 
 .comps-secao1-conteudogeral {
-    padding: 5% 15%;
+    padding: 5rem 15%;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     color: var(--cor-background);
@@ -1018,7 +1024,7 @@ strong {
 
 .comp-secao2-container {
     height: 45vh;
-    padding: 5% 15%;
+    padding: 5rem 15%;
     display: flex;
     background-color: var(--cor-background-cinza-claro);
 }
@@ -1067,7 +1073,7 @@ strong {
 
 .card {
     min-height: 23rem;
-    padding: 12% 16% 12% 8%;
+    padding: 3rem 3.5rem 3rem 2rem;
     display: flex;
     flex-direction: column;
     background-color: var(--cor-principal);
@@ -1148,7 +1154,7 @@ strong {
 }
 
 .div-linha {
-    padding: 5% 15%;
+    padding: 5rem 15%;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     background-size: 50rem auto;
@@ -1172,7 +1178,7 @@ strong {
 }
 
 .div-linha-reverse {
-    padding: 5% 15%;
+    padding: 5rem 15%;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     background-size: 50rem auto;
@@ -1292,7 +1298,7 @@ strong {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: var(--cor-background-cinza-claro);
+    background-color: var(--cor-background-cinza-claro1);
     gap: 1.5rem;
 }
 

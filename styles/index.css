@@ -1,0 +1,60 @@
+@media (max-width: 1119px) {
+    .header-contacts-text {
+        display: none;
+    }
+
+    .nav-navegacao-text {
+        display: none;
+    }
+
+    .container-banner-secao3 {
+        gap: 1rem;
+    }
+
+    .secao5-divimg {
+        display: none;
+    }
+
+    .container-secao5 {
+        grid-template-columns: 1fr;
+    }
+
+    .container-secao7 {
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 634px) {
+    .whatsapp-text-cta {
+        display: none;
+    }
+
+    .container-banner-secao3 {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(2, 1fr);
+        text-align: center;
+    }
+
+    .container-secao7 {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 474px) {
+    .nav-navegacao {
+        gap: 0.3rem;
+    }
+
+    .container-cards-secao2 {
+        grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+    }
+
+    .container-banner-secao3 {
+        padding-bottom: 2rem;
+    }
+
+    .container-grid-secao4 {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+}
