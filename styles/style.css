@@ -69,6 +69,11 @@ strong {
   color: var(--cor-principal);
 }
 
+hr {
+  border-top: 1px solid white;
+  margin: 0;
+}
+
 /* HEADER */
 .header-container {
   display: flex;
@@ -150,6 +155,7 @@ strong {
   color: var(--cor-background);
   background-color: var(--cor-principal);
   border-radius: 2rem;
+  transition: all 0.3s ease-in-out;
 }
 
 #hamburger-menu {
@@ -160,6 +166,7 @@ strong {
   cursor: pointer;
   color: #134596;
   font-weight: bold;
+  transition: all 0.3s ease-in-out;
 }
 
 #hamburger-menu:focus,
@@ -170,6 +177,60 @@ strong {
 
 .drop-down-burger {
   box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.5);
+}
+
+nav .dropdown-menu {
+  background-color: var(--cor-botoes);
+  border: var(--cor-botoes);
+  transition: max-height 0.3s ease-in-out, margin-top 0.3s ease-in-out,
+    visibility 0.3s ease-in-out;
+  max-height: 0;
+  visibility: hidden;
+  overflow: hidden;
+  display: block;
+  border-top-left-radius: 0rem;
+  border-top-right-radius: 0rem;
+  margin-top: 11px;
+  padding: 0;
+}
+nav .show > .dropdown-menu {
+  margin-top: 11px;
+  max-height: 800px;
+  visibility: visible;
+}
+
+.menu-icon {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.menu-icon span {
+  display: block;
+  width: 100%;
+  height: 4px;
+  background-color: #134596;
+  border-radius: 4px;
+  transition: all 0.3s ease-in-out;
+  transform-origin: center;
+  margin: 0.21rem;
+}
+
+/* Efeito transformado em X */
+.menu-icon.open span:nth-child(1) {
+  transform: rotate(45deg) translateY(10px);
+}
+
+.menu-icon.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-icon.open span:nth-child(3) {
+  transform: rotate(-45deg) translateY(-10px);
 }
 
 .dropdown-menu-right ul,
@@ -582,6 +643,7 @@ strong {
   background-position-y: 85%;
   background-repeat: no-repeat;
   inset: 0;
+  background-attachment: fixed;
 }
 
 .secao3-banner-div1 {
@@ -691,15 +753,14 @@ strong {
 /* /SECAO 4 - LINHAS DE PRODUTOS */
 
 /* SECAO 5 - POR QUE ESCOLHER NOTUS? */
-.container-secao5 {
-  padding: 5% 15%;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+
+.container-secao5-carrossel-imagem {
+  display: flex;
+  justify-content: center;
   align-items: center;
-  position: relative;
-  overflow: visible;
-  background-image: url(../images/background-fabrica-desfoque.webp);
-  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+  display: flex;
 }
 
 .secao5-overlay {
@@ -713,7 +774,7 @@ strong {
   z-index: 2;
 }
 
-.secao5-divcarrossel {
+/* .secao5-divcarrossel {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   isolation: isolate;
@@ -725,6 +786,71 @@ strong {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+} */
+
+.container-secao5 {
+  width: 100vw;
+  padding: 5% 15%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: visible;
+  background-image: url(../images/background-fabrica-desfoque.webp);
+  background-repeat: no-repeat;
+}
+.carrossel-btn img {
+  width: 30px;
+}
+
+.secao5-carrossel {
+  position: relative;
+  max-width: 650px;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: 30px;
+  margin-right: 30px;
+  overflow: hidden;
+  z-index: 4;
+}
+
+.secao5-divcarrossel {
+  display: flex;
+  transition: transform 0.3s ease-in-out;
+}
+
+.secao5-divcarrossel-div {
+  min-width: 50%;
+  box-sizing: border-box;
+  padding: 35px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.carrossel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #ffffff00;
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.carrossel-btn:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.carrossel-btn.prev {
+  left: -10px;
+}
+
+.carrossel-btn.next {
+  right: -10px;
 }
 
 .secao5-h3 {
@@ -778,6 +904,7 @@ strong {
   display: flex;
   border: none;
   background-color: var(--cor-brasil-amarelo);
+  margin: 0;
 }
 
 .secao5-hr-verde {
@@ -785,6 +912,7 @@ strong {
   display: flex;
   border: none;
   background-color: var(--cor-brasil-verde);
+  margin: 0;
 }
 /* /SECAO 5 - POR QUE ESCOLHER NOTUS? */
 

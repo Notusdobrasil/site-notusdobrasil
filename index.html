@@ -90,15 +90,19 @@
         </div>
         <div class="nav-navegacao-catalogo-burguer">
           <a class="nav-navegacao-catalogo" href="#">Catálogo</a>
-          <button
+
+          <div
+            class="menu-icon"
             data-toggle="dropdown"
             aria-haspopup="true"
             aria-expanded="false"
             id="hamburger-menu"
+            onclick="toggleMenu(this)"
           >
-            ☰
-          </button>
-
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
           <nav
             class="dropdown-menu dropdown-menu-right drop-down-burger"
             id="nav"
@@ -675,62 +679,98 @@
         <h2 class="secao2-titulo">Por que <strong>escolher Notus?</strong></h2>
       </section>
       <!-- SECAO 5 - POR QUE ESCOLHER NOTUS -->
-      <section></section>
       <section class="container-secao5">
-        <div class="secao5-divcarrossel">
-          <div class="secao5-divcarrossel-div">
-            <h3 class="secao5-h3">Modelo de <strong>negócio único</strong></h3>
-            <p class="secao5-text">
-              Sempre investindo em soluções próprias para atender às
-              necessidades de nossos clientes, que acabam por se tornar as
-              nossas. Com isto, desenvolvemos nossos maquinários, moldes de
-              produtos, software ERP e frota própria para nos destacar e
-              atendê-los da melhor forma possível;
-            </p>
+        <!-- Carrossel -->
+
+        <div class="container-secao5-carrossel-imagem">
+          <div class="secao5-carrossel">
+            <div class="secao5-divcarrossel">
+              <div class="secao5-divcarrossel-div">
+                <h3 class="secao5-h3">
+                  Modelo de <strong>negócio único</strong>
+                </h3>
+                <p class="secao5-text">
+                  Sempre investindo em soluções próprias para atender às
+                  necessidades de nossos clientes, que acabam por se tornar as
+                  nossas. Com isto, desenvolvemos nossos maquinários, moldes de
+                  produtos, software ERP e frota própria para nos destacar e
+                  atendê-los da melhor forma possível;
+                </p>
+              </div>
+              <div class="secao5-divcarrossel-div">
+                <h3 class="secao5-h3">
+                  Qualidade e <strong>confiança</strong>
+                </h3>
+                <p class="secao5-text">
+                  Nossa conduta é baseada na qualidade e confiança, o que nos
+                  torna rigorosos quanto aos procedimentos da empresa, escolha
+                  de fornecedores, matéria-prima e outros;
+                </p>
+              </div>
+              <div class="secao5-divcarrossel-div">
+                <h3 class="secao5-h3">Fazer a <strong>diferença</strong></h3>
+                <p class="secao5-text">
+                  Nosso time é seleto, procuramos fazer a diferença na vida de
+                  cada um que trabalha conosco;
+                </p>
+              </div>
+              <div class="secao5-divcarrossel-div">
+                <h3 class="secao5-h3">
+                  Certificações e <strong>rigor</strong>
+                </h3>
+                <p class="secao5-text">
+                  Toda essa rigorosidade torna nossa qualidade diferenciada;
+                  nossos parceiros dos mercados asiático e brasileiro foram
+                  escolhidos a dedo, possuindo as corretas certificações para
+                  cada ocasião, como a ISO 9001, ISOTS16949 e CE;
+                </p>
+              </div>
+              <div class="secao5-divcarrossel-div">
+                <h3 class="secao5-h3">
+                  Equipe de <strong>desenvolvimento</strong>
+                </h3>
+                <p class="secao5-text">
+                  Possuímos, ainda, uma equipe de desenvolvimento de produtos
+                  sempre em busca de trazer novidades e satisfação aos
+                  stakeholders e suas necessidades
+                </p>
+              </div>
+              <div class="secao5-divcarrossel-div">
+                <h3 class="secao5-h3">Indústria <strong>nacional</strong></h3>
+                <p class="secao5-text">
+                  Além de tudo isso, somos a única empresa brasileira com
+                  fabricação de itens 100% nacional do sistema de arrefecimento
+                  automotivo.
+                </p>
+              </div>
+            </div>
+            <button class="carrossel-btn next">
+              <img src="./images/nextArrow.svg" alt="rigthArrow" />
+            </button>
+            <button class="carrossel-btn prev">
+              <img src="./images/prevArrow.svg" alt="leftArrow" />
+            </button>
           </div>
-          <div class="secao5-divcarrossel-div">
-            <h3 class="secao5-h3">Qualidade e <strong>confiança</strong></h3>
-            <p class="secao5-text">
-              Nossa conduta é baseada na qualidade e confiança, o que nos torna
-              rigorosos quanto aos procedimentos da empresa, escolha de
-              fornecedores, matéria-prima e outros;
-            </p>
+
+          <div class="secao5-divimg">
+            <img
+              class="secao5-img"
+              src="./images/linhasdeprodutos-radiador1.webp"
+              alt=""
+            />
           </div>
-          <!-- <div>
-                    <h3 class="secao5-h3">Fazer a <strong>diferença</strong></h3>
-                    <p class="secao5-text">Nosso time é seleto, procuramos fazer a diferença na vida de cada um que trabalha conosco;</p>
-                </div>
-                <div>
-                    <h3 class="secao5-h3">Certificações e <strong>rigor</strong></h3>
-                    <p class="secao5-text">Toda essa rigorosidade torna nossa qualidade diferenciada; nossos parceiros dos mercados asiático e brasileiro foram escolhidos a dedo, possuindo as corretas certificações para cada ocasião, como a ISO 9001, ISOTS16949 e CE;</p>
-                </div>
-                <div>
-                    <h3 class="secao5-h3">Equipe de <strong>desenvolvimento</strong></h3>
-                    <p class="secao5-text">Possuímos, ainda, uma equipe de desenvolvimento de produtos sempre em busca de trazer novidades e satisfação aos stakeholders e suas necessidades</p>
-                </div>
-                <div>
-                    <h3 class="secao5-h3">Indústria <strong>nacional</strong></h3>
-                    <p class="secao5-text">Além de tudo isso, somos a única empresa brasileira com fabricação de itens 100% nacional do sistema de arrefecimento automotivo.</p>
-                </div> -->
-        </div>
-        <div class="secao5-divimg">
-          <img
-            class="secao5-img"
-            src="./images/linhasdeprodutos-radiador1.webp"
-            alt=""
-          />
-        </div>
-        <div class="secao5-overlay"></div>
-        <div class="secao5-hr">
-          <hr class="secao5-hr-amarelo" />
-          <hr class="secao5-hr-verde" />
-        </div>
-        <div>
-          <img
-            class="secao5-selo"
-            src="./images/selo-100nacional.webp"
-            alt=""
-          />
+          <div class="secao5-overlay"></div>
+          <div class="secao5-hr">
+            <hr class="secao5-hr-amarelo" />
+            <hr class="secao5-hr-verde" />
+          </div>
+          <div>
+            <img
+              class="secao5-selo"
+              src="./images/selo-100nacional.webp"
+              alt=""
+            />
+          </div>
         </div>
       </section>
       <!-- SECAO 6 - TITULO BLOG -->

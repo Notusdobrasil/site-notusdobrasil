@@ -4,6 +4,8 @@ function menuOnClick() {
   document.getElementById("menu-bg").classList.toggle("change-bg");
 }
 
+// Seção do Botão 'Fale Conosco
+
 let dropDownOpen = true;
 function animationDropDown() {
   const container_secao1 = document.getElementById("cont_secao1");
@@ -24,23 +26,159 @@ function animationDropDown() {
   }
 }
 
-const hamburgerButton = document.querySelector("#hamburger-menu");
-const nav_navegacao_catalogo_burguer = document.querySelector(
-  ".nav-navegacao-catalogo-burguer"
-);
-const drop_down_burger = document.querySelector(".drop-down-burger");
+// Seção do Botão de DropDown Burger
 
-// Função para verificar a largura da tela e mostrar/ocultar o botão
-function checkScreenWidth() {
-  if (window.innerWidth <= 767) {
-    hamburgerButton.style.display = "block";
-    drop_down_burger.style.display = "block";
-  } else {
-    hamburgerButton.style.display = "none";
-    drop_down_burger.style.display = "none";
-  }
+const hamburgerButton = document.querySelector("#hamburger-menu");
+const dropDownBurger = document.querySelector(".drop-down-burger");
+
+// Alterna a exibição do menu com base na largura da tela
+function updateMenuVisibility() {
+  const isMobile = window.innerWidth <= 767;
+  hamburgerButton.style.display = isMobile ? "block" : "none";
+  dropDownBurger.style.display = isMobile ? "block" : "none";
 }
 
-// Executa a verificação ao carregar a página e ao redimensionar
-checkScreenWidth();
-window.addEventListener("resize", checkScreenWidth);
+// Inicializa e adiciona listener para redimensionamento
+window.addEventListener("resize", updateMenuVisibility);
+updateMenuVisibility();
+
+// Muda o formato do Botão Burger
+function toggleMenu(element) {
+  element.classList.toggle("open"); // Adiciona ou remove a classe "open"
+}
+
+// const carrossel = document.querySelector(".secao5-divcarrossel");
+// const slides = document.querySelectorAll(".secao5-divcarrossel-div");
+// const prevButton = document.querySelector(".carrossel-btn.prev");
+// const nextButton = document.querySelector(".carrossel-btn.next");
+
+// let currentIndex = 0;
+// const maxIndex = 4; // Máximo índice visível (equivalente a -200%)
+
+// function updateCarrossel() {
+//   const offset = -currentIndex * 50;
+//   carrossel.style.transform = `translateX(${offset}%)`;
+// }
+
+// prevButton.addEventListener("click", () => {
+//   if (currentIndex === 0) {
+//     currentIndex = maxIndex; // Vai para o último slide visível (loop circular)
+//   } else {
+//     currentIndex -= 1; // Decrementa normalmente
+//   }
+//   updateCarrossel();
+// });
+
+// nextButton.addEventListener("click", () => {
+//   if (currentIndex === maxIndex) {
+//     currentIndex = 0; // Volta para o primeiro slide (loop circular)
+//   } else {
+//     currentIndex += 1; // Incrementa normalmente
+//   }
+//   updateCarrossel();
+// });
+
+const carrossel = document.querySelector(".secao5-divcarrossel");
+const slides = document.querySelectorAll(".secao5-divcarrossel-div");
+const prevButton = document.querySelector(".carrossel-btn.prev");
+const nextButton = document.querySelector(".carrossel-btn.next");
+
+let currentIndex = 2; // Inicia no segundo slide "duplicado"
+const slideCount = slides.length;
+
+// Duplica os primeiros e últimos slides
+const firstClone = slides[0].cloneNode(true);
+const secondClone = slides[1].cloneNode(true);
+const lastClone = slides[slideCount - 1].cloneNode(true);
+const secondLastClone = slides[slideCount - 2].cloneNode(true);
+
+firstClone.id = "first-clone";
+secondClone.id = "second-clone";
+lastClone.id = "last-clone";
+secondLastClone.id = "second-last-clone";
+
+carrossel.appendChild(firstClone);
+carrossel.appendChild(secondClone);
+carrossel.prepend(secondLastClone);
+carrossel.prepend(lastClone);
+
+const totalSlides = slideCount + 4; // Inclui os clones
+// Função para calcular a largura do slide com base no tamanho da tela
+function getSlideWidth() {
+  const screenWidth = window.innerWidth;
+  // Ajuste a lógica conforme necessário (por exemplo, em telas menores, pode ser 100% em vez de 50%)
+  return screenWidth >= 1281 ? 50 : 100; // Exemplo: 50% para telas grandes e 100% para telas pequenas
+}
+
+let slideWidth = getSlideWidth();
+
+carrossel.style.transform = `translateX(-${currentIndex * slideWidth}%)`;
+
+let isTransitioning = false; // Flag para evitar cliques rápidos
+
+function updateCarrossel() {
+  isTransitioning = true; // Bloqueia interações durante a transição
+  carrossel.style.transition = "transform 0.5s ease";
+  carrossel.style.transform = `translateX(-${currentIndex * slideWidth}%)`;
+}
+
+function checkLoop() {
+  carrossel.addEventListener("transitionend", () => {
+    isTransitioning = false; // Libera interações após a transição
+
+    if (currentIndex === 0) {
+      carrossel.style.transition = "none"; // Remove animação
+      currentIndex = slideCount + 1; // Reposiciona para o segundo slide original
+      carrossel.style.transform = `translateX(-${currentIndex * slideWidth}%)`;
+
+      // Adiciona um pequeno atraso para reabilitar a transição
+      setTimeout(() => {
+        carrossel.style.transition = "transform 0.5s ease";
+      }, 50);
+    }
+
+    if (currentIndex === totalSlides - 1) {
+      carrossel.style.transition = "none"; // Remove animação
+      currentIndex = 2; // Reposiciona para o segundo slide original
+      carrossel.style.transform = `translateX(-${currentIndex * slideWidth}%)`;
+
+      // Adiciona um pequeno atraso para reabilitar a transição
+      setTimeout(() => {
+        carrossel.style.transition = "transform 0.5s ease";
+      }, 50);
+    }
+
+    // Mudança instantânea quando atingir o limite de -400%
+    if (currentIndex === 8) {
+      carrossel.style.transition = "none"; // Remove animação
+      currentIndex = 2; // Reseta para -100%
+      carrossel.style.transform = `translateX(-${currentIndex * slideWidth}%)`;
+    }
+
+    // Mudança para -350% após voltar para o início
+    if (currentIndex === 1) {
+      carrossel.style.transition = "none"; // Remove animação
+      currentIndex = 7; // Reseta para -350%
+      carrossel.style.transform = `translateX(-${currentIndex * slideWidth}%)`;
+
+      // Adiciona um pequeno atraso para reabilitar a transição
+      setTimeout(() => {
+        carrossel.style.transition = "transform 0.5s ease";
+      }, 50);
+    }
+  });
+}
+
+prevButton.addEventListener("click", () => {
+  if (isTransitioning) return; // Ignora o clique se já estiver em transição
+  currentIndex -= 1;
+  updateCarrossel();
+});
+
+nextButton.addEventListener("click", () => {
+  if (isTransitioning) return; // Ignora o clique se já estiver em transição
+  currentIndex += 1;
+  updateCarrossel();
+});
+
+checkLoop();
