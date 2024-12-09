@@ -1,3 +1,4 @@
+/* TEMOS VAGAS */
 @media (max-width: 1119px) {
     .container-temosvagas {
         grid-template-columns: 1fr;
@@ -31,5 +32,13 @@
 @media (max-width: 401px) {
     .grid-1x4 {
         grid-template-columns: 1fr;
+    }
+}
+
+/* NÃO TEMOS VAGAS */
+@media (max-width: 1119px) {
+    .container-row {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto;
     }
 }
