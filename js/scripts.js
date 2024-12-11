@@ -153,3 +153,71 @@ nextButton.addEventListener("click", () => {
 });
 
 checkLoop();
+
+//Whatsapp
+
+const whatsappIcone = document.querySelector(".whatsapp-icone");
+const xIcone = document.querySelector(".x-icone");
+const card_whatsapp_container = document.querySelector(
+  ".card-whatsapp-container"
+);
+
+const card_whatsapp_bottom = document.querySelector(".card-whatsapp-bottom");
+
+whatsappIcone.addEventListener("click", () => {
+  // Ocultar o ícone do WhatsApp com rotação e opacidade
+  whatsappIcone.style.transform = "rotate(150deg)";
+  whatsappIcone.style.opacity = "0";
+
+  // Mostrar o "X" após a animação
+  setTimeout(() => {
+    whatsappIcone.style.display = "none";
+    xIcone.style.display = "flex";
+    xIcone.style.animation = "rotateIn 0.3s ease forwards";
+    card_whatsapp_container.style.display = "block";
+    card_whatsapp_container.style.opacity = "1";
+    card_whatsapp_container.style.animation = "whatsappIn 0.3s ease forwards";
+  }, 100); // Tempo para a transição do WhatsApp terminar
+
+  setTimeout(() => {
+    card_whatsapp_bottom.style.display = "flex";
+    card_whatsapp_bottom.style.opacity = "1";
+    card_whatsapp_bottom.style.animation =
+      "whatsappBottomIn 0.3s ease forwards";
+  }, 500);
+});
+
+xIcone.addEventListener("click", () => {
+  // Ocultar o ícone do WhatsApp com rotação e opacidade
+  whatsappIcone.style.transform = "rotate(0deg)";
+  whatsappIcone.style.opacity = "1";
+
+  // Mostrar o "X" após a animação
+  setTimeout(() => {
+    whatsappIcone.style.display = "flex";
+    xIcone.style.animation = "rotateOut 0.3s ease forwards";
+    whatsappIcone.style.animation = "rotateOut 0.3s ease forwards";
+    card_whatsapp_container.style.animation = "whatsappOut 0.3s ease forwards";
+  }, 100); // Tempo para a transição do WhatsApp terminar
+
+  setTimeout(() => {
+    xIcone.style.display = "none";
+  }, 200);
+  setTimeout(() => {
+    card_whatsapp_bottom.style.display = "none";
+    card_whatsapp_bottom.style.opacity = "0";
+    card_whatsapp_container.style.display = "none";
+    card_whatsapp_container.style.opacity = "0";
+  }, 500);
+});
+
+// Pesquisa
+
+const fa_magnifying_glass = document.querySelector(".fa-magnifying-glass");
+const framePesquisa = document.querySelector(".framePesquisa");
+
+fa_magnifying_glass.addEventListener("click", (e) => {
+  e.preventDefault()
+  framePesquisa.style.display = "block";
+  framePesquisa.style.opacity = "1";
+});
