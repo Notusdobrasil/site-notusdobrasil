@@ -1,0 +1,44 @@
+/* TEMOS VAGAS */
+@media (max-width: 1119px) {
+    .container-temosvagas {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto;
+    }
+
+    .temosvagas-img {
+        min-width: none;
+        max-width: 480px;
+        justify-self: center;
+        order: 2;
+    }
+
+    .temosvagas-card h3 {
+        text-align: center;
+
+    }
+
+    .temosvagas-card {
+        font-size: (0rem, -0.4743rem + 2.108vw, 1rem);
+        order: 1;
+    }
+}
+
+@media (max-width: 547px) {
+    .trabalheconosco-form {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 401px) {
+    .grid-1x4 {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* NÃO TEMOS VAGAS */
+@media (max-width: 1119px) {
+    .container-row {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto;
+    }
+}

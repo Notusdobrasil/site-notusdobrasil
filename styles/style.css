@@ -1087,10 +1087,10 @@ nav .show > .dropdown-menu {
 
 /* SOBRE NOTUS - SECAO 1 - APRESENTACAO */
 .comps-secao1-container {
-  height: 65vh;
-  display: flex;
-  position: relative;
-  overflow: hidden;
+    min-height: 65vh;
+    display: flex;
+    position: relative;
+    overflow: hidden;
 }
 
 .comps-secao1-container::before {
@@ -1118,77 +1118,88 @@ nav .show > .dropdown-menu {
 }
 
 .comps-secao1-conteudogeral {
-  padding: 5% 15%;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  color: var(--cor-background);
-  gap: 3rem;
-  z-index: 2;
+    padding: 5rem 15%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(23.98rem, 1fr));
+    color: var(--cor-background);
+    gap: clamp(1rem, -2.6471rem + 4.7059vw, 3rem);
+    z-index: 2;
 }
 
 .comps-secao1-conteudo-div1 {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: clamp(0.8rem, 0.7538rem + 0.2051vw, 1rem);
 }
 
 .comps-secao1-conteudo-div1 h1 {
-  font-size: 3.5rem;
-  font-weight: 700;
-  text-transform: uppercase;
+    font-size: clamp(2rem, 1.6538rem + 1.5385vw, 3.5rem);
+    font-weight: 700;
+    text-transform: uppercase;
 }
 
 .comps-secao1-conteudo-div1 p {
-  font-size: 1.3rem;
-  font-weight: 300;
+    font-size: clamp(0.9rem, 0.8077rem + 0.4103vw, 1.3rem);
+    font-weight: 300;
 }
 
 .comps-secao1-conteudo-div1 h3 {
-  padding: 0.5rem 2rem;
-  width: fit-content;
-  font-size: 1.5rem;
-  font-weight: 400;
-  background-color: var(--cor-principal);
-  border-radius: 1rem;
+    padding: clamp(0.2rem, 0.1308rem + 0.3077vw, 0.5rem) clamp(1rem, 0.7692rem + 1.0256vw, 2rem);
+    width: fit-content;
+    font-size: clamp(1.1rem, 1.0077rem + 0.4103vw, 1.5rem);
+    font-weight: 400;
+    background-color: var(--cor-principal);
+    border-radius: clamp(0.5rem, 0.3846rem + 0.5128vw, 1rem);
 }
 
 .comps-secao1-div-botoes {
-  display: flex;
-  gap: 1rem;
+    display: flex;
+    justify-content: space-between;
+    gap: clamp(0.5rem, 0.3846rem + 0.5128vw, 1rem);
 }
 
 .comps-secao1-div-botoes a {
-  padding: 1rem 1rem;
-  height: 3rem;
-  width: 14rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  color: var(--cor-background);
-  background-color: var(--cor-botoes);
-  border-radius: 1rem;
-  gap: 1rem;
+    padding: clamp(0.5rem, 0.3846rem + 0.5128vw, 1rem) clamp(0.5rem, 0.3846rem + 0.5128vw, 1rem);
+    height: clamp(1.8rem, 1.5231rem + 1.2308vw, 3rem);
+    width: clamp(10rem, 9.0769rem + 4.1026vw, 14rem);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: var(--cor-background);
+    background-color: var(--cor-botoes);
+    border-radius: clamp(0.5rem, 0.3846rem + 0.5128vw, 1rem);
+    gap: clamp(0.5rem, 0.3846rem + 0.5128vw, 1rem);
 }
 
 .comps-secao1-div-botoes a:hover {
-  height: 2.875rem;
-  width: 13.875rem;
-  background-color: transparent;
-  border: solid 1px var(--cor-background);
+    height: clamp(1.675rem, 1.3981rem + 1.2308vw, 2.875rem);
+    width: clamp(9.875rem, 8.9519rem + 4.1026vw, 13.875rem);
+    background-color: transparent;
+    border: solid 1px var(--cor-background);
 }
 
 .comps-secao1-div-botoes img {
-  max-width: 100%;
-  max-height: 2rem;
-  object-fit: contain;
+    max-width: 100%;
+    max-height: clamp(1rem, 0.7692rem + 1.0256vw, 2rem);
+    object-fit: contain;
 }
 
 .comps-secao1-video-container {
-  display: flex;
-  align-items: center;
-  justify-content: end;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.comps-secao1-video-container iframe {
+    /* width="480" height="270" */
+    height: auto;
+    width: 100%;
+    max-height: 270px;
+    max-width: 480px;
+    object-fit: contain;
+    aspect-ratio: 16 / 9;
 }
 
 .comps-secao1-video-shadow {
@@ -1213,20 +1224,28 @@ nav .show > .dropdown-menu {
 }
 
 .comp-secao2-container {
-  height: 45vh;
-  padding: 5% 15%;
-  display: flex;
-  background-color: var(--cor-background-cinza-claro);
+    min-height: 45vh;
+    height: auto;
+    padding: 5rem 15%;
+    display: flex;
+    background-color: var(--cor-background-cinza-claro);
 }
 
 .comp-secao2-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
 }
 
 .secao2-grid-img {
   display: flex;
   justify-content: center;
+}
+
+.secao2-grid-img img {
+    height: auto;
+    width: 100%;
+    object-fit: contain;
 }
 
 .comp-secao2-grid-text {
@@ -1237,13 +1256,13 @@ nav .show > .dropdown-menu {
 }
 
 .comp-secao2-grid-text h3 {
-  font-size: 2.5rem;
-  font-weight: 600;
+    font-size: clamp(2rem, 1.8846rem + 0.5128vw, 2.5rem);
+    font-weight: 600;
 }
 
 .comp-secao2-grid-text p {
-  font-size: 1.2rem;
-  font-weight: 450;
+    font-size: clamp(1rem, 0.9538rem + 0.2051vw, 1.2rem);
+    font-weight: 450;
 }
 /* /SOBRE NOTUS - SECAO 2 - QUEM SOMOS */
 
@@ -1253,10 +1272,10 @@ nav .show > .dropdown-menu {
 }
 
 .grid-1x3 {
-  display: grid;
-  grid-template-columns: repeat(3, 0.3fr);
-  justify-content: center;
-  gap: 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+    justify-content: center;
+    gap: 1rem;
 }
 
 .card {
@@ -1307,9 +1326,32 @@ nav .show > .dropdown-menu {
 
 /* SOBRE NOTUS - SECAO 4 - SIGNIFICADO DA MARCA */
 .grid-1x2 {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  align-items: center;
+    min-height: 50vh;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+}
+
+.comp-secao4-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: end;
+    gap: 1rem;
+}
+
+.comps-secao4-video-container {
+    display: flex;
+    justify-content: end;
+}
+
+.comps-secao4-video-container iframe {
+    /* width="480" height="270" */
+    height: auto;
+    width: 100%;
+    max-height: 270px;
+    max-width: 480px;
+    object-fit: contain;
+    aspect-ratio: 16 / 9;
 }
 
 .posicionamento-img {
@@ -1319,14 +1361,11 @@ nav .show > .dropdown-menu {
 }
 
 .posicionamento-img img {
-  top: -7rem;
-  left: 83%;
-  transform: translateX(-50%);
-  right: 0;
-  bottom: 0;
-  display: block;
-  width: 12rem;
-  position: absolute;
+    bottom: -5rem;
+    right: 10%;
+    display: block;
+    width: clamp(10rem, 7.2rem + 4vw, 12rem);
+    position: absolute;
 }
 /* /SOBRE NOTUS - SECAO 4 - SIGNIFICADO DA MARCA */
 
@@ -1401,43 +1440,135 @@ nav .show > .dropdown-menu {
 }
 
 .historia-div-text h3 {
-  font-size: 2rem;
-  font-weight: 600;
-  color: var(--cor-principal);
+    font-size: clamp(1.5rem, 0.8rem + 1vw, 2rem);
+    font-weight: 600;
+    color: var(--cor-principal);
 }
 
 .historia-div-text p {
-  font-size: 1.2rem;
-  font-weight: 400;
+    font-size: clamp(1rem, 0.72rem + 0.4vw, 1.2rem);
+    font-weight: 400;
 }
 
 .historia-div-img {
   padding-right: 1rem;
   display: flex;
 }
+
+.historia-div-img img {
+    height: auto;
+    width: 100%;
+    object-fit: contain;
+}
 /* /SOBRE NOTUS - SECAO 5 - CONHECA UM POUCO DA NOSSA HISTORIA */
 
+
+
 /* SOBRE NOTUS - SECAO 6 - CONHECA NOSSA FABRICA  */
+.comps-container-secao6 {
+    min-height: 35vh;
+    padding: 5rem 15%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    background-image: url(../images/background-fabrica-desfoque.webp);
+    background-repeat: no-repeat;
+    align-items: center;
+    position: relative;
+    overflow: visible;
+    gap: clamp(0.5rem, 0.3846rem + 0.5128vw, 1rem);
+}
+
+.secao6-overlay {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.5);
+    z-index: 2;
+}
+
+.secao6-video {
+    height: auto;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    isolation: isolate;
+    z-index: 3;
+}
+
+.secao6-video iframe {
+    /* width="560" height="315" */
+    height: auto;
+    width: 100%;
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    aspect-ratio: 16 / 9;
+}
+
+.secao6-selo {
+    bottom: -2rem;
+    left: 80%;
+    transform: translateX(-50%);
+    width: clamp(4.6875rem, 3.6058rem + 4.8077vw, 9.375rem);
+    height: auto;
+    display: block;
+    position: absolute;
+    z-index: 3;
+}
+
+.secao6-hr {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    z-index: 3;
+}
+
+.secao6-hr-amarelo {
+    height: 0.7rem;
+    display: flex;
+    border: none;
+    background-color: var(--cor-brasil-amarelo);
+}
+
+.secao6-hr-verde {
+    height: 0.7rem;
+    display: flex;
+    border: none;
+    background-color: var(--cor-brasil-verde);
+}
+
 .secao6-div-text {
   display: flex;
   z-index: 3;
 }
 
 .secao6-div-text h3 {
-  font-size: 3rem;
+    font-size: clamp(2rem, 1.7692rem + 1.0256vw, 3rem);
 }
 /* /SOBRE NOTUS - SECAO 6 - CONHECA NOSSA FABRICA */
 
 /* TRABALHE CONOSCO - SECAO 2 - NÃO TEMOS VAGAS  */
 .container-row {
-  padding: 2.8% 15% 1.8% 15%;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  align-items: center;
+    padding: 2.8% 15% 1.8% 15%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    justify-items: center;
+    gap: 1rem;
 }
 
 .trabalheconosco-div-img {
-  display: flex;
+    display: flex;
+    max-width: clamp(22rem, 1.0449rem + 29.9625vw, 37rem);
 }
 
 .trabalheconosco-div-img img {
@@ -1471,21 +1602,21 @@ nav .show > .dropdown-menu {
 }
 
 .trabalheconosco-div-text h3 {
-  font-size: 2.1rem;
-  font-weight: 600;
+    font-size: clamp(1.5rem, 0.6618rem + 1.1985vw, 2.1rem);
+    font-weight: 600;
 }
 /* /TRABALHE CONOSCO - SECAO 2 - NÃO TEMOS VAGAS */
 
 /* TRABALHE CONOSCO - SECAO 3 - ENVIO DE CURRICULO */
 .container-enviocurriculo {
-  height: 25vh;
-  padding: 5% 15%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--cor-background-cinza-claro);
-  gap: 1.5rem;
+    min-height: 25vh;
+    padding: 5% 15%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--cor-background-cinza-claro1);
+    gap: 1.5rem;
 }
 
 .enviocurriculo-div-text {
@@ -1497,27 +1628,46 @@ nav .show > .dropdown-menu {
 }
 
 .enviocurriculo-div-text h3 {
-  font-size: 3rem;
-  font-weight: 600;
+    font-size: clamp(1.8rem, 0.1236rem + 2.397vw, 3rem);
+    font-weight: 600;
 }
 
 .enviocurriculo-div-text h4 {
-  font-size: 2rem;
-  font-weight: 550;
+    font-size: clamp(1.5rem, 0.8015rem + 0.9988vw, 2rem);
+    font-weight: 550;
 }
 
 .trabalheconosco-form {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: clamp(0.5rem, 0.2628rem + 1.054vw, 1rem);
+}
+
+input[type="file"] {
+    display: none; /* Esconde o input file */
+}
+
+input[type="file"] + label {
+    padding: 0.5rem 1rem;
+    background-color: #547cf1;
+    color: white;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    text-align: center;
+    display: inline-block;
+}
+
+input[type="file"]:hover + label {
+    background-color: #7a8bff;
 }
 
 .trabalheconosco-form-input {
-  padding-left: 1rem;
-  height: 3rem;
-  width: 15rem;
-  text-decoration: none;
-  border: solid 1px rgba(0, 0, 83, 0.2);
+    padding-left: 1rem;
+    height: clamp(2rem, 0.603rem + 1.9975vw, 3rem);
+    width: clamp(10rem, 3.015rem + 9.9875vw, 15rem);
+    text-decoration: none;
+    border: solid 1px rgba(0, 0, 83, 0.2);
 }
 
 .trabalheconosco-botaoenviar {
@@ -1525,18 +1675,18 @@ nav .show > .dropdown-menu {
 }
 
 .trabalheconosco-botaoenviar input {
-  height: auto;
-  width: 15rem;
-  padding: 1rem 2rem;
-  display: flex;
-  background-color: #547cf1;
-  border-radius: 1rem;
-  font-size: 1.1rem;
-  font-weight: 400;
-  color: var(--cor-background);
-  text-decoration: none;
-  border: none;
-  cursor: pointer;
+    height: auto;
+    width: clamp(10rem, 3.015rem + 9.9875vw, 15rem);
+    padding: 1rem 2rem;
+    display: flex;
+    background-color: #547cf1;
+    border-radius: 1rem;
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: var(--cor-background);
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
 }
 
 .trabalheconosco-botaoenviar input:hover {
@@ -1553,6 +1703,16 @@ nav .show > .dropdown-menu {
   gap: 1rem;
 }
 
+.temosvagas-img {
+    display: flex;
+}
+
+.temosvagas-img img {
+    height: auto;
+    width: 100%;
+    object-fit: contain;
+}
+
 .temosvagas-card {
   padding: 1rem;
   display: flex;
@@ -1563,23 +1723,23 @@ nav .show > .dropdown-menu {
 }
 
 .temosvagas-card h3 {
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--cor-terciaria);
+    font-size: clamp(1.5rem, 0.8015rem + 0.9988vw, 2rem);
+    font-weight: 700;
+    color: var(--cor-terciaria);
 }
 
 .grid-1x4 {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  gap: 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-rows: auto;
+    gap: clamp(0.5rem, -0.1985rem + 0.9988vw, 1rem);
 }
 
 .grid-1x4 h4 {
-  font-size: 1.7rem;
-  font-weight: 600;
-  color: var(--cor-principal);
-  gap: 1rem;
+    font-size: clamp(1.3rem, 0.7412rem + 0.799vw, 1.7rem);
+    font-weight: 600;
+    color: var(--cor-principal);
+    gap: clamp(0.5rem, -0.1985rem + 0.9988vw, 1rem);
 }
 
 .temosvagas-text {
@@ -1589,10 +1749,10 @@ nav .show > .dropdown-menu {
 }
 
 .container-column {
-  padding: 0 10%;
-  display: grid;
-  grid-template-columns: 1fr 3fr;
-  gap: 1rem;
+    padding: 0 clamp(0.2rem, -0.2154rem + 1.8462vw, 2rem);
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    gap: clamp(0.5rem, 0.2628rem + 1.054vw, 1rem);
 }
 
 .temosvagas-icon {
@@ -1612,10 +1772,10 @@ nav .show > .dropdown-menu {
 
 /* GARANTIA - SECAO 1 - APRESENTACAO */
 .comps-secao1-container1 {
-  height: 55vh;
-  display: flex;
-  position: relative;
-  overflow: hidden;
+    min-height: 55vh;
+    display: flex;
+    position: relative;
+    overflow: hidden;
 }
 
 .comps-secao1-container1::before {
@@ -1643,34 +1803,56 @@ nav .show > .dropdown-menu {
 }
 
 .comps-secao1-conteudogeral1 {
-  padding: 5% 15%;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  color: var(--cor-background);
-  gap: 3rem;
-  z-index: 2;
+    padding: 5rem 15%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(23.98rem, 1fr));
+    color: var(--cor-background);
+    gap: clamp(1rem, -2.6471rem + 4.7059vw, 3rem);
+    align-items: center;
+    z-index: 2;
 }
 
 .comps-secao1-conteudo-div1-1 {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(0.8rem, 0.7538rem + 0.2051vw, 1rem);
 }
 
 .comps-secao1-conteudo-div1-1 h1 {
-  font-size: 3.5rem;
-  font-weight: 700;
-  text-transform: uppercase;
+    font-size: clamp(2rem, 1.6538rem + 1.5385vw, 3.5rem);
+    font-weight: 700;
+    text-transform: uppercase;
 }
 
 .comps-secao1-conteudo-div1-1 p {
-  font-size: 1.3rem;
-  font-weight: 300;
+    font-size: clamp(0.9rem, 0.8077rem + 0.4103vw, 1.3rem);
+    font-weight: 300;
+}
+
+.comps-secao1-conteudo-div1-1 h3 {
+    padding: clamp(0.2rem, 0.1308rem + 0.3077vw, 0.5rem) clamp(1rem, 0.7692rem + 1.0256vw, 2rem);
+    width: fit-content;
+    font-size: clamp(1.1rem, 1.0077rem + 0.4103vw, 1.5rem);
+    font-weight: 400;
+    background-color: var(--cor-principal);
+    border-radius: clamp(0.5rem, 0.3846rem + 0.5128vw, 1rem);
 }
 
 .comps-secao1-video-container1 {
-  display: flex;
-  justify-content: center;
+    max-height: 270px;
+    max-width: 480px;
+    width: 100%;
+    display: flex;
+    object-fit: contain;
+}
+
+.comps-secao1-video-container1 iframe {
+    max-height: auto;
+    max-width: 100%;
+    height: fit-content;
+    width: 100%;
+    object-fit: contain;
+    aspect-ratio: 16/9;
 }
 /* /GARANTIA - SECAO 1 - APRESENTACAO */
 
@@ -1712,10 +1894,10 @@ nav .show > .dropdown-menu {
 }
 
 .card-transparent h3 {
-  font-size: 2rem;
-  font-weight: 600;
-  color: var(--cor-principal);
-  z-index: 1;
+    font-size: clamp(1.5rem, 1.3846rem + 0.5128vw, 2rem);
+    font-weight: 600;
+    color: var(--cor-principal);
+    z-index: 1;
 }
 
 .card-transparent p {
@@ -1726,59 +1908,65 @@ nav .show > .dropdown-menu {
 }
 
 .card-transparent a {
-  padding: 0.5rem 0.5rem;
-  display: flex;
-  justify-content: center;
-  font-size: 1.5rem;
-  font-weight: 400;
-  color: var(--cor-background);
-  text-decoration: none;
-  background-color: var(--cor-principal);
-  border-radius: 2rem;
-  z-index: 1;
+    padding: 0.5rem 0.5rem;
+    display: flex;
+    justify-content: center;
+    font-size: clamp(1rem, 0.8846rem + 0.5128vw, 1.5rem);
+    font-weight: 400;
+    color: var(--cor-background);
+    text-decoration: none;
+    background-color: var(--cor-principal);
+    border-radius: 2rem;
+    z-index: 1;
 }
 /* /GARANTIA - SECAO 2 - CARDS */
 
 /* GARANTIA - SECAO 3 - FORMULARIO */
 .container-garantia {
-  height: 50vh;
-  padding: 0% 15%;
-  justify-content: center;
-  display: flex;
-  background-color: var(--cor-background-cinza-claro);
+    min-height: 50vh;
+    padding: 0% 15%;
+    display: flex;
+    justify-content: center;
+    background-color: var(--cor-background-cinza-claro1);
 }
 
 .grid-1x2-form {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 4rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(21rem, 1fr));
+    grid-template-rows: auto;
+    gap: clamp(1rem, -3.2rem + 6vw, 4rem);
 }
 
 .garantia-form-container {
-  padding: 2rem 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+    padding: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1rem;
 }
 
-.garantia-form-container form {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+.formulario-garantia {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    object-fit: contain;
+    gap: 0.5rem;
 }
 
 .garantia-form-container h3 {
-  font-size: 2.5rem;
-  font-weight: 600;
+    font-size: clamp(1.5rem, 0.1rem + 2vw, 2.5rem);
+    font-weight: 600;
+    text-align: center;
 }
 
 .garantia-form-botao {
-  height: 1.5rem;
-  padding: 0.5rem;
-  color: var(--cor-terciaria);
-  text-decoration: none;
-  border: solid 1px;
-  border-radius: 0.3rem;
+    height: 1.5rem;
+    padding: 0.5rem;
+    color: var(--cor-terciaria);
+    text-decoration: none;
+    border: solid 1px;
+    border-radius: 0.3rem;
+    object-fit: contain;
 }
 
 .garantia-form-botao1 {
@@ -1805,13 +1993,21 @@ nav .show > .dropdown-menu {
 }
 
 .garantia-form-img {
-  display: flex;
-  align-items: center;
+    padding-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    object-fit: contain;
 }
 
 .garantia-form-img img {
-  width: 100%;
-  height: 20rem;
+    min-height: auto;
+    min-width: 100%;
+    height: auto;
+    width: 100%;
+    max-height: auto;
+    max-width: 70rem;
+    object-fit: contain;
 }
 /* /GARANTIA - SECAO 3 - FORMULARIO */
 
@@ -1821,69 +2017,69 @@ nav .show > .dropdown-menu {
   gap: 1rem;
 }
 
-.comps-secao1-div-botoes2 a {
-  padding: 1rem 1rem;
-  height: 2rem;
-  width: 18rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.3rem;
-  font-weight: 300;
-  text-decoration: none;
-  color: var(--cor-background);
-  background-color: var(--cor-botoes);
-  border-radius: 3rem;
-  gap: 1rem;
+.comps-secao1-div-botoes2 a{
+    padding: clamp(0.5rem, -0.2rem + 1vw, 1rem) clamp(0.5rem, -0.2rem + 1vw, 1rem);
+    height: clamp(1.5rem, 0.8rem + 1vw, 2rem);
+    width: clamp(10rem, -1.2rem + 16vw, 18rem);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: clamp(1rem, 0.58rem + 0.6vw, 1.3rem);
+    font-weight: 300;
+    text-decoration: none;
+    color: var(--cor-background);
+    background-color: var(--cor-botoes);
+    border-radius: clamp(1rem, -1.8rem + 4vw, 3rem);
+    gap: 1rem;
 }
 
 .comps-secao1-div-botoes2 a:hover {
-  height: 1.875rem;
-  width: 17.875rem;
-  background-color: transparent;
-  border: solid 1px var(--cor-botoes);
+    height: clamp(1.375rem, 0.675rem + 1vw, 1.875rem);
+    width: clamp(9.875rem, -1.325rem + 16vw, 17.875rem);
+    background-color: transparent;
+    border: solid 1px var(--cor-botoes);
 }
 /* /REPRESENTANTES - SECAO 1 - APRESENTACAO */
 
 /* REPRESENTANTES - SECAO 2 - ENCONTRE UM REPRESENTANTE */
 .representante-container {
-  padding: 5% 10%;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  align-items: center;
-  position: relative;
+    padding: clamp(1rem, 0.0769rem + 4.1026vw, 5rem) 10%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    position: relative;
+    gap: 1rem;
 }
 
 .representante-text {
-  padding-right: 40%;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
 .representante-text h2 {
-  font-size: 4.5rem;
-  font-weight: 500;
+    font-size: clamp(2rem, 1.4231rem + 2.5641vw, 4.5rem);
+    font-weight: 500;
 }
 
 .representante-text p {
-  font-size: 1.2rem;
-  color: var(--cor-terciaria);
-  line-height: 1.5rem;
+    font-size: clamp(1rem, 0.9538rem + 0.2051vw, 1.2rem);
+    color: var(--cor-terciaria);
+    line-height: 1.5rem;
 }
 
 .representante-text a {
-  width: fit-content;
-  height: fit-content;
-  padding: 1rem 1.5rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.2rem;
-  color: var(--cor-background);
-  text-decoration: none;
-  background-color: #547cf1;
-  border-radius: 2rem;
+    width: fit-content;
+    height: fit-content;
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: clamp(1rem, 0.9538rem + 0.2051vw, 1.2rem);
+    color: var(--cor-background);
+    text-decoration: none;
+    background-color: #547cf1;
+    border-radius: 2rem;
 }
 
 .representante-img {
@@ -1901,11 +2097,11 @@ nav .show > .dropdown-menu {
 }
 
 .icon {
-  width: 24px;
-  height: 24px;
-  border-radius: 100%;
-  background: var(--cor-botoes);
-  cursor: pointer;
+    width: clamp(1.2rem, 0.78rem + 0.6vw, 1.5rem);
+    height: clamp(1.2rem, 0.78rem + 0.6vw, 1.5rem);
+    border-radius: 100%;
+    background: var(--cor-botoes);
+    cursor: pointer;
 }
 
 .icon::after {
@@ -1993,11 +2189,11 @@ nav .show > .dropdown-menu {
 
 /* CONTATO - SECAO 1 - FALE CONOSCO */
 .comps-secao1-container2 {
-  height: 55vh;
-  display: flex;
-  justify-content: center;
-  position: relative;
-  overflow: hidden;
+    min-height: 55vh;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
 }
 
 .comps-secao1-container2::before {
@@ -2031,47 +2227,53 @@ nav .show > .dropdown-menu {
 }
 
 .comps-secao1-container-div h1 {
-  font-size: 3.5rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  color: var(--cor-background);
+    font-size: clamp(2rem, -0.1rem + 3vw, 3.5rem);
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--cor-background);
 }
 /* /CONTATO - SECAO 1 - FALE CONOSCO */
 
 /* CONTATO - SECAO 2 - NOSSOS CANAIS */
 .container-grid-1x2 {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
 }
 
 .contato-forms {
-  max-width: 38rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+    min-width: none;
+    max-width: 38rem;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 1rem;
 }
 
 .contato-forms div {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0.5rem;
+    min-width: none;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+    gap: 0.5rem;
 }
 
 .contato-forms-input1 {
-  padding: 1rem 0.5rem;
-  display: flex;
-  text-decoration: none;
-  border: none;
-  background-color: var(--cor-background-cinza-claro);
+    min-width: none;
+    padding: 1rem 0.5rem;
+    display: flex;
+    text-decoration: none;
+    border: none;
+    background-color: var(--cor-background-cinza-claro1);
 }
 
 .contato-forms-input2 {
-  height: 7rem;
-  padding: 1rem 0.5rem;
-  display: flex;
-  text-decoration: none;
-  border: none;
-  background-color: var(--cor-background-cinza-claro);
+    height: 7rem;
+    padding:  1rem 0.5rem;
+    display: flex;
+    text-decoration: none;
+    border: none;
+    background-color: var(--cor-background-cinza-claro1);
 }
 
 .contato-forms a {
@@ -2113,15 +2315,15 @@ nav .show > .dropdown-menu {
 }
 
 .contato-div-rows i {
-  display: flex;
-  font-size: 2rem;
+    display: flex;
+    font-size: clamp(1.3rem, 1.1385rem + 0.7179vw, 2rem);
 }
 
 .contato-div-rows a {
-  display: flex;
-  font-size: 1.3rem;
-  color: var(--cor-terciaria);
-  text-decoration: none;
+    display: flex;
+    font-size: clamp(1rem, 0.9308rem + 0.3077vw, 1.3rem);
+    color: var(--cor-terciaria);
+    text-decoration: none;
 }
 
 .contato-div-rows a:hover {
