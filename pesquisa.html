@@ -9,7 +9,16 @@
       integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="./styles/style.css">
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <link rel="stylesheet" href="./styles/style.css" />
     <title>Pesquisar</title>
     <style>
       body {
@@ -48,20 +57,40 @@
         border: 1px solid #ddd;
         border-radius: 4px;
       }
+
+      .search {
+        width: 50vw;
+        background-color: #ffffff;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        border-radius: 20px;
+      }
+      .search input {
+        width: 90%;
+        border: none;
+        outline: none;
+        border-radius: 20px;
+      }
+
+      .search i:hover {
+        cursor: pointer;
+      }
+
+    
     </style>
   </head>
   <body>
     <div class="search-container">
       <h1>Pesquisar</h1>
-      <input
-        type="text"
-        id="searchInput"
-        placeholder="Digite uma palavra-chave..."
-      />
-      <button onclick="performSearch()">Pesquisar</button>
-      <a href="">
-        <i class="fa-solid fa-magnifying-glass"></i>
-      </a>
+      <div class="search">
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="Digite uma palavra-chave..."
+        />
+        <i onclick="performSearch()" class="fa-solid fa-magnifying-glass"></i>
+      </div>
     </div>
     <div class="results" id="resultsContainer"></div>
 
@@ -69,22 +98,34 @@
       // Simulação de conteúdo das páginas
       const pages = [
         {
-          title: "Página 1",
+          title: "Sobre Notus",
           content:
-            "Bem-vindo à página 1. Este é um exemplo de texto para pesquisa.",
-          url: "pagina1.html",
+            "Conheça nossa jornada no setor automotivo! Atuando desde 2007 no mercado repositor de arrefecimento automotivo, contemplamos o maior portfólio de produtos do mercado brasileiro, sempre seguindo nosso lema: qualidade, produtividade, confiança e fazer a diferença. A Notus se tornou uma das maiores referências no segmento. Conheça também as empresas do Grupo Notus! Saiba mais sobre nós. Quem somos: Se você veio conhecer um pouco mais sobre nós… Você veio ao lugar certo! Muito prazer, somos a Notus Sistemas Térmicos do Brasil LTDA, mas pode nos chamar de Notus do Brasil! Somos uma empresa, orgulhosamente, Brasileira, Especializados em sistemas de Arrefecimento e Climatização de veículos automotores. Nós fomentamos o mercado brasileiro com produtos importados e fabricados no Brasil. Buscamos sempre entregar um relacionamento personalizado e uma boa experiência aos nossos clientes, os Parceiros Notus! Para isso, mantemos contato e preservamos a amizade e bons modos com nossos Parceiros, desenvolvemos nossos próprios maquinários, moldes de fabricação e sistema ERP, por meio do Grupo Notus! Confira nossa Missão, Visão e Valores, significado da marca, história e diferenciais, além das fotos da nossa Super Equipe! Nossa missão, visão e valores. Missão: Oferecer as melhores soluções em sistemas de arrefecimento e climatização de veículos automotores, nos tornando a maior referência deste mercado e elevando o nome do Brasil pelo mundo. Visão: Ser reconhecida em todo o MERCOSUL como líder do setor de arrefecimento automotivo pela qualidade de nossos produtos, procedimentos e gestão de pessoas, estando entre as melhores empresas para se trabalhar na América do Sul. Valores: Fruto da concepção de vida da nossa empresa e de cada um de nós, estes valores representam nosso jeito de ser e orientam nossa conduta profissional e pessoal, individual e coletivamente: Qualidade, Produtividade, Confiança e Fazer a diferença. Significado da marca: Temos grande orgulho da nossa marca, precisávamos de um nome que tivesse tudo a ver conosco e contesse um significado maior por trás! Por isso, depois de muita pesquisa, finalmente encontramos nossa marca, Notus! “Notus” vem de “Noto”, em latim “Notus”, que significa “deus do vento do sul” ou “grande vento do sul”. Por que “deus do vento do sul”? Escolhemos este nome porque o principal componente de um radiador, nosso principal produto, é o vento, sem ele nada resfria e o radiador não pode fazer a sua função. Além disso, somos uma empresa orgulhosamente brasileira. Por isso, só podia ser “Notus”, o deus do vento do sul, “Notus do Brasil”! Conheça um pouco da nossa história: INÍCIO DA MARCA: Desde 2007 atuando no mercado de reposição na área de Arrefecimento automotivo Nacional, com produtos e conceitos inovadores, a Notus Sistemas Térmicos Do Brasil se orgulha de, em tão pouco tempo, estar ranqueada entre as 5 maiores empresas deste segmento. AVANÇO NO PORTFÓLIO: Com esse modelo de trabalho, em 2011, conseguimos atender as necessidades de nossos clientes, trabalhamos duro para ativar a marca nos pontos de vendas. Participando das feiras mais importantes do mercado de reposição automotiva, tivemos a oportunidade de mostrar nosso compromisso com a qualidade e eficiência dos nossos produtos. NOVAS ACOMODAÇÕES: Com sede localizada na cidade de Salto, interior de São Paulo, possuímos uma área com 25.000 m² e uma estrutura de mais de 16.000 m² de área construída, um sistema de armazenagem Porta Pallets de dupla profundidade, com capacidade de estocagem para mais de 500.000 peças tendo uma ampla variação de modelos do sistema de arrefecimento automotivo totalizando mais de 2.500 itens diversificados. FABRICAÇÃO NACIONAL: A fabricação de itens nacionais se iniciou em Janeiro de 2020. Entre 2020 e 2024 nós já fabricamos mais de 1.000.000 de radiadores. Durante nossa história, até 2024, já abastecemos o mercado brasileiro com mais de 10.000.000 de produtos. Somos a única indústria fabricante do sistema de arrefecimento automotivo que é 100% nacional. Conheça a nossa fábrica!",
+          url: "sobrenotus.html",
         },
         {
-          title: "Página 2",
+          title: "Trabalhe Conosco",
           content:
-            "Esta é a página 2. Contém informações adicionais para teste.",
-          url: "pagina2.html",
+            "ESTÁ INTERESSADO EM TRABALHAR CONOSCO? Ficamos muito contentes com seu interesse em trabalhar conosco e fazer parte desta família! confira o vídeo ao lado, ele irá auxiliá-lo melhor neste processo. Se ainda não conferiu nossa história, missão, visão e valores… então dá uma olhada lá para ficar por dentro de tudo. Vamos construir juntos o futuro do Brasil. Boa sorte, esperamos por você! Conheça também as empresas do Grupo Notus! Confira nossas vagas Auxiliar de Logística Pré-requisitos: Formação na área, Maior de 18 anos, Residir em Salto, Disponibilidade de horário. Seja avisado de novas vagas envie seu currículo.",
+          url: "trabalheconosco.html",
         },
         {
-          title: "Página 3",
+          title: "Garantia",
           content:
-            "Aqui está a página 3. Este texto serve para verificar a busca.",
-          url: "pagina3.html",
+            "Está precisando de ajuda? Fique Tranquilo. Se está precisando de ajuda, fique tranquilo! Nossa equipe especializada está pronta para auxiliá-los da melhor forma possível. Por favor, assista ao vídeo ao lado antes de prosseguir, ele vai ajudá-lo no que precisa! Para agilizar sua garantia siga nossas instruções. Manual de Garantia: Este manual tem por finalidade fornecer informações detalhadas sobre o nosso processo de garantia, esclarecendo os procedimentos a serem adotados e relacionados à nossa linha de produtos, ao atendimento e o devido encaminhamento das peças falhadas. Leia atentamente este documento e mantenha-o em lugar de fácil acesso. Torne-o conhecido de seus funcionários e faça uso deste sempre que lhe ocorrer alguma dúvida sobre a política de garantia da NOTUS Arrefecimento. Certificado de preenchimento: Para começar o processo de garantia é necessário que você preencha nosso certificado de garantia com todas as informações. Para maior celeridade do processo, após o preenchimento do formulário entre em contato e envie-nos o PDF que ficará disponível após o preenchimento e a submissão de dados. Fique tranquilo, todos os dados que você envia através deste site é protegido e não será utilizado para outra finalidade e não ser a do processo de garantia. Todos os dados recolhidos estão conforme a lei LGPD da internet. Fluxograma: Fique por dentro de como a garantia funciona. Nossa garantia trabalha com as melhores práticas para identificar o defeito procedente ou improcedente. Disponibilizamos um fluxograma detalhado de como lidamos com a garantia. Se preferir pode nos contactar, logo te responderemos!",
+          url: "garantia.html",
+        },
+        {
+          title: "Representantes",
+          content:
+            "   Encontre um representante Notus! A Notus Sistemas Térmicos do Brasil está presente em todo o território nacional, basta clicar no mapa e verificar o representante mais próximo de você. Fale Conosco!",
+          url: "representantes.html",
+        },
+        {
+          title: "Contato",
+          content:
+            "Fale Conosco! Nossos canais! contato@notus.ind.br (11) 4210-1997 (11) 4210-1998 (11) 2413-6550",
+          url: "contato.html",
         },
       ];
 
@@ -99,7 +140,7 @@
 
         if (!query) {
           resultsContainer.innerHTML =
-            "<p>Por favor, insira uma palavra-chave para pesquisar.</p>";
+            "<p style='color:white;font-size:20px;'>Por favor, insira uma palavra-chave para pesquisar.</p>";
           return;
         }
 
@@ -109,18 +150,20 @@
         );
 
         if (results.length === 0) {
-          resultsContainer.innerHTML = "<p>Nenhum resultado encontrado.</p>";
+          resultsContainer.innerHTML =
+            "<p style='color:white;font-size:20px;'>Nenhum resultado encontrado.</p>";
           return;
         }
 
         // Exibe resultados
         results.forEach((result) => {
           const resultElement = document.createElement("div");
+          let content = result.content.substring(0, 300) + "...";
           resultElement.className = "result";
           resultElement.innerHTML = `
                     <h3>${result.title}</h3>
-                    <p>${highlightQuery(result.content, query)}</p>
-                    <a href="${result.url}" target="_blank">Visitar página</a>
+                    <p>${highlightQuery(content, query)}</p>
+                    <a href="${result.url}" target="_blank">Leia mais>></a>
                 `;
           resultsContainer.appendChild(resultElement);
         });
@@ -146,5 +189,7 @@
       integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
       crossorigin="anonymous"
     ></script>
+
+
   </body>
 </html>

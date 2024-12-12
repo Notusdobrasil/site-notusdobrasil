@@ -213,11 +213,23 @@ xIcone.addEventListener("click", () => {
 
 // Pesquisa
 
-const fa_magnifying_glass = document.querySelector(".fa-magnifying-glass");
 const framePesquisa = document.querySelector(".framePesquisa");
+const closeButton = document.querySelector(".closeButton");
 
-fa_magnifying_glass.addEventListener("click", (e) => {
-  e.preventDefault()
+function openSearch() {
+  framePesquisa.style.animation = "pesquisaIn .6s ease";
   framePesquisa.style.display = "block";
   framePesquisa.style.opacity = "1";
-});
+  closeButton.style.display = "block";
+  closeButton.style.opacity = "1";
+}
+
+function closeSearch() {
+  framePesquisa.style.animation = "pesquisaOut .6s ease";
+  setTimeout(() => {
+    framePesquisa.style.display = "none";
+    framePesquisa.style.opacity = "0";
+    closeButton.style.display = "none";
+    closeButton.style.opacity = "0";
+  }, 500);
+}

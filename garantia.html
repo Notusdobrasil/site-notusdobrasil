@@ -1,174 +1,341 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/reset.css">
-    <link rel="stylesheet" href="./styles/style.css">
-    <link rel="stylesheet" href="./styles/responsividade.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="icon" href="./images/icone-logosite-quadrado-mask1.svg">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="styles/reset.css" />
+    <link rel="stylesheet" href="./styles/style.css" />
+    <link rel="stylesheet" href="./styles/responsividade.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="icon" href="./images/icone-logosite-quadrado-mask1.svg" />
     <title>Notus do Brasil</title>
-</head>
-<body>
+  </head>
+  <body>
     <!-- HEADER -->
     <header class="header-container">
-        <!-- NAVEGACAO 1 -->
-        <nav class="nav-contacts">
-            <div class="header-contatos">
-                <a href="tel:+551142101997"><i class="fa-solid fa-phone"></i></a>
-                <a class="header-contacts-text" href="tel:+551142101997">
-                (11) 4210-1997
-                </a>
-                <a href="mailto:contato@notus.ind.br"><i class="fa-solid fa-envelope"></i></a>
-                <a class="header-contacts-text" href="mailto:contato@notus.ind.br">
-                contato@notus.ind.br
-                </a>
-            </div>
-            <div class="header-redessociais">
-                <a href="">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </a>
-                <a href="https://www.instagram.com/notusdobrasil" target="_blank">
-                    <i class="fa-brands fa-instagram"></i>
-                </a>
-                <a href="https://www.facebook.com/profile.php?id=61559166240715" target="_blank">
-                    <i class="fa-brands fa-facebook"></i>
-                </a>
-                <a href="https://www.youtube.com/@NotusdoBrasil" target="_blank">
-                    <i class="fa-brands fa-youtube"></i>
-                </a>
-                <a href="https://www.linkedin.com/company/notus-do-brasil" target="_blank">
-                    <i class="fa-brands fa-linkedin"></i>
-                </a>
-            </div>
-        </nav>
-        <!-- NAVEGACAO 2 -->
-        <nav class="nav-navegacao">
-            <div>
-                <a href="index.html"><img class="header-logo" src="./images/logo-notus-azul.svg" alt="Logo Notus do Brasil"></a>
-            </div>
-            <div class="nav-navegacao-container-text">
-                <a class="nav-navegacao-text" href="sobrenotus.html">Sobre Notus</a>
-                <a class="nav-navegacao-text" href="trabalheconosco.html">Trabalhe Conosco</a>
-                <a class="nav-navegacao-text" href="garantia.html">Garantia</a>
-                <a class="nav-navegacao-text" href="representantes.html">Representantes</a>
-                <a class="nav-navegacao-text" href="#">Blog</a>
-                <a class="nav-navegacao-text" href="contato.html">Contato</a>
-            </div>
-            <div>
-                <a class="nav-navegacao-catalogo" href="#">Catálogo</a>
-            </div>
-        </nav>
+      <!-- NAVEGACAO 1 -->
+      <nav class="nav-contacts">
+        <div class="header-contatos">
+          <a href="tel:+551142101997"><i class="fa-solid fa-phone"></i></a>
+          <a class="header-contacts-text" href="tel:+551142101997">
+            (11) 4210-1997
+          </a>
+          <a href="mailto:contato@notus.ind.br"
+            ><i class="fa-solid fa-envelope"></i
+          ></a>
+          <a class="header-contacts-text" href="mailto:contato@notus.ind.br">
+            contato@notus.ind.br
+          </a>
+        </div>
+        <div class="header-redessociais">
+          <i onclick="openSearch()" class="fa-solid fa-magnifying-glass"></i>
+
+          <a href="https://www.instagram.com/notusdobrasil" target="_blank">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+          <a
+            href="https://www.facebook.com/profile.php?id=61559166240715"
+            target="_blank"
+          >
+            <i class="fa-brands fa-facebook"></i>
+          </a>
+          <a href="https://www.youtube.com/@NotusdoBrasil" target="_blank">
+            <i class="fa-brands fa-youtube"></i>
+          </a>
+          <a
+            href="https://www.linkedin.com/company/notus-do-brasil"
+            target="_blank"
+          >
+            <i class="fa-brands fa-linkedin"></i>
+          </a>
+        </div>
+      </nav>
+      <!-- NAVEGACAO 2 -->
+      <nav class="nav-navegacao">
+        <div>
+          <a href="index.html"
+            ><img
+              class="header-logo"
+              src="./images/logo-notus-azul.svg"
+              alt="Logo Notus do Brasil"
+          /></a>
+        </div>
+        <div class="nav-navegacao-container-text">
+          <a class="nav-navegacao-text" href="sobrenotus.html">Sobre Notus</a>
+          <a class="nav-navegacao-text" href="trabalheconosco.html"
+            >Trabalhe Conosco</a
+          >
+          <a class="nav-navegacao-text" href="garantia.html">Garantia</a>
+          <a class="nav-navegacao-text" href="representantes.html"
+            >Representantes</a
+          >
+          <a class="nav-navegacao-text" href="#">Blog</a>
+          <a class="nav-navegacao-text" href="contato.html">Contato</a>
+        </div>
+        <div class="nav-navegacao-catalogo-burguer">
+          <a class="nav-navegacao-catalogo" href="#">Catálogo</a>
+
+          <div
+            class="menu-icon"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+            id="hamburger-menu"
+            onclick="toggleMenu(this)"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <nav
+            class="dropdown-menu dropdown-menu-right drop-down-burger"
+            id="nav"
+          >
+            <ul>
+              <li class="dropdown-item">
+                <a href="sobrenotus.html">Sobre Notus</a>
+              </li>
+              <li class="dropdown-item">
+                <a href="trabalheconosco.html">Trabalhe Conosco</a>
+              </li>
+              <li class="dropdown-item">
+                <a href="garantia.html">Garantia</a>
+              </li>
+              <li class="dropdown-item">
+                <a href="representantes.html">Representantes</a>
+              </li>
+              <li class="dropdown-item">
+                <a href="#" target="_blank">Blog</a>
+              </li>
+              <li class="dropdown-item"><a href="contato.html">Contato</a></li>
+            </ul>
+          </nav>
+        </div>
+      </nav>
     </header>
     <!-- MAIN -->
     <main>
-        <!-- SECAO 1 - APRESENTACAO -->
-        <section class="comps-secao1-container">
-            <div class="comps-secao1-overlay"></div>
-            <div class="comps-secao1-conteudogeral">
-                <div class="comps-secao1-conteudo-div1-1">
-                    <h1>Está precisando de ajuda? Fique Tranquilo</h1>
-                    <p>Se está precisando de ajuda, fique tranquilo! Nossa equipe especializada está pronta para auxiliá-los da melhor forma possível. Por favor, assista ao vídeo ao lado antes de prosseguir, ele vai ajudá-lo no que precisa!</p>
-                </div>
-                <div class="comps-secao1-video-container">
-                    <iframe class="comps-secao1-video-shadow" width="480" height="270" src="https://www.youtube.com/embed/3IxyQmzS-fE?si=sJ6oufrOcABNfucp" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                </div>
-            </div>
-        </section>
-        <!-- SECAO 2 - TITULO INSTRUCOES GARANTIA -->
-        <section class="secao2-container">
-            <h2 class="secao2-titulo">
-                Para <strong>agilizar sua garantia</strong><br>siga nossas instruções
-            </h2>
-        </section>
-        <!-- SECAO 2 - INSTRUCOES GARANTIA -->
-         <section class="container margin3">
-            <div class="grid-1x3">
-                <div class="card-transparent">
-                    <h3>Manual de Garantia</h3>
-                    <p>Este manual tem por finalidade fornecer informações detalhadas sobre o nosso processo de garantia, esclarecendo os procedimentos a serem adotados e relacionados à nossa linha de produtos, ao atendimento e o devido encaminhamento das peças falhadas.<br><br>Leia atentamente este documento e mantenha-o em lugar de fácil acesso. Torne-o conhecido de seus funcionários e faça uso deste sempre que lhe ocorrer alguma dúvida sobre a política de garantia da NOTUS Arrefecimento.</p>
-                    <a href="#">Download</a>
-                </div>
-                <div class="card-transparent">
-                    <h3>Certificado de preenchimento</h3>
-                    <p>Para começar o processo de garantia é necessário que você preencha nosso certificado de garantia com todas as informações.<br><br>Para maior celeridade do processo, após o preenchimento do formulário entre em contato e envie-nos o PDF que ficará disponível após o preenchimento e a submissão de dados.<br><br>Fique tranquilo, todos os dados que você envia através deste site é protegido e não será utilizado para outra finalidade e não ser a do processo de garantia. Todos os dados recolhidos estão conforme a lei LGPD da internet.</p>
-                    <a href="#">Download</a>
-                </div>
-                <div class="card-transparent">
-                    <h3>Fluxograma</h3>
-                    <p>Fique por dentro de como a garantia funciona. 
-                        Nossa garantia trabalha com as melhores práticas para identificar o defeito procedente ou improcedente.<br><br>Disponibilizamos um fluxograma detalhado de como lidamos com a garantia.</p>
-                    <a href="#">Download</a>
-                </div>
-            </div>
-         </section>
-         <section class="container-garantia">
-            <div class="grid-1x2-form">
-                <div class="garantia-form-container">
-                    <h3>Se preferir pode nos contactar, logo te <strong>responderemos!</strong></h3>
-                    <form class="formulario-garantia" action="get">
-                        <input class="garantia-form-botao" type="text" placeholder="Nome">
-                        <input class="garantia-form-botao" type="email" placeholder="E-mail">
-                        <input class="garantia-form-botao1" type="text" placeholder="Mensagem">
-                        <a class="garantia-form-botao-a" href="#">Enviar</a>
-                    </form>
-                </div>
-                <div class="garantia-form-img">
-                    <img src="./images/imagem-composicaodeprodutos2.webp" alt="">
-                </div>
-            </div>
-         </section>
+      <iframe class="framePesquisa" src="pesquisa.html"></iframe>
+      <h1 onclick="closeSearch()" class="closeButton">X</h1>
+      <!-- SECAO 1 - APRESENTACAO -->
+      <section class="comps-secao1-container">
+        <div class="comps-secao1-overlay"></div>
+        <div class="comps-secao1-conteudogeral">
+          <div class="comps-secao1-conteudo-div1-1">
+            <h1>Está precisando de ajuda? Fique Tranquilo</h1>
+            <p>
+              Se está precisando de ajuda, fique tranquilo! Nossa equipe
+              especializada está pronta para auxiliá-los da melhor forma
+              possível. Por favor, assista ao vídeo ao lado antes de prosseguir,
+              ele vai ajudá-lo no que precisa!
+            </p>
+          </div>
+          <div class="comps-secao1-video-container">
+            <iframe
+              class="comps-secao1-video-shadow"
+              width="480"
+              height="270"
+              src="https://www.youtube.com/embed/3IxyQmzS-fE?si=sJ6oufrOcABNfucp"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </div>
+      </section>
+      <!-- SECAO 2 - TITULO INSTRUCOES GARANTIA -->
+      <section class="secao2-container">
+        <h2 class="secao2-titulo">
+          Para <strong>agilizar sua garantia</strong><br />siga nossas
+          instruções
+        </h2>
+      </section>
+      <!-- SECAO 2 - INSTRUCOES GARANTIA -->
+      <section class="container margin3">
+        <div class="grid-1x3">
+          <div class="card-transparent">
+            <h3>Manual de Garantia</h3>
+            <p>
+              Este manual tem por finalidade fornecer informações detalhadas
+              sobre o nosso processo de garantia, esclarecendo os procedimentos
+              a serem adotados e relacionados à nossa linha de produtos, ao
+              atendimento e o devido encaminhamento das peças falhadas.<br /><br />Leia
+              atentamente este documento e mantenha-o em lugar de fácil acesso.
+              Torne-o conhecido de seus funcionários e faça uso deste sempre que
+              lhe ocorrer alguma dúvida sobre a política de garantia da NOTUS
+              Arrefecimento.
+            </p>
+            <a href="#">Download</a>
+          </div>
+          <div class="card-transparent">
+            <h3>Certificado de preenchimento</h3>
+            <p>
+              Para começar o processo de garantia é necessário que você preencha
+              nosso certificado de garantia com todas as informações.<br /><br />Para
+              maior celeridade do processo, após o preenchimento do formulário
+              entre em contato e envie-nos o PDF que ficará disponível após o
+              preenchimento e a submissão de dados.<br /><br />Fique tranquilo,
+              todos os dados que você envia através deste site é protegido e não
+              será utilizado para outra finalidade e não ser a do processo de
+              garantia. Todos os dados recolhidos estão conforme a lei LGPD da
+              internet.
+            </p>
+            <a href="#">Download</a>
+          </div>
+          <div class="card-transparent">
+            <h3>Fluxograma</h3>
+            <p>
+              Fique por dentro de como a garantia funciona. Nossa garantia
+              trabalha com as melhores práticas para identificar o defeito
+              procedente ou improcedente.<br /><br />Disponibilizamos um
+              fluxograma detalhado de como lidamos com a garantia.
+            </p>
+            <a href="#">Download</a>
+          </div>
+        </div>
+      </section>
+      <section class="container-garantia">
+        <div class="grid-1x2-form">
+          <div class="garantia-form-container">
+            <h3>
+              Se preferir pode nos contactar, logo te
+              <strong>responderemos!</strong>
+            </h3>
+            <form class="formulario-garantia" action="get">
+              <input
+                class="garantia-form-botao"
+                type="text"
+                placeholder="Nome"
+              />
+              <input
+                class="garantia-form-botao"
+                type="email"
+                placeholder="E-mail"
+              />
+              <input
+                class="garantia-form-botao1"
+                type="text"
+                placeholder="Mensagem"
+              />
+              <a class="garantia-form-botao-a" href="#">Enviar</a>
+            </form>
+          </div>
+          <div class="garantia-form-img">
+            <img src="./images/imagem-composicaodeprodutos2.webp" alt="" />
+          </div>
+        </div>
+      </section>
     </main>
     <!-- FOOTER -->
     <footer class="container-footer">
-        <div class="footer-containersub">
-            <div class="footer-containersub-div">
-                <h3><strong>Menu</strong></h3>
-                <ul class="footer-lista">
-                    <li><a href="sobrenotus.html">Sobre Notus</a></li>
-                    <li><a href="trabalheconosco.html">Trabalhe Conosco</a></li>
-                    <li><a href="garantia.html">Garantia</a></li>
-                    <li><a href="representantes.html">Representantes</a></li>
-                    <li><a href="#" target="_blank">Blog</a></li>
-                    <li><a href="contato.html">Contato</a></li>
-                    <li><a href="https://catalogonotus.vipsoft.com.br/" target="_blank">Catálogo</a></li>
-                </ul>
-            </div>
-            <div class="footer-containersub-div">
-                <h3><strong>Lista de Produtos</strong></h3>
-                <ul class="footer-lista">
-                    <li><a href="#">Radiador</a></li>
-                    <li><a href="#">Eletroventilador</a></li>
-                    <li><a href="#">GMV</a></li>
-                    <li><a href="#">Condensador</a></li>
-                    <li><a href="#">Evaporador</a></li>
-                    <li><a href="#">Radiador de óleo</a></li>
-                    <li><a href="#">Radiador de aquecimento</a></li>
-                    <li><a href="#">Ventilador interno</a></li>
-                    <!-- <li><a href="#"></a>Compressor A/C</li> -->
-                </ul>
-            </div>
-            <div class="footer-containersub-div">
-                <h3><strong>Fale Conosco</strong></h3>
-                <ul class="footer-lista">
-                    <li class="footer-lista-faleconosco-separador"><i class="fa-solid fa-phone"></i><a href="tel:+551142101997">(11) 4210-1997</a></li>
-                    <li class="footer-lista-faleconosco-separador"><i class="fa-solid fa-phone"></i><a href="tel:+551142101997">(11) 4210-1998</a></li>
-                    <li class="footer-lista-faleconosco-separador"><i class="fa-solid fa-phone"></i><a href="tel:+551142101997">(11) 2413-6550</a></li>
-                    <li class="footer-lista-faleconosco-separador"><i class="fa-solid fa-envelope"></i></i><a href="mailto:contato@notus.ind.br">contato@notus.ind.br</a></li>
-                </ul>
-                <div class="footer-redessociais">
-                    <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
-                    <a href="https://www.instagram.com/notusdobrasil" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="https://www.facebook.com/profile.php?id=61559166240715" target="_blank"><i class="fa-brands fa-facebook"></i></a>
-                    <a href="https://www.youtube.com/@NotusdoBrasil" target="_blank"><i class="fa-brands fa-youtube"></i></a>
-                    <a href="https://www.linkedin.com/company/notus-do-brasil" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
-                </div>
-            </div>
+      <div class="footer-containersub">
+        <div class="footer-containersub-div">
+          <h3><strong>Menu</strong></h3>
+          <ul class="footer-lista">
+            <li><a href="sobrenotus.html">Sobre Notus</a></li>
+            <li><a href="trabalheconosco.html">Trabalhe Conosco</a></li>
+            <li><a href="garantia.html">Garantia</a></li>
+            <li><a href="representantes.html">Representantes</a></li>
+            <li><a href="#" target="_blank">Blog</a></li>
+            <li><a href="contato.html">Contato</a></li>
+            <li>
+              <a href="https://catalogonotus.vipsoft.com.br/" target="_blank"
+                >Catálogo</a
+              >
+            </li>
+          </ul>
         </div>
-        <div class="footer-faixa">
-            <p>Desenvolvido por Notus Sistemas Térmicos do Brasil © Todos os direitos reservados</p>
+        <div class="footer-containersub-div">
+          <h3><strong>Lista de Produtos</strong></h3>
+          <ul class="footer-lista">
+            <li><a href="#">Radiador</a></li>
+            <li><a href="#">Eletroventilador</a></li>
+            <li><a href="#">GMV</a></li>
+            <li><a href="#">Condensador</a></li>
+            <li><a href="#">Evaporador</a></li>
+            <li><a href="#">Radiador de óleo</a></li>
+            <li><a href="#">Radiador de aquecimento</a></li>
+            <li><a href="#">Ventilador interno</a></li>
+            <!-- <li><a href="#"></a>Compressor A/C</li> -->
+          </ul>
         </div>
+        <div class="footer-containersub-div">
+          <h3><strong>Fale Conosco</strong></h3>
+          <ul class="footer-lista">
+            <li class="footer-lista-faleconosco-separador">
+              <i class="fa-solid fa-phone"></i
+              ><a href="tel:+551142101997">(11) 4210-1997</a>
+            </li>
+            <li class="footer-lista-faleconosco-separador">
+              <i class="fa-solid fa-phone"></i
+              ><a href="tel:+551142101997">(11) 4210-1998</a>
+            </li>
+            <li class="footer-lista-faleconosco-separador">
+              <i class="fa-solid fa-phone"></i
+              ><a href="tel:+551142101997">(11) 2413-6550</a>
+            </li>
+            <li class="footer-lista-faleconosco-separador">
+              <i class="fa-solid fa-envelope"></i
+              ><a href="mailto:contato@notus.ind.br">contato@notus.ind.br</a>
+            </li>
+          </ul>
+          <div class="footer-redessociais">
+            <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+            <a href="https://www.instagram.com/notusdobrasil" target="_blank"
+              ><i class="fa-brands fa-instagram"></i
+            ></a>
+            <a
+              href="https://www.facebook.com/profile.php?id=61559166240715"
+              target="_blank"
+              ><i class="fa-brands fa-facebook"></i
+            ></a>
+            <a href="https://www.youtube.com/@NotusdoBrasil" target="_blank"
+              ><i class="fa-brands fa-youtube"></i
+            ></a>
+            <a
+              href="https://www.linkedin.com/company/notus-do-brasil"
+              target="_blank"
+              ><i class="fa-brands fa-linkedin"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-faixa">
+        <p>
+          Desenvolvido por Notus Sistemas Térmicos do Brasil © Todos os direitos
+          reservados
+        </p>
+      </div>
     </footer>
-</body>
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    <script src="js/garantia.js"></script>
+  </body>
 </html>
