@@ -61,6 +61,26 @@
           >
             <i class="fa-brands fa-linkedin"></i>
           </a>
+          <div class="language-selector">
+            <img
+              onclick="changeLanguage('pt')"
+              src="./images/brasilflag.png"
+              alt="Brazil"
+              class="flag"
+            />
+            <img
+              onclick="changeLanguage('es')"
+              src="./images/spainflag.png"
+              alt="Spain"
+              class="flag"
+            />
+            <img
+              onclick="changeLanguage('en')"
+              src="./images/usaflag.png"
+              alt="USA"
+              class="flag"
+            />
+          </div>
         </div>
       </nav>
       <!-- NAVEGACAO 2 -->
@@ -74,19 +94,36 @@
           /></a>
         </div>
         <div class="nav-navegacao-container-text">
-          <a class="nav-navegacao-text" href="sobrenotus.html">Sobre Notus</a>
-          <a class="nav-navegacao-text" href="trabalheconosco.html"
+          <a
+            id="SobreNotusNav"
+            class="nav-navegacao-text"
+            href="sobrenotus.html"
+            >Sobre Notus</a
+          >
+          <a
+            id="TrabalheConoscoNav"
+            class="nav-navegacao-text"
+            href="trabalheconosco.html"
             >Trabalhe Conosco</a
           >
-          <a class="nav-navegacao-text" href="garantia.html">Garantia</a>
-          <a class="nav-navegacao-text" href="representantes.html"
+          <a id="GarantiaNav" class="nav-navegacao-text" href="garantia.html"
+            >Garantia</a
+          >
+          <a
+            id="RepresentantesNav"
+            class="nav-navegacao-text"
+            href="representantes.html"
             >Representantes</a
           >
           <a class="nav-navegacao-text" href="#">Blog</a>
-          <a class="nav-navegacao-text" href="contato.html">Contato</a>
+          <a id="ContatoNav" class="nav-navegacao-text" href="contato.html"
+            >Contato</a
+          >
         </div>
         <div class="nav-navegacao-catalogo-burguer">
-          <a class="nav-navegacao-catalogo" href="#">Catálogo</a>
+          <a id="CatálogoNav" class="nav-navegacao-catalogo" href="#"
+            >Catálogo</a
+          >
 
           <div
             class="menu-icon"
@@ -106,21 +143,27 @@
           >
             <ul>
               <li class="dropdown-item">
-                <a href="sobrenotus.html">Sobre Notus</a>
+                <a id="SobreNotusBurger" href="sobrenotus.html">Sobre Notus</a>
               </li>
               <li class="dropdown-item">
-                <a href="trabalheconosco.html">Trabalhe Conosco</a>
+                <a id="TrabalheConoscoBurger" href="trabalheconosco.html"
+                  >Trabalhe Conosco</a
+                >
               </li>
               <li class="dropdown-item">
-                <a href="garantia.html">Garantia</a>
+                <a id="GarantiaBurger" href="garantia.html">Garantia</a>
               </li>
               <li class="dropdown-item">
-                <a href="representantes.html">Representantes</a>
+                <a id="RepresentantesBurger" href="representantes.html"
+                  >Representantes</a
+                >
               </li>
               <li class="dropdown-item">
                 <a href="#" target="_blank">Blog</a>
               </li>
-              <li class="dropdown-item"><a href="contato.html">Contato</a></li>
+              <li class="dropdown-item">
+                <a id="ContatoBurger" href="contato.html">Contato</a>
+              </li>
             </ul>
           </nav>
         </div>
@@ -128,20 +171,137 @@
     </header>
     <!-- MAIN -->
     <main>
+      <div class="whatsapp-container">
+        <div>
+          <a class="whatsapp-botao"
+            ><img
+              class="whatsapp-icone"
+              src="./images/icone-whatsapp.svg"
+              alt="Entrar em contato por Whatsapp"
+          /></a>
+          <div class="x-icone" style="display: none">X</div>
+          <p id="Precisadeajuda" class="whatsapp-text-cta">
+            Precisa de ajuda? Fale conosco pelo
+            <strong class="secao2-titulo-cinza" style="font-weight: 700"
+              >Whatsapp!</strong
+            >
+          </p>
+        </div>
+        <div class="card-whatsapp-container">
+          <div class="card-whatsapp-sup">
+            <img
+              src="./images/icone-whatsapp.svg"
+              alt="Entrar em contato por Whatsapp"
+            />
+            <div class="card-whatsapp-sup-text-container">
+              <h2 id="FaleConoscoWACARD">Fale Conosco!</h2>
+              <p id="atendidoimediatamente">
+                Olá! Clique em um de nossos membros da equipe para ser atendido
+                imediatamente pelo Whatsapp!
+              </p>
+            </div>
+          </div>
+          <div class="card-whatsapp-bottom">
+            <!-- Os minutos podem ser calculados automaticamente sobre o quanto eles demoram para iniciar os atendimentos? -->
+            <p id="respondeemalgunsminutos">
+              A equipe normalmente responde em alguns minutos.
+            </p>
+            <a
+              class="card-whatsapp-bottom-botao"
+              href="https://wa.me/5511945478542"
+              target="_blank"
+            >
+              <hr />
+              <img
+                src="./images/icone-whatsapp.svg"
+                alt="Entrar em contato por Whatsapp"
+              />
+              <div class="card-whatsapp-bottom-botao-text">
+                <h3>Alex</h3>
+                <p >Comercial</p>
+              </div>
+            </a>
+            <a
+              class="card-whatsapp-bottom-botao"
+              href="https://wa.me/5511975174745"
+              target="_blank"
+            >
+              <hr />
+              <img
+                src="./images/icone-whatsapp.svg"
+                alt="Entrar em contato por Whatsapp"
+              />
+              <div class="card-whatsapp-bottom-botao-text">
+                <h3>Carlos</h3>
+                <p >Comercial</p>
+              </div>
+            </a>
+            <a
+              class="card-whatsapp-bottom-botao"
+              href="https://wa.me/551142101998"
+              target="_blank"
+            >
+              <hr />
+              <img
+                src="./images/icone-whatsapp.svg"
+                alt="Entrar em contato por Whatsapp"
+              />
+              <div class="card-whatsapp-bottom-botao-text">
+                <h3>Luciano</h3>
+                <p >Comercial</p>
+              </div>
+            </a>
+            <a
+              class="card-whatsapp-bottom-botao"
+              href="https://wa.me/551142101997"
+              target="_blank"
+            >
+              <hr />
+              <img
+                src="./images/icone-whatsapp.svg"
+                alt="Entrar em contato por Whatsapp"
+              />
+              <div class="card-whatsapp-bottom-botao-text">
+                <h3>Viviane</h3>
+                <p >Comercial</p>
+              </div>
+            </a>
+            <a
+              class="card-whatsapp-bottom-botao"
+              href="https://wa.me/551124136550"
+              target="_blank"
+            >
+              <hr />
+              <img
+                src="./images/icone-whatsapp.svg"
+                alt="Entrar em contato por Whatsapp"
+              />
+              <div class="card-whatsapp-bottom-botao-text">
+                <h3>Welton</h3>
+                <p >Comercial</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
       <!-- SECAO 1 - APRESENTACAO -->
       <section class="comps-secao1-container">
         <div class="comps-secao1-overlay"></div>
         <div class="comps-secao1-conteudogeral">
           <div class="comps-secao1-conteudo-div1">
-            <h1>Conheça nossa jornada no setor automotivo!</h1>
-            <p>
+            <h1 id="Conhecanossajornada">
+              Conheça nossa jornada no setor automotivo!
+            </h1>
+            <p id="Atuandodesde2007">
               Atuando desde 2007 no mercado repositor de arrefecimento
               automotivo, contemplamos o maior portfólio de produtos do mercado
               brasileiro, sempre seguindo nosso lema: qualidade, produtividade,
               confiança e fazer a diferença. A Notus se tornou uma das maiores
               referências no seguimento.
             </p>
-            <h3>Conheça também as empresas do Grupo Notus!</h3>
+            <h3 id="Conhecatambemas">
+              Conheça também as empresas do Grupo Notus!
+            </h3>
             <div class="comps-secao1-div-botoes">
               <a href="https://www.vipsoft.com.br/" target="_blank"
                 ><img src="./images/logo-vipsoft-branco1.svg" alt=""
@@ -169,7 +329,9 @@
       </section>
       <!-- SECAO 2 - TITULO QUEM SOMOS -->
       <section class="secao2-container">
-        <h2 class="secao2-titulo"><strong>Saiba mais</strong> sobre nós</h2>
+        <h2 id="Saibamais" class="secao2-titulo">
+          <strong>Saiba mais</strong> sobre nós
+        </h2>
       </section>
       <!-- SECAO 2 - QUEM SOMOS -->
       <section class="comp-secao2-container">
@@ -178,8 +340,10 @@
             <img src="./images/imagem-notusfrente.webp" alt="" />
           </div>
           <div class="comp-secao2-grid-text">
-            <h3>Quem <strong class="comps-titulo-azul">somos</strong></h3>
-            <p>
+            <h3 id="Quemsomos">
+              Quem <strong class="comps-titulo-azul">somos</strong>
+            </h3>
+            <p id="Sevoceveioconhecer">
               Se você veio conhecer um pouco mais sobre nós… Você veio ao lugar
               certo! Muito prazer, somos a
               <strong class="comps-titulo-azul"
@@ -221,7 +385,7 @@
       </section>
       <!-- SECAO 3 - TITULO MISSÃO, VISÃO E VALORES -->
       <section class="secao2-container">
-        <h2 class="secao2-titulo">
+        <h2 id="Nossamissao" class="secao2-titulo">
           Nossa <strong>missão, visão e valores</strong>
         </h2>
       </section>
@@ -233,11 +397,11 @@
               <i class="fa-solid fa-rocket"></i>
             </div>
             <div class="card-titulo">
-              <h3>Missão</h3>
+              <h3 id="MissaoTitulo">Missão</h3>
             </div>
             <hr />
             <div class="card-titulo">
-              <p>
+              <p id="Oferecerasmelhores">
                 Oferecer as melhores soluções em sistemas de arrefecimento e
                 climatização de veículos automotores, nos tornando a maior
                 referência deste mercado e elevando o nome do Brasil pelo mundo.
@@ -249,11 +413,11 @@
               <i class="fa-solid fa-binoculars"></i>
             </div>
             <div class="card-titulo">
-              <h3>Visão</h3>
+              <h3 id="VisaoTitulo">Visão</h3>
             </div>
             <hr />
             <div class="card-titulo">
-              <p>
+              <p id="Serreconhecida">
                 Ser reconhecida em todo o MERCOSUL como líder do setor de
                 arrefecimento automotivo pela qualidade de nossos produtos,
                 procedimentos e gestão de pessoas, estando entre as melhores
@@ -266,11 +430,11 @@
               <i class="fa-solid fa-gem"></i>
             </div>
             <div class="card-titulo">
-              <h3>Valores</h3>
+              <h3 id="ValoresTitulo">Valores</h3>
             </div>
             <hr />
             <div class="card-titulo">
-              <p>
+              <p id="Frutodaconcepcao">
                 Fruto da concepção de vida da nossa empresa e de cada um de nós,
                 estes valores representam nosso jeito de ser e orientam nossa
                 conduta profissional e pessoal, individual e coletivamente:
@@ -282,13 +446,15 @@
       </section>
       <!-- SECAO 4 - TITULO SIGNIFICADO DA MARCA -->
       <section class="secao2-container">
-        <h2 class="secao2-titulo"><strong>Significado</strong> da marca</h2>
+        <h2 id="Significadodamarca" class="secao2-titulo">
+          <strong>Significado</strong> da marca
+        </h2>
       </section>
       <!-- SECAO 4 - SIGNIFICADO DA MARCA -->
       <section class="container">
         <div class="comp-secao4-grid">
           <div class="comp-secao2-grid-text">
-            <p>
+            <p id="Temosgrandeorgulho">
               <strong>Temos grande orgulho da nossa marca,</strong> precisávamos
               de um nome que tivesse tudo a ver conosco e contesse um
               <strong>significado maior</strong> por trás!<br /><br />Por isso,
@@ -331,7 +497,7 @@
       </section>
       <!-- SECAO 5 - TITULO CONHEÇA UM POUCO DA NOSSA HISTÓRIA -->
       <section class="secao2-container">
-        <h2 class="secao2-titulo">
+        <h2 id="Conhecaumpouco" class="secao2-titulo">
           <strong>Conheça</strong> um pouco da nossa <strong>História</strong>
         </h2>
       </section>
@@ -339,8 +505,8 @@
       <section class="container-sobrenotus">
         <div class="div-linha-reverse">
           <div class="historia-div-text">
-            <h3>INICIO DA MARCA</h3>
-            <p>
+            <h3 id="INICIODAMARCA">INICIO DA MARCA</h3>
+            <p id="Desde2007atuando">
               Desde 2007 atuando no mercado de reposição na área de
               <strong class="texto-cinza-bold">Arrefecimento automotivo</strong>
               Nacional, com produtos e conceitos inovadores, a
@@ -358,8 +524,8 @@
             <img src="./images/imagem-notuscima.webp" alt="" />
           </div>
           <div class="historia-div-text">
-            <h3>AVANÇO NO PORTFÓLIO</h3>
-            <p>
+            <h3 id="AVANÇONOPORTFOLIO">AVANÇO NO PORTFÓLIO</h3>
+            <p id="Comessemodelodetrabalho">
               Com esse modelo de trabalho, em 2011,
               <strong class="texto-cinza-bold"
                 >conseguimos atender as necessidades de nossos clientes</strong
@@ -377,8 +543,8 @@
         </div>
         <div class="div-linha-reverse">
           <div class="historia-div-text">
-            <h3>NOVAS ACOMODAÇÕES</h3>
-            <p>
+            <h3 id="NOVASACOMODACOES">NOVAS ACOMODAÇÕES</h3>
+            <p id="Comsedelocalizada">
               Com sede localizada na cidade de Salto, interior de São Paulo,
               possuímos uma <strong>área com 25.000 m²</strong> e uma
               <strong
@@ -402,8 +568,8 @@
             <img src="./images/imagem-notuscima.webp" alt="" />
           </div>
           <div class="historia-div-text">
-            <h3>FABRICAÇÃO NACIONAL</h3>
-            <p>
+            <h3 id="FABRICAÇAONACIONAL">FABRICAÇÃO NACIONAL</h3>
+            <p id="fabricaçaodeitens">
               A
               <strong class="texto-cinza-bold"
                 >fabricação de itens nacionais</strong
@@ -425,7 +591,9 @@
       <!-- SECAO 6 - CONHEÇA A NOSSA FABRICA -->
       <section class="comps-container-secao6">
         <div class="secao6-div-text">
-          <h3 class="secao5-h3">Conheça a <strong>nossa fábrica!</strong></h3>
+          <h3 id="Conhecaafabrica" class="secao5-h3">
+            Conheça a <strong>nossa fábrica!</strong>
+          </h3>
         </div>
         <div class="secao6-video">
           <iframe
@@ -456,35 +624,56 @@
         <div class="footer-containersub-div">
           <h3><strong>Menu</strong></h3>
           <ul class="footer-lista">
-            <li><a href="sobrenotus.html">Sobre Notus</a></li>
-            <li><a href="trabalheconosco.html">Trabalhe Conosco</a></li>
-            <li><a href="garantia.html">Garantia</a></li>
-            <li><a href="representantes.html">Representantes</a></li>
-            <li><a href="#" target="_blank">Blog</a></li>
-            <li><a href="contato.html">Contato</a></li>
             <li>
-              <a href="https://catalogonotus.vipsoft.com.br/" target="_blank"
+              <a id="SobreNotusFooter" href="sobrenotus.html">Sobre Notus</a>
+            </li>
+            <li>
+              <a id="TrabalheConoscoFooter" href="trabalheconosco.html"
+                >Trabalhe Conosco</a
+              >
+            </li>
+            <li><a id="GarantiaFooter" href="garantia.html">Garantia</a></li>
+            <li>
+              <a id="RepresentantesFooter" href="representantes.html"
+                >Representantes</a
+              >
+            </li>
+            <li><a href="#" target="_blank">Blog</a></li>
+            <li><a id="ContatoFooter" href="contato.html">Contato</a></li>
+            <li>
+              <a
+                id="CatálogoFooter"
+                href="https://catalogonotus.vipsoft.com.br/"
+                target="_blank"
                 >Catálogo</a
               >
             </li>
           </ul>
         </div>
         <div class="footer-containersub-div">
-          <h3><strong>Lista de Produtos</strong></h3>
+          <h3 id="ListadeProdutos"><strong>Lista de Produtos</strong></h3>
           <ul class="footer-lista">
-            <li><a href="#">Radiador</a></li>
-            <li><a href="#">Eletroventilador</a></li>
+            <li><a id="RadiadorFooter" href="#">Radiador</a></li>
+            <li>
+              <a id="EletroventiladorFooter" href="#">Eletroventilador</a>
+            </li>
             <li><a href="#">GMV</a></li>
-            <li><a href="#">Condensador</a></li>
-            <li><a href="#">Evaporador</a></li>
-            <li><a href="#">Radiador de óleo</a></li>
-            <li><a href="#">Radiador de aquecimento</a></li>
-            <li><a href="#">Ventilador interno</a></li>
+            <li><a id="CondensadorFooter" href="#">Condensador</a></li>
+            <li><a id="EvaporadorFooter" href="#">Evaporador</a></li>
+            <li><a id="RadiadordeoleoFooter" href="#">Radiador de óleo</a></li>
+            <li>
+              <a id="RadiadordeAquecimentoFooter" href="#"
+                >Radiador de aquecimento</a
+              >
+            </li>
+            <li>
+              <a id="VentiladorInternoFooter" href="#">Ventilador interno</a>
+            </li>
             <!-- <li><a href="#"></a>Compressor A/C</li> -->
           </ul>
         </div>
         <div class="footer-containersub-div">
-          <h3><strong>Fale Conosco</strong></h3>
+          <h3 id="FaleConoscoFooter"><strong>Fale Conosco</strong></h3>
           <ul class="footer-lista">
             <li class="footer-lista-faleconosco-separador">
               <i class="fa-solid fa-phone"></i
@@ -504,7 +693,7 @@
             </li>
           </ul>
           <div class="footer-redessociais">
-            <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+            <i onclick="openSearch()" class="fa-solid fa-magnifying-glass"></i>
             <a href="https://www.instagram.com/notusdobrasil" target="_blank"
               ><i class="fa-brands fa-instagram"></i
             ></a>
@@ -525,7 +714,7 @@
         </div>
       </div>
       <div class="footer-faixa">
-        <p>
+        <p id="DesenvolvidoporNotus">
           Desenvolvido por Notus Sistemas Térmicos do Brasil © Todos os direitos
           reservados
         </p>

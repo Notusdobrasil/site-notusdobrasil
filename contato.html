@@ -24,6 +24,8 @@
   </head>
   <body>
     <!-- HEADER -->
+    <iframe class="framePesquisa" src="pesquisa.html"></iframe>
+    <h1 onclick="closeSearch()" class="closeButton">X</h1>
     <header class="header-container">
       <!-- NAVEGACAO 1 -->
       <nav class="nav-contacts">
@@ -59,6 +61,26 @@
           >
             <i class="fa-brands fa-linkedin"></i>
           </a>
+          <div class="language-selector">
+            <img
+              onclick="changeLanguage('pt')"
+              src="./images/brasilflag.png"
+              alt="Brazil"
+              class="flag"
+            />
+            <img
+              onclick="changeLanguage('es')"
+              src="./images/spainflag.png"
+              alt="Spain"
+              class="flag"
+            />
+            <img
+              onclick="changeLanguage('en')"
+              src="./images/usaflag.png"
+              alt="USA"
+              class="flag"
+            />
+          </div>
         </div>
       </nav>
       <!-- NAVEGACAO 2 -->
@@ -72,19 +94,36 @@
           /></a>
         </div>
         <div class="nav-navegacao-container-text">
-          <a class="nav-navegacao-text" href="sobrenotus.html">Sobre Notus</a>
-          <a class="nav-navegacao-text" href="trabalheconosco.html"
+          <a
+            id="SobreNotusNav"
+            class="nav-navegacao-text"
+            href="sobrenotus.html"
+            >Sobre Notus</a
+          >
+          <a
+            id="TrabalheConoscoNav"
+            class="nav-navegacao-text"
+            href="trabalheconosco.html"
             >Trabalhe Conosco</a
           >
-          <a class="nav-navegacao-text" href="garantia.html">Garantia</a>
-          <a class="nav-navegacao-text" href="representantes.html"
+          <a id="GarantiaNav" class="nav-navegacao-text" href="garantia.html"
+            >Garantia</a
+          >
+          <a
+            id="RepresentantesNav"
+            class="nav-navegacao-text"
+            href="representantes.html"
             >Representantes</a
           >
           <a class="nav-navegacao-text" href="#">Blog</a>
-          <a class="nav-navegacao-text" href="contato.html">Contato</a>
+          <a id="ContatoNav" class="nav-navegacao-text" href="contato.html"
+            >Contato</a
+          >
         </div>
         <div class="nav-navegacao-catalogo-burguer">
-          <a class="nav-navegacao-catalogo" href="#">Catálogo</a>
+          <a id="CatálogoNav" class="nav-navegacao-catalogo" href="#"
+            >Catálogo</a
+          >
 
           <div
             class="menu-icon"
@@ -104,21 +143,27 @@
           >
             <ul>
               <li class="dropdown-item">
-                <a href="sobrenotus.html">Sobre Notus</a>
+                <a id="SobreNotusBurger" href="sobrenotus.html">Sobre Notus</a>
               </li>
               <li class="dropdown-item">
-                <a href="trabalheconosco.html">Trabalhe Conosco</a>
+                <a id="TrabalheConoscoBurger" href="trabalheconosco.html"
+                  >Trabalhe Conosco</a
+                >
               </li>
               <li class="dropdown-item">
-                <a href="garantia.html">Garantia</a>
+                <a id="GarantiaBurger" href="garantia.html">Garantia</a>
               </li>
               <li class="dropdown-item">
-                <a href="representantes.html">Representantes</a>
+                <a id="RepresentantesBurger" href="representantes.html"
+                  >Representantes</a
+                >
               </li>
               <li class="dropdown-item">
                 <a href="#" target="_blank">Blog</a>
               </li>
-              <li class="dropdown-item"><a href="contato.html">Contato</a></li>
+              <li class="dropdown-item">
+                <a id="ContatoBurger" href="contato.html">Contato</a>
+              </li>
             </ul>
           </nav>
         </div>
@@ -126,18 +171,129 @@
     </header>
     <!-- MAIN -->
     <main>
-      <iframe class="framePesquisa" src="pesquisa.html"></iframe>
-      <h1 onclick="closeSearch()" class="closeButton">X</h1>
+      <div class="whatsapp-container">
+        <div>
+          <a class="whatsapp-botao"
+            ><img
+              class="whatsapp-icone"
+              src="./images/icone-whatsapp.svg"
+              alt="Entrar em contato por Whatsapp"
+          /></a>
+          <div class="x-icone" style="display: none">X</div>
+          <p id="Precisadeajuda" class="whatsapp-text-cta">
+            Precisa de ajuda? Fale conosco pelo
+            <strong class="secao2-titulo-cinza" style="font-weight: 700"
+              >Whatsapp!</strong
+            >
+          </p>
+        </div>
+        <div class="card-whatsapp-container">
+          <div class="card-whatsapp-sup">
+            <img
+              src="./images/icone-whatsapp.svg"
+              alt="Entrar em contato por Whatsapp"
+            />
+            <div class="card-whatsapp-sup-text-container">
+              <h2 id="FaleConoscoWACARD">Fale Conosco!</h2>
+              <p id="atendidoimediatamente">
+                Olá! Clique em um de nossos membros da equipe para ser
+                atendido imediatamente pelo Whatsapp!
+              </p>
+            </div>
+          </div>
+          <div class="card-whatsapp-bottom">
+            <!-- Os minutos podem ser calculados automaticamente sobre o quanto eles demoram para iniciar os atendimentos? -->
+            <p id="respondeemalgunsminutos">
+              A equipe normalmente responde em alguns minutos.
+            </p>
+            <a
+              class="card-whatsapp-bottom-botao"
+              href="https://wa.me/5511945478542"
+              target="_blank"
+            >
+              <hr />
+              <img
+                src="./images/icone-whatsapp.svg"
+                alt="Entrar em contato por Whatsapp"
+              />
+              <div class="card-whatsapp-bottom-botao-text">
+                <h3>Alex</h3>
+                <p >Comercial</p>
+              </div>
+            </a>
+            <a
+              class="card-whatsapp-bottom-botao"
+              href="https://wa.me/5511975174745"
+              target="_blank"
+            >
+              <hr />
+              <img
+                src="./images/icone-whatsapp.svg"
+                alt="Entrar em contato por Whatsapp"
+              />
+              <div class="card-whatsapp-bottom-botao-text">
+                <h3>Carlos</h3>
+                <p >Comercial</p>
+              </div>
+            </a>
+            <a
+              class="card-whatsapp-bottom-botao"
+              href="https://wa.me/551142101998"
+              target="_blank"
+            >
+              <hr />
+              <img
+                src="./images/icone-whatsapp.svg"
+                alt="Entrar em contato por Whatsapp"
+              />
+              <div class="card-whatsapp-bottom-botao-text">
+                <h3>Luciano</h3>
+                <p >Comercial</p>
+              </div>
+            </a>
+            <a
+              class="card-whatsapp-bottom-botao"
+              href="https://wa.me/551142101997"
+              target="_blank"
+            >
+              <hr />
+              <img
+                src="./images/icone-whatsapp.svg"
+                alt="Entrar em contato por Whatsapp"
+              />
+              <div class="card-whatsapp-bottom-botao-text">
+                <h3>Viviane</h3>
+                <p >Comercial</p>
+              </div>
+            </a>
+            <a
+              class="card-whatsapp-bottom-botao"
+              href="https://wa.me/551124136550"
+              target="_blank"
+            >
+              <hr />
+              <img
+                src="./images/icone-whatsapp.svg"
+                alt="Entrar em contato por Whatsapp"
+              />
+              <div class="card-whatsapp-bottom-botao-text">
+                <h3>Welton</h3>
+                <p >Comercial</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
       <!-- SECAO 1 - APRESENTACAO -->
       <section class="comps-secao1-container2">
         <div class="comps-secao1-overlay2"></div>
         <div class="comps-secao1-container-div">
-          <h1>Fale Conosco!</h1>
+          <h1 id="FaleConoscoTitle">Fale Conosco!</h1>
         </div>
       </section>
       <!-- SECAO 2 - TITULO NOSSOS CANAIS -->
       <section class="secao2-container">
-        <h2 class="secao2-titulo">Nossos <strong>canais!</strong></h2>
+        <h2 id="Nossoscanais" class="secao2-titulo">Nossos <strong>canais!</strong></h2>
       </section>
       <!-- SECAO 2 - NOSSOS CANAIS -->
       <section class="container">
@@ -148,11 +304,13 @@
                 class="contato-forms-input1"
                 type="text"
                 placeholder="Nome"
+                id="Nome"
               />
               <input
                 class="contato-forms-input1"
                 type="text"
                 placeholder="Sobrenome"
+                id="Sobrenome"
               />
             </div>
             <div>
@@ -160,6 +318,7 @@
                 class="contato-forms-input1"
                 type="number"
                 placeholder="Telefone"
+                id="Telefone"
               />
               <input
                 class="contato-forms-input1"
@@ -171,8 +330,9 @@
               class="contato-forms-input2"
               type="text"
               placeholder="Mensagem"
+              id="Mensagem"
             />
-            <a href="#">Enviar</a>
+            <a id="Enviar" href="#">Enviar</a>
           </form>
           <div class="contato-div-container">
             <div class="contato-div-rows">
@@ -202,58 +362,79 @@
                 >Rua Otto Halter, 630 - Chácara Halter, Salto-SP, 13329-429</a
               >
             </div>
-            <div class="contato-div-rows"></div>
-            <a href="https://www.instagram.com/notusdobrasil">
-              <i class="fa-brands fa-instagram"></i>
-            </a>
-            <a href="https://www.facebook.com/profile.php?id=61559166240715">
-              <i class="fa-brands fa-facebook"></i>
-            </a>
-            <a href="https://www.youtube.com/@NotusdoBrasil">
-              <i class="fa-brands fa-youtube"></i>
-            </a>
-            <a href="https://www.linkedin.com/company/notus-do-brasil">
-              <i class="fa-brands fa-linkedin"></i>
-            </a>
+            <div class="contato-div-rows">
+              <a href="https://www.instagram.com/notusdobrasil">
+                <i class="fa-brands fa-instagram"></i>
+              </a>
+              <a href="https://www.facebook.com/profile.php?id=61559166240715">
+                <i class="fa-brands fa-facebook"></i>
+              </a>
+              <a href="https://www.youtube.com/@NotusdoBrasil">
+                <i class="fa-brands fa-youtube"></i>
+              </a>
+              <a href="https://www.linkedin.com/company/notus-do-brasil">
+                <i class="fa-brands fa-linkedin"></i>
+              </a>
+            </div>
           </div>
         </div>
       </section>
     </main>
-
     <footer class="container-footer">
       <div class="footer-containersub">
         <div class="footer-containersub-div">
           <h3><strong>Menu</strong></h3>
           <ul class="footer-lista">
-            <li><a href="sobrenotus.html">Sobre Notus</a></li>
-            <li><a href="trabalheconosco.html">Trabalhe Conosco</a></li>
-            <li><a href="garantia.html">Garantia</a></li>
-            <li><a href="representantes.html">Representantes</a></li>
-            <li><a href="#" target="_blank">Blog</a></li>
-            <li><a href="contato.html">Contato</a></li>
             <li>
-              <a href="https://catalogonotus.vipsoft.com.br/" target="_blank"
+              <a id="SobreNotusFooter" href="sobrenotus.html">Sobre Notus</a>
+            </li>
+            <li>
+              <a id="TrabalheConoscoFooter" href="trabalheconosco.html"
+                >Trabalhe Conosco</a
+              >
+            </li>
+            <li><a id="GarantiaFooter" href="garantia.html">Garantia</a></li>
+            <li>
+              <a id="RepresentantesFooter" href="representantes.html"
+                >Representantes</a
+              >
+            </li>
+            <li><a href="#" target="_blank">Blog</a></li>
+            <li><a id="ContatoFooter" href="contato.html">Contato</a></li>
+            <li>
+              <a
+                id="CatálogoFooter"
+                href="https://catalogonotus.vipsoft.com.br/"
+                target="_blank"
                 >Catálogo</a
               >
             </li>
           </ul>
         </div>
         <div class="footer-containersub-div">
-          <h3><strong>Lista de Produtos</strong></h3>
+          <h3 id="ListadeProdutos"><strong>Lista de Produtos</strong></h3>
           <ul class="footer-lista">
-            <li><a href="#">Radiador</a></li>
-            <li><a href="#">Eletroventilador</a></li>
+            <li><a id="RadiadorFooter" href="#">Radiador</a></li>
+            <li>
+              <a id="EletroventiladorFooter" href="#">Eletroventilador</a>
+            </li>
             <li><a href="#">GMV</a></li>
-            <li><a href="#">Condensador</a></li>
-            <li><a href="#">Evaporador</a></li>
-            <li><a href="#">Radiador de óleo</a></li>
-            <li><a href="#">Radiador de aquecimento</a></li>
-            <li><a href="#">Ventilador interno</a></li>
+            <li><a id="CondensadorFooter" href="#">Condensador</a></li>
+            <li><a id="EvaporadorFooter" href="#">Evaporador</a></li>
+            <li><a id="RadiadordeoleoFooter" href="#">Radiador de óleo</a></li>
+            <li>
+              <a id="RadiadordeAquecimentoFooter" href="#"
+                >Radiador de aquecimento</a
+              >
+            </li>
+            <li>
+              <a id="VentiladorInternoFooter" href="#">Ventilador interno</a>
+            </li>
             <!-- <li><a href="#"></a>Compressor A/C</li> -->
           </ul>
         </div>
         <div class="footer-containersub-div">
-          <h3><strong>Fale Conosco</strong></h3>
+          <h3 id="FaleConoscoFooter"><strong>Fale Conosco</strong></h3>
           <ul class="footer-lista">
             <li class="footer-lista-faleconosco-separador">
               <i class="fa-solid fa-phone"></i
@@ -273,7 +454,7 @@
             </li>
           </ul>
           <div class="footer-redessociais">
-            <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+            <i onclick="openSearch()" class="fa-solid fa-magnifying-glass"></i>
             <a href="https://www.instagram.com/notusdobrasil" target="_blank"
               ><i class="fa-brands fa-instagram"></i
             ></a>
@@ -294,7 +475,7 @@
         </div>
       </div>
       <div class="footer-faixa">
-        <p>
+        <p id="DesenvolvidoporNotus">
           Desenvolvido por Notus Sistemas Térmicos do Brasil © Todos os direitos
           reservados
         </p>
