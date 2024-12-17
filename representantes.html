@@ -1,411 +1,727 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/reset.css">
-    <link rel="stylesheet" href="./styles/style.css">
-    <link rel="stylesheet" href="./styles/responsividade.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="icon" href="./images/icone-logosite-quadrado-mask1.svg">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="styles/reset.css" />
+    <link rel="stylesheet" href="./styles/style.css" />
+    <link rel="stylesheet" href="./styles/responsividade.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="icon" href="./images/icone-logosite-quadrado-mask1.svg" />
     <title>Notus do Brasil</title>
-</head>
-<body>
+  </head>
+  <body>
     <!-- HEADER -->
+    <iframe class="framePesquisa" src="pesquisa.html"></iframe>
+    <h1 onclick="closeSearch()" class="closeButton">X</h1>
     <header class="header-container">
-        <!-- NAVEGACAO 1 -->
-        <nav class="nav-contacts">
-            <div class="header-contatos">
-                <a href="tel:+551142101997"><i class="fa-solid fa-phone"></i></a>
-                <a class="header-contacts-text" href="tel:+551142101997">
-                (11) 4210-1997
-                </a>
-                <a href="mailto:contato@notus.ind.br"><i class="fa-solid fa-envelope"></i></a>
-                <a class="header-contacts-text" href="mailto:contato@notus.ind.br">
-                contato@notus.ind.br
-                </a>
-            </div>
-            <div class="header-redessociais">
-                <a href="">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </a>
-                <a href="https://www.instagram.com/notusdobrasil" target="_blank">
-                    <i class="fa-brands fa-instagram"></i>
-                </a>
-                <a href="https://www.facebook.com/profile.php?id=61559166240715" target="_blank">
-                    <i class="fa-brands fa-facebook"></i>
-                </a>
-                <a href="https://www.youtube.com/@NotusdoBrasil" target="_blank">
-                    <i class="fa-brands fa-youtube"></i>
-                </a>
-                <a href="https://www.linkedin.com/company/notus-do-brasil" target="_blank">
-                    <i class="fa-brands fa-linkedin"></i>
-                </a>
-            </div>
-        </nav>
-        <!-- NAVEGACAO 2 -->
-        <nav class="nav-navegacao">
-            <div>
-                <a href="index.html"><img class="header-logo" src="./images/logo-notus-azul.svg" alt="Logo Notus do Brasil"></a>
-            </div>
-            <div class="nav-navegacao-container-text">
-                <a class="nav-navegacao-text" href="sobrenotus.html">Sobre Notus</a>
-                <a class="nav-navegacao-text" href="trabalheconosco.html">Trabalhe Conosco</a>
-                <a class="nav-navegacao-text" href="garantia.html">Garantia</a>
-                <a class="nav-navegacao-text" href="representantes.html">Representantes</a>
-                <a class="nav-navegacao-text" href="#">Blog</a>
-                <a class="nav-navegacao-text" href="contato.html">Contato</a>
-            </div>
-            <div>
-                <a class="nav-navegacao-catalogo" href="#">Catálogo</a>
-            </div>
-        </nav>
+      <!-- NAVEGACAO 1 -->
+      <nav class="nav-contacts">
+        <div class="header-contatos">
+          <a href="tel:+551142101997"><i class="fa-solid fa-phone"></i></a>
+          <a class="header-contacts-text" href="tel:+551142101997">
+            (11) 4210-1997
+          </a>
+          <a href="mailto:contato@notus.ind.br"
+            ><i class="fa-solid fa-envelope"></i
+          ></a>
+          <a class="header-contacts-text" href="mailto:contato@notus.ind.br">
+            contato@notus.ind.br
+          </a>
+        </div>
+        <div class="header-redessociais">
+          <i onclick="openSearch()" class="fa-solid fa-magnifying-glass"></i>
+          <a href="https://www.instagram.com/notusdobrasil" target="_blank">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+          <a
+            href="https://www.facebook.com/profile.php?id=61559166240715"
+            target="_blank"
+          >
+            <i class="fa-brands fa-facebook"></i>
+          </a>
+          <a href="https://www.youtube.com/@NotusdoBrasil" target="_blank">
+            <i class="fa-brands fa-youtube"></i>
+          </a>
+          <a
+            href="https://www.linkedin.com/company/notus-do-brasil"
+            target="_blank"
+          >
+            <i class="fa-brands fa-linkedin"></i>
+          </a>
+          <div class="language-selector">
+            <img
+              onclick="changeLanguage('pt')"
+              src="./images/brasilflag.png"
+              alt="Brazil"
+              class="flag"
+            />
+            <img
+              onclick="changeLanguage('es')"
+              src="./images/spainflag.png"
+              alt="Spain"
+              class="flag"
+            />
+            <img
+              onclick="changeLanguage('en')"
+              src="./images/usaflag.png"
+              alt="USA"
+              class="flag"
+            />
+          </div>
+        </div>
+      </nav>
+      <!-- NAVEGACAO 2 -->
+      <nav class="nav-navegacao">
+        <div>
+          <a href="index.html"
+            ><img
+              class="header-logo"
+              src="./images/logo-notus-azul.svg"
+              alt="Logo Notus do Brasil"
+          /></a>
+        </div>
+        <div class="nav-navegacao-container-text">
+          <a
+            id="SobreNotusNav"
+            class="nav-navegacao-text"
+            href="sobrenotus.html"
+            >Sobre Notus</a
+          >
+          <a
+            id="TrabalheConoscoNav"
+            class="nav-navegacao-text"
+            href="trabalheconosco.html"
+            >Trabalhe Conosco</a
+          >
+          <a id="GarantiaNav" class="nav-navegacao-text" href="garantia.html"
+            >Garantia</a
+          >
+          <a
+            id="RepresentantesNav"
+            class="nav-navegacao-text"
+            href="representantes.html"
+            >Representantes</a
+          >
+          <a class="nav-navegacao-text" href="#">Blog</a>
+          <a id="ContatoNav" class="nav-navegacao-text" href="contato.html"
+            >Contato</a
+          >
+        </div>
+        <div class="nav-navegacao-catalogo-burguer">
+          <a id="CatálogoNav" class="nav-navegacao-catalogo" href="#"
+            >Catálogo</a
+          >
+
+          <div
+            class="menu-icon"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+            id="hamburger-menu"
+            onclick="toggleMenu(this)"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <nav
+            class="dropdown-menu dropdown-menu-right drop-down-burger"
+            id="nav"
+          >
+            <ul>
+              <li class="dropdown-item">
+                <a id="SobreNotusBurger" href="sobrenotus.html">Sobre Notus</a>
+              </li>
+              <li class="dropdown-item">
+                <a id="TrabalheConoscoBurger" href="trabalheconosco.html"
+                  >Trabalhe Conosco</a
+                >
+              </li>
+              <li class="dropdown-item">
+                <a id="GarantiaBurger" href="garantia.html">Garantia</a>
+              </li>
+              <li class="dropdown-item">
+                <a id="RepresentantesBurger" href="representantes.html"
+                  >Representantes</a
+                >
+              </li>
+              <li class="dropdown-item">
+                <a href="#" target="_blank">Blog</a>
+              </li>
+              <li class="dropdown-item">
+                <a id="ContatoBurger" href="contato.html">Contato</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </nav>
     </header>
     <!-- MAIN -->
     <main>
-        <!-- SECAO 1 - APRESENTACAO -->
-        <section class="comps-secao1-container1">
-            <div class="comps-secao1-overlay1"></div>
-            <div class="comps-secao1-conteudogeral">
-                <div class="comps-secao1-conteudo-div1-1">
-                    <h1>Onde estamos</h1>
-                    <p>Localizado em Salto/SP próximo ao aeroporto de Viracopos em Campinas/SP e com acesso rápido e fácil a algumas das principais rodovias do Estado de São Paulo, a Notus tem a capacidade de fornecer seus produtos em todo o território nacional com eficácia e excelência.</p>
-                    <div class="comps-secao1-div-botoes2">
-                        <a href="#">Clique aqui para saber mais</a>
-                    </div>
-                </div>
-                <div class="comps-secao1-video-container">
-                    <iframe class="comps-secao1-video-shadow" src="https://www.youtube.com/embed/0fGUlVtAZ6o?si=71Y-y1lqTs7QIY6W" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                </div>
+      <div class="whatsapp-container">
+        <div>
+          <a class="whatsapp-botao"
+            ><img
+              class="whatsapp-icone"
+              src="./images/icone-whatsapp.svg"
+              alt="Entrar em contato por Whatsapp"
+          /></a>
+          <div class="x-icone" style="display: none">X</div>
+          <p id="Precisadeajuda" class="whatsapp-text-cta">
+            Precisa de ajuda? Fale conosco pelo
+            <strong class="secao2-titulo-cinza" style="font-weight: 700"
+              >Whatsapp!</strong
+            >
+          </p>
+        </div>
+        <div class="card-whatsapp-container">
+          <div class="card-whatsapp-sup">
+            <img
+              src="./images/icone-whatsapp.svg"
+              alt="Entrar em contato por Whatsapp"
+            />
+            <div class="card-whatsapp-sup-text-container">
+              <h2 id="FaleConoscoWACARD">Fale Conosco!</h2>
+              <p id="atendidoimediatamente">
+                Olá! Clique em um de nossos membros da equipe para ser atendido
+                imediatamente pelo Whatsapp!
+              </p>
             </div>
-        </section>
-        <!-- SECAO 2 - ENCONTRE UM REPRESENTANTE -->
-        <section class="representante-container">
-            <div class="representante-text">
-                <h2>Encontre um<br>representante<strong><br>Notus!</strong></h2>
-                <p>A Notus Sistemas Térmicos do Brasil está presente em todo o território nacional, basta clicar no mapa e verificar o representante mais próximo de você.</p>
-                <a href="#">Fale Conosco!</a>
+          </div>
+          <div class="card-whatsapp-bottom">
+            <!-- Os minutos podem ser calculados automaticamente sobre o quanto eles demoram para iniciar os atendimentos? -->
+            <p id="respondeemalgunsminutos">
+              A equipe normalmente responde em alguns minutos.
+            </p>
+            <a
+              class="card-whatsapp-bottom-botao"
+              href="https://wa.me/5511945478542"
+              target="_blank"
+            >
+              <hr />
+              <img
+                src="./images/icone-whatsapp.svg"
+                alt="Entrar em contato por Whatsapp"
+              />
+              <div class="card-whatsapp-bottom-botao-text">
+                <h3>Alex</h3>
+                <p >Comercial</p>
+              </div>
+            </a>
+            <a
+              class="card-whatsapp-bottom-botao"
+              href="https://wa.me/5511975174745"
+              target="_blank"
+            >
+              <hr />
+              <img
+                src="./images/icone-whatsapp.svg"
+                alt="Entrar em contato por Whatsapp"
+              />
+              <div class="card-whatsapp-bottom-botao-text">
+                <h3>Carlos</h3>
+                <p >Comercial</p>
+              </div>
+            </a>
+            <a
+              class="card-whatsapp-bottom-botao"
+              href="https://wa.me/551142101998"
+              target="_blank"
+            >
+              <hr />
+              <img
+                src="./images/icone-whatsapp.svg"
+                alt="Entrar em contato por Whatsapp"
+              />
+              <div class="card-whatsapp-bottom-botao-text">
+                <h3>Luciano</h3>
+                <p >Comercial</p>
+              </div>
+            </a>
+            <a
+              class="card-whatsapp-bottom-botao"
+              href="https://wa.me/551142101997"
+              target="_blank"
+            >
+              <hr />
+              <img
+                src="./images/icone-whatsapp.svg"
+                alt="Entrar em contato por Whatsapp"
+              />
+              <div class="card-whatsapp-bottom-botao-text">
+                <h3>Viviane</h3>
+                <p >Comercial</p>
+              </div>
+            </a>
+            <a
+              class="card-whatsapp-bottom-botao"
+              href="https://wa.me/551124136550"
+              target="_blank"
+            >
+              <hr />
+              <img
+                src="./images/icone-whatsapp.svg"
+                alt="Entrar em contato por Whatsapp"
+              />
+              <div class="card-whatsapp-bottom-botao-text">
+                <h3>Welton</h3>
+                <p >Comercial</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+      <!-- SECAO 1 - APRESENTACAO -->
+
+      <section class="comps-secao1-container1">
+        <div class="comps-secao1-overlay1"></div>
+        <div class="comps-secao1-conteudogeral">
+          <div class="comps-secao1-conteudo-div1-1">
+            <h1 id="Ondeestamos">Onde estamos</h1>
+            <p id="LocalizadoemSalto">
+              Localizado em Salto/SP próximo ao aeroporto de Viracopos em
+              Campinas/SP e com acesso rápido e fácil a algumas das principais
+              rodovias do Estado de São Paulo, a Notus tem a capacidade de
+              fornecer seus produtos em todo o território nacional com eficácia
+              e excelência.
+            </p>
+            <div class="comps-secao1-div-botoes2">
+              <a id="Cliqueaqui" href="#">Clique aqui para saber mais</a>
             </div>
-            <div class="representante-img">
-                <img src="./images/imagem-mapadobrasil-representantes.png" alt="">
-                <div class="item" style="top: 85.5%; left: 49.5%;">
-                    <div class="icon icon-name" onclick="toggleTooltip(this)">RS</div>
-                    <div class="tooltip" id="tooltip-1">
-                        <h3>MUNDIAL</h3>
-                        <p>Responsável: Giovani</p>
-                        <p>Telefone: 51 98594-8585</p>
-                        <p>E-mail: giovani@mundialr.com.br</p>
-                    </div>
-                </div>
-                <div class="item" style="top: 79%; left: 56.5%;">
-                    <div class="icon icon-name" onclick="toggleTooltip(this)">SC</div>
-                    <div class="tooltip" id="tooltip-1">
-                        <h3>FLORIANOPOLIS</h3>
-                        <p>Responsável: Haroldo</p>
-                        <p>Telefone: 48 9921-0001</p>
-                        <p>E-mail: fpolisrepresentacoes@hotmail.com</p>
-                    </div>
-                </div>
-                <div class="item" style="top: 73%; left: 53%;">
-                    <div class="icon icon-name" onclick="toggleTooltip(this)">PR</div>
-                    <div class="tooltip" id="tooltip-1">
-                        <h3>NOTUS</h3>
-                        <p>Responsável: Viviane</p>
-                        <p>Telefone: 11 99841-7696</p>
-                        <p>E-mail: viviane@notus.ind.br</p>
-                    </div>
-                </div>
-                <div class="item" style="top: 67.5%; left: 60.5%;">
-                    <div class="icon icon-name" onclick="toggleTooltip(this)">SP</div>
-                    <div class="tooltip" id="tooltip-1">
-                        <h3>Notus</h3>
-                        <p>Responsável: Notus</p>
-                        <p>Telefone: 11 4210-1997</p>
-                        <p>E-mail: contato@notus.ind.br</p>
-                        <hr>
-                        <h3>TRADE</h3>
-                        <p>Responsável: Rogério Longuino</p>
-                        <p>Telefone: 11 95454-6767</p>
-                        <p>E-mail: rogerio@tradeparts.com.br</p>
-                        <hr>
-                        <h3>BROCK (Interior SP)</h3>
-                        <p>Responsável: Silvanei</p>
-                        <p>Telefone: 19 99215-2272</p>
-                        <p>E-mail: silvanei@brockrepresentacoes.com.br</p>
-                    </div>
-                </div>
-                <div class="item" style="top: 68%; left: 74%;">
-                    <div class="icon icon-name" onclick="toggleTooltip(this)">RJ</div>
-                    <div class="tooltip" id="tooltip-1">
-                        <h3>A2G</h3>
-                        <p>Responsável: Alexandre</p>
-                        <p>Telefone: 21 97043-9449</p>
-                        <p>E-mail: a2grep@gmail.com</p>
-                    </div>
-                </div>
-                <div class="item" style="top: 60%; left: 80%;">
-                    <div class="icon icon-name" onclick="toggleTooltip(this)">ES</div>
-                    <div class="tooltip" id="tooltip-1">
-                        <h3>TMB</h3>
-                        <p>Responsável: Tiago</p>
-                        <p>Telefone: 27 99738-5333</p>
-                        <p>E-mail: tmb.rep@terra.com.br</p>
-                    </div>
-                </div>
-                <div class="item" style="top: 58%; left: 70%;">
-                    <div class="icon icon-name" onclick="toggleTooltip(this)">MG</div>
-                    <div class="tooltip" id="tooltip-1">
-                        <h3>REMAP</h3>
-                        <p>Responsável: Ivo</p>
-                        <p>Telefone: 31 99982-1158</p>
-                        <p>E-mail: ivo@remapltda.com.br</p>
-                    </div>
-                </div>
-                <div class="item" style="top: 42.5%; left: 77%;">
-                    <div class="icon icon-name" onclick="toggleTooltip(this)">BA</div>
-                    <div class="tooltip" id="tooltip-1">
-                        <h3>RBR</h3>
-                        <p>Responsável: Ricardo Bernardino</p>
-                        <p>Telefone: 71 98199-3525</p>
-                        <p>E-mail: ricardo@rbrltda.com.br</p>
-                    </div>
-                </div>
-                <div class="item" style="top: 39%; left: 88.5%;">
-                    <div class="icon icon-name" onclick="toggleTooltip(this)">SE</div>
-                    <div class="tooltip" id="tooltip-1">
-                        <h3>RBR</h3>
-                        <p>Responsável: Ricardo Bernardino</p>
-                        <p>Telefone: 71 98199-3525</p>
-                        <p>E-mail: ricardo@rbrltda.com.br</p>
-                    </div>
-                </div>
-                <div class="item" style="top: 36.5%; left: 91%;">
-                    <div class="icon icon-name" onclick="toggleTooltip(this)">AL</div>
-                    <div class="tooltip" id="tooltip-1">
-                        <h3>RBR</h3>
-                        <p>Responsável: Ricardo Bernardino</p>
-                        <p>Telefone: 71 98199-3525</p>
-                        <p>E-mail: ricardo@rbrltda.com.br</p>
-                    </div>
-                </div>
-                <div class="item" style="top: 33.25%; left: 87%;">
-                    <div class="icon icon-name" onclick="toggleTooltip(this)">PE</div>
-                    <div class="tooltip" id="tooltip-1">
-                        <h3>RBR</h3>
-                        <p>Responsável: Ricardo Bernardino</p>
-                        <p>Telefone: 71 98199-3525</p>
-                        <p>E-mail: ricardo@rbrltda.com.br</p>
-                    </div>
-                </div>
-                <div class="item" style="top: 31.5%; left: 75%;">
-                    <div class="icon icon-name" onclick="toggleTooltip(this)">PI</div>
-                    <div class="tooltip" id="tooltip-1">
-                        <h3>RBR</h3>
-                        <p>Responsável: Ricardo Bernardino</p>
-                        <p>Telefone: 71 98199-3525</p>
-                        <p>E-mail: ricardo@rbrltda.com.br</p>
-                    </div>
-                </div>
-                <div class="item" style="top: 30.5%; left: 92%;">
-                    <div class="icon icon-name" onclick="toggleTooltip(this)">MA</div>
-                    <div class="tooltip" id="tooltip-1">
-                        <h3>Notus</h3>
-                        <p>Responsável: Notus</p>
-                        <p>Telefone: 11 4210-1997</p>
-                        <p>E-mail: contato@notus.ind.br</p>
-                    </div>
-                </div>
-                <div class="item" style="top: 50.5%; left: 62.5%;">
-                    <div class="icon icon-name" onclick="toggleTooltip(this)">DF</div>
-                    <div class="tooltip" id="tooltip-1">
-                        <h3>FEDATO</h3>
-                        <p>Responsável: Hugo</p>
-                        <p>Telefone: 62 99973-0276</p>
-                        <p>E-mail: fedatol@terra.com.br</p>
-                    </div>
-                </div>
-                <div class="item" style="top: 37%; left: 61%;">
-                    <div class="icon icon-name" onclick="toggleTooltip(this)">TO</div>
-                    <div class="tooltip" id="tooltip-1">
-                        <h3>FEDATO</h3>
-                        <p>Responsável: Hugo</p>
-                        <p>Telefone: 62 99973-0276</p>
-                        <p>E-mail: fedatol@terra.com.br</p>
-                    </div>
-                </div>
-                <div class="item" style="top: 55%; left: 55%;">
-                    <div class="icon icon-name" onclick="toggleTooltip(this)">GO</div>
-                    <div class="tooltip" id="tooltip-1">
-                        <h3>FEDATO</h3>
-                        <p>Responsável: Hugo</p>
-                        <p>Telefone: 62 99973-0276</p>
-                        <p>E-mail: fedatol@terra.com.br</p>
-                    </div>
-                </div>
-                <div class="item" style="top: 62%; left: 46%;">
-                    <div class="icon icon-name" onclick="toggleTooltip(this)">MS</div>
-                    <div class="tooltip" id="tooltip-1">
-                        <h3>Notus</h3>
-                        <p>Responsável: Notus</p>
-                        <p>Telefone: 11 4210-1997</p>
-                        <p>E-mail: contato@notus.ind.br</p>
-                    </div>
-                </div>
-                <div class="item" style="top: 7.5%; left: 53%;">
-                    <div class="icon icon-name" onclick="toggleTooltip(this)">AP</div>
-                    <div class="tooltip" id="tooltip-1">
-                        <h3>Notus</h3>
-                        <p>Responsável: Notus</p>
-                        <p>Telefone: 11 4210-1997</p>
-                        <p>E-mail: contato@notus.ind.br</p>
-                    </div>
-                </div>
-                <div class="item" style="top: 23%; left: 50%;">
-                    <div class="icon icon-name" onclick="toggleTooltip(this)">PA</div>
-                    <div class="tooltip" id="tooltip-1">
-                        <h3>Notus</h3>
-                        <p>Responsável: Notus</p>
-                        <p>Telefone: 11 4210-1997</p>
-                        <p>E-mail: contato@notus.ind.br</p>
-                    </div>
-                </div>
-                <div class="item" style="top: 45%; left: 43%;">
-                    <div class="icon icon-name" onclick="toggleTooltip(this)">MT</div>
-                    <div class="tooltip" id="tooltip-1">
-                        <h3>Notus</h3>
-                        <p>Responsável: Notus</p>
-                        <p>Telefone: 11 4210-1997</p>
-                        <p>E-mail: contato@notus.ind.br</p>
-                    </div>
-                </div>
-                <div class="item" style="top: 39%; left: 25%;">
-                    <div class="icon icon-name" onclick="toggleTooltip(this)">RO</div>
-                    <div class="tooltip" id="tooltip-1">
-                        <h3>T.A</h3>
-                        <p>Responsável: Josué</p>
-                        <p>Telefone: 92 99614-1567</p>
-                        <p>E-mail: tarep.am@gmail.com</p>
-                        <hr>
-                        <h3>BURALLI</h3>
-                        <p>Responsável: Buralli</p>
-                        <p>Telefone: 69 9960-2111</p>
-                        <p>E-mail: representacoesburalli@hotmail.com</p>
-                    </div>
-                </div>
-                <div class="item" style="top: 5%; left: 29%;">
-                    <div class="icon icon-name" onclick="toggleTooltip(this)">RR</div>
-                    <div class="tooltip" id="tooltip-1">
-                        <h3>T.A</h3>
-                        <p>Responsável: Josué</p>
-                        <p>Telefone: 92 99614-1567</p>
-                        <p>E-mail: tarep.am@gmail.com</p>
-                    </div>
-                </div>
-                <div class="item" style="top: 34.5%; left: 7%;">
-                    <div class="icon icon-name" onclick="toggleTooltip(this)">AC</div>
-                    <div class="tooltip" id="tooltip-1">
-                        <h3>BURALLI</h3>
-                        <p>Responsável: Buralli</p>
-                        <p>Telefone: 69 9960-2111</p>
-                        <p>E-mail: representacoesburalli@hotmail.com</p>
-                    </div>
-                </div>
-                <div class="item" style="top: 23%; left: 20%;">
-                    <div class="icon icon-name" onclick="toggleTooltip(this)">AM</div>
-                    <div class="tooltip" id="tooltip-1">
-                        <h3>T.A</h3>
-                        <p>Responsável: Josué</p>
-                        <p>Telefone: 92 99614-1567</p>
-                        <p>E-mail: tarep.am@gmail.com</p>
-                    </div>
-                </div>
-                
+          </div>
+          <div class="comps-secao1-video-container">
+            <iframe
+              class="comps-secao1-video-shadow"
+              src="https://www.youtube.com/embed/0fGUlVtAZ6o?si=71Y-y1lqTs7QIY6W"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </div>
+      </section>
+      <!-- SECAO 2 - ENCONTRE UM REPRESENTANTE -->
+      <section class="representante-container">
+        <div class="representante-text">
+          <h2 id="Encontreumrepresentante">
+            Encontre um<br />representante<strong><br />Notus!</strong>
+          </h2>
+          <p id="ANotusSistemas">
+            A Notus Sistemas Térmicos do Brasil está presente em todo o
+            território nacional, basta clicar no mapa e verificar o
+            representante mais próximo de você.
+          </p>
+          <a id="FaleConoscoREPRE" href="#">Fale Conosco!</a>
+        </div>
+        <div class="representante-img">
+          <img src="./images/imagem-mapadobrasil-representantes.png" alt="" />
+          <div class="item" style="top: 85.5%; left: 49.5%">
+            <div class="icon icon-name" onclick="toggleTooltip(this)">RS</div>
+            <div class="tooltip" id="tooltip-1">
+              <h3>MUNDIAL</h3>
+              <p id="ResponsavelGiovani">Responsável: Giovani</p>
+              <p id="Telefone1">Telefone: 51 98594-8585</p>
+              <p>E-mail: giovani@mundialr.com.br</p>
             </div>
-            <div class="secao5-hr">
-                <hr class="secao5-hr-amarelo">
-                <hr class="secao5-hr-verde">
+          </div>
+          <div class="item" style="top: 79%; left: 56.5%">
+            <div class="icon icon-name" onclick="toggleTooltip(this)">SC</div>
+            <div class="tooltip" id="tooltip-1">
+              <h3>FLORIANOPOLIS</h3>
+              <p id="ResponsavelHaroldo">Responsável: Haroldo</p>
+              <p id="Telefone2">Telefone: 48 9921-0001</p>
+              <p>E-mail: fpolisrepresentacoes@hotmail.com</p>
             </div>
-            <div>
-                <img class="secao5-selo" src="./images/selo-100nacional.webp" alt="">
+          </div>
+          <div class="item" style="top: 73%; left: 53%">
+            <div class="icon icon-name" onclick="toggleTooltip(this)">PR</div>
+            <div class="tooltip" id="tooltip-1">
+              <h3>NOTUS</h3>
+              <p id="ResponsavelViviane">Responsável: Viviane</p>
+              <p id="Telefone3">Telefone: 11 99841-7696</p>
+              <p>E-mail: viviane@notus.ind.br</p>
             </div>
-        </section>
+          </div>
+          <div class="item" style="top: 67.5%; left: 60.5%">
+            <div class="icon icon-name" onclick="toggleTooltip(this)">SP</div>
+            <div class="tooltip" id="tooltip-1">
+              <h3>Notus</h3>
+              <p id="ResponsavelNotus1">Responsável: Notus</p>
+              <p id="Telefone4">Telefone: 11 4210-1997</p>
+              <p>E-mail: contato@notus.ind.br</p>
+              <hr />
+              <h3>TRADE</h3>
+              <p id="ResponsavelRogerio">Responsável: Rogério Longuino</p>
+              <p id="Telefone5">Telefone: 11 95454-6767</p>
+              <p>E-mail: rogerio@tradeparts.com.br</p>
+              <hr />
+              <h3>BROCK (Interior SP)</h3>
+              <p id="ResponsavelSilvanei">Responsável: Silvanei</p>
+              <p id="Telefone6">Telefone: 19 99215-2272</p>
+              <p>E-mail: silvanei@brockrepresentacoes.com.br</p>
+            </div>
+          </div>
+          <div class="item" style="top: 68%; left: 74%">
+            <div class="icon icon-name" onclick="toggleTooltip(this)">RJ</div>
+            <div class="tooltip" id="tooltip-1">
+              <h3>A2G</h3>
+              <p id="ResponsavelAlexandre">Responsável: Alexandre</p>
+              <p id="Telefone7">Telefone: 21 97043-9449</p>
+              <p>E-mail: a2grep@gmail.com</p>
+            </div>
+          </div>
+          <div class="item" style="top: 60%; left: 80%">
+            <div class="icon icon-name" onclick="toggleTooltip(this)">ES</div>
+            <div class="tooltip" id="tooltip-1">
+              <h3>TMB</h3>
+              <p id="ResponsavelTiago">Responsável: Tiago</p>
+              <p id="Telefone8">Telefone: 27 99738-5333</p>
+              <p>E-mail: tmb.rep@terra.com.br</p>
+            </div>
+          </div>
+          <div class="item" style="top: 58%; left: 70%">
+            <div class="icon icon-name" onclick="toggleTooltip(this)">MG</div>
+            <div class="tooltip" id="tooltip-1">
+              <h3>REMAP</h3>
+              <p id="ResponsavelIvo">Responsável: Ivo</p>
+              <p id="Telefone9">Telefone: 31 99982-1158</p>
+              <p>E-mail: ivo@remapltda.com.br</p>
+            </div>
+          </div>
+          <div class="item" style="top: 42.5%; left: 77%">
+            <div class="icon icon-name" onclick="toggleTooltip(this)">BA</div>
+            <div class="tooltip" id="tooltip-1">
+              <h3>RBR</h3>
+              <p id="ResponsavelRicardoBer1">Responsável: Ricardo Bernardino</p>
+              <p id="Telefone10">Telefone: 71 98199-3525</p>
+              <p>E-mail: ricardo@rbrltda.com.br</p>
+            </div>
+          </div>
+          <div class="item" style="top: 39%; left: 88.5%">
+            <div class="icon icon-name" onclick="toggleTooltip(this)">SE</div>
+            <div class="tooltip" id="tooltip-1">
+              <h3>RBR</h3>
+              <p id="ResponsavelRicardoBer2">Responsável: Ricardo Bernardino</p>
+              <p id="Telefone11">Telefone: 71 98199-3525</p>
+              <p>E-mail: ricardo@rbrltda.com.br</p>
+            </div>
+          </div>
+          <div class="item" style="top: 36.5%; left: 91%">
+            <div class="icon icon-name" onclick="toggleTooltip(this)">AL</div>
+            <div class="tooltip" id="tooltip-1">
+              <h3>RBR</h3>
+              <p id="ResponsavelRicardoBer3">Responsável: Ricardo Bernardino</p>
+              <p id="Telefone12">Telefone: 71 98199-3525</p>
+              <p>E-mail: ricardo@rbrltda.com.br</p>
+            </div>
+          </div>
+          <div class="item" style="top: 33.25%; left: 87%">
+            <div class="icon icon-name" onclick="toggleTooltip(this)">PE</div>
+            <div class="tooltip" id="tooltip-1">
+              <h3>RBR</h3>
+              <p id="ResponsavelRicardoBer4">Responsável: Ricardo Bernardino</p>
+              <p id="Telefone13">Telefone: 71 98199-3525</p>
+              <p>E-mail: ricardo@rbrltda.com.br</p>
+            </div>
+          </div>
+          <div class="item" style="top: 31.5%; left: 75%">
+            <div class="icon icon-name" onclick="toggleTooltip(this)">PI</div>
+            <div class="tooltip" id="tooltip-1">
+              <h3>RBR</h3>
+              <p id="ResponsavelRicardoBer5">Responsável: Ricardo Bernardino</p>
+              <p id="Telefone14">Telefone: 71 98199-3525</p>
+              <p>E-mail: ricardo@rbrltda.com.br</p>
+            </div>
+          </div>
+          <div class="item" style="top: 30.5%; left: 92%">
+            <div class="icon icon-name" onclick="toggleTooltip(this)">MA</div>
+            <div class="tooltip" id="tooltip-1">
+              <h3>Notus</h3>
+              <p id="ResponsavelNotus2">Responsável: Notus</p>
+              <p id="Telefone15">Telefone: 11 4210-1997</p>
+              <p>E-mail: contato@notus.ind.br</p>
+            </div>
+          </div>
+          <div class="item" style="top: 50.5%; left: 62.5%">
+            <div class="icon icon-name" onclick="toggleTooltip(this)">DF</div>
+            <div class="tooltip" id="tooltip-1">
+              <h3>FEDATO</h3>
+              <p id="ResponsavelHugo1">Responsável: Hugo</p>
+              <p id="Telefone16">Telefone: 62 99973-0276</p>
+              <p>E-mail: fedatol@terra.com.br</p>
+            </div>
+          </div>
+          <div class="item" style="top: 37%; left: 61%">
+            <div class="icon icon-name" onclick="toggleTooltip(this)">TO</div>
+            <div class="tooltip" id="tooltip-1">
+              <h3>FEDATO</h3>
+              <p id="ResponsavelHugo2">Responsável: Hugo</p>
+              <p id="Telefone17">Telefone: 62 99973-0276</p>
+              <p>E-mail: fedatol@terra.com.br</p>
+            </div>
+          </div>
+          <div class="item" style="top: 55%; left: 55%">
+            <div class="icon icon-name" onclick="toggleTooltip(this)">GO</div>
+            <div class="tooltip" id="tooltip-1">
+              <h3>FEDATO</h3>
+              <p id="ResponsavelHugo3">Responsável: Hugo</p>
+              <p id="Telefone18">Telefone: 62 99973-0276</p>
+              <p>E-mail: fedatol@terra.com.br</p>
+            </div>
+          </div>
+          <div class="item" style="top: 62%; left: 46%">
+            <div class="icon icon-name" onclick="toggleTooltip(this)">MS</div>
+            <div class="tooltip" id="tooltip-1">
+              <h3>Notus</h3>
+              <p id="ResponsavelNotus3">Responsável: Notus</p>
+              <p id="Telefone19">Telefone: 11 4210-1997</p>
+              <p>E-mail: contato@notus.ind.br</p>
+            </div>
+          </div>
+          <div class="item" style="top: 7.5%; left: 53%">
+            <div class="icon icon-name" onclick="toggleTooltip(this)">AP</div>
+            <div class="tooltip" id="tooltip-1">
+              <h3>Notus</h3>
+              <p id="ResponsavelNotus4">Responsável: Notus</p>
+              <p id="Telefone20">Telefone: 11 4210-1997</p>
+              <p>E-mail: contato@notus.ind.br</p>
+            </div>
+          </div>
+          <div class="item" style="top: 23%; left: 50%">
+            <div class="icon icon-name" onclick="toggleTooltip(this)">PA</div>
+            <div class="tooltip" id="tooltip-1">
+              <h3>Notus</h3>
+              <p id="ResponsavelNotus5">Responsável: Notus</p>
+              <p id="Telefone21">Telefone: 11 4210-1997</p>
+              <p>E-mail: contato@notus.ind.br</p>
+            </div>
+          </div>
+          <div class="item" style="top: 45%; left: 43%">
+            <div class="icon icon-name" onclick="toggleTooltip(this)">MT</div>
+            <div class="tooltip" id="tooltip-1">
+              <h3>Notus</h3>
+              <p id="ResponsavelNotus6">Responsável: Notus</p>
+              <p id="Telefone22">Telefone: 11 4210-1997</p>
+              <p>E-mail: contato@notus.ind.br</p>
+            </div>
+          </div>
+          <div class="item" style="top: 39%; left: 25%">
+            <div class="icon icon-name" onclick="toggleTooltip(this)">RO</div>
+            <div class="tooltip" id="tooltip-1">
+              <h3>T.A</h3>
+              <p id="ResponsavelJosue1">Responsável: Josué</p>
+              <p id="Telefone23">Telefone: 92 99614-1567</p>
+              <p>E-mail: tarep.am@gmail.com</p>
+              <hr />
+              <h3>BURALLI</h3>
+              <p id="ResponsavelBuralli1">Responsável: Buralli</p>
+              <p id="Telefone24">Telefone: 69 9960-2111</p>
+              <p>E-mail: representacoesburalli@hotmail.com</p>
+            </div>
+          </div>
+          <div class="item" style="top: 5%; left: 29%">
+            <div class="icon icon-name" onclick="toggleTooltip(this)">RR</div>
+            <div class="tooltip" id="tooltip-1">
+              <h3>T.A</h3>
+              <p id="ResponsavelJosue2">Responsável: Josué</p>
+              <p id="Telefone25">Telefone: 92 99614-1567</p>
+              <p>E-mail: tarep.am@gmail.com</p>
+            </div>
+          </div>
+          <div class="item" style="top: 34.5%; left: 7%">
+            <div class="icon icon-name" onclick="toggleTooltip(this)">AC</div>
+            <div class="tooltip" id="tooltip-1">
+              <h3>BURALLI</h3>
+              <p id="ResponsavelBuralli2">Responsável: Buralli</p>
+              <p id="Telefone26">Telefone: 69 9960-2111</p>
+              <p>E-mail: representacoesburalli@hotmail.com</p>
+            </div>
+          </div>
+          <div class="item" style="top: 23%; left: 20%">
+            <div class="icon icon-name" onclick="toggleTooltip(this)">AM</div>
+            <div class="tooltip" id="tooltip-1">
+              <h3>T.A</h3>
+              <p id="ResponsavelJosue3">Responsável: Josué</p>
+              <p id="Telefone27">Telefone: 92 99614-1567</p>
+              <p>E-mail: tarep.am@gmail.com</p>
+            </div>
+          </div>
+        </div>
+        <div class="secao5-hr">
+          <hr class="secao5-hr-amarelo" />
+          <hr class="secao5-hr-verde" />
+        </div>
+        <div>
+          <img
+            class="secao5-selo"
+            src="./images/selo-100nacional.webp"
+            alt=""
+          />
+        </div>
+      </section>
     </main>
     <footer class="container-footer">
-        <div class="footer-containersub">
-            <div class="footer-containersub-div">
-                <h3><strong>Menu</strong></h3>
-                <ul class="footer-lista">
-                    <li><a href="sobrenotus.html">Sobre Notus</a></li>
-                    <li><a href="trabalheconosco.html">Trabalhe Conosco</a></li>
-                    <li><a href="garantia.html">Garantia</a></li>
-                    <li><a href="representantes.html">Representantes</a></li>
-                    <li><a href="#" target="_blank">Blog</a></li>
-                    <li><a href="contato.html">Contato</a></li>
-                    <li><a href="https://catalogonotus.vipsoft.com.br/" target="_blank">Catálogo</a></li>
-                </ul>
-            </div>
-            <div class="footer-containersub-div">
-                <h3><strong>Lista de Produtos</strong></h3>
-                <ul class="footer-lista">
-                    <li><a href="#">Radiador</a></li>
-                    <li><a href="#">Eletroventilador</a></li>
-                    <li><a href="#">GMV</a></li>
-                    <li><a href="#">Condensador</a></li>
-                    <li><a href="#">Evaporador</a></li>
-                    <li><a href="#">Radiador de óleo</a></li>
-                    <li><a href="#">Radiador de aquecimento</a></li>
-                    <li><a href="#">Ventilador interno</a></li>
-                    <!-- <li><a href="#"></a>Compressor A/C</li> -->
-                </ul>
-            </div>
-            <div class="footer-containersub-div">
-                <h3><strong>Fale Conosco</strong></h3>
-                <ul class="footer-lista">
-                    <li class="footer-lista-faleconosco-separador"><i class="fa-solid fa-phone"></i><a href="tel:+551142101997">(11) 4210-1997</a></li>
-                    <li class="footer-lista-faleconosco-separador"><i class="fa-solid fa-phone"></i><a href="tel:+551142101997">(11) 4210-1998</a></li>
-                    <li class="footer-lista-faleconosco-separador"><i class="fa-solid fa-phone"></i><a href="tel:+551142101997">(11) 2413-6550</a></li>
-                    <li class="footer-lista-faleconosco-separador"><i class="fa-solid fa-envelope"></i></i><a href="mailto:contato@notus.ind.br">contato@notus.ind.br</a></li>
-                </ul>
-                <div class="footer-redessociais">
-                    <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
-                    <a href="https://www.instagram.com/notusdobrasil" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="https://www.facebook.com/profile.php?id=61559166240715" target="_blank"><i class="fa-brands fa-facebook"></i></a>
-                    <a href="https://www.youtube.com/@NotusdoBrasil" target="_blank"><i class="fa-brands fa-youtube"></i></a>
-                    <a href="https://www.linkedin.com/company/notus-do-brasil" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
-                </div>
-            </div>
+      <div class="footer-containersub">
+        <div class="footer-containersub-div">
+          <h3><strong>Menu</strong></h3>
+          <ul class="footer-lista">
+            <li>
+              <a id="SobreNotusFooter" href="sobrenotus.html">Sobre Notus</a>
+            </li>
+            <li>
+              <a id="TrabalheConoscoFooter" href="trabalheconosco.html"
+                >Trabalhe Conosco</a
+              >
+            </li>
+            <li><a id="GarantiaFooter" href="garantia.html">Garantia</a></li>
+            <li>
+              <a id="RepresentantesFooter" href="representantes.html"
+                >Representantes</a
+              >
+            </li>
+            <li><a href="#" target="_blank">Blog</a></li>
+            <li><a id="ContatoFooter" href="contato.html">Contato</a></li>
+            <li>
+              <a
+                id="CatálogoFooter"
+                href="https://catalogonotus.vipsoft.com.br/"
+                target="_blank"
+                >Catálogo</a
+              >
+            </li>
+          </ul>
         </div>
-        <div class="footer-faixa">
-            <p>Desenvolvido por Notus Sistemas Térmicos do Brasil © Todos os direitos reservados</p>
+        <div class="footer-containersub-div">
+          <h3 id="ListadeProdutos"><strong>Lista de Produtos</strong></h3>
+          <ul class="footer-lista">
+            <li><a id="RadiadorFooter" href="#">Radiador</a></li>
+            <li>
+              <a id="EletroventiladorFooter" href="#">Eletroventilador</a>
+            </li>
+            <li><a href="#">GMV</a></li>
+            <li><a id="CondensadorFooter" href="#">Condensador</a></li>
+            <li><a id="EvaporadorFooter" href="#">Evaporador</a></li>
+            <li><a id="RadiadordeoleoFooter" href="#">Radiador de óleo</a></li>
+            <li>
+              <a id="RadiadordeAquecimentoFooter" href="#"
+                >Radiador de aquecimento</a
+              >
+            </li>
+            <li>
+              <a id="VentiladorInternoFooter" href="#">Ventilador interno</a>
+            </li>
+            <!-- <li><a href="#"></a>Compressor A/C</li> -->
+          </ul>
         </div>
+        <div class="footer-containersub-div">
+          <h3 id="FaleConoscoFooter"><strong>Fale Conosco</strong></h3>
+          <ul class="footer-lista">
+            <li class="footer-lista-faleconosco-separador">
+              <i class="fa-solid fa-phone"></i
+              ><a href="tel:+551142101997">(11) 4210-1997</a>
+            </li>
+            <li class="footer-lista-faleconosco-separador">
+              <i class="fa-solid fa-phone"></i
+              ><a href="tel:+551142101997">(11) 4210-1998</a>
+            </li>
+            <li class="footer-lista-faleconosco-separador">
+              <i class="fa-solid fa-phone"></i
+              ><a href="tel:+551142101997">(11) 2413-6550</a>
+            </li>
+            <li class="footer-lista-faleconosco-separador">
+              <i class="fa-solid fa-envelope"></i
+              ><a href="mailto:contato@notus.ind.br">contato@notus.ind.br</a>
+            </li>
+          </ul>
+          <div class="footer-redessociais">
+            <i onclick="openSearch()" class="fa-solid fa-magnifying-glass"></i>
+            <a href="https://www.instagram.com/notusdobrasil" target="_blank"
+              ><i class="fa-brands fa-instagram"></i
+            ></a>
+            <a
+              href="https://www.facebook.com/profile.php?id=61559166240715"
+              target="_blank"
+              ><i class="fa-brands fa-facebook"></i
+            ></a>
+            <a href="https://www.youtube.com/@NotusdoBrasil" target="_blank"
+              ><i class="fa-brands fa-youtube"></i
+            ></a>
+            <a
+              href="https://www.linkedin.com/company/notus-do-brasil"
+              target="_blank"
+              ><i class="fa-brands fa-linkedin"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-faixa">
+        <p id="DesenvolvidoporNotus">
+          Desenvolvido por Notus Sistemas Térmicos do Brasil © Todos os direitos
+          reservados
+        </p>
+      </div>
     </footer>
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    <script src="js/representantes.js"></script>
     <script>
-        function toggleTooltip(element) {
-            const tooltip = element.nextElementSibling; // Pega o próximo elemento (tooltip)
-            
-            // Alterna a visibilidade do tooltip
-            if (tooltip.style.opacity === "1") {
-                tooltip.style.opacity = "0"; // Fecha o tooltip
-                tooltip.style.display = "none";                
-                tooltip.parentElement.style.zIndex = 900;
-            } else {
-                tooltip.style.opacity = "1"; // Abre o tooltip
-                tooltip.style.display = "flex";
-                tooltip.parentElement.style.zIndex = 1000;
-            }
+      function toggleTooltip(element) {
+        const tooltip = element.nextElementSibling; // Pega o próximo elemento (tooltip)
+
+        // Alterna a visibilidade do tooltip
+        if (tooltip.style.opacity === "1") {
+          tooltip.style.opacity = "0"; // Fecha o tooltip
+          tooltip.style.display = "none";
+          tooltip.parentElement.style.zIndex = 1;
+        } else {
+          tooltip.style.opacity = "1"; // Abre o tooltip
+          tooltip.style.display = "flex";
+          tooltip.parentElement.style.zIndex = 2;
         }
-    
-        // Adiciona um listener para fechar o tooltip se clicar fora dele
-        document.addEventListener("click", function(event) {
-            const tooltips = document.querySelectorAll('.tooltip');
-            tooltips.forEach(tooltip => {
-                if (!tooltip.contains(event.target) && !tooltip.previousElementSibling.contains(event.target)) {
-                    tooltip.style.opacity = "0"; // Fecha o tooltip se clicar fora
-                    tooltip.style.display = "none"; // Fecha o tooltip se clicar fora
-                    tooltip.parentElement.style.zIndex = 900;
-                }
-            });
+      }
+
+      // Adiciona um listener para fechar o tooltip se clicar fora dele
+      document.addEventListener("click", function (event) {
+        const tooltips = document.querySelectorAll(".tooltip");
+        tooltips.forEach((tooltip) => {
+          if (
+            !tooltip.contains(event.target) &&
+            !tooltip.previousElementSibling.contains(event.target)
+          ) {
+            tooltip.style.opacity = "0"; // Fecha o tooltip se clicar fora
+            tooltip.style.display = "none"; // Fecha o tooltip se clicar fora
+            tooltip.parentElement.style.zIndex = 1;
+          }
         });
+      });
     </script>
-</body>
+  </body>
 </html>

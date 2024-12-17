@@ -1,285 +1,740 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/reset.css">
-    <link rel="stylesheet" href="./styles/style.css">
-    <link rel="stylesheet" href="./styles/responsividade.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="icon" href="./images/icone-logosite-quadrado-mask1.svg">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="styles/reset.css" />
+    <link rel="stylesheet" href="./styles/style.css" />
+    <link rel="stylesheet" href="./styles/responsividade.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="icon" href="./images/icone-logosite-quadrado-mask1.svg" />
     <title>Notus do Brasil</title>
-</head>
-<body>
+  </head>
+  <body>
     <!-- HEADER -->
+    <iframe class="framePesquisa" src="pesquisa.html"></iframe>
+    <h1 onclick="closeSearch()" class="closeButton">X</h1>
     <header class="header-container">
-        <!-- NAVEGACAO 1 -->
-        <nav class="nav-contacts">
-            <div class="header-contatos">
-                <a href="tel:+551142101997"><i class="fa-solid fa-phone"></i></a>
-                <a class="header-contacts-text" href="tel:+551142101997">
-                (11) 4210-1997
-                </a>
-                <a href="mailto:contato@notus.ind.br"><i class="fa-solid fa-envelope"></i></a>
-                <a class="header-contacts-text" href="mailto:contato@notus.ind.br">
-                contato@notus.ind.br
-                </a>
-            </div>
-            <div class="header-redessociais">
-                <a href="">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </a>
-                <a href="https://www.instagram.com/notusdobrasil" target="_blank">
-                    <i class="fa-brands fa-instagram"></i>
-                </a>
-                <a href="https://www.facebook.com/profile.php?id=61559166240715" target="_blank">
-                    <i class="fa-brands fa-facebook"></i>
-                </a>
-                <a href="https://www.youtube.com/@NotusdoBrasil" target="_blank">
-                    <i class="fa-brands fa-youtube"></i>
-                </a>
-                <a href="https://www.linkedin.com/company/notus-do-brasil" target="_blank">
-                    <i class="fa-brands fa-linkedin"></i>
-                </a>
-            </div>
-        </nav>
-        <!-- NAVEGACAO 2 -->
-        <nav class="nav-navegacao">
-            <div>
-                <a href="index.html"><img class="header-logo" src="./images/logo-notus-azul.svg" alt="Logo Notus do Brasil"></a>
-            </div>
-            <div class="nav-navegacao-container-text">
-                <a class="nav-navegacao-text" href="sobrenotus.html">Sobre Notus</a>
-                <a class="nav-navegacao-text" href="trabalheconosco.html">Trabalhe Conosco</a>
-                <a class="nav-navegacao-text" href="garantia.html">Garantia</a>
-                <a class="nav-navegacao-text" href="representantes.html">Representantes</a>
-                <a class="nav-navegacao-text" href="#">Blog</a>
-                <a class="nav-navegacao-text" href="contato.html">Contato</a>
-            </div>
-            <div>
-                <a class="nav-navegacao-catalogo" href="#">Catálogo</a>
-            </div>
-        </nav>
+      <!-- NAVEGACAO 1 -->
+      <nav class="nav-contacts">
+        <div class="header-contatos">
+          <a href="tel:+551142101997"><i class="fa-solid fa-phone"></i></a>
+          <a class="header-contacts-text" href="tel:+551142101997">
+            (11) 4210-1997
+          </a>
+          <a href="mailto:contato@notus.ind.br"
+            ><i class="fa-solid fa-envelope"></i
+          ></a>
+          <a class="header-contacts-text" href="mailto:contato@notus.ind.br">
+            contato@notus.ind.br
+          </a>
+        </div>
+        <div class="header-redessociais">
+          <i onclick="openSearch()" class="fa-solid fa-magnifying-glass"></i>
+          <a href="https://www.instagram.com/notusdobrasil" target="_blank">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+          <a
+            href="https://www.facebook.com/profile.php?id=61559166240715"
+            target="_blank"
+          >
+            <i class="fa-brands fa-facebook"></i>
+          </a>
+          <a href="https://www.youtube.com/@NotusdoBrasil" target="_blank">
+            <i class="fa-brands fa-youtube"></i>
+          </a>
+          <a
+            href="https://www.linkedin.com/company/notus-do-brasil"
+            target="_blank"
+          >
+            <i class="fa-brands fa-linkedin"></i>
+          </a>
+          <div class="language-selector">
+            <img
+              onclick="changeLanguage('pt')"
+              src="./images/brasilflag.png"
+              alt="Brazil"
+              class="flag"
+            />
+            <img
+              onclick="changeLanguage('es')"
+              src="./images/spainflag.png"
+              alt="Spain"
+              class="flag"
+            />
+            <img
+              onclick="changeLanguage('en')"
+              src="./images/usaflag.png"
+              alt="USA"
+              class="flag"
+            />
+          </div>
+        </div>
+      </nav>
+      <!-- NAVEGACAO 2 -->
+      <nav class="nav-navegacao">
+        <div>
+          <a href="index.html"
+            ><img
+              class="header-logo"
+              src="./images/logo-notus-azul.svg"
+              alt="Logo Notus do Brasil"
+          /></a>
+        </div>
+        <div class="nav-navegacao-container-text">
+          <a
+            id="SobreNotusNav"
+            class="nav-navegacao-text"
+            href="sobrenotus.html"
+            >Sobre Notus</a
+          >
+          <a
+            id="TrabalheConoscoNav"
+            class="nav-navegacao-text"
+            href="trabalheconosco.html"
+            >Trabalhe Conosco</a
+          >
+          <a id="GarantiaNav" class="nav-navegacao-text" href="garantia.html"
+            >Garantia</a
+          >
+          <a
+            id="RepresentantesNav"
+            class="nav-navegacao-text"
+            href="representantes.html"
+            >Representantes</a
+          >
+          <a class="nav-navegacao-text" href="#">Blog</a>
+          <a id="ContatoNav" class="nav-navegacao-text" href="contato.html"
+            >Contato</a
+          >
+        </div>
+        <div class="nav-navegacao-catalogo-burguer">
+          <a id="CatálogoNav" class="nav-navegacao-catalogo" href="#"
+            >Catálogo</a
+          >
+
+          <div
+            class="menu-icon"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+            id="hamburger-menu"
+            onclick="toggleMenu(this)"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <nav
+            class="dropdown-menu dropdown-menu-right drop-down-burger"
+            id="nav"
+          >
+            <ul>
+              <li class="dropdown-item">
+                <a id="SobreNotusBurger" href="sobrenotus.html">Sobre Notus</a>
+              </li>
+              <li class="dropdown-item">
+                <a id="TrabalheConoscoBurger" href="trabalheconosco.html"
+                  >Trabalhe Conosco</a
+                >
+              </li>
+              <li class="dropdown-item">
+                <a id="GarantiaBurger" href="garantia.html">Garantia</a>
+              </li>
+              <li class="dropdown-item">
+                <a id="RepresentantesBurger" href="representantes.html"
+                  >Representantes</a
+                >
+              </li>
+              <li class="dropdown-item">
+                <a href="#" target="_blank">Blog</a>
+              </li>
+              <li class="dropdown-item">
+                <a id="ContatoBurger" href="contato.html">Contato</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </nav>
     </header>
     <!-- MAIN -->
     <main>
-        <!-- SECAO 1 - APRESENTACAO -->
-        <section class="comps-secao1-container">
-            <div class="comps-secao1-overlay"></div>
-            <div class="comps-secao1-conteudogeral">
-                <div class="comps-secao1-conteudo-div1">
-                    <h1>Conheça nossa jornada no setor automotivo!</h1>
-                    <p>Atuando desde 2007 no mercado repositor de arrefecimento automotivo, contemplamos o maior portfólio de produtos do mercado brasileiro, sempre seguindo nosso lema: qualidade, produtividade, confiança e fazer a diferença. A Notus se tornou uma das maiores referências no seguimento.</p>
-                    <h3>Conheça também as empresas do Grupo Notus!</h3>
-                    <div class="comps-secao1-div-botoes">
-                        <a href="https://www.vipsoft.com.br/" target="_blank"><img src="./images/logo-vipsoft-branco1.svg" alt=""></a>
-                        <a href="https://www.notustooling.com.br/" target="_blank"><img src="./images/logo-notustooling-branco1.svg" alt=""></a>
-                        <a href="#" target="_blank"> <img src="./images/logo-ntr-branco1.svg" alt=""></a>
-                    </div>
-                </div>
-                <div class="comps-secao1-video-container">
-                    <iframe class="comps-secao1-video-shadow" src="https://www.youtube.com/embed/0fGUlVtAZ6o?si=71Y-y1lqTs7QIY6W" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                </div>
+      <div class="whatsapp-container">
+        <div>
+          <a class="whatsapp-botao"
+            ><img
+              class="whatsapp-icone"
+              src="./images/icone-whatsapp.svg"
+              alt="Entrar em contato por Whatsapp"
+          /></a>
+          <div class="x-icone" style="display: none">X</div>
+          <p id="Precisadeajuda" class="whatsapp-text-cta">
+            Precisa de ajuda? Fale conosco pelo
+            <strong class="secao2-titulo-cinza" style="font-weight: 700"
+              >Whatsapp!</strong
+            >
+          </p>
+        </div>
+        <div class="card-whatsapp-container">
+          <div class="card-whatsapp-sup">
+            <img
+              src="./images/icone-whatsapp.svg"
+              alt="Entrar em contato por Whatsapp"
+            />
+            <div class="card-whatsapp-sup-text-container">
+              <h2 id="FaleConoscoWACARD">Fale Conosco!</h2>
+              <p id="atendidoimediatamente">
+                Olá! Clique em um de nossos membros da equipe para ser atendido
+                imediatamente pelo Whatsapp!
+              </p>
             </div>
-        </section>
-        <!-- SECAO 2 - TITULO QUEM SOMOS -->
-        <section class="secao2-container">
-            <h2 class="secao2-titulo">
-                <strong>Saiba mais</strong> sobre nós
-            </h2>
-        </section>
-        <!-- SECAO 2 - QUEM SOMOS -->
-        <section class="comp-secao2-container">
-            <div class="comp-secao2-grid">
-                <div class="secao2-grid-img">
-                    <img src="./images/imagem-notusfrente.webp" alt="">
-                </div>
-                <div class="comp-secao2-grid-text">
-                    <h3>Quem <strong class="comps-titulo-azul">somos</strong></h3>
-                    <p>Se você veio conhecer um pouco mais sobre nós… Você veio ao lugar certo! Muito prazer, somos a <strong class="comps-titulo-azul">Notus Sistemas Térmicos do Brasil LTDA</strong>, mas pode nos chamar de <strong class="comps-titulo-azul">Notus</strong> <strong class="comps-titulo-amarelo">do</strong> <strong class="comps-titulo-verde">Brasil!<br><br>
-                    </strong>Somos uma empresa, <strong class="comps-titulo-verde">orgulhosamente, Brasileira</strong> <strong class="comps-titulo-azul">Especializados em sistemas de Arrefecimento e Climatização</strong> de veículos automotores. Nós fomentamos o mercado brasileiro com produtos importados e <strong class="comps-titulo-azul">fabricados</strong> <strong class="comps-titulo-amarelo">no</strong> <strong class="comps-titulo-verde">Brasil.</strong><br><br> Buscamos sempre entregar um <strong class="comps-titulo-azul">relacionamento personalizado</strong> e uma boa experiência aos nossos clientes, os Parceiros Notus! Para isso, mantemos contato e preservamos a amizade e bons modos com nossos Parceiros, <strong class="comps-titulo-azul">desenvolvemos nossos próprios maquinários, moldes de fabricação e sistema ERP</strong>, por meio do Grupo Notus!<br><br>Confira nossa <strong class="comps-titulo-azul">Missão, Visão e Valores</strong>, significado da marca, história e diferenciais, além das fotos da nossa <strong class="comps-titulo-azul">Super Equipe!</strong></p>
-                </div>
+          </div>
+          <div class="card-whatsapp-bottom">
+            <!-- Os minutos podem ser calculados automaticamente sobre o quanto eles demoram para iniciar os atendimentos? -->
+            <p id="respondeemalgunsminutos">
+              A equipe normalmente responde em alguns minutos.
+            </p>
+            <a
+              class="card-whatsapp-bottom-botao"
+              href="https://wa.me/5511945478542"
+              target="_blank"
+            >
+              <hr />
+              <img
+                src="./images/icone-whatsapp.svg"
+                alt="Entrar em contato por Whatsapp"
+              />
+              <div class="card-whatsapp-bottom-botao-text">
+                <h3>Alex</h3>
+                <p >Comercial</p>
+              </div>
+            </a>
+            <a
+              class="card-whatsapp-bottom-botao"
+              href="https://wa.me/5511975174745"
+              target="_blank"
+            >
+              <hr />
+              <img
+                src="./images/icone-whatsapp.svg"
+                alt="Entrar em contato por Whatsapp"
+              />
+              <div class="card-whatsapp-bottom-botao-text">
+                <h3>Carlos</h3>
+                <p >Comercial</p>
+              </div>
+            </a>
+            <a
+              class="card-whatsapp-bottom-botao"
+              href="https://wa.me/551142101998"
+              target="_blank"
+            >
+              <hr />
+              <img
+                src="./images/icone-whatsapp.svg"
+                alt="Entrar em contato por Whatsapp"
+              />
+              <div class="card-whatsapp-bottom-botao-text">
+                <h3>Luciano</h3>
+                <p >Comercial</p>
+              </div>
+            </a>
+            <a
+              class="card-whatsapp-bottom-botao"
+              href="https://wa.me/551142101997"
+              target="_blank"
+            >
+              <hr />
+              <img
+                src="./images/icone-whatsapp.svg"
+                alt="Entrar em contato por Whatsapp"
+              />
+              <div class="card-whatsapp-bottom-botao-text">
+                <h3>Viviane</h3>
+                <p >Comercial</p>
+              </div>
+            </a>
+            <a
+              class="card-whatsapp-bottom-botao"
+              href="https://wa.me/551124136550"
+              target="_blank"
+            >
+              <hr />
+              <img
+                src="./images/icone-whatsapp.svg"
+                alt="Entrar em contato por Whatsapp"
+              />
+              <div class="card-whatsapp-bottom-botao-text">
+                <h3>Welton</h3>
+                <p >Comercial</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+      <!-- SECAO 1 - APRESENTACAO -->
+      <section class="comps-secao1-container">
+        <div class="comps-secao1-overlay"></div>
+        <div class="comps-secao1-conteudogeral">
+          <div class="comps-secao1-conteudo-div1">
+            <h1 id="Conhecanossajornada">
+              Conheça nossa jornada no setor automotivo!
+            </h1>
+            <p id="Atuandodesde2007">
+              Atuando desde 2007 no mercado repositor de arrefecimento
+              automotivo, contemplamos o maior portfólio de produtos do mercado
+              brasileiro, sempre seguindo nosso lema: qualidade, produtividade,
+              confiança e fazer a diferença. A Notus se tornou uma das maiores
+              referências no seguimento.
+            </p>
+            <h3 id="Conhecatambemas">
+              Conheça também as empresas do Grupo Notus!
+            </h3>
+            <div class="comps-secao1-div-botoes">
+              <a href="https://www.vipsoft.com.br/" target="_blank"
+                ><img src="./images/logo-vipsoft-branco1.svg" alt=""
+              /></a>
+              <a href="https://www.notustooling.com.br/" target="_blank"
+                ><img src="./images/logo-notustooling-branco1.svg" alt=""
+              /></a>
+              <a href="#" target="_blank">
+                <img src="./images/logo-ntr-branco1.svg" alt=""
+              /></a>
             </div>
-        </section>
-        <!-- SECAO 3 - TITULO MISSÃO, VISÃO E VALORES -->
-        <section class="secao2-container">
-            <h2 class="secao2-titulo">
-                Nossa <strong>missão, visão e valores</strong>
-            </h2>
-        </section>
-        <!-- SECAO 3 - MISSÃO, VISÃO E VALORES -->
-        <section class="container">
-            <div class="grid-1x3">
-                <div class="card">
-                    <div class="card-icon">
-                        <i class="fa-solid fa-rocket"></i>
-                    </div>
-                    <div class="card-titulo">
-                        <h3>Missão</h3>
-                    </div>
-                    <hr>
-                    <div class="card-titulo">
-                        <p>Oferecer as melhores soluções em sistemas de arrefecimento e climatização de veículos automotores, nos tornando a maior referência deste mercado e elevando o nome do Brasil pelo mundo.</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-icon">
-                        <i class="fa-solid fa-binoculars"></i>
-                    </div>
-                    <div class="card-titulo">
-                        <h3>Visão</h3>
-                    </div>
-                    <hr>
-                    <div class="card-titulo">
-                        <p>Ser reconhecida em todo o MERCOSUL como líder do setor de arrefecimento automotivo pela qualidade de nossos produtos, procedimentos e gestão de pessoas, estando entre as melhores empresas para se trabalhar na América do Sul.</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-icon">
-                        <i class="fa-solid fa-gem"></i>
-                    </div>
-                    <div class="card-titulo">
-                        <h3>Valores</h3>
-                    </div>
-                    <hr>
-                    <div class="card-titulo">
-                        <p>Fruto da concepção de vida da nossa empresa e de cada um de nós, estes valores representam nosso jeito de ser e orientam nossa conduta profissional e pessoal, individual e coletivamente: Qualidade, Produtividade, Confiança e Fazer a diferença.</p>
-                    </div>
-                </div>
-        </section>
-        <!-- SECAO 4 - TITULO SIGNIFICADO DA MARCA -->
-        <section class="secao2-container">
-            <h2 class="secao2-titulo">
-                <strong>Significado</strong> da marca
-            </h2>
-        </section>
-        <!-- SECAO 4 - SIGNIFICADO DA MARCA -->
-        <section class="container">
-            <div class="comp-secao4-grid">
-                <div class="comp-secao2-grid-text">
-                    <p><strong>Temos grande orgulho da nossa marca,</strong> precisávamos de um nome que tivesse tudo a ver conosco e contesse um <strong>significado maior</strong> por trás!<br><br>Por isso, depois de muita pesquisa, finalmente encontramos nossa a marca, Notus!<br><br><strong>“Notus” vem de “Noto”</strong>, em latim “Notus”, que <strong>significa “deus do vento do sul”</strong> ou “grande vento do sul”.<br><br><strong>Por que “deus do vento do sul”?</strong> Escolhemos este nome porque o <strong>principal componente de um radiador,</strong> nosso principal produto, <strong>é o vento</strong>, sem ele nada resfria e o radiador não pode fazer a sua função. Além disso, somos uma empresa <strong class="comps-titulo-verde">orgulhosamente brasileira.</strong> Por isso, <strong>só podia ser “Notus”</strong>, o deus do vento do sul, <strong>“Notus</strong> <strong class="comps-titulo-amarelo">do</strong> <strong class="comps-titulo-verde">Brasil”!</strong></p>
-                </div>
-                <div class="comps-secao4-video-container">
-                    <iframe src="https://www.youtube.com/embed/0fGUlVtAZ6o?si=WG1IB1zjHzNAlmSK&amp;start=66" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                </div>
+          </div>
+          <div class="comps-secao1-video-container">
+            <iframe
+              class="comps-secao1-video-shadow"
+              src="https://www.youtube.com/embed/0fGUlVtAZ6o?si=71Y-y1lqTs7QIY6W"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </div>
+      </section>
+      <!-- SECAO 2 - TITULO QUEM SOMOS -->
+      <section class="secao2-container">
+        <h2 id="Saibamais" class="secao2-titulo">
+          <strong>Saiba mais</strong> sobre nós
+        </h2>
+      </section>
+      <!-- SECAO 2 - QUEM SOMOS -->
+      <section class="comp-secao2-container">
+        <div class="comp-secao2-grid">
+          <div class="secao2-grid-img">
+            <img src="./images/imagem-notusfrente.webp" alt="" />
+          </div>
+          <div class="comp-secao2-grid-text">
+            <h3 id="Quemsomos">
+              Quem <strong class="comps-titulo-azul">somos</strong>
+            </h3>
+            <p id="Sevoceveioconhecer">
+              Se você veio conhecer um pouco mais sobre nós… Você veio ao lugar
+              certo! Muito prazer, somos a
+              <strong class="comps-titulo-azul"
+                >Notus Sistemas Térmicos do Brasil LTDA</strong
+              >, mas pode nos chamar de
+              <strong class="comps-titulo-azul">Notus</strong>
+              <strong class="comps-titulo-amarelo">do</strong>
+              <strong class="comps-titulo-verde">Brasil!<br /><br /> </strong
+              >Somos uma empresa,
+              <strong class="comps-titulo-verde"
+                >orgulhosamente, Brasileira</strong
+              >
+              <strong class="comps-titulo-azul"
+                >Especializados em sistemas de Arrefecimento e
+                Climatização</strong
+              >
+              de veículos automotores. Nós fomentamos o mercado brasileiro com
+              produtos importados e
+              <strong class="comps-titulo-azul">fabricados</strong>
+              <strong class="comps-titulo-amarelo">no</strong>
+              <strong class="comps-titulo-verde">Brasil.</strong><br /><br />
+              Buscamos sempre entregar um
+              <strong class="comps-titulo-azul"
+                >relacionamento personalizado</strong
+              >
+              e uma boa experiência aos nossos clientes, os Parceiros Notus!
+              Para isso, mantemos contato e preservamos a amizade e bons modos
+              com nossos Parceiros,
+              <strong class="comps-titulo-azul"
+                >desenvolvemos nossos próprios maquinários, moldes de fabricação
+                e sistema ERP</strong
+              >, por meio do Grupo Notus!<br /><br />Confira nossa
+              <strong class="comps-titulo-azul">Missão, Visão e Valores</strong
+              >, significado da marca, história e diferenciais, além das fotos
+              da nossa <strong class="comps-titulo-azul">Super Equipe!</strong>
+            </p>
+          </div>
+        </div>
+      </section>
+      <!-- SECAO 3 - TITULO MISSÃO, VISÃO E VALORES -->
+      <section class="secao2-container">
+        <h2 id="Nossamissao" class="secao2-titulo">
+          Nossa <strong>missão, visão e valores</strong>
+        </h2>
+      </section>
+      <!-- SECAO 3 - MISSÃO, VISÃO E VALORES -->
+      <section class="container">
+        <div class="grid-1x3">
+          <div class="card">
+            <div class="card-icon">
+              <i class="fa-solid fa-rocket"></i>
             </div>
-        </section>
-        <section>
-            <div class="posicionamento-img">
-                <img src="./images/icone-rosadosventos.svg" alt="">
+            <div class="card-titulo">
+              <h3 id="MissaoTitulo">Missão</h3>
             </div>
-        </section>
-        <!-- SECAO 5 - TITULO CONHEÇA UM POUCO DA NOSSA HISTÓRIA -->
-        <section class="secao2-container">
-            <h2 class="secao2-titulo">
-                <strong>Conheça</strong> um pouco da nossa <strong>História</strong>
-            </h2>
-        </section>
-        <!-- SECAO 5 - CONHEÇA UM POUCO DA NOSSA HISTÓRIA -->
-        <section class="container-sobrenotus">
-            <div class="div-linha-reverse">
-                <div class="historia-div-text">
-                    <h3>INICIO DA MARCA</h3>
-                    <p>Desde 2007 atuando no mercado de reposição na área de <strong class="texto-cinza-bold">Arrefecimento automotivo</strong> Nacional, com produtos e conceitos inovadores, a <strong>Notus Sistemas Térmicos Do Brasil</strong> se orgulha de, em tão pouco tempo, estar ranqueada entre as 5 maiores empresas deste seguimento.</p>
-                </div>
-                <div class="historia-div-img">
-                    <img src="./images/imagem-notuscima.webp" alt="">
-                </div>
+            <hr />
+            <div class="card-titulo">
+              <p id="Oferecerasmelhores">
+                Oferecer as melhores soluções em sistemas de arrefecimento e
+                climatização de veículos automotores, nos tornando a maior
+                referência deste mercado e elevando o nome do Brasil pelo mundo.
+              </p>
             </div>
-            <div class="div-linha">
-                <div class="historia-div-img">
-                    <img src="./images/imagem-notuscima.webp" alt="">
-                </div>
-                <div class="historia-div-text">
-                    <h3>AVANÇO NO PORTFÓLIO</h3>
-                    <p>Com esse modelo de trabalho, em 2011, <strong class="texto-cinza-bold">conseguimos atender as necessidades de nossos clientes</strong>, trabalhamos duro para ativar a marca nos pontos de vendas. <strong>Participando das feiras mais importantes do mercado</strong> de reposição automotiva, tivemos a oportunidade de mostrar nosso <strong class="texto-cinza-bold">compromisso com a qualidade e eficiência dos nossos produtos.</strong></p>
-                </div>
+          </div>
+          <div class="card">
+            <div class="card-icon">
+              <i class="fa-solid fa-binoculars"></i>
             </div>
-            <div class="div-linha-reverse">
-                <div class="historia-div-text">
-                    <h3>NOVAS ACOMODAÇÕES</h3>
-                    <p>Com sede localizada na cidade de Salto, interior de São Paulo, possuímos uma <strong>área com 25.000 m²</strong> e uma <strong>estrutura de mais de 16.000 m² de área construída,</strong> um sistema de armazenagem Porta Pallets de dupla profundidade, com <strong>capacidade de estocagem para mais de 500.000 peças</strong> tendo uma ampla variação de modelos do sistema de arrefecimento automotivo <strong>totalizando mais de 2.500 itens diversificados.</strong></p>
-                </div>
-                <div class="historia-div-img">
-                    <img src="./images/imagem-notuscima.webp" alt="">
-                </div>
+            <div class="card-titulo">
+              <h3 id="VisaoTitulo">Visão</h3>
             </div>
-            <div class="div-linha">
-                <div class="historia-div-img">
-                    <img src="./images/imagem-notuscima.webp" alt="">
-                </div>
-                <div class="historia-div-text">
-                    <h3>FABRICAÇÃO NACIONAL</h3>
-                    <p>A <strong class="texto-cinza-bold">fabricação de itens nacionais</strong> se iniciou em Janeiro de 2020. Entre 2020 e 2024 nós <strong>já fabricamos mais de 1.000.000 de radiadores.</strong> Durante nossa história, até 2024, <strong class="texto-cinza-bold">já abastecemos o mercado brasileiro com</strong><strong> mais de 10.000.000 de produtos.</strong><br><br>Somos a <strong>única indústria</strong><strong class="texto-cinza-bold"> fabricante do sistema de arrefecimento automotivo que é</strong><strong> 100% nacional.</strong></p>
-                </div>
+            <hr />
+            <div class="card-titulo">
+              <p id="Serreconhecida">
+                Ser reconhecida em todo o MERCOSUL como líder do setor de
+                arrefecimento automotivo pela qualidade de nossos produtos,
+                procedimentos e gestão de pessoas, estando entre as melhores
+                empresas para se trabalhar na América do Sul.
+              </p>
             </div>
-        </section>
-        <!-- SECAO 6 - CONHEÇA A NOSSA FABRICA -->
-         <section class="comps-container-secao6">
-            <div class="secao6-div-text">
-                <h3 class="secao5-h3">Conheça a <strong>nossa fábrica!</strong></h3>
+          </div>
+          <div class="card">
+            <div class="card-icon">
+              <i class="fa-solid fa-gem"></i>
             </div>
-            <div class="secao6-video">
-                <iframe src="https://www.youtube.com/embed/xRIRiyK0RQs?si=RFt4G4T5mscLP6Ym" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <div class="card-titulo">
+              <h3 id="ValoresTitulo">Valores</h3>
             </div>
-            <div class="secao6-overlay"></div>
-            <div class="secao6-hr">
-                <hr class="secao6-hr-amarelo">
-                <hr class="secao6-hr-verde">
+            <hr />
+            <div class="card-titulo">
+              <p id="Frutodaconcepcao">
+                Fruto da concepção de vida da nossa empresa e de cada um de nós,
+                estes valores representam nosso jeito de ser e orientam nossa
+                conduta profissional e pessoal, individual e coletivamente:
+                Qualidade, Produtividade, Confiança e Fazer a diferença.
+              </p>
             </div>
-            <div>
-                <img class="secao6-selo" src="./images/selo-100nacional.webp" alt="">
-            </div>
-         </section>
+          </div>
+        </div>
+      </section>
+      <!-- SECAO 4 - TITULO SIGNIFICADO DA MARCA -->
+      <section class="secao2-container">
+        <h2 id="Significadodamarca" class="secao2-titulo">
+          <strong>Significado</strong> da marca
+        </h2>
+      </section>
+      <!-- SECAO 4 - SIGNIFICADO DA MARCA -->
+      <section class="container">
+        <div class="comp-secao4-grid">
+          <div class="comp-secao2-grid-text">
+            <p id="Temosgrandeorgulho">
+              <strong>Temos grande orgulho da nossa marca,</strong> precisávamos
+              de um nome que tivesse tudo a ver conosco e contesse um
+              <strong>significado maior</strong> por trás!<br /><br />Por isso,
+              depois de muita pesquisa, finalmente encontramos nossa a marca,
+              Notus!<br /><br /><strong>“Notus” vem de “Noto”</strong>, em latim
+              “Notus”, que <strong>significa “deus do vento do sul”</strong> ou
+              “grande vento do sul”.<br /><br /><strong
+                >Por que “deus do vento do sul”?</strong
+              >
+              Escolhemos este nome porque o
+              <strong>principal componente de um radiador,</strong> nosso
+              principal produto, <strong>é o vento</strong>, sem ele nada
+              resfria e o radiador não pode fazer a sua função. Além disso,
+              somos uma empresa
+              <strong class="comps-titulo-verde"
+                >orgulhosamente brasileira.</strong
+              >
+              Por isso, <strong>só podia ser “Notus”</strong>, o deus do vento
+              do sul, <strong>“Notus</strong>
+              <strong class="comps-titulo-amarelo">do</strong>
+              <strong class="comps-titulo-verde">Brasil”!</strong>
+            </p>
+          </div>
+          <div class="comps-secao4-video-container">
+            <iframe
+              src="https://www.youtube.com/embed/0fGUlVtAZ6o?si=WG1IB1zjHzNAlmSK&amp;start=66"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </div>
+      </section>
+      <section>
+        <div class="posicionamento-img">
+          <img src="./images/icone-rosadosventos.svg" alt="" />
+        </div>
+      </section>
+      <!-- SECAO 5 - TITULO CONHEÇA UM POUCO DA NOSSA HISTÓRIA -->
+      <section class="secao2-container">
+        <h2 id="Conhecaumpouco" class="secao2-titulo">
+          <strong>Conheça</strong> um pouco da nossa <strong>História</strong>
+        </h2>
+      </section>
+      <!-- SECAO 5 - CONHEÇA UM POUCO DA NOSSA HISTÓRIA -->
+      <section class="container-sobrenotus">
+        <div class="div-linha-reverse">
+          <div class="historia-div-text">
+            <h3 id="INICIODAMARCA">INICIO DA MARCA</h3>
+            <p id="Desde2007atuando">
+              Desde 2007 atuando no mercado de reposição na área de
+              <strong class="texto-cinza-bold">Arrefecimento automotivo</strong>
+              Nacional, com produtos e conceitos inovadores, a
+              <strong>Notus Sistemas Térmicos Do Brasil</strong> se orgulha de,
+              em tão pouco tempo, estar ranqueada entre as 5 maiores empresas
+              deste seguimento.
+            </p>
+          </div>
+          <div class="historia-div-img">
+            <img src="./images/imagem-notuscima.webp" alt="" />
+          </div>
+        </div>
+        <div class="div-linha">
+          <div class="historia-div-img">
+            <img src="./images/imagem-notuscima.webp" alt="" />
+          </div>
+          <div class="historia-div-text">
+            <h3 id="AVANÇONOPORTFOLIO">AVANÇO NO PORTFÓLIO</h3>
+            <p id="Comessemodelodetrabalho">
+              Com esse modelo de trabalho, em 2011,
+              <strong class="texto-cinza-bold"
+                >conseguimos atender as necessidades de nossos clientes</strong
+              >, trabalhamos duro para ativar a marca nos pontos de vendas.
+              <strong
+                >Participando das feiras mais importantes do mercado</strong
+              >
+              de reposição automotiva, tivemos a oportunidade de mostrar nosso
+              <strong class="texto-cinza-bold"
+                >compromisso com a qualidade e eficiência dos nossos
+                produtos.</strong
+              >
+            </p>
+          </div>
+        </div>
+        <div class="div-linha-reverse">
+          <div class="historia-div-text">
+            <h3 id="NOVASACOMODACOES">NOVAS ACOMODAÇÕES</h3>
+            <p id="Comsedelocalizada">
+              Com sede localizada na cidade de Salto, interior de São Paulo,
+              possuímos uma <strong>área com 25.000 m²</strong> e uma
+              <strong
+                >estrutura de mais de 16.000 m² de área construída,</strong
+              >
+              um sistema de armazenagem Porta Pallets de dupla profundidade, com
+              <strong
+                >capacidade de estocagem para mais de 500.000 peças</strong
+              >
+              tendo uma ampla variação de modelos do sistema de arrefecimento
+              automotivo
+              <strong>totalizando mais de 2.500 itens diversificados.</strong>
+            </p>
+          </div>
+          <div class="historia-div-img">
+            <img src="./images/imagem-notuscima.webp" alt="" />
+          </div>
+        </div>
+        <div class="div-linha">
+          <div class="historia-div-img">
+            <img src="./images/imagem-notuscima.webp" alt="" />
+          </div>
+          <div class="historia-div-text">
+            <h3 id="FABRICAÇAONACIONAL">FABRICAÇÃO NACIONAL</h3>
+            <p id="fabricaçaodeitens">
+              A
+              <strong class="texto-cinza-bold"
+                >fabricação de itens nacionais</strong
+              >
+              se iniciou em Janeiro de 2020. Entre 2020 e 2024 nós
+              <strong>já fabricamos mais de 1.000.000 de radiadores.</strong>
+              Durante nossa história, até 2024,
+              <strong class="texto-cinza-bold"
+                >já abastecemos o mercado brasileiro com</strong
+              ><strong> mais de 10.000.000 de produtos.</strong
+              ><br /><br />Somos a <strong>única indústria</strong
+              ><strong class="texto-cinza-bold">
+                fabricante do sistema de arrefecimento automotivo que é</strong
+              ><strong> 100% nacional.</strong>
+            </p>
+          </div>
+        </div>
+      </section>
+      <!-- SECAO 6 - CONHEÇA A NOSSA FABRICA -->
+      <section class="comps-container-secao6">
+        <div class="secao6-div-text">
+          <h3 id="Conhecaafabrica" class="secao5-h3">
+            Conheça a <strong>nossa fábrica!</strong>
+          </h3>
+        </div>
+        <div class="secao6-video">
+          <iframe
+            src="https://www.youtube.com/embed/xRIRiyK0RQs?si=RFt4G4T5mscLP6Ym"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+          ></iframe>
+        </div>
+        <div class="secao6-overlay"></div>
+        <div class="secao6-hr">
+          <hr class="secao6-hr-amarelo" />
+          <hr class="secao6-hr-verde" />
+        </div>
+        <div>
+          <img
+            class="secao6-selo"
+            src="./images/selo-100nacional.webp"
+            alt=""
+          />
+        </div>
+      </section>
     </main>
     <footer class="container-footer">
-        <div class="footer-containersub">
-            <div class="footer-containersub-div">
-                <h3><strong>Menu</strong></h3>
-                <ul class="footer-lista">
-                    <li><a href="sobrenotus.html">Sobre Notus</a></li>
-                    <li><a href="trabalheconosco.html">Trabalhe Conosco</a></li>
-                    <li><a href="garantia.html">Garantia</a></li>
-                    <li><a href="representantes.html">Representantes</a></li>
-                    <li><a href="#" target="_blank">Blog</a></li>
-                    <li><a href="contato.html">Contato</a></li>
-                    <li><a href="https://catalogonotus.vipsoft.com.br/" target="_blank">Catálogo</a></li>
-                </ul>
-            </div>
-            <div class="footer-containersub-div">
-                <h3><strong>Lista de Produtos</strong></h3>
-                <ul class="footer-lista">
-                    <li><a href="#">Radiador</a></li>
-                    <li><a href="#">Eletroventilador</a></li>
-                    <li><a href="#">GMV</a></li>
-                    <li><a href="#">Condensador</a></li>
-                    <li><a href="#">Evaporador</a></li>
-                    <li><a href="#">Radiador de óleo</a></li>
-                    <li><a href="#">Radiador de aquecimento</a></li>
-                    <li><a href="#">Ventilador interno</a></li>
-                    <!-- <li><a href="#"></a>Compressor A/C</li> -->
-                </ul>
-            </div>
-            <div class="footer-containersub-div">
-                <h3><strong>Fale Conosco</strong></h3>
-                <ul class="footer-lista">
-                    <li class="footer-lista-faleconosco-separador"><i class="fa-solid fa-phone"></i><a href="tel:+551142101997">(11) 4210-1997</a></li>
-                    <li class="footer-lista-faleconosco-separador"><i class="fa-solid fa-phone"></i><a href="tel:+551142101997">(11) 4210-1998</a></li>
-                    <li class="footer-lista-faleconosco-separador"><i class="fa-solid fa-phone"></i><a href="tel:+551142101997">(11) 2413-6550</a></li>
-                    <li class="footer-lista-faleconosco-separador"><i class="fa-solid fa-envelope"></i></i><a href="mailto:contato@notus.ind.br">contato@notus.ind.br</a></li>
-                </ul>
-                <div class="footer-redessociais">
-                    <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
-                    <a href="https://www.instagram.com/notusdobrasil" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="https://www.facebook.com/profile.php?id=61559166240715" target="_blank"><i class="fa-brands fa-facebook"></i></a>
-                    <a href="https://www.youtube.com/@NotusdoBrasil" target="_blank"><i class="fa-brands fa-youtube"></i></a>
-                    <a href="https://www.linkedin.com/company/notus-do-brasil" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
-                </div>
-            </div>
+      <div class="footer-containersub">
+        <div class="footer-containersub-div">
+          <h3><strong>Menu</strong></h3>
+          <ul class="footer-lista">
+            <li>
+              <a id="SobreNotusFooter" href="sobrenotus.html">Sobre Notus</a>
+            </li>
+            <li>
+              <a id="TrabalheConoscoFooter" href="trabalheconosco.html"
+                >Trabalhe Conosco</a
+              >
+            </li>
+            <li><a id="GarantiaFooter" href="garantia.html">Garantia</a></li>
+            <li>
+              <a id="RepresentantesFooter" href="representantes.html"
+                >Representantes</a
+              >
+            </li>
+            <li><a href="#" target="_blank">Blog</a></li>
+            <li><a id="ContatoFooter" href="contato.html">Contato</a></li>
+            <li>
+              <a
+                id="CatálogoFooter"
+                href="https://catalogonotus.vipsoft.com.br/"
+                target="_blank"
+                >Catálogo</a
+              >
+            </li>
+          </ul>
         </div>
-        <div class="footer-faixa">
-            <p>Desenvolvido por Notus Sistemas Térmicos do Brasil © Todos os direitos reservados</p>
+        <div class="footer-containersub-div">
+          <h3 id="ListadeProdutos"><strong>Lista de Produtos</strong></h3>
+          <ul class="footer-lista">
+            <li><a id="RadiadorFooter" href="#">Radiador</a></li>
+            <li>
+              <a id="EletroventiladorFooter" href="#">Eletroventilador</a>
+            </li>
+            <li><a href="#">GMV</a></li>
+            <li><a id="CondensadorFooter" href="#">Condensador</a></li>
+            <li><a id="EvaporadorFooter" href="#">Evaporador</a></li>
+            <li><a id="RadiadordeoleoFooter" href="#">Radiador de óleo</a></li>
+            <li>
+              <a id="RadiadordeAquecimentoFooter" href="#"
+                >Radiador de aquecimento</a
+              >
+            </li>
+            <li>
+              <a id="VentiladorInternoFooter" href="#">Ventilador interno</a>
+            </li>
+            <!-- <li><a href="#"></a>Compressor A/C</li> -->
+          </ul>
         </div>
+        <div class="footer-containersub-div">
+          <h3 id="FaleConoscoFooter"><strong>Fale Conosco</strong></h3>
+          <ul class="footer-lista">
+            <li class="footer-lista-faleconosco-separador">
+              <i class="fa-solid fa-phone"></i
+              ><a href="tel:+551142101997">(11) 4210-1997</a>
+            </li>
+            <li class="footer-lista-faleconosco-separador">
+              <i class="fa-solid fa-phone"></i
+              ><a href="tel:+551142101997">(11) 4210-1998</a>
+            </li>
+            <li class="footer-lista-faleconosco-separador">
+              <i class="fa-solid fa-phone"></i
+              ><a href="tel:+551142101997">(11) 2413-6550</a>
+            </li>
+            <li class="footer-lista-faleconosco-separador">
+              <i class="fa-solid fa-envelope"></i
+              ><a href="mailto:contato@notus.ind.br">contato@notus.ind.br</a>
+            </li>
+          </ul>
+          <div class="footer-redessociais">
+            <i onclick="openSearch()" class="fa-solid fa-magnifying-glass"></i>
+            <a href="https://www.instagram.com/notusdobrasil" target="_blank"
+              ><i class="fa-brands fa-instagram"></i
+            ></a>
+            <a
+              href="https://www.facebook.com/profile.php?id=61559166240715"
+              target="_blank"
+              ><i class="fa-brands fa-facebook"></i
+            ></a>
+            <a href="https://www.youtube.com/@NotusdoBrasil" target="_blank"
+              ><i class="fa-brands fa-youtube"></i
+            ></a>
+            <a
+              href="https://www.linkedin.com/company/notus-do-brasil"
+              target="_blank"
+              ><i class="fa-brands fa-linkedin"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-faixa">
+        <p id="DesenvolvidoporNotus">
+          Desenvolvido por Notus Sistemas Térmicos do Brasil © Todos os direitos
+          reservados
+        </p>
+      </div>
     </footer>
-</body>
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    <script src="./js/sobrenotus.js"></script>
+  </body>
 </html>
