@@ -3,8 +3,16 @@
         display: none;
     }
 
+    li .nav-navegacao-text {
+        display: block;
+    }
+
     .nav-navegacao-text {
         display: none;
+    }
+
+    .btn-mobile {
+        display: block;
     }
 
     .container-banner-secao3 {
