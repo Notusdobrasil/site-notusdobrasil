@@ -84,17 +84,20 @@
                 <div class="secao1-grid-div-text">
                     <h1 class="secao1-grid-h1">Com o deus do vento, o sistema de arrefecimento é garantido!</h1>
                     <p class="secao1-grid-text">Com mais de 2.500 itens do sistema de arrefecimento, estamos prontos para aumentar seu portfólio de produtos e receber qualquer demanda.</p>
-                    <a class="secao1-botao" href="#">
-                        <img class="secao1-botao-img" src="./images/logo-whatsapp.webp" alt="Logo Whatsapp">
-                        Fale Conosco!
-                        <!-- <div>
-                            <a href="https://wa.me/5511945478542">Alex</a>
-                            <a href="https://wa.me/5511975174745">Carlos</a>
-                            <a href="https://wa.me/551142101998">Luciano</a>
-                            <a href="https://wa.me/551142101997">Viviane</a>
-                            <a href="https://wa.me/551124136550">Welton</a>
-                        </div> -->
-                    </a>
+                    <div>
+                        <!-- Ao clicar no Botão "Fale Conosco" deve habilitar o conteúdo da lista de contatos (logo abaixo) e adicionar, ainda, a classe "secao1-botao-sembordaembaixo na Tag <a></a> do Botão "Fale Conosco" -->
+                        <a class="secao1-botao" href="#" id="btn-faleconosco">
+                            <img class="secao1-botao-img" src="./images/logo-whatsapp.webp" alt="Logo Whatsapp">
+                            Fale Conosco!
+                        </a>
+                        <ul class="secao1-botao-lista invisible" id="lista-faleconosco">
+                            <li><a class="secao1-botao-lista-objeto" href="https://wa.me/5511945478542" target="_blank">Alex</a></li>
+                            <li><a class="secao1-botao-lista-objeto" href="https://wa.me/5511975174745" target="_blank">Carlos</a></li>
+                            <li><a class="secao1-botao-lista-objeto" href="https://wa.me/551142101998" target="_blank">Luciano</a></li>
+                            <li><a class="secao1-botao-lista-objeto" href="https://wa.me/551142101997" target="_blank">Viviane</a></li>
+                            <li><a class="secao1-botao-lista-objeto" href="https://wa.me/551124136550" target="_blank">Welton</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>
@@ -103,12 +106,12 @@
             <h2 class="secao2-titulo">
                 <strong>Notus</strong> Sistemas Térmicos,<br><strong>Orgulhosamente</strong><br><strong class="secao2-titulo-degrade">Brasileira!</strong>
             </h2>
-            <div class="whatsapp-container">
+            <div class="whatsapp-container" id="btn-whatsapp">
                 <div>
                     <a class="whatsapp-botao" href="#"><img class="whatsapp-icone" src="./images/icone-whatsapp.svg" alt="Entrar em contato por Whatsapp"></a>
-                    <p class="whatsapp-text-cta">Precisa de ajuda? Fale conosco pelo <strong class="secao2-titulo-cinza" style="font-weight: 700;">Whatsapp!</strong></p>
+                    <p class="whatsapp-text-cta" id="balao-whatsapp">Precisa de ajuda? Fale conosco pelo <strong class="secao2-titulo-cinza" style="font-weight: 700;">Whatsapp!</strong></p>
                 </div>
-                <div class="card-whatsapp-container">
+                <div class="card-whatsapp-container invisible" id="card-whatsapp">
                     <div class="card-whatsapp-sup">
                         <img src="./images/icone-whatsapp.svg" alt="Entrar em contato por Whatsapp">
                         <div class="card-whatsapp-sup-text-container">
@@ -373,7 +376,7 @@
                     <h3 class="secao4-grid-card-transparente-text">Quero me tornar um Parceiro Notus!</h3>
                 </div>
                 <div class="secao4-grid-card-transparente-div2">
-                    <a class="secao4-grid-card-transparente-botao" href="#">Fale Conosco!</a>
+                    <a class="secao4-grid-card-transparente-botao" href="./representantes.html">Fale Conosco!</a>
                 </div>
             </div>
         </section>
@@ -442,9 +445,9 @@
                 <h2><strong>Assine nossa newsletter</strong> e fique por dentro de todas as novidades!</h2>
             </div>
             <form class="secao7-form" action="#" method="post">
-                <input class="form-text" type="text" placeholder="Nome">
-                <input class="form-text" type="email" placeholder="E-mail">
-                <input class="form-botao" type="button" value="Increva-se">
+                <input class="form-text" type="text" placeholder="Nome" required>
+                <input class="form-text" type="email" placeholder="E-mail" required>
+                <input class="form-botao" type="submit" value="Increva-se">
             </form>
           </section>
     </main>

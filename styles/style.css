@@ -122,6 +122,7 @@ strong {
 }
 
 .nav-navegacao-text {
+    padding: 0.5rem;
     display: flex;
     text-decoration: none;
     font-size: clamp(0.9rem, 0.6714rem + 0.3571vw, 1.1rem);
@@ -231,6 +232,7 @@ strong {
 .secao1-grid-div-text {
     display: flex;
     flex-direction: column;
+    position: relative;
     gap: 1rem;
 }
 
@@ -264,6 +266,38 @@ strong {
 
 .secao1-botao:hover {
     background-color: var(--cor-botoes-hover);
+}
+
+.secao1-botao-lista {
+    /* padding: 1rem 1.5rem; */
+    max-width: 13rem;
+    max-height: fit-content;
+    width: clamp(10rem, 9.3077rem + 3.0769vw, 13rem);
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: var(--cor-background);
+    font-size: clamp(0.9rem, 0.8077rem + 0.4103vw, 1.3rem);
+    background-color: var(--cor-botoes);
+    border-radius: 0 0 0.5rem 0.5rem;
+}
+
+.secao1-botao-sembordaembaixo {
+    border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.secao1-botao-lista-objeto {
+    padding: 0.5rem 0;
+    width: clamp(10rem, 9.3077rem + 3.0769vw, 13rem);
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    color: var(--cor-background);
+}
+
+.secao1-botao-lista-objeto:hover {
+    background-color: var(--cor-botoes-hover);
+    border-radius: 0.5rem;
 }
 /* /SECAO 1 - APRESENTACAO */
 
@@ -345,7 +379,6 @@ strong {
     height: 3.2rem;
     width: 7rem;
     padding: 0.5rem;
-    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -365,7 +398,6 @@ strong {
     max-width: 20rem;
     height: 30rem;
     width: 20rem;
-    display: none;
     flex-direction: column;
     background-color: var(--cor-background);
     border-radius: 1rem;
@@ -374,7 +406,7 @@ strong {
 }
 
 .card-whatsapp-sup {
-    padding: 0.5rem 1rem;
+    padding: 1rem 1rem 0.5rem 1rem;
     display: flex;
     background-color: var(--cor-whatsapp);
     border-radius: 1rem 1rem 0 0;
@@ -424,6 +456,10 @@ strong {
     background-color: var(--cor-background-cinza-claro);
     border-radius: 0.5rem;
     gap: 1rem;
+}
+
+.card-whatsapp-bottom-botao:hover {
+    background-color: var(--cor-background-cinza-claro1);
 }
 
 .card-whatsapp-bottom-botao hr {
@@ -585,6 +621,7 @@ strong {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(294px, 1fr));
     grid-template-rows: auto;
+    position: relative;
     gap: 1rem;
 }
 
