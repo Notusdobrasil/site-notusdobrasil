@@ -1,4 +1,3 @@
-// 1. Importa os pacotes necessários
 require('dotenv').config();
 const express = require('express');
 const axios = require('axios');
@@ -11,7 +10,7 @@ const port = process.env.PORT || 3000;
 
 // Configuração do Multer
 const storage = multer.memoryStorage();
-const upload = multer({ storage: storage });
+const upload = multer({ storage: storage }); // Adicionaremos limites se necessário
 
 // 3. Habilita Middlewares
 const corsOptions = {
@@ -48,36 +47,61 @@ app.post('/api/subscribe', async (req, res) => {
 });
 
 
-// --- ROTA PARA ENVIAR CURRÍCULO (CORRIGIDA) ---
-app.post('/api/enviar-curriculo', upload.single('curriculo'), async (req, res) => {
-  const { nome, email } = req.body;
-  const curriculo = req.file;
-  if (!nome || !email || !curriculo) {
-    return res.status(400).json({ message: 'Todos os campos são obrigatórios.' });
-  }
-  const { MAILRELAY_HOST, MAILRELAY_API_KEY } = process.env;
-  const data = {
-    from: { name: 'Notus Vagas', email: 'marketing@notus.ind.br' },
-    to: [{ name: 'RH Notus', email: 'recursoshumanos@notus.ind.br' }],
-    subject: `Novo Currículo Recebido: ${nome}`,
-    html_part: `<p>Olá,</p><p>Um novo currículo foi enviado através do site.</p><p><strong>Nome:</strong> ${nome}</p><p><strong>E-mail:</strong> ${email}</p><p>O currículo está anexado a este e-mail.</p>`,
-    attachments: [{
-      filename: curriculo.originalname,
-      content: curriculo.buffer.toString('base64')
-    }]
-  };
-  const config = {
-    headers: { 'Content-Type': 'application/json', 'X-Auth-Token': MAILRELAY_API_KEY },
-  };
+// --- ROTA PARA ENVIAR CURRÍCULO (COM DIAGNÓSTICO DE UPLOAD) ---
+const curriculoUpload = upload.single('curriculo');
+
+app.post('/api/enviar-curriculo', (req, res, next) => {
+  // Executa o middleware de upload e captura erros específicos dele
+  curriculoUpload(req, res, function (err) {
+    if (err instanceof multer.MulterError) {
+      // Erro conhecido do Multer (ex: arquivo muito grande)
+      console.error('ERRO DO MULTER:', err);
+      return res.status(400).json({ message: `Erro no upload: ${err.message}. Tente um arquivo menor.` });
+    } else if (err) {
+      // Outro erro inesperado durante o upload
+      console.error('ERRO DESCONHECIDO NO UPLOAD:', err);
+      return res.status(500).json({ message: 'Ocorreu um erro inesperado no upload.' });
+    }
+    // Se não houve erro, continua para a lógica da rota principal
+    next();
+  });
+}, async (req, res) => {
+  // A partir daqui, o upload do arquivo já foi concluído com sucesso
   try {
+    console.log('1. Upload do currículo concluído com sucesso. Iniciando envio para API.');
+    const { nome, email } = req.body;
+    const curriculo = req.file;
+
+    if (!nome || !email || !curriculo) {
+      return res.status(400).json({ message: 'Todos os campos são obrigatórios.' });
+    }
+
+    const { MAILRELAY_HOST, MAILRELAY_API_KEY } = process.env;
+    const data = {
+      from: { name: 'Notus Vagas', email: 'marketing@notus.ind.br' },
+      to: [{ name: 'RH Notus', email: 'recursoshumanos@notus.ind.br' }],
+      subject: `Novo Currículo Recebido: ${nome}`,
+      html_part: `<p>Olá,</p><p>Um novo currículo foi enviado através do site.</p><p><strong>Nome:</strong> ${nome}</p><p><strong>E-mail:</strong> ${email}</p><p>O currículo está anexado a este e-mail.</p>`,
+      attachments: [{
+        filename: curriculo.originalname,
+        content: curriculo.buffer.toString('base64')
+      }]
+    };
+    const config = {
+      headers: { 'Content-Type': 'application/json', 'X-Auth-Token': MAILRELAY_API_KEY },
+    };
+
+    console.log('2. Enviando para a API do Mailrelay...');
     await axios.post(`${MAILRELAY_HOST}/api/v1/send_emails`, data, config);
+    
+    console.log('3. E-mail com currículo enviado com sucesso.');
     res.status(200).json({ message: 'Currículo enviado com sucesso!' });
+
   } catch (error) {
-    console.error('Erro ao enviar e-mail de currículo via API:', error.response ? error.response.data : error.message);
-    res.status(500).json({ message: 'Falha ao enviar o currículo. Tente novamente.' });
+    console.error('ERRO AO ENVIAR PARA API MAILRELAY:', error.response ? error.response.data : error.message);
+    res.status(500).json({ message: 'Falha ao processar o currículo. Tente novamente.' });
   }
 });
-
 
 // --- ROTA PARA FORMULÁRIO DE GARANTIA (CORRIGIDA) ---
 app.post('/api/enviar-garantia', async (req, res) => {
