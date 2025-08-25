@@ -988,6 +988,27 @@ strong {
     color: #134596;
     border: solid 1px #134596;
 }
+
+.form-botao-contato {
+    height: clamp(1.5rem, 1.1538rem + 1.5385vw, 3rem);
+    width: 100%;
+    text-decoration: none;
+    font-size: clamp(1rem, 0.9308rem + 0.3077vw, 1.3rem);
+    font-weight: 400;
+    color: var(--cor-background);
+    background-color: #134596;
+    border: 1px solid transparent;
+    border-radius: clamp(0.3rem, 0.1385rem + 0.7179vw, 1rem);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 0 auto;
+}
+
+.form-botao-contato:hover {
+    background-color: transparent;
+    color: #134596;
+    border: solid 1px #134596;
+}
 /* /SECAO 7 - NEWSLETTER */
 
 
@@ -2714,4 +2735,8 @@ img, video, iframe{ max-width: 100%; height: auto; }
     left: 85%;
     transform: translateX(-50%);
   }
+}
+
+.btn-enviar-contato {
+    background-color: red;
 }
