@@ -7,13 +7,14 @@
     <link rel="stylesheet" href="./styles/style.css">
     <link rel="stylesheet" href="./styles/responsividade.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="icon" href="./images/icone-logosite-quadrado-mask1.svg">
-    <link rel="stylesheet" href="./js/scripts.js">
+    <link rel="icon" href="./images/icone-logosite-quadrado-mask1.webp">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <title>Notus do Brasil</title>
 </head>
 <body>
     <!-- HEADER -->
-    <header class="header-container">
+<header class="header-container">
         <!-- NAVEGACAO 1 -->
         <nav class="nav-contacts">
             <div class="header-contatos">
@@ -27,9 +28,7 @@
                 </a>
             </div>
             <div class="header-redessociais">
-                <a href="">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </a>
+
                 <a href="https://www.instagram.com/notusdobrasil" target="_blank">
                     <i class="fa-brands fa-instagram"></i>
                 </a>
@@ -47,18 +46,17 @@
         <!-- NAVEGACAO 2 -->
         <nav class="nav-navegacao">
             <div>
-                <a href="index.html"><img class="header-logo" src="./images/logo-notus-azul.svg" alt="Logo Notus do Brasil"></a>
+                <a href="index.html"><img class="header-logo" src="./images/logo-notus-azul.webp" alt="Logo Notus do Brasil"></a>
             </div>
             <div class="nav-navegacao-container-text">
                 <a class="nav-navegacao-text" href="sobrenotus.html">Sobre Notus</a>
                 <a class="nav-navegacao-text" href="trabalheconosco.html">Trabalhe Conosco</a>
                 <a class="nav-navegacao-text" href="garantia.html">Garantia</a>
                 <a class="nav-navegacao-text" href="representantes.html">Representantes</a>
-                <a class="nav-navegacao-text" href="#">Blog</a>
                 <a class="nav-navegacao-text" href="contato.html">Contato</a>
             </div>
             <div class="row">
-                <a class="nav-navegacao-catalogo" href="#">Catálogo</a>
+                <a class="nav-navegacao-catalogo" href="https://catalogo.notus.ind.br/" target="_blank">Catálogo</a>
                 <button type="button" class="btn-mobile" id="btn-mobile"><i class="fa-solid fa-bars"></i></button>
             </div>
             <ul class="invisible" id="menu">
@@ -66,17 +64,17 @@
                 <li><a class="nav-navegacao-text" href="trabalheconosco.html">Trabalhe Conosco</a></li>
                 <li><a class="nav-navegacao-text" href="garantia.html">Garantia</a></li>
                 <li><a class="nav-navegacao-text" href="representantes.html">Representantes</a></li>
-                <li><a class="nav-navegacao-text" href="#">Blog</a></li>
                 <li><a class="nav-navegacao-text" href="contato.html">Contato</a></li>
             </ul>
         </nav>
     </header>
+
     <!-- MAIN -->
     <main>
         <!-- SECAO 1 - APRESENTACAO -->
         <section class="container-secao1">
             <video autoplay muted loop class="secao1-video">
-                <source src="./videos/VIDEO HEAD SITE.mp4" type="video/mp4">
+                <source src="styles/videos/VIDEO HEAD SITE.mp4" type="video/mp4">
                 Seu navegador não suporta vídeos HTML5.
             </video>
             <div class="secao1-overlay"></div>
@@ -108,12 +106,12 @@
             </h2>
             <div class="whatsapp-container" id="btn-whatsapp">
                 <div>
-                    <a class="whatsapp-botao" href="#"><img class="whatsapp-icone" src="./images/icone-whatsapp.svg" alt="Entrar em contato por Whatsapp"></a>
+                    <a class="whatsapp-botao" href="#"><i class="fa-brands fa-whatsapp whatsapp-icone" aria-hidden="true"></i></a>
                     <p class="whatsapp-text-cta" id="balao-whatsapp">Precisa de ajuda? Fale conosco pelo <strong class="secao2-titulo-cinza" style="font-weight: 700;">Whatsapp!</strong></p>
                 </div>
                 <div class="card-whatsapp-container invisible" id="card-whatsapp">
                     <div class="card-whatsapp-sup">
-                        <img src="./images/icone-whatsapp.svg" alt="Entrar em contato por Whatsapp">
+                        <img src="./images/icone-whatsapp.webp" alt="Entrar em contato por Whatsapp">
                         <div class="card-whatsapp-sup-text-container">
                             <h2>Fale Conosco!</h2>
                             <p>Olá! Clique em um de nossos membros da equipe para ser atendido imediatamente pelo Whatsapp!</p>
@@ -124,7 +122,7 @@
                         <p>A equipe normalmente responde em alguns minutos.</p>
                         <a class="card-whatsapp-bottom-botao" href="https://wa.me/5511945478542" target="_blank">
                             <hr>
-                            <img src="./images/icone-whatsapp.svg" alt="Entrar em contato por Whatsapp">
+                            <img src="./images/icone-whatsapp.webp" alt="Entrar em contato por Whatsapp">
                             <div class="card-whatsapp-bottom-botao-text">
                                 <h3>Alex</h3>
                                 <p>Comercial</p>
@@ -132,7 +130,7 @@
                         </a>
                         <a class="card-whatsapp-bottom-botao" href="https://wa.me/5511975174745" target="_blank">
                             <hr>
-                            <img src="./images/icone-whatsapp.svg" alt="Entrar em contato por Whatsapp">
+                            <img src="./images/icone-whatsapp.webp" alt="Entrar em contato por Whatsapp">
                             <div class="card-whatsapp-bottom-botao-text">
                                 <h3>Carlos</h3>
                                 <p>Comercial</p>
@@ -140,7 +138,7 @@
                         </a>
                         <a class="card-whatsapp-bottom-botao" href="https://wa.me/551142101998" target="_blank">
                             <hr>
-                            <img src="./images/icone-whatsapp.svg" alt="Entrar em contato por Whatsapp">
+                            <img src="./images/icone-whatsapp.webp" alt="Entrar em contato por Whatsapp">
                             <div class="card-whatsapp-bottom-botao-text">
                                 <h3>Luciano</h3>
                                 <p>Comercial</p>
@@ -148,7 +146,7 @@
                         </a>
                         <a class="card-whatsapp-bottom-botao" href="https://wa.me/551142101997" target="_blank">
                             <hr>
-                            <img src="./images/icone-whatsapp.svg" alt="Entrar em contato por Whatsapp">
+                            <img src="./images/icone-whatsapp.webp" alt="Entrar em contato por Whatsapp">
                             <div class="card-whatsapp-bottom-botao-text">
                                 <h3>Viviane</h3>
                                 <p>Comercial</p>
@@ -156,7 +154,7 @@
                         </a>
                         <a class="card-whatsapp-bottom-botao" href="https://wa.me/551124136550" target="_blank">
                             <hr>
-                            <img src="./images/icone-whatsapp.svg" alt="Entrar em contato por Whatsapp">
+                            <img src="./images/icone-whatsapp.webp" alt="Entrar em contato por Whatsapp">
                             <div class="card-whatsapp-bottom-botao-text">
                                 <h3>Welton</h3>
                                 <p>Comercial</p>
@@ -175,7 +173,7 @@
                 </div>
                 <div class="secao2-cards-div2">
                     <div>
-                        <img class="secao2-cards-icon" src="./images/icone-card-oemqualidade.svg" alt="">
+                        <img class="secao2-cards-icon" src="./images/icone-card-oemqualidade.webp" alt="">
                     </div>
                     <div class="secao2-cards-div2-conteudo">
                         <h4 class="secao2-cards-h4">Qualidade OEM</h4>
@@ -184,7 +182,7 @@
                 </div>
                 <div class="secao2-cards-div2">
                     <div>
-                        <img class="secao2-cards-icon" src="./images/icone-card-iso9001.svg" alt="">
+                        <img class="secao2-cards-icon" src="./images/icone-card-iso9001.webp" alt="">
                     </div>
                     <div class="secao2-cards-div2-conteudo">
                         <h4 class="secao2-cards-h4">Certificações de excelência</h4>
@@ -193,7 +191,7 @@
                 </div>
                 <div class="secao2-cards-div2">
                     <div>
-                        <img class="secao2-cards-icon" src="./images/icone-card-especialistasemarrefecimentoautomotivo-engrenagem.svg" alt="">
+                        <img class="secao2-cards-icon" src="./images/icone-card-especialistasemarrefecimentoautomotivo-engrenagem.webp" alt="">
                     </div>
                     <div class="secao2-cards-div2-conteudo">
                         <h4 class="secao2-cards-h4">Especialistas em arrefecimento automotivo</h4>
@@ -208,7 +206,7 @@
                 </div>
                 <div class="secao2-cards-div2">
                     <div>
-                        <img class="secao2-cards-icon" src="./images/icone-card-maiorvariedadedomercado-caixa.svg" alt="">
+                        <img class="secao2-cards-icon" src="./images/icone-card-maiorvariedadedomercado-caixa.webp" alt="">
                     </div>
                     <div class="secao2-cards-div2-conteudo">
                         <h4 class="secao2-cards-h4">Maior variedade do mercado</h4>
@@ -217,7 +215,7 @@
                 </div>
                 <div class="secao2-cards-div2">
                     <div>
-                        <img class="secao2-cards-icon" src="./images/icone-card-qualidadegarantida-processodefabricacao.svg" alt="">
+                        <img class="secao2-cards-icon" src="./images/icone-card-qualidadegarantida-processodefabricacao.webp" alt="">
                     </div>
                     <div class="secao2-cards-div2-conteudo">
                         <h4 class="secao2-cards-h4">Qualidade garantida</h4>
@@ -226,7 +224,7 @@
                 </div>
                 <div class="secao2-cards-div2">
                     <div>
-                        <img class="secao2-cards-icon" src="./images/icone-card-inovacaoconstante-lampada.svg" alt="">
+                        <img class="secao2-cards-icon" src="./images/icone-card-inovacaoconstante-lampada.webp" alt="">
                     </div>
                     <div class="secao2-cards-div2-conteudo">
                         <h4 class="secao2-cards-h4">Inovação constante</h4>
@@ -241,7 +239,7 @@
                 </div>
                 <div class="secao2-cards-div2">
                     <div>
-                        <img class="secao2-cards-icon" src="./images/icone-card-compromissocomatransparencia-papeis.svg" alt="">
+                        <img class="secao2-cards-icon" src="./images/icone-card-compromissocomatransparencia-papeis.webp" alt="">
                     </div>
                     <div class="secao2-cards-div2-conteudo">
                         <h4 class="secao2-cards-h4">Compromisso com a transparência</h4>
@@ -250,7 +248,7 @@
                 </div>
                 <div class="secao2-cards-div2">
                     <div>
-                        <img class="secao2-cards-icon" src="./images/icone-card-parceriadevalor-balanca.svg" alt="">
+                        <img class="secao2-cards-icon" src="./images/icone-card-parceriadevalor-balanca.webp" alt="">
                     </div>
                     <div class="secao2-cards-div2-conteudo">
                         <h4 class="secao2-cards-h4">Parceria de valor</h4>
@@ -266,15 +264,22 @@
             </h2>
         </section>
         <!-- SECAO 3 - BANNER -->
-        <section class="container-banner-secao3">
+        <section class="container-banner-secao3" id="banner-zoom">
+            <div class="banner-bg"></div>
             <div class="secao3-banner-div1">
                 <h3 class="secao3-banner-h3">DE IMPORTADORA A FABRICANTE.</h3>
             </div>
             <div class="secao3-banner-div2">
                 <h4 class="secao3-banner-h4">Única empresa fabricante do sistema de arrefecimento que é 100% Nacional.</h4>
-                <p class="secao3-banner-text">Nascida como importadora, a Notus Sistemas Térmicos do Brasil se consolidou no mercado brasileiro, sempre visando fazer a diferença àqueles a nossa volta. Hoje nossa empresa tem o orgulho de ser 100% nacional para servir e fomentar a indústria brasileira.</p>
+                <p class="secao3-banner-text">
+                Nascida como importadora, a Notus Sistemas Térmicos do Brasil se consolidou no mercado brasileiro,
+                sempre visando fazer a diferença àqueles a nossa volta. Hoje nossa empresa tem o orgulho de ser
+                100% nacional para servir e fomentar a indústria brasileira.
+                </p>
             </div>
         </section>
+
+
         <!-- SECAO 4 - TITULO LINHAS DE PRODUTOS -->
         <section class="secao2-container">
             <h2 class="secao2-titulo">
@@ -355,22 +360,6 @@
                     <img class="secao4-grid-card-img" src="./images/linhasdeprodutos-ventiladorinterno1.webp" alt="">
                 </div>
             </div>
-            <!-- <div class="secao4-grid-card">
-                <div>
-                    <h3 class="secao4-grid-card-h3">Ventilador Interno</h3>
-                </div>
-                <div>
-                    <img class="secao4-grid-card-img" src="./images/linhasdeprodutos-ventiladorinterno1.webp" alt="">
-                </div>
-            </div>
-            <div class="secao4-grid-card">
-                <div>
-                    <h3 class="secao4-grid-card-h3">Ventilador Interno</h3>
-                </div>
-                <div>
-                    <img class="secao4-grid-card-img" src="./images/linhasdeprodutos-ventiladorinterno1.webp" alt="">
-                </div>
-            </div> -->
             <div class="secao4-grid-card-transparente">
                 <div class="secao4-grid-card-transparente-div1">
                     <h3 class="secao4-grid-card-transparente-text">Quero me tornar um Parceiro Notus!</h3>
@@ -386,69 +375,108 @@
                 Por que <strong>escolher Notus?</strong>
             </h2>
         </section>
-        <!-- SECAO 5 - POR QUE ESCOLHER NOTUS -->
-         <section>
-         </section>
-         <section class="container-secao5">
-            <div class="secao5-divcarrossel">
-                <div class="secao5-divcarrossel-div">
-                    <h3 class="secao5-h3">Modelo de <strong>negócio único</strong></h3>
-                    <p class="secao5-text">Sempre investindo em soluções próprias para atender às necessidades de nossos clientes, que acabam por se tornar as nossas. Com isto, desenvolvemos nossos maquinários, moldes de produtos, software ERP e frota própria para nos destacar e atendê-los da melhor forma possível;</p>
-                </div>
-                <div class="secao5-divcarrossel-div">
-                    <h3 class="secao5-h3">Qualidade e <strong>confiança</strong></h3>
-                    <p class="secao5-text">Nossa conduta é baseada na qualidade e confiança, o que nos torna rigorosos quanto aos procedimentos da empresa, escolha de fornecedores, matéria-prima e outros;</p>
-                </div>
-                <!-- <div>
-                    <h3 class="secao5-h3">Fazer a <strong>diferença</strong></h3>
-                    <p class="secao5-text">Nosso time é seleto, procuramos fazer a diferença na vida de cada um que trabalha conosco;</p>
-                </div>
-                <div>
-                    <h3 class="secao5-h3">Certificações e <strong>rigor</strong></h3>
-                    <p class="secao5-text">Toda essa rigorosidade torna nossa qualidade diferenciada; nossos parceiros dos mercados asiático e brasileiro foram escolhidos a dedo, possuindo as corretas certificações para cada ocasião, como a ISO 9001, ISOTS16949 e CE;</p>
-                </div>
-                <div>
-                    <h3 class="secao5-h3">Equipe de <strong>desenvolvimento</strong></h3>
-                    <p class="secao5-text">Possuímos, ainda, uma equipe de desenvolvimento de produtos sempre em busca de trazer novidades e satisfação aos stakeholders e suas necessidades</p>
-                </div>
-                <div>
-                    <h3 class="secao5-h3">Indústria <strong>nacional</strong></h3>
-                    <p class="secao5-text">Além de tudo isso, somos a única empresa brasileira com fabricação de itens 100% nacional do sistema de arrefecimento automotivo.</p>
-                </div> -->
-            </div>
-            <div class="secao5-divimg">
-                <img class="secao5-img" src="./images/linhasdeprodutos-radiador1.webp" alt="">
-            </div>
-            <div class="secao5-overlay"></div>
-            <div class="secao5-hr">
-                <hr class="secao5-hr-amarelo">
-                <hr class="secao5-hr-verde">
-            </div>
-            <div>
-                <img class="secao5-selo" src="./images/selo-100nacional.webp" alt="">
-            </div>
-         </section>
-         <!-- SECAO 6 - TITULO BLOG -->
-         <section class="secao2-container">
-             <h2 class="secao2-titulo">
-                 Confira <strong>dicas e novidades</strong> do setor automotivo
-             </h2>
-         </section>
-         <!-- SECAO 6 - BLOG -->
-         <section>
 
-         </section>
+         <div class="swiper mySwiper">
+            <div class="swiper-wrapper swiper-index-wrapper">
+                <div class="swiper-slide swiper-index-slide">
+                    <section class="container-secao5">
+                        <div class="secao5-divcarrossel">
+                            <div class="secao5-divcarrossel-div">
+                                <h3 class="secao5-h3">Modelo de <strong>negócio único</strong></h3>
+                                <p class="secao5-text">Sempre investindo em soluções próprias para atender às necessidades de nossos clientes, que acabam por se tornar as nossas. Com isto, desenvolvemos nossos maquinários, moldes de produtos, software ERP e frota própria para nos destacar e atendê-los da melhor forma possível;</p>
+                            </div>
+                            <div class="secao5-divcarrossel-div">
+                                <h3 class="secao5-h3">Qualidade e <strong>confiança</strong></h3>
+                                <p class="secao5-text">Nossa conduta é baseada na qualidade e confiança, o que nos torna rigorosos quanto aos procedimentos da empresa, escolha de fornecedores, matéria-prima e outros;</p>
+                            </div>
+                        </div>
+                        <div class="secao5-divimg">
+                            <img class="secao5-img" src="./images/linhasdeprodutos-radiador1.webp" alt="">
+                        </div>
+                        <div class="secao5-overlay"></div>
+                        <div class="secao5-hr">
+                            <hr class="secao5-hr-amarelo">
+                            <hr class="secao5-hr-verde">
+                        </div>
+                    </section>
+                </div>
+                <div class="swiper-slide swiper-index-slide">
+                    <section class="container-secao5">
+                        <div class="secao5-divcarrossel">
+                            <div class="secao5-divcarrossel-div">
+                                <h3 class="secao5-h3">Certificações e <strong>rigor</strong></h3>
+                                <p class="secao5-text">Toda essa rigorosidade torna nossa qualidade diferenciada; nossos parceiros dos mercados asiático e brasileiro foram escolhidos a dedo, possuindo as corretas certificações para cada ocasião, como a ISO 9001, ISOTS16949 e CE;</p>
+                            </div>
+                            <div class="secao5-divcarrossel-div">
+                                <h3 class="secao5-h3">Fazer a <strong>diferença</strong></h3>
+                                <p class="secao5-text">Nosso time é seleto, procuramos fazer a diferença na vida de cada um que trabalha conosco;</p>
+                            </div>
+                        </div>
+                        <div class="secao5-divimg">
+                            <img class="secao5-img" src="./images/linhasdeprodutos-gmv.webp" alt="">
+                        </div>
+                        <div class="secao5-overlay"></div>
+                        <div class="secao5-hr">
+                            <hr class="secao5-hr-amarelo">
+                            <hr class="secao5-hr-verde">
+                        </div>
+                    </section>
+                </div>
+                <div class="swiper-slide swiper-index-slide">
+                    <section class="container-secao5">
+                        <div class="secao5-divcarrossel">
+                            <div class="secao5-divcarrossel-div">
+                                <h3 class="secao5-h3">Equipe de <strong>desenvolvimento</strong></h3>
+                                <p class="secao5-text">Possuímos, ainda, uma equipe de desenvolvimento de produtos sempre em busca de trazer novidades e satisfação aos stakeholders e suas necessidades</p>
+                            </div>
+                            <div class="secao5-divcarrossel-div">
+                                <h3 class="secao5-h3">Indústria <strong>nacional</strong></h3>
+                                <p class="secao5-text">Além de tudo isso, somos a única empresa brasileira com fabricação de itens 100% nacional do sistema de arrefecimento automotivo.</p>
+                            </div>
+                        </div>
+                        <div class="secao5-divimg">
+                            <img class="secao5-img" src="./images/linhasdeprodutos-intercooler2.webp" alt="">
+                        </div>
+                        <div class="secao5-overlay"></div>
+                        <div class="secao5-hr">
+                            <hr class="secao5-hr-amarelo">
+                            <hr class="secao5-hr-verde">
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+            <div class="secao5-selo-container">
+                <img class="secao5-selo-index" src="./images/selo-100nacional.webp" alt="">
+            </div>
+         
          <!-- SECAO 7 - NEWSLETTER -->
           <section class="container-secao7">
-            <div class="secao7-overlay"></div>
             <div class="secao7-div1">
                 <h2><strong>Assine nossa newsletter</strong> e fique por dentro de todas as novidades!</h2>
             </div>
-            <form class="secao7-form" action="#" method="post">
-                <input class="form-text" type="text" placeholder="Nome" required>
-                <input class="form-text" type="email" placeholder="E-mail" required>
-                <input class="form-botao" type="submit" value="Increva-se">
-            </form>
+            <form class="secao7-form" id="newsletter-form" autocomplete="on" novalidate>
+  <input class="form-text" type="text" name="name" placeholder="Nome" required>
+  <input class="form-text" type="email" name="email" placeholder="E-mail" required>
+
+  <!-- Honeypot anti-bot (oculto) -->
+  <input type="text" name="company" style="position:absolute;left:-9999px;" tabindex="-1" autocomplete="off">
+
+  <!-- Consentimento -->
+  <label style="display:flex;gap:.5rem;align-items:flex-start;font-size:.9rem">
+    <input type="checkbox" name="consent" required>
+    <span>Concordo em receber comunicações da Notus do Brasil e aceito a Política de Privacidade.</span>
+  </label>
+
+  <input class="form-botao" type="submit" value="Inscreva-se">
+</form>
+
+<p id="newsletter-ok" style="display:none;color:#0a0;">Inscrição realizada com sucesso! 🎉</p>
+<p id="newsletter-err" style="display:none;color:#c00;">Não foi possível inscrever. Tente novamente.</p>
+
+
           </section>
     </main>
     <footer class="container-footer">
@@ -460,23 +488,20 @@
                     <li><a href="trabalheconosco.html">Trabalhe Conosco</a></li>
                     <li><a href="garantia.html">Garantia</a></li>
                     <li><a href="representantes.html">Representantes</a></li>
-                    <li><a href="#" target="_blank">Blog</a></li>
                     <li><a href="contato.html">Contato</a></li>
-                    <li><a href="https://catalogonotus.vipsoft.com.br/" target="_blank">Catálogo</a></li>
+                    <li><a href="https://catalogo.notus.ind.br/" target="_blank">Catálogo</a></li>
                 </ul>
             </div>
             <div class="footer-containersub-div">
                 <h3><strong>Lista de Produtos</strong></h3>
                 <ul class="footer-lista">
-                    <li><a href="#">Radiador</a></li>
-                    <li><a href="#">Eletroventilador</a></li>
-                    <li><a href="#">GMV</a></li>
-                    <li><a href="#">Condensador</a></li>
-                    <li><a href="#">Evaporador</a></li>
-                    <li><a href="#">Radiador de óleo</a></li>
-                    <li><a href="#">Radiador de aquecimento</a></li>
-                    <li><a href="#">Ventilador interno</a></li>
-                    <!-- <li><a href="#"></a>Compressor A/C</li> -->
+                    <li><a href="https://catalogo.notus.ind.br/categoria.html?cat=radiador">Radiador</a></li>
+                    <li><a href="https://catalogo.notus.ind.br/categoria.html?cat=eletroventilador">Eletroventilador</a></li>
+                    <li><a href="https://catalogo.notus.ind.br/categoria.html?cat=gmv">GMV</a></li>
+                    <li><a href="https://catalogo.notus.ind.br/categoria.html?cat=condensador">Condensador</a></li>
+                    <li><a href="https://catalogo.notus.ind.br/categoria.html?cat=evaporadora">Evaporador</a></li>
+                    <li><a href="https://catalogo.notus.ind.br/categoria.html?cat=radiador%20de%20%C3%B3leo%20transmiss%C3%A3o">Radiador de óleo</a></li>
+                    <li><a href="https://catalogo.notus.ind.br/categoria.html?cat=radiador%20de%20aquecimento">Radiador de aquecimento</a></li>
                 </ul>
             </div>
             <div class="footer-containersub-div">
@@ -488,7 +513,6 @@
                     <li class="footer-lista-faleconosco-separador"><i class="fa-solid fa-envelope"></i></i><a href="mailto:contato@notus.ind.br">contato@notus.ind.br</a></li>
                 </ul>
                 <div class="footer-redessociais">
-                    <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
                     <a href="https://www.instagram.com/notusdobrasil" target="_blank"><i class="fa-brands fa-instagram"></i></a>
                     <a href="https://www.facebook.com/profile.php?id=61559166240715" target="_blank"><i class="fa-brands fa-facebook"></i></a>
                     <a href="https://www.youtube.com/@NotusdoBrasil" target="_blank"><i class="fa-brands fa-youtube"></i></a>
@@ -496,10 +520,120 @@
                 </div>
             </div>
         </div>
-        <div class="footer-faixa">
-            <p>Desenvolvido por Notus Sistemas Térmicos do Brasil © Todos os direitos reservados</p>
+        <div  class="footer-faixa">
+            <div">
+                <p>Notus Sistemas Térmicos Do Brasil © Todos os direitos reservados</p>
+            </div>
+            <div class="faixa-amarela">
+            </div>
+            <div class="faixa-verde">
+            </div>
         </div>
     </footer>
+
     <script src="./js/scripts.js"></script>
+    <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const cards = document.querySelectorAll(".secao2-cards");
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const card = entry.target;
+          card.classList.add("show-card");
+
+          const texts = card.querySelectorAll(".secao2-cards-div2");
+          texts.forEach((text, textIndex) => {
+            setTimeout(() => {
+              text.classList.add("show-text");
+            }, textIndex * 300); // Delay de 300ms entre cada texto
+          });
+
+          observer.unobserve(card); // Para evitar múltiplas execuções
+        }
+      });
+    }, {
+      threshold: 0.5, // 50% do card precisa estar visível
+    });
+
+    cards.forEach((card) => {
+      const texts = card.querySelectorAll(".secao2-cards-div2");
+      texts.forEach((text) => {
+        text.classList.add("hidden-text"); // Ocultar os textos inicialmente
+      });
+      observer.observe(card);
+    });
+  });
+</script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const tituloSecao2 = document.querySelector(".secao2-titulo");
+
+    const observerTitulo = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          tituloSecao2.classList.add("show-titulo");
+          observerTitulo.unobserve(tituloSecao2); // Para evitar múltiplas execuções
+        }
+      });
+    }, {
+      threshold: 0.5, // 50% do título precisa estar visível
+    });
+
+    tituloSecao2.classList.add("hidden-titulo"); // Ocultar o título inicialmente
+    observerTitulo.observe(tituloSecao2);
+  });
+</script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const secaoTitulos = document.querySelectorAll(".secao2-titulo");
+
+    const tituloObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const titulo = entry.target;
+          titulo.classList.add("show-titulo");
+          tituloObserver.unobserve(titulo); // Para evitar múltiplas execuções
+        }
+      });
+    }, {
+      threshold: 0.5, // 50% do título precisa estar visível
+    });
+
+    secaoTitulos.forEach((titulo) => {
+      titulo.classList.add("hidden-titulo"); // Ocultar os títulos inicialmente
+      tituloObserver.observe(titulo);
+    });
+  });
+</script>
+<script>
+  window.addEventListener('scroll', () => {
+    const bannerBg = document.querySelector('.banner-bg');
+    const scrollY = window.scrollY;
+    const scale = 1 + Math.min(scrollY / 1000, 0.25); // aumenta até 1.25x
+    bannerBg.style.transform = `scale(${scale})`;
+  });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+    var swiper = new Swiper(".mySwiper", {
+      spaceBetween: 30,
+      effect: "fade",
+      loop: true,
+      autoplay: {
+        delay: 300000,
+        disableOnInteraction: false,
+        pauseOnMouseEnter: true
+      },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+    });
+  </script>
 </body>
 </html>

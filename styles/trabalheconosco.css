@@ -42,3 +42,9 @@
         grid-template-rows: auto auto;
     }
 }
+
+.situacao-vagas {
+    text-align: center;
+    margin: 100px 0px 150px 0px;
+    font-size: 20px;
+}

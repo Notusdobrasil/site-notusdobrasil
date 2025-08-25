@@ -15,3 +15,25 @@
         font-size: clamp(0.4rem, 0.2577rem + 0.6324vw, 0.7rem);
     }
 }
+
+.secao5-selo {
+    left: 80%;
+    transform: translateX(-50%);
+    transform: translateY(-30%);
+    width: clamp(4.6875rem, 3.6058rem + 4.8077vw, 9.375rem);
+    height: auto;
+    display: block;
+    position: absolute;
+    z-index: 3;
+}
+
+.secao5-selo-index {
+    left: 80%;
+    transform: translateX(-50%);
+    transform: translateY(-70%);
+    width: clamp(4.6875rem, 3.6058rem + 4.8077vw, 9.375rem);
+    height: auto;
+    display: block;
+    position: absolute;
+    z-index: 3;
+}

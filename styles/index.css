@@ -66,3 +66,14 @@
         grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     }
 }
+
+.secao5-selo {
+    left: 80%;
+    transform: translateX(-50%);
+    transform: translateY(-70%);
+    width: clamp(4.6875rem, 3.6058rem + 4.8077vw, 9.375rem);
+    height: auto;
+    display: block;
+    position: absolute;
+    z-index: 3;
+}

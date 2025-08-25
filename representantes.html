@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="./styles/style.css">
     <link rel="stylesheet" href="./styles/responsividade.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="icon" href="./images/icone-logosite-quadrado-mask1.svg">
+    <link rel="icon" href="./images/icone-logosite-quadrado-mask1.webp">
     <title>Notus do Brasil</title>
 </head>
 <body>
@@ -26,9 +26,7 @@
                 </a>
             </div>
             <div class="header-redessociais">
-                <a href="">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </a>
+
                 <a href="https://www.instagram.com/notusdobrasil" target="_blank">
                     <i class="fa-brands fa-instagram"></i>
                 </a>
@@ -46,18 +44,17 @@
         <!-- NAVEGACAO 2 -->
         <nav class="nav-navegacao">
             <div>
-                <a href="index.html"><img class="header-logo" src="./images/logo-notus-azul.svg" alt="Logo Notus do Brasil"></a>
+                <a href="index.html"><img class="header-logo" src="./images/logo-notus-azul.webp" alt="Logo Notus do Brasil"></a>
             </div>
             <div class="nav-navegacao-container-text">
                 <a class="nav-navegacao-text" href="sobrenotus.html">Sobre Notus</a>
                 <a class="nav-navegacao-text" href="trabalheconosco.html">Trabalhe Conosco</a>
                 <a class="nav-navegacao-text" href="garantia.html">Garantia</a>
                 <a class="nav-navegacao-text" href="representantes.html">Representantes</a>
-                <a class="nav-navegacao-text" href="#">Blog</a>
                 <a class="nav-navegacao-text" href="contato.html">Contato</a>
             </div>
             <div class="row">
-                <a class="nav-navegacao-catalogo" href="#">Catálogo</a>
+                <a class="nav-navegacao-catalogo" href="https://catalogo.notus.ind.br/" target="_blank">Catálogo</a>
                 <button type="button" class="btn-mobile" id="btn-mobile"><i class="fa-solid fa-bars"></i></button>
             </div>
             <ul class="invisible" id="menu">
@@ -65,7 +62,6 @@
                 <li><a class="nav-navegacao-text" href="trabalheconosco.html">Trabalhe Conosco</a></li>
                 <li><a class="nav-navegacao-text" href="garantia.html">Garantia</a></li>
                 <li><a class="nav-navegacao-text" href="representantes.html">Representantes</a></li>
-                <li><a class="nav-navegacao-text" href="#">Blog</a></li>
                 <li><a class="nav-navegacao-text" href="contato.html">Contato</a></li>
             </ul>
         </nav>
@@ -80,11 +76,11 @@
                     <h1>Onde estamos</h1>
                     <p>Localizado em Salto/SP próximo ao aeroporto de Viracopos em Campinas/SP e com acesso rápido e fácil a algumas das principais rodovias do Estado de São Paulo, a Notus tem a capacidade de fornecer seus produtos em todo o território nacional com eficácia e excelência.</p>
                     <div class="comps-secao1-div-botoes2">
-                        <a href="#">Clique aqui para saber mais</a>
+                        <a href="contato.html#map">Clique aqui para saber mais</a>
                     </div>
                 </div>
                 <div class="comps-secao1-video-container">
-                    <iframe class="comps-secao1-video-shadow" src="https://www.youtube.com/embed/0fGUlVtAZ6o?si=71Y-y1lqTs7QIY6W" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <iframe class="comps-secao1-video-shadow iframe-sobrenos" src="https://www.youtube.com/embed/0fGUlVtAZ6o?si=71Y-y1lqTs7QIY6W" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 </div>
             </div>
         </section>
@@ -93,13 +89,14 @@
             <div class="representante-text">
                 <h2>Encontre um<br>representante<strong><br>Notus!</strong></h2>
                 <p>A Notus Sistemas Térmicos do Brasil está presente em todo o território nacional, basta clicar no mapa e verificar o representante mais próximo de você.</p>
-                <a href="#">Fale Conosco!</a>
+                <a href="contato.html">Fale Conosco!</a>
             </div>
             <div class="representante-img">
                 <img src="./images/imagem-mapadobrasil-representantes.png" alt="">
                 <div class="item" style="top: 85.5%; left: 49.5%;">
                     <div class="icon icon-name" onclick="toggleTooltip(this)">RS</div>
                     <div class="tooltip" id="tooltip-1">
+                        <img src="./images/BandeiraRS.webp">
                         <h3>MUNDIAL</h3>
                         <p>Responsável: Giovani</p>
                         <p>Telefone: 51 98594-8585</p>
@@ -109,6 +106,7 @@
                 <div class="item" style="top: 79%; left: 56.5%;">
                     <div class="icon icon-name" onclick="toggleTooltip(this)">SC</div>
                     <div class="tooltip" id="tooltip-1">
+                        <img src="./images/BandeiraSC.webp">
                         <h3>FLORIANOPOLIS</h3>
                         <p>Responsável: Haroldo</p>
                         <p>Telefone: 48 9921-0001</p>
@@ -118,6 +116,7 @@
                 <div class="item" style="top: 73%; left: 53%;">
                     <div class="icon icon-name" onclick="toggleTooltip(this)">PR</div>
                     <div class="tooltip" id="tooltip-1">
+                        <img src="./images/BandeiraPR.webp">
                         <h3>NOTUS</h3>
                         <p>Responsável: Viviane</p>
                         <p>Telefone: 11 99841-7696</p>
@@ -127,6 +126,7 @@
                 <div class="item" style="top: 67.5%; left: 60.5%;">
                     <div class="icon icon-name" onclick="toggleTooltip(this)">SP</div>
                     <div class="tooltip" id="tooltip-1">
+                        <img src="./images/BandeiraSP.webp">
                         <h3>Notus</h3>
                         <p>Responsável: Notus</p>
                         <p>Telefone: 11 4210-1997</p>
@@ -146,6 +146,7 @@
                 <div class="item" style="top: 68%; left: 74%;">
                     <div class="icon icon-name" onclick="toggleTooltip(this)">RJ</div>
                     <div class="tooltip" id="tooltip-1">
+                        <img src="./images/BandeiraRJ.webp">
                         <h3>A2G</h3>
                         <p>Responsável: Alexandre</p>
                         <p>Telefone: 21 97043-9449</p>
@@ -155,6 +156,7 @@
                 <div class="item" style="top: 60%; left: 80%;">
                     <div class="icon icon-name" onclick="toggleTooltip(this)">ES</div>
                     <div class="tooltip" id="tooltip-1">
+                        <img src="./images/BandeiraES.webp">
                         <h3>TMB</h3>
                         <p>Responsável: Tiago</p>
                         <p>Telefone: 27 99738-5333</p>
@@ -164,6 +166,7 @@
                 <div class="item" style="top: 58%; left: 70%;">
                     <div class="icon icon-name" onclick="toggleTooltip(this)">MG</div>
                     <div class="tooltip" id="tooltip-1">
+                        <img src="./images/BandeiraMG.webp">
                         <h3>REMAP</h3>
                         <p>Responsável: Ivo</p>
                         <p>Telefone: 31 99982-1158</p>
@@ -173,6 +176,7 @@
                 <div class="item" style="top: 42.5%; left: 77%;">
                     <div class="icon icon-name" onclick="toggleTooltip(this)">BA</div>
                     <div class="tooltip" id="tooltip-1">
+                        <img src="./images/BandeiraBA.webp">
                         <h3>RBR</h3>
                         <p>Responsável: Ricardo Bernardino</p>
                         <p>Telefone: 71 98199-3525</p>
@@ -182,6 +186,7 @@
                 <div class="item" style="top: 39%; left: 88.5%;">
                     <div class="icon icon-name" onclick="toggleTooltip(this)">SE</div>
                     <div class="tooltip" id="tooltip-1">
+                        <img src="./images/BandeiraSE.webp">
                         <h3>RBR</h3>
                         <p>Responsável: Ricardo Bernardino</p>
                         <p>Telefone: 71 98199-3525</p>
@@ -191,6 +196,7 @@
                 <div class="item" style="top: 36.5%; left: 91%;">
                     <div class="icon icon-name" onclick="toggleTooltip(this)">AL</div>
                     <div class="tooltip" id="tooltip-1">
+                        <img src="./images/BandeiraAL.webp">
                         <h3>RBR</h3>
                         <p>Responsável: Ricardo Bernardino</p>
                         <p>Telefone: 71 98199-3525</p>
@@ -200,6 +206,7 @@
                 <div class="item" style="top: 33.25%; left: 87%;">
                     <div class="icon icon-name" onclick="toggleTooltip(this)">PE</div>
                     <div class="tooltip" id="tooltip-1">
+                        <img src="./images/BandeiraPE.webp">
                         <h3>RBR</h3>
                         <p>Responsável: Ricardo Bernardino</p>
                         <p>Telefone: 71 98199-3525</p>
@@ -209,6 +216,7 @@
                 <div class="item" style="top: 31.5%; left: 75%;">
                     <div class="icon icon-name" onclick="toggleTooltip(this)">PI</div>
                     <div class="tooltip" id="tooltip-1">
+                        <img src="./images/BandeiraPI.webp">
                         <h3>RBR</h3>
                         <p>Responsável: Ricardo Bernardino</p>
                         <p>Telefone: 71 98199-3525</p>
@@ -218,6 +226,7 @@
                 <div class="item" style="top: 30.5%; left: 92%;">
                     <div class="icon icon-name" onclick="toggleTooltip(this)">MA</div>
                     <div class="tooltip" id="tooltip-1">
+                        <img src="./images/BandeiraMA.webp">
                         <h3>Notus</h3>
                         <p>Responsável: Notus</p>
                         <p>Telefone: 11 4210-1997</p>
@@ -227,6 +236,7 @@
                 <div class="item" style="top: 50.5%; left: 62.5%;">
                     <div class="icon icon-name" onclick="toggleTooltip(this)">DF</div>
                     <div class="tooltip" id="tooltip-1">
+                        <img src="./images/BandeiraDF.webp">
                         <h3>FEDATO</h3>
                         <p>Responsável: Hugo</p>
                         <p>Telefone: 62 99973-0276</p>
@@ -236,6 +246,7 @@
                 <div class="item" style="top: 37%; left: 61%;">
                     <div class="icon icon-name" onclick="toggleTooltip(this)">TO</div>
                     <div class="tooltip" id="tooltip-1">
+                        <img src="./images/BandeiraTO.webp">
                         <h3>FEDATO</h3>
                         <p>Responsável: Hugo</p>
                         <p>Telefone: 62 99973-0276</p>
@@ -245,6 +256,7 @@
                 <div class="item" style="top: 55%; left: 55%;">
                     <div class="icon icon-name" onclick="toggleTooltip(this)">GO</div>
                     <div class="tooltip" id="tooltip-1">
+                        <img src="./images/BandeiraGO.webp">
                         <h3>FEDATO</h3>
                         <p>Responsável: Hugo</p>
                         <p>Telefone: 62 99973-0276</p>
@@ -254,6 +266,7 @@
                 <div class="item" style="top: 62%; left: 46%;">
                     <div class="icon icon-name" onclick="toggleTooltip(this)">MS</div>
                     <div class="tooltip" id="tooltip-1">
+                        <img src="./images/BandeiraMS.webp">
                         <h3>Notus</h3>
                         <p>Responsável: Notus</p>
                         <p>Telefone: 11 4210-1997</p>
@@ -263,6 +276,7 @@
                 <div class="item" style="top: 7.5%; left: 53%;">
                     <div class="icon icon-name" onclick="toggleTooltip(this)">AP</div>
                     <div class="tooltip" id="tooltip-1">
+                        <img src="./images/BandeiraAP.webp">
                         <h3>Notus</h3>
                         <p>Responsável: Notus</p>
                         <p>Telefone: 11 4210-1997</p>
@@ -272,6 +286,7 @@
                 <div class="item" style="top: 23%; left: 50%;">
                     <div class="icon icon-name" onclick="toggleTooltip(this)">PA</div>
                     <div class="tooltip" id="tooltip-1">
+                        <img src="./images/BandeiraPA.webp">
                         <h3>Notus</h3>
                         <p>Responsável: Notus</p>
                         <p>Telefone: 11 4210-1997</p>
@@ -281,6 +296,7 @@
                 <div class="item" style="top: 45%; left: 43%;">
                     <div class="icon icon-name" onclick="toggleTooltip(this)">MT</div>
                     <div class="tooltip" id="tooltip-1">
+                        <img src="./images/BandeiraMT.webp">
                         <h3>Notus</h3>
                         <p>Responsável: Notus</p>
                         <p>Telefone: 11 4210-1997</p>
@@ -290,6 +306,7 @@
                 <div class="item" style="top: 39%; left: 25%;">
                     <div class="icon icon-name" onclick="toggleTooltip(this)">RO</div>
                     <div class="tooltip" id="tooltip-1">
+                        <img src="./images/BandeiraRO.webp">
                         <h3>T.A</h3>
                         <p>Responsável: Josué</p>
                         <p>Telefone: 92 99614-1567</p>
@@ -304,6 +321,7 @@
                 <div class="item" style="top: 5%; left: 29%;">
                     <div class="icon icon-name" onclick="toggleTooltip(this)">RR</div>
                     <div class="tooltip" id="tooltip-1">
+                        <img src="./images/BandeiraRR.webp">
                         <h3>T.A</h3>
                         <p>Responsável: Josué</p>
                         <p>Telefone: 92 99614-1567</p>
@@ -313,6 +331,7 @@
                 <div class="item" style="top: 34.5%; left: 7%;">
                     <div class="icon icon-name" onclick="toggleTooltip(this)">AC</div>
                     <div class="tooltip" id="tooltip-1">
+                        <img src="./images/BandeiraAC.webp">
                         <h3>BURALLI</h3>
                         <p>Responsável: Buralli</p>
                         <p>Telefone: 69 9960-2111</p>
@@ -322,6 +341,7 @@
                 <div class="item" style="top: 23%; left: 20%;">
                     <div class="icon icon-name" onclick="toggleTooltip(this)">AM</div>
                     <div class="tooltip" id="tooltip-1">
+                        <img src="./images/BandeiraAM.webp">
                         <h3>T.A</h3>
                         <p>Responsável: Josué</p>
                         <p>Telefone: 92 99614-1567</p>
@@ -348,23 +368,20 @@
                     <li><a href="trabalheconosco.html">Trabalhe Conosco</a></li>
                     <li><a href="garantia.html">Garantia</a></li>
                     <li><a href="representantes.html">Representantes</a></li>
-                    <li><a href="#" target="_blank">Blog</a></li>
                     <li><a href="contato.html">Contato</a></li>
-                    <li><a href="https://catalogonotus.vipsoft.com.br/" target="_blank">Catálogo</a></li>
+                    <li><a href="https://catalogo.notus.ind.br/" target="_blank">Catálogo</a></li>
                 </ul>
             </div>
             <div class="footer-containersub-div">
                 <h3><strong>Lista de Produtos</strong></h3>
                 <ul class="footer-lista">
-                    <li><a href="#">Radiador</a></li>
-                    <li><a href="#">Eletroventilador</a></li>
-                    <li><a href="#">GMV</a></li>
-                    <li><a href="#">Condensador</a></li>
-                    <li><a href="#">Evaporador</a></li>
-                    <li><a href="#">Radiador de óleo</a></li>
-                    <li><a href="#">Radiador de aquecimento</a></li>
-                    <li><a href="#">Ventilador interno</a></li>
-                    <!-- <li><a href="#"></a>Compressor A/C</li> -->
+                    <li><a href="https://catalogo.notus.ind.br/categoria.html?cat=radiador">Radiador</a></li>
+                    <li><a href="https://catalogo.notus.ind.br/categoria.html?cat=eletroventilador">Eletroventilador</a></li>
+                    <li><a href="https://catalogo.notus.ind.br/categoria.html?cat=gmv">GMV</a></li>
+                    <li><a href="https://catalogo.notus.ind.br/categoria.html?cat=condensador">Condensador</a></li>
+                    <li><a href="https://catalogo.notus.ind.br/categoria.html?cat=evaporadora">Evaporador</a></li>
+                    <li><a href="https://catalogo.notus.ind.br/categoria.html?cat=radiador%20de%20%C3%B3leo%20transmiss%C3%A3o">Radiador de óleo</a></li>
+                    <li><a href="https://catalogo.notus.ind.br/categoria.html?cat=radiador%20de%20aquecimento">Radiador de aquecimento</a></li>
                 </ul>
             </div>
             <div class="footer-containersub-div">
@@ -376,7 +393,6 @@
                     <li class="footer-lista-faleconosco-separador"><i class="fa-solid fa-envelope"></i></i><a href="mailto:contato@notus.ind.br">contato@notus.ind.br</a></li>
                 </ul>
                 <div class="footer-redessociais">
-                    <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
                     <a href="https://www.instagram.com/notusdobrasil" target="_blank"><i class="fa-brands fa-instagram"></i></a>
                     <a href="https://www.facebook.com/profile.php?id=61559166240715" target="_blank"><i class="fa-brands fa-facebook"></i></a>
                     <a href="https://www.youtube.com/@NotusdoBrasil" target="_blank"><i class="fa-brands fa-youtube"></i></a>
@@ -384,8 +400,14 @@
                 </div>
             </div>
         </div>
-        <div class="footer-faixa">
-            <p>Desenvolvido por Notus Sistemas Térmicos do Brasil © Todos os direitos reservados</p>
+        <div  class="footer-faixa">
+            <div">
+                <p>Notus Sistemas Térmicos Do Brasil © Todos os direitos reservados</p>
+            </div>
+            <div class="faixa-amarela">
+            </div>
+            <div class="faixa-verde">
+            </div>
         </div>
     </footer>
     <script src="./js/scripts.js"></script>
