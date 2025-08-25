@@ -116,32 +116,46 @@ app.post('/api/enviar-garantia', async (req, res) => {
 
 
 // --- ROTA PARA FORMULÁRIO DE CONTATO (Funcional) ---
+// --- ROTA PARA FORMULÁRIO DE CONTATO (COM LOGS DE DIAGNÓSTICO) ---
 app.post('/api/enviar-contato', async (req, res) => {
-  const { nome, sobrenome, email, telefone, mensagem } = req.body;
-  if (!nome || !email || !mensagem || !telefone) {
-    return res.status(400).json({ message: 'Todos os campos são obrigatórios.' });
-  }
-  const { MAILRELAY_HOST, MAILRELAY_API_KEY } = process.env;
-  const nomeCompleto = `${nome} ${sobrenome || ''}`.trim();
-  const data = {
-    from: { name: 'Notus Contato', email: 'marketing@notus.ind.br' },
-    to: [{ name: 'Contato Notus', email: 'contato@notus.ind.br' }],
-    reply_to: [{ name: nomeCompleto, email: email }],
-    subject: `Contato via Site: ${nomeCompleto}`,
-    html_part: `<p>Você recebeu uma nova mensagem através do formulário de contato do site.</p><hr><p><strong>Nome:</strong> ${nomeCompleto}</p><p><strong>E-mail:</strong> ${email}</p><p><strong>Telefone:</strong> ${telefone}</p><p><strong>Mensagem:</strong></p><p>${mensagem.replace(/\n/g, "<br>")}</p><hr>`,
-  };
-  const config = {
-    headers: { 'Content-Type': 'application/json', 'X-Auth-Token': MAILRELAY_API_KEY },
-  };
   try {
+    console.log('1. Rota /api/enviar-contato recebida.');
+
+    const { nome, sobrenome, email, telefone, mensagem } = req.body;
+    if (!nome || !email || !mensagem || !telefone) {
+      console.log('Erro: Campos obrigatórios faltando.');
+      return res.status(400).json({ message: 'Todos os campos são obrigatórios.' });
+    }
+
+    const { MAILRELAY_HOST, MAILRELAY_API_KEY } = process.env;
+    const nomeCompleto = `${nome} ${sobrenome || ''}`.trim();
+
+    const data = {
+      from: { name: 'Notus Contato', email: 'marketing@notus.ind.br' },
+      to: [{ name: 'Contato Notus', email: 'contato@notus.ind.br' }],
+      reply_to: [{ name: nomeCompleto, email: email }],
+      subject: `Contato via Site: ${nomeCompleto}`,
+      html_part: `<p>Você recebeu uma nova mensagem através do formulário de contato do site.</p><hr><p><strong>Nome:</strong> ${nomeCompleto}</p><p><strong>E-mail:</strong> ${email}</p><p><strong>Telefone:</strong> ${telefone}</p><p><strong>Mensagem:</strong></p><p>${mensagem.replace(/\n/g, "<br>")}</p><hr>`,
+    };
+
+    console.log('2. Payload para Mailrelay montado com sucesso.');
+
+    const config = {
+      headers: { 'Content-Type': 'application/json', 'X-Auth-Token': MAILRELAY_API_KEY },
+    };
+
+    console.log(`3. Enviando requisição para: ${MAILRELAY_HOST}/api/v1/send_emails`);
     await axios.post(`${MAILRELAY_HOST}/api/v1/send_emails`, data, config);
+    
+    console.log('4. Requisição para Mailrelay concluída com sucesso.');
     res.status(200).json({ message: 'Mensagem enviada com sucesso!' });
+
   } catch (error) {
-    console.error('Erro ao enviar e-mail de contato via API:', error.response ? error.response.data : error.message);
+    // Agora o erro detalhado deve aparecer aqui
+    console.error('ERRO DETALHADO CAPTURADO:', error.response ? error.response.data : error.message);
     res.status(500).json({ message: 'Falha ao enviar a mensagem. Tente novamente.' });
   }
 });
-
 
 // 5. Inicia o servidor
 app.listen(port, () => {
