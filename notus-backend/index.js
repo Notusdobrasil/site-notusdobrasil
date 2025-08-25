@@ -19,7 +19,12 @@ const upload = multer({ storage: storage });
 // Permite requisições apenas do seu domínio principal
 const corsOptions = {
   // ATENÇÃO: Substitua pela URL final do seu site!
-  origin: ['http://127.0.0.1:5500', 'https://www.notus.ind.br', 'https://backend-site-notusdobrasil.onrender.com']
+  origin: [
+    'http://127.0.0.1:5500',
+    'https://www.notus.ind.br',
+    'https://notus.ind.br',
+    'https://backend-site-notusdobrasil.onrender.com'
+  ]
 };
 app.use(cors(corsOptions));
 app.use(express.json());
