@@ -59,6 +59,7 @@ app.post('/api/enviar-curriculo', upload.single('curriculo'), async (req, res) =
   const { MAILRELAY_HOST, MAILRELAY_API_KEY } = process.env;
   
   const data = {
+    from: { name: 'Notus Vagas', email: 'marketing@notus.ind.br' },
     to: [{ name: 'RH Notus', email: 'recursoshumanos@notus.ind.br' }],
     subject: `Novo Currículo Recebido: ${nome}`,
     html: `<p>Olá,</p><p>Um novo currículo foi enviado através do site.</p><p><strong>Nome:</strong> ${nome}</p><p><strong>E-mail:</strong> ${email}</p><p>O currículo está anexado a este e-mail.</p>`,
@@ -73,7 +74,7 @@ app.post('/api/enviar-curriculo', upload.single('curriculo'), async (req, res) =
   };
 
   try {
-    await axios.post(`${MAILRELAY_HOST}/api/v1/send`, data, config);
+    await axios.post(`${MAILRELAY_HOST}/api/v1/send_emails`, data, config); // CORRIGIDO
     res.status(200).json({ message: 'Currículo enviado com sucesso!' });
   } catch (error) {
     console.error('Erro ao enviar e-mail de currículo via API:', error.response ? error.response.data : error.message);
@@ -92,6 +93,7 @@ app.post('/api/enviar-garantia', async (req, res) => {
   const { MAILRELAY_HOST, MAILRELAY_API_KEY } = process.env;
 
   const data = {
+    from: { name: 'Notus Garantia', email: 'marketing@notus.ind.br' },
     to: [{ name: 'Garantia Notus', email: 'garantia@notus.ind.br' }],
     reply_to: [{ name: nome, email: email }], // Para responder diretamente ao cliente
     subject: `Contato via Formulário de Garantia: ${nome}`,
@@ -103,7 +105,7 @@ app.post('/api/enviar-garantia', async (req, res) => {
   };
 
   try {
-    await axios.post(`${MAILRELAY_HOST}/api/v1/send`, data, config);
+    await axios.post(`${MAILRELAY_HOST}/api/v1/send_emails`, data, config); // CORRIGIDO
     res.status(200).json({ message: 'Mensagem enviada com sucesso!' });
   } catch (error) {
     console.error('Erro ao enviar e-mail de garantia via API:', error.response ? error.response.data : error.message);
@@ -123,6 +125,7 @@ app.post('/api/enviar-contato', async (req, res) => {
   const nomeCompleto = `${nome} ${sobrenome || ''}`.trim();
 
   const data = {
+    from: { name: 'Notus Contato', email: 'marketing@notus.ind.br' },
     to: [{ name: 'Contato Notus', email: 'contato@notus.ind.br' }],
     reply_to: [{ name: nomeCompleto, email: email }], // Para responder diretamente ao cliente
     subject: `Contato via Site: ${nomeCompleto}`,
@@ -134,7 +137,7 @@ app.post('/api/enviar-contato', async (req, res) => {
   };
 
   try {
-    await axios.post(`${MAILRELAY_HOST}/api/v1/send`, data, config);
+    await axios.post(`${MAILRELAY_HOST}/api/v1/send_emails`, data, config); // CORRIGIDO
     res.status(200).json({ message: 'Mensagem enviada com sucesso!' });
   } catch (error) {
     console.error('Erro ao enviar e-mail de contato via API:', error.response ? error.response.data : error.message);
