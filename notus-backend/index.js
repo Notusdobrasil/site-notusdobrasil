@@ -52,30 +52,49 @@ app.post('/api/subscribe', async (req, res) => {
 
 // --- ROTA PARA ENVIAR CURRÍCULO (VERSÃO FINAL SIMPLIFICADA com JSON) ---
 app.post('/api/enviar-curriculo', upload.single('curriculo'), async (req, res) => {
+
   try {
     const { nome, email } = req.body;
-    const curriculo = req.file;
-    if (!nome || !email || !curriculo) {
-      return res.status(400).json({ message: 'Todos os campos são obrigatórios.' });
+    let curriculo = req.file;
+    let attachments = [];
+
+    // Permite envio via campo 'attachments' (ex: via API externa)
+    if (req.body.attachments) {
+      try {
+        const parsed = typeof req.body.attachments === 'string' ? JSON.parse(req.body.attachments) : req.body.attachments;
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          attachments = parsed;
+        }
+      } catch (e) {
+        // ignora parse error
+      }
+    }
+
+    // Se veio via formulário HTML, monta o attachment do arquivo
+    if (curriculo) {
+      attachments.push({
+        filename: curriculo.originalname,
+        content: curriculo.buffer.toString('base64')
+      });
+    }
+
+    if (!nome || !email || attachments.length === 0) {
+      return res.status(400).json({ message: 'Todos os campos são obrigatórios e o currículo deve ser anexado.' });
     }
 
     const { MAILRELAY_HOST, MAILRELAY_API_KEY } = process.env;
-    
     const data = {
       from: { name: 'Notus Vagas', email: 'marketing@notus.ind.br' },
       to: [{ name: 'RH Notus', email: 'recursoshumanos@notus.ind.br' }],
       subject: `Novo Currículo Recebido: ${nome}`,
       html_part: `<p>Olá,</p><p>Um novo currículo foi enviado através do site.</p><p><strong>Nome:</strong> ${nome}</p><p><strong>E-mail:</strong> ${email}</p><p>O currículo está anexado a este e-mail.</p>`,
-      attachments: [{
-        filename: curriculo.originalname,
-        content: curriculo.buffer.toString('base64') // Envia o arquivo como texto Base64
-      }]
+      attachments
     };
 
     const config = {
-      headers: { 
-        'Content-Type': 'application/json', // Envia como JSON, igual aos outros
-        'X-Auth-Token': MAILRELAY_API_KEY 
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Auth-Token': MAILRELAY_API_KEY
       },
     };
 
