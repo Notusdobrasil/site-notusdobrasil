@@ -119,7 +119,7 @@ if (cards.length > 0) {
     }
 
     try {
-      const res = await fetch("https://notus-backend.onrender.com/api/subscribe", {
+      const res = await fetch("https://backend-site-notusdobrasil.onrender.com/api/subscribe", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
@@ -175,7 +175,7 @@ if (cards.length > 0) {
     const formData = new FormData(formCurriculo);
 
     try {
-      const response = await fetch("https://notus-backend.onrender.com/api/enviar-curriculo", {
+      const response = await fetch("https://backend-site-notusdobrasil.onrender.com/api/enviar-curriculo", {
         method: "POST",
         body: formData,
       });
@@ -223,7 +223,7 @@ if (cards.length > 0) {
     };
 
     try {
-      const response = await fetch('https://notus-backend.onrender.com/api/enviar-garantia', {
+      const response = await fetch('https://backend-site-notusdobrasil.onrender.com/api/enviar-garantia', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
@@ -268,7 +268,7 @@ if (cards.length > 0) {
     const payload = Object.fromEntries(formData.entries());
 
     try {
-      const response = await fetch('https://notus-backend.onrender.com/api/enviar-contato', {
+      const response = await fetch('https://backend-site-notusdobrasil.onrender.com/api/enviar-contato', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
