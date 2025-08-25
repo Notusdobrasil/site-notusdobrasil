@@ -157,7 +157,8 @@ if (cards.length > 0) {
         email: email,
         attachments: [{
           filename: file.name,
-          content: fileContent
+          content: fileContent,
+          content_type: file.type || "application/octet-stream"
         }]
       };
 
