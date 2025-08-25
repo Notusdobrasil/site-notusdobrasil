@@ -20,9 +20,10 @@ const upload = multer({ storage: storage });
 const corsOptions = {
   // ATENÇÃO: Substitua pela URL final do seu site!
   origin: [
+    'http://notus.ind.br',
+    'https://notus.ind.br',
     'http://127.0.0.1:5500',
     'https://www.notus.ind.br',
-    'https://notus.ind.br',
     'https://backend-site-notusdobrasil.onrender.com'
   ]
 };
