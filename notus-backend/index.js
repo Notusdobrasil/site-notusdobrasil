@@ -51,50 +51,29 @@ app.post('/api/subscribe', async (req, res) => {
 
 
 // --- ROTA PARA ENVIAR CURRÍCULO (VERSÃO FINAL SIMPLIFICADA com JSON) ---
-app.post('/api/enviar-curriculo', upload.single('curriculo'), async (req, res) => {
-
+// --- ROTA PARA ENVIAR CURRÍCULO (VERSÃO FINAL SIMPLIFICADA com JSON) ---
+app.post('/api/enviar-curriculo', async (req, res) => { // Removido o middleware multer daqui
   try {
-    const { nome, email } = req.body;
-    let curriculo = req.file;
-    let attachments = [];
-
-    // Permite envio via campo 'attachments' (ex: via API externa)
-    if (req.body.attachments) {
-      try {
-        const parsed = typeof req.body.attachments === 'string' ? JSON.parse(req.body.attachments) : req.body.attachments;
-        if (Array.isArray(parsed) && parsed.length > 0) {
-          attachments = parsed;
-        }
-      } catch (e) {
-        // ignora parse error
-      }
-    }
-
-    // Se veio via formulário HTML, monta o attachment do arquivo
-    if (curriculo) {
-      attachments.push({
-        filename: curriculo.originalname,
-        content: curriculo.buffer.toString('base64')
-      });
-    }
-
-    if (!nome || !email || attachments.length === 0) {
-      return res.status(400).json({ message: 'Todos os campos são obrigatórios e o currículo deve ser anexado.' });
+    const { nome, email, attachments } = req.body; // Pega 'attachments' do corpo do JSON
+    
+    if (!nome || !email || !attachments || attachments.length === 0) {
+      return res.status(400).json({ message: 'Todos os campos e o anexo são obrigatórios.' });
     }
 
     const { MAILRELAY_HOST, MAILRELAY_API_KEY } = process.env;
+    
     const data = {
       from: { name: 'Notus Vagas', email: 'marketing@notus.ind.br' },
       to: [{ name: 'RH Notus', email: 'recursoshumanos@notus.ind.br' }],
       subject: `Novo Currículo Recebido: ${nome}`,
       html_part: `<p>Olá,</p><p>Um novo currículo foi enviado através do site.</p><p><strong>Nome:</strong> ${nome}</p><p><strong>E-mail:</strong> ${email}</p><p>O currículo está anexado a este e-mail.</p>`,
-      attachments
+      attachments: attachments // Passa diretamente o anexo recebido do frontend
     };
 
     const config = {
-      headers: {
+      headers: { 
         'Content-Type': 'application/json',
-        'X-Auth-Token': MAILRELAY_API_KEY
+        'X-Auth-Token': MAILRELAY_API_KEY 
       },
     };
 
@@ -106,7 +85,6 @@ app.post('/api/enviar-curriculo', upload.single('curriculo'), async (req, res) =
     res.status(500).json({ message: 'Falha ao enviar o currículo. Tente novamente.' });
   }
 });
-
 
 // --- ROTA PARA FORMULÁRIO DE GARANTIA (Funcional) ---
 app.post('/api/enviar-garantia', async (req, res) => {

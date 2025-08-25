@@ -143,7 +143,6 @@ if (cards.length > 0) {
   });
 })();
 
-// LÓGICA PARA O FORMULÁRIO DE TRABALHE CONOSCO
 (() => {
   const formCurriculo = document.getElementById("form-curriculo");
   if (!formCurriculo) return;
@@ -153,6 +152,21 @@ if (cards.length > 0) {
   const btnEnviarCurriculo = document.getElementById("btn-enviar-curriculo");
   const successMessage = document.getElementById("curriculo-ok");
   const errorMessage = document.getElementById("curriculo-err");
+
+  // Função para ler o arquivo como Base64
+  const toBase64 = file => new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      // Extrai apenas o conteúdo Base64, removendo o cabeçalho do tipo de arquivo
+      let encoded = reader.result.toString().replace(/^data:(.*,)?/, '');
+      if ((encoded.length % 4) > 0) {
+        encoded += '='.repeat(4 - (encoded.length % 4));
+      }
+      resolve(encoded);
+    };
+    reader.onerror = error => reject(error);
+  });
 
   // Mostra o nome do arquivo selecionado
   fileInput.addEventListener("change", () => {
@@ -172,16 +186,38 @@ if (cards.length > 0) {
     successMessage.style.display = "none";
     errorMessage.style.display = "none";
 
-    const formData = new FormData(formCurriculo);
+    const nome = formCurriculo.querySelector('[name="nome"]').value;
+    const email = formCurriculo.querySelector('[name="email"]').value;
+    const file = fileInput.files[0];
+
+    if (!nome || !email || !file) {
+      errorMessage.textContent = "Por favor, preencha todos os campos e anexe seu currículo.";
+      errorMessage.style.display = "block";
+      btnEnviarCurriculo.disabled = false;
+      btnEnviarCurriculo.textContent = "Enviar";
+      return;
+    }
 
     try {
+      // Converte o arquivo para Base64 antes de criar o payload
+      const fileContent = await toBase64(file);
+
+      const payload = {
+        nome: nome,
+        email: email,
+        attachments: [{
+          filename: file.name,
+          content: fileContent
+        }]
+      };
+
       const response = await fetch("https://backend-site-notusdobrasil.onrender.com/api/enviar-curriculo", {
         method: "POST",
-        body: formData,
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
       });
 
       const result = await response.json();
-
       if (!response.ok) {
         throw new Error(result.message || "Ocorreu um erro no servidor.");
       }
@@ -189,6 +225,7 @@ if (cards.length > 0) {
       successMessage.style.display = "block";
       formCurriculo.reset();
       fileNameDisplay.textContent = "Nenhum arquivo selecionado";
+
     } catch (error) {
       errorMessage.textContent = error.message;
       errorMessage.style.display = "block";
