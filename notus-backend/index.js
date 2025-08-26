@@ -12,10 +12,10 @@ const port = process.env.PORT || 3000;
 const MAILRELAY_HOST     = process.env.MAILRELAY_HOST;
 const MAILRELAY_API_KEY  = process.env.MAILRELAY_API_KEY;
 const MAIL_FROM_NAME     = process.env.MAIL_FROM_NAME || 'Notus Site';
-const MAIL_FROM_ADDR     = process.env.MAIL_FROM_ADDR || 'marketing@notus.ind.br';
-const MAIL_TO_CURRICULO  = process.env.MAIL_TO_CURRICULO || 'recursoshumanos@notus.ind.br';
-const MAIL_TO_CONTATO    = process.env.MAIL_TO_CONTATO   || 'recursoshumanos@notus.ind.br';
-const MAIL_TO_GARANTIA   = process.env.MAIL_TO_GARANTIA  || 'recursoshumanos@notus.ind.br';
+const MAIL_FROM_ADDR     = process.env.MAIL_FROM_ADDR || 'bruninhoaciolieffore777@gmail.com';
+const MAIL_TO_CURRICULO  = process.env.MAIL_TO_CURRICULO || 'bruninhoaciolieffore777@gmail.com';
+const MAIL_TO_CONTATO    = process.env.MAIL_TO_CONTATO   || 'bruninhoaciolieffore777@gmail.com';
+const MAIL_TO_GARANTIA   = process.env.MAIL_TO_GARANTIA  || 'bruninhoaciolieffore777@gmail.com';
 const MAILRELAY_GROUP_ID = process.env.MAILRELAY_GROUP_ID;
 
 // SMTP (para currículo e fallback do contato)
@@ -168,7 +168,7 @@ app.post('/api/enviar-curriculo', async (req, res) => {
 });
 
 // ====================================================================
-// ROTA: Garantia (direto Mailrelay)
+// ROTA: Garantia (tenta Mailrelay; se "under review", fallback SMTP)
 // ====================================================================
 app.post('/api/enviar-garantia', async (req, res) => {
   const { nome, email, mensagem } = req.body;
@@ -176,7 +176,8 @@ app.post('/api/enviar-garantia', async (req, res) => {
     return res.status(400).json({ message: 'Todos os campos são obrigatórios.' });
   }
 
-  const payload = {
+  // Payload para Mailrelay (API)
+  const mrPayload = {
     from: { name: MAIL_FROM_NAME, email: MAIL_FROM_ADDR },
     to:   [{ name: 'Garantia Notus', email: MAIL_TO_GARANTIA }],
     subject: `Contato via Formulário de Garantia: ${nome}`,
@@ -186,17 +187,44 @@ app.post('/api/enviar-garantia', async (req, res) => {
                 <p><strong>E-mail:</strong> ${email}</p>
                 <p><strong>Mensagem:</strong></p>
                 <p>${mensagem.replace(/\n/g, '<br>')}</p>
-                <hr>`,
+                <hr>`
   };
 
   try {
-    const mrResp = await mrSendEmail(payload);
+    const mrResp = await mrSendEmail(mrPayload);
     console.log('Mailrelay Garantia OK:', mrResp.status, mrResp.data);
     return res.status(200).json({ message: 'Mensagem enviada com sucesso!' });
   } catch (error) {
     const status = error?.response?.status || 500;
     const details = error?.response?.data || error.message;
+    const msgStr = JSON.stringify(details || '');
     console.error('Mailrelay Garantia ERROR:', status, details);
+
+    // Fallback SMTP se a conta estiver "under review"
+    const isUnderReview = /under review/i.test(msgStr);
+    const transporter = buildSmtpTransport();
+
+    if (isUnderReview && transporter) {
+      try {
+        await transporter.sendMail({
+          from: `"${MAIL_FROM_NAME}" <${MAIL_FROM_ADDR}>`,
+          to: MAIL_TO_GARANTIA,
+          subject: `Contato via Formulário de Garantia: ${nome}`,
+          html: `<p>Nova mensagem recebida via formulário de garantia:</p>
+                 <hr>
+                 <p><strong>Nome:</strong> ${nome}</p>
+                 <p><strong>E-mail:</strong> ${email}</p>
+                 <p><strong>Mensagem:</strong></p>
+                 <p>${mensagem.replace(/\n/g, '<br>')}</p>
+                 <hr>`,
+          replyTo: email
+        });
+        return res.status(200).json({ message: 'Mensagem enviada com sucesso (SMTP fallback)!' });
+      } catch (smtpErr) {
+        console.error('SMTP Garantia fallback ERROR:', smtpErr.message);
+      }
+    }
+
     return res.status(status).json({ message: 'Falha ao enviar a mensagem.', details });
   }
 });
