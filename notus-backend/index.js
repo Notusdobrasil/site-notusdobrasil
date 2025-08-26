@@ -49,9 +49,6 @@ app.post('/api/subscribe', async (req, res) => {
   }
 });
 
-
-// --- ROTA PARA ENVIAR CURRÍCULO (VERSÃO FINAL SIMPLIFICADA com JSON) ---
-// --- ROTA PARA ENVIAR CURRÍCULO (VERSÃO FINAL SIMPLIFICADA com JSON) ---
 app.post('/api/enviar-curriculo', async (req, res) => { // Removido o middleware multer daqui
   try {
     const { nome, email, attachments } = req.body; // Pega 'attachments' do corpo do JSON
@@ -64,7 +61,7 @@ app.post('/api/enviar-curriculo', async (req, res) => { // Removido o middleware
     
     const data = {
       from: { name: 'Notus Vagas', email: 'marketing@notus.ind.br' },
-      to: [{ name: 'RH Notus', email: 'recursoshumanos@notus.ind.br' }],
+      to: [{ name: 'RH Notus', email: 'bruninhoaciolieffore777@gmail.com' }],
       subject: `Novo Currículo Recebido: ${nome}`,
       html_part: `<p>Olá,</p><p>Um novo currículo foi enviado através do site.</p><p><strong>Nome:</strong> ${nome}</p><p><strong>E-mail:</strong> ${email}</p><p>O currículo está anexado a este e-mail.</p>`,
       attachments: attachments // Passa diretamente o anexo recebido do frontend
@@ -95,7 +92,7 @@ app.post('/api/enviar-garantia', async (req, res) => {
   const { MAILRELAY_HOST, MAILRELAY_API_KEY } = process.env;
   const data = {
     from: { name: 'Notus Garantia', email: 'marketing@notus.ind.br' },
-    to: [{ name: 'Garantia Notus', email: 'garantia@notus.ind.br' }],
+    to: [{ name: 'Garantia Notus', email: 'bruninhoaciolieffore777@gmail.com' }],
     reply_to: [{ name: nome, email: email }],
     subject: `Contato via Formulário de Garantia: ${nome}`,
     html_part: `<p>Você recebeu uma nova mensagem através do formulário de garantia do site.</p><hr><p><strong>Nome:</strong> ${nome}</p><p><strong>E-mail:</strong> ${email}</p><p><strong>Mensagem:</strong></p><p>${mensagem.replace(/\n/g, "<br>")}</p><hr>`,
@@ -123,7 +120,7 @@ app.post('/api/enviar-contato', async (req, res) => {
   const nomeCompleto = `${nome} ${sobrenome || ''}`.trim();
   const data = {
     from: { name: 'Notus Contato', email: 'marketing@notus.ind.br' },
-    to: [{ name: 'Contato Notus', email: 'contato@notus.ind.br' }],
+    to: [{ name: 'Contato Notus', email: 'bruninhoaciolieffore777@gmail.com' }],
     reply_to: [{ name: nomeCompleto, email: email }],
     subject: `Contato via Site: ${nomeCompleto}`,
     html_part: `<p>Você recebeu uma nova mensagem através do formulário de contato do site.</p><hr><p><strong>Nome:</strong> ${nomeCompleto}</p><p><strong>E-mail:</strong> ${email}</p><p><strong>Telefone:</strong> ${telefone}</p><p><strong>Mensagem:</strong></p><p>${mensagem.replace(/\n/g, "<br>")}</p><hr>`,
