@@ -161,9 +161,7 @@ async function jsonPost(url, payload) {
       reader.readAsDataURL(file);
       reader.onload = () => {
         const dataUrl = String(reader.result || "");
-        // split mais robusto que regex — pega a parte após a vírgula
         const base64 = dataUrl.includes(",") ? dataUrl.split(",")[1] : dataUrl;
-        // padding defensivo (raramente necessário)
         const padLen = base64.length % 4;
         resolve(padLen ? base64 + "=".repeat(4 - padLen) : base64);
       };
@@ -195,6 +193,27 @@ async function jsonPost(url, payload) {
     const nome = (nomeEl && nomeEl.value ? nomeEl.value : "").trim();
     const email = (emailEl && emailEl.value ? emailEl.value : "").trim();
     const file = fileInput && fileInput.files ? fileInput.files[0] : null;
+
+    // 👉 checks opcionais (tire se não quiser):
+    const MAX_MB = 8; // ~8MB em base64 cabe no limit de 10MB do backend
+    if (file) {
+      const okType = /pdf|msword|officedocument/i.test(file.type) || /\.pdf|\.docx?$/.test(file.name);
+      const okSize = file.size <= MAX_MB * 1024 * 1024;
+      if (!okType) {
+        setText(errorMessage, "Envie PDF, DOC ou DOCX.");
+        show(errorMessage);
+        btnEnviarCurriculo.disabled = false;
+        btnEnviarCurriculo.textContent = "Enviar";
+        return;
+      }
+      if (!okSize) {
+        setText(errorMessage, `Arquivo muito grande. Limite: ${MAX_MB} MB.`);
+        show(errorMessage);
+        btnEnviarCurriculo.disabled = false;
+        btnEnviarCurriculo.textContent = "Enviar";
+        return;
+      }
+    }
 
     if (!nome || !email || !file) {
       setText(
@@ -310,7 +329,6 @@ async function jsonPost(url, payload) {
     }
 
     const formData = new FormData(formContato);
-    // trim básico
     if (formData.has("nome"))
       formData.set("nome", (formData.get("nome") || "").toString().trim());
     if (formData.has("email"))

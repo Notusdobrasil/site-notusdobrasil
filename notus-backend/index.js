@@ -18,10 +18,10 @@ const MAIL_TO_CONTATO    = process.env.MAIL_TO_CONTATO   || 'recursoshumanos@not
 const MAIL_TO_GARANTIA   = process.env.MAIL_TO_GARANTIA  || 'recursoshumanos@notus.ind.br';
 const MAILRELAY_GROUP_ID = process.env.MAILRELAY_GROUP_ID;
 
-// SMTP (para fallback do contato)
+// SMTP (para currículo e fallback do contato)
 const SMTP_HOST    = process.env.SMTP_HOST;
 const SMTP_PORT    = Number(process.env.SMTP_PORT || 587);
-const SMTP_SECURE  = String(process.env.SMTP_SECURE || 'false') === 'true';
+theSMTPsecure      = String(process.env.SMTP_SECURE || 'false') === 'true';
 const SMTP_USER    = process.env.SMTP_USER;
 const SMTP_PASS    = process.env.SMTP_PASS;
 
@@ -31,7 +31,7 @@ const corsOptions = {
     'https://www.notus.ind.br',
     'https://notus.ind.br',
     'http://127.0.0.1:5500',
-    // Se tiver outro domínio/subdomínio na Locaweb, adicione aqui
+    // acrescente aqui outro domínio/subdomínio se necessário
   ],
 };
 app.use(cors(corsOptions));
@@ -57,7 +57,7 @@ function buildSmtpTransport() {
   return nodemailer.createTransport({
     host: SMTP_HOST,
     port: SMTP_PORT,
-    secure: SMTP_SECURE,
+    secure: theSMTPsecure,
     auth: { user: SMTP_USER, pass: SMTP_PASS },
   });
 }
@@ -83,7 +83,7 @@ app.post('/api/subscribe', async (req, res) => {
 });
 
 // ====================================================================
-// ROTA: Enviar Currículo (com anexos normalizados)
+// ROTA: Enviar Currículo (SMTP principal; Mailrelay opcional)
 // ====================================================================
 app.post('/api/enviar-curriculo', async (req, res) => {
   try {
@@ -100,17 +100,47 @@ app.post('/api/enviar-curriculo', async (req, res) => {
       return res.status(400).json({ message: 'Todos os campos e o anexo são obrigatórios.' });
     }
 
-    // Normaliza anexos (garante chaves e tipos)
-    const safeAttachments = attachments.map((att, i) => {
+    // Normaliza anexos (base64 -> Buffer) para SMTP
+    const smtpAttachments = attachments.map((att, i) => {
       if (!att?.content) throw new Error(`Attachment #${i} sem 'content' (base64).`);
       return {
-        // Algumas instâncias esperam "name"; mantemos ambos por compatibilidade
-        name: att.name || att.filename || `curriculo-${i + 1}.pdf`,
         filename: att.filename || att.name || `curriculo-${i + 1}.pdf`,
-        content: att.content, // base64 puro (sem data:...;base64,)
-        content_type: att.content_type || 'application/octet-stream',
+        content: Buffer.from(att.content, 'base64'),
+        contentType: att.content_type || 'application/octet-stream',
       };
     });
+
+    // Envio por SMTP (Mailrelay SMTP)
+    const transporter = buildSmtpTransport();
+    if (!transporter) {
+      return res.status(500).json({
+        message: 'SMTP não configurado para envio de currículo.',
+        details: 'Defina SMTP_HOST, SMTP_USER e SMTP_PASS nas variáveis do Render.'
+      });
+    }
+
+    await transporter.sendMail({
+      from: `"${MAIL_FROM_NAME}" <${MAIL_FROM_ADDR}>`,
+      to: MAIL_TO_CURRICULO,
+      subject: `Novo Currículo Recebido: ${nome}`,
+      html: `<p>Olá,</p>
+             <p>Um novo currículo foi enviado através do site.</p>
+             <p><strong>Nome:</strong> ${nome}</p>
+             <p><strong>E-mail:</strong> ${email}</p>
+             <p>O currículo está anexado a este e-mail.</p>`,
+      attachments: smtpAttachments,
+    });
+
+    return res.status(200).json({ message: 'Currículo enviado com sucesso (SMTP)!' });
+
+    // ===== (Opcional) Para testar a API Mailrelay quando estiver liberado:
+    /*
+    const safeAttachments = attachments.map((att, i) => ({
+      name: att.name || att.filename || `curriculo-${i + 1}.pdf`,
+      filename: att.filename || att.name || `curriculo-${i + 1}.pdf`,
+      content: att.content, // base64 puro
+      content_type: att.content_type || 'application/octet-stream',
+    }));
 
     const payload = {
       from: { name: MAIL_FROM_NAME, email: MAIL_FROM_ADDR },
@@ -128,10 +158,11 @@ app.post('/api/enviar-curriculo', async (req, res) => {
     const mrResp = await mrSendEmail(payload);
     console.log('Mailrelay Currículo OK:', mrResp.status, mrResp.data);
     return res.status(200).json({ message: 'Currículo enviado com sucesso!' });
+    */
   } catch (error) {
     const status = error?.response?.status || 500;
     const details = error?.response?.data || error.message;
-    console.error('Mailrelay Currículo ERROR:', status, details);
+    console.error('Enviar Currículo ERROR:', status, details);
     return res.status(status).json({ message: 'Falha ao enviar o currículo.', details });
   }
 });
@@ -156,7 +187,6 @@ app.post('/api/enviar-garantia', async (req, res) => {
                 <p><strong>Mensagem:</strong></p>
                 <p>${mensagem.replace(/\n/g, '<br>')}</p>
                 <hr>`,
-    // Evitamos reply_to por enquanto (alguns ESPs bloqueiam domínios não autenticados)
   };
 
   try {
@@ -181,7 +211,6 @@ app.post('/api/enviar-contato', async (req, res) => {
   }
   const nomeCompleto = `${nome} ${sobrenome || ''}`.trim();
 
-  // Payload enxuto primeiro (sem reply_to) para minimizar bloqueios
   const mrPayload = {
     from: { name: MAIL_FROM_NAME, email: MAIL_FROM_ADDR },
     to:   [{ name: 'Contato Notus', email: MAIL_TO_CONTATO }],
@@ -219,13 +248,10 @@ app.post('/api/enviar-contato', async (req, res) => {
                  <p><strong>Telefone:</strong> ${telefone}</p>
                  <p><strong>Mensagem:</strong></p>
                  <p>${mensagem.replace(/\n/g, '<br>')}</p>`,
-          // Evite replyTo com domínio externo até o ESP liberar
-          // replyTo: `${nomeCompleto} <${email}>`,
         });
         return res.status(200).json({ message: 'Mensagem enviada com sucesso (SMTP fallback)!' });
       } catch (smtpErr) {
         console.error('SMTP fallback ERROR:', smtpErr.message);
-        // Continua para o retorno padrão abaixo
       }
     }
 
