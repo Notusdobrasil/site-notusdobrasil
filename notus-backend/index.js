@@ -13,9 +13,9 @@ const MAILRELAY_HOST     = process.env.MAILRELAY_HOST;
 const MAILRELAY_API_KEY  = process.env.MAILRELAY_API_KEY;
 const MAIL_FROM_NAME     = process.env.MAIL_FROM_NAME || 'Notus Site';
 const MAIL_FROM_ADDR     = process.env.MAIL_FROM_ADDR || 'marketing@notus.ind.br';
-const MAIL_TO_CURRICULO  = process.env.MAIL_TO_CURRICULO || 'bruninhoaciolieffore777@gmail.com';
-const MAIL_TO_CONTATO    = process.env.MAIL_TO_CONTATO   || 'bruninhoaciolieffore777@gmail.com';
-const MAIL_TO_GARANTIA   = process.env.MAIL_TO_GARANTIA  || 'bruninhoaciolieffore777@gmail.com';
+const MAIL_TO_CURRICULO  = process.env.MAIL_TO_CURRICULO || 'recursoshumanos@notus.ind.br';
+const MAIL_TO_CONTATO    = process.env.MAIL_TO_CONTATO   || 'contato@notus.ind.br';
+const MAIL_TO_GARANTIA   = process.env.MAIL_TO_GARANTIA  || 'garantia@notus.ind.br';
 const MAILRELAY_GROUP_ID = process.env.MAILRELAY_GROUP_ID;
 
 // SMTP (para currículo e fallback do contato)
