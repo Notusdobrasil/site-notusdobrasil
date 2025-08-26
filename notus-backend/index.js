@@ -17,11 +17,12 @@ const MAIL_TO_CURRICULO  = process.env.MAIL_TO_CURRICULO || 'recursoshumanos@not
 const MAIL_TO_CONTATO    = process.env.MAIL_TO_CONTATO   || 'contato@notus.ind.br';
 const MAIL_TO_GARANTIA   = process.env.MAIL_TO_GARANTIA  || 'garantia@notus.ind.br';
 const MAILRELAY_GROUP_ID = process.env.MAILRELAY_GROUP_ID;
+const LOGO_URL           = process.env.LOGO_URL || 'https://www.notus.ind.br/images/logo-notus-branco.png';
 
-// SMTP (para currículo e fallback do contato)
+// SMTP (para currículo e fallbacks)
 const SMTP_HOST    = process.env.SMTP_HOST;
 const SMTP_PORT    = Number(process.env.SMTP_PORT || 587);
-theSMTPsecure      = String(process.env.SMTP_SECURE || 'false') === 'true';
+const SMTP_SECURE  = String(process.env.SMTP_SECURE || 'false') === 'true';
 const SMTP_USER    = process.env.SMTP_USER;
 const SMTP_PASS    = process.env.SMTP_PASS;
 
@@ -31,20 +32,16 @@ const corsOptions = {
     'https://www.notus.ind.br',
     'https://notus.ind.br',
     'http://127.0.0.1:5500',
-    // acrescente aqui outro domínio/subdomínio se necessário
   ],
 };
 app.use(cors(corsOptions));
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ limit: '10mb', extended: true }));
 
-// 4) Helpers
+// 4) Helpers Mailrelay + SMTP
 function mrHeaders() {
   return {
-    headers: {
-      'Content-Type': 'application/json',
-      'X-Auth-Token': MAILRELAY_API_KEY,
-    },
+    headers: { 'Content-Type': 'application/json', 'X-Auth-Token': MAILRELAY_API_KEY },
     timeout: 20000,
   };
 }
@@ -57,9 +54,104 @@ function buildSmtpTransport() {
   return nodemailer.createTransport({
     host: SMTP_HOST,
     port: SMTP_PORT,
-    secure: theSMTPsecure,
+    secure: SMTP_SECURE,
     auth: { user: SMTP_USER, pass: SMTP_PASS },
   });
+}
+
+// 5) Template de e-mail (fundo azul + logo)
+function escapeHtml(s = '') {
+  return String(s)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+function buildEmailTemplate({ title, preheader, sections = [], footerNote = 'Mensagem automática do site Notus.' }) {
+  const rowsHtml = sections.map(sec => `
+    <tr>
+      <td style="padding:12px 0;font:600 14px/1.3 'Segoe UI',Arial,sans-serif;color:#111;">
+        ${escapeHtml(sec.label)}
+      </td>
+      <td class="cell" style="padding:12px 0 12px 12px;font:400 14px/1.5 'Segoe UI',Arial,sans-serif;color:#333;">
+        ${sec.html ? sec.html : escapeHtml(sec.value || '')}
+      </td>
+    </tr>
+  `).join('');
+
+  const html = `<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <meta name="color-scheme" content="light dark">
+  <meta name="supported-color-schemes" content="light dark">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>${escapeHtml(title)}</title>
+  <style>
+    @media (prefers-color-scheme: dark) {
+      .wrapper { background:#0f1115 !important; }
+      .card { background:#161a21 !important; border-color:#1f2530 !important; }
+      .title { color:#e7eaf0 !important; }
+      .muted { color:#aab3c5 !important; }
+      .cell { color:#d7dbe3 !important; }
+    }
+    a { color:#e2ecff; text-decoration:none; }
+  </style>
+</head>
+<body style="margin:0;padding:0;background:#134596;">
+  <div style="display:none;max-height:0;overflow:hidden;opacity:0;">
+    ${escapeHtml(preheader || '')}
+  </div>
+
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" class="wrapper"
+         style="background:linear-gradient(180deg,#134596 0%, #e8edf6 100%);padding:24px;">
+    <tr>
+      <td align="center">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:640px;">
+          <tr>
+            <td style="padding:16px 0;text-align:center;">
+              <img src="${LOGO_URL}" alt="Notus" width="200" style="max-width:100%;height:auto;display:inline-block;">
+              <div class="muted" style="font:400 12px/1.4 'Segoe UI',Arial,sans-serif;color:#e0e6f0;margin-top:6px;">
+                www.notus.ind.br
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="card" style="background:#ffffff;border:1px solid #e5e7eb;border-radius:12px;padding:24px;box-shadow:0 6px 18px rgba(0,0,0,.06);">
+              <div class="title" style="font:700 20px/1.2 'Segoe UI',Arial,sans-serif;color:#0f172a;margin-bottom:12px;">
+                ${escapeHtml(title)}
+              </div>
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
+                ${rowsHtml}
+              </table>
+            </td>
+          </tr>
+
+          <tr>
+            <td style="text-align:center;padding:16px 8px;">
+              <div class="muted" style="font:400 12px/1.5 'Segoe UI',Arial,sans-serif;color:#134596;">
+                ${escapeHtml(footerNote)}
+              </div>
+            </td>
+          </tr>
+
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>`;
+
+  const text = [
+    title, '',
+    ...sections.map(s => `${s.label}: ${s.value ?? ''}`),
+    '', footerNote
+  ].join('\n');
+
+  return { html, text };
 }
 
 // ====================================================================
@@ -89,18 +181,11 @@ app.post('/api/enviar-curriculo', async (req, res) => {
   try {
     const { nome, email, attachments } = req.body;
 
-    console.log('Currículo BODY:', {
-      nome, email,
-      hasAttachments: Array.isArray(attachments),
-      attachmentsLen: Array.isArray(attachments) ? attachments.length : 0,
-      firstAttachmentKeys: Array.isArray(attachments) && attachments[0] ? Object.keys(attachments[0]) : []
-    });
-
     if (!nome || !email || !Array.isArray(attachments) || attachments.length === 0) {
       return res.status(400).json({ message: 'Todos os campos e o anexo são obrigatórios.' });
     }
 
-    // Normaliza anexos (base64 -> Buffer) para SMTP
+    // Anexos: base64 -> Buffer
     const smtpAttachments = attachments.map((att, i) => {
       if (!att?.content) throw new Error(`Attachment #${i} sem 'content' (base64).`);
       return {
@@ -110,7 +195,6 @@ app.post('/api/enviar-curriculo', async (req, res) => {
       };
     });
 
-    // Envio por SMTP (Mailrelay SMTP)
     const transporter = buildSmtpTransport();
     if (!transporter) {
       return res.status(500).json({
@@ -119,46 +203,30 @@ app.post('/api/enviar-curriculo', async (req, res) => {
       });
     }
 
+    const tpl = buildEmailTemplate({
+      title: `📎 Novo Currículo — ${nome}`,
+      preheader: `${nome} enviou um currículo pelo site.`,
+      sections: [
+        { label: 'Nome', value: nome },
+        { label: 'E-mail', value: email },
+        { label: 'Status', value: 'Arquivo em anexo.' }
+      ],
+      footerNote: 'Recebido via Trabalhe Conosco — Notus.'
+    });
+
     await transporter.sendMail({
       from: `"${MAIL_FROM_NAME}" <${MAIL_FROM_ADDR}>`,
       to: MAIL_TO_CURRICULO,
-      subject: `Novo Currículo Recebido: ${nome}`,
-      html: `<p>Olá,</p>
-             <p>Um novo currículo foi enviado através do site.</p>
-             <p><strong>Nome:</strong> ${nome}</p>
-             <p><strong>E-mail:</strong> ${email}</p>
-             <p>O currículo está anexado a este e-mail.</p>`,
+      subject: `📎 Novo Currículo — ${nome}`,
+      html: tpl.html,
+      text: tpl.text,
+      replyTo: email,
       attachments: smtpAttachments,
     });
 
     return res.status(200).json({ message: 'Currículo enviado com sucesso (SMTP)!' });
 
-    // ===== (Opcional) Para testar a API Mailrelay quando estiver liberado:
-    /*
-    const safeAttachments = attachments.map((att, i) => ({
-      name: att.name || att.filename || `curriculo-${i + 1}.pdf`,
-      filename: att.filename || att.name || `curriculo-${i + 1}.pdf`,
-      content: att.content, // base64 puro
-      content_type: att.content_type || 'application/octet-stream',
-    }));
-
-    const payload = {
-      from: { name: MAIL_FROM_NAME, email: MAIL_FROM_ADDR },
-      to:   [{ name: 'RH Notus', email: MAIL_TO_CURRICULO }],
-      subject: `Novo Currículo Recebido: ${nome}`,
-      html_part: `<p>Olá,</p>
-                  <p>Um novo currículo foi enviado através do site.</p>
-                  <p><strong>Nome:</strong> ${nome}</p>
-                  <p><strong>E-mail:</strong> ${email}</p>
-                  <p>O currículo está anexado a este e-mail.</p>`,
-      text_part: `Novo currículo enviado.\nNome: ${nome}\nE-mail: ${email}`,
-      attachments: safeAttachments,
-    };
-
-    const mrResp = await mrSendEmail(payload);
-    console.log('Mailrelay Currículo OK:', mrResp.status, mrResp.data);
-    return res.status(200).json({ message: 'Currículo enviado com sucesso!' });
-    */
+    // (Opcional) quando Mailrelay liberar anexos por API, reativar bloco original aqui.
   } catch (error) {
     const status = error?.response?.status || 500;
     const details = error?.response?.data || error.message;
@@ -176,18 +244,23 @@ app.post('/api/enviar-garantia', async (req, res) => {
     return res.status(400).json({ message: 'Todos os campos são obrigatórios.' });
   }
 
-  // Payload para Mailrelay (API)
+  const tpl = buildEmailTemplate({
+    title: `Garantia — ${nome}`,
+    preheader: `Nova solicitação de garantia de ${nome}`,
+    sections: [
+      { label: 'Nome', value: nome },
+      { label: 'E-mail', value: email },
+      { label: 'Mensagem', html: `<div style="white-space:pre-wrap;">${escapeHtml(mensagem)}</div>` }
+    ],
+    footerNote: 'Recebido via Garantia — Notus.'
+  });
+
   const mrPayload = {
     from: { name: MAIL_FROM_NAME, email: MAIL_FROM_ADDR },
     to:   [{ name: 'Garantia Notus', email: MAIL_TO_GARANTIA }],
-    subject: `Contato via Formulário de Garantia: ${nome}`,
-    html_part: `<p>Nova mensagem recebida via formulário de garantia:</p>
-                <hr>
-                <p><strong>Nome:</strong> ${nome}</p>
-                <p><strong>E-mail:</strong> ${email}</p>
-                <p><strong>Mensagem:</strong></p>
-                <p>${mensagem.replace(/\n/g, '<br>')}</p>
-                <hr>`
+    subject: `Garantia — ${nome}`,
+    html_part: tpl.html,
+    text_part: tpl.text
   };
 
   try {
@@ -200,7 +273,7 @@ app.post('/api/enviar-garantia', async (req, res) => {
     const msgStr = JSON.stringify(details || '');
     console.error('Mailrelay Garantia ERROR:', status, details);
 
-    // Fallback SMTP se a conta estiver "under review"
+    // Fallback SMTP se "under review"
     const isUnderReview = /under review/i.test(msgStr);
     const transporter = buildSmtpTransport();
 
@@ -209,14 +282,9 @@ app.post('/api/enviar-garantia', async (req, res) => {
         await transporter.sendMail({
           from: `"${MAIL_FROM_NAME}" <${MAIL_FROM_ADDR}>`,
           to: MAIL_TO_GARANTIA,
-          subject: `Contato via Formulário de Garantia: ${nome}`,
-          html: `<p>Nova mensagem recebida via formulário de garantia:</p>
-                 <hr>
-                 <p><strong>Nome:</strong> ${nome}</p>
-                 <p><strong>E-mail:</strong> ${email}</p>
-                 <p><strong>Mensagem:</strong></p>
-                 <p>${mensagem.replace(/\n/g, '<br>')}</p>
-                 <hr>`,
+          subject: `Garantia — ${nome}`,
+          html: tpl.html,
+          text: tpl.text,
           replyTo: email
         });
         return res.status(200).json({ message: 'Mensagem enviada com sucesso (SMTP fallback)!' });
@@ -239,15 +307,24 @@ app.post('/api/enviar-contato', async (req, res) => {
   }
   const nomeCompleto = `${nome} ${sobrenome || ''}`.trim();
 
+  const tpl = buildEmailTemplate({
+    title: `Contato do Site — ${nomeCompleto}`,
+    preheader: `Nova mensagem de ${nomeCompleto}`,
+    sections: [
+      { label: 'Nome', value: nomeCompleto },
+      { label: 'E-mail', value: email },
+      { label: 'Telefone', value: telefone },
+      { label: 'Mensagem', html: `<div style="white-space:pre-wrap;">${escapeHtml(mensagem)}</div>` }
+    ],
+    footerNote: 'Recebido via Contato — Notus.'
+  });
+
   const mrPayload = {
     from: { name: MAIL_FROM_NAME, email: MAIL_FROM_ADDR },
     to:   [{ name: 'Contato Notus', email: MAIL_TO_CONTATO }],
-    subject: `Contato via Site: ${nomeCompleto}`,
-    html_part: `<p><strong>Nome:</strong> ${nomeCompleto}</p>
-                <p><strong>E-mail:</strong> ${email}</p>
-                <p><strong>Telefone:</strong> ${telefone}</p>
-                <p><strong>Mensagem:</strong></p>
-                <p>${mensagem.replace(/\n/g, '<br>')}</p>`,
+    subject: `Contato do Site — ${nomeCompleto}`,
+    html_part: tpl.html,
+    text_part: tpl.text
   };
 
   try {
@@ -270,12 +347,10 @@ app.post('/api/enviar-contato', async (req, res) => {
         await transporter.sendMail({
           from: `"${MAIL_FROM_NAME}" <${MAIL_FROM_ADDR}>`,
           to: MAIL_TO_CONTATO,
-          subject: `Contato via Site: ${nomeCompleto}`,
-          html: `<p><strong>Nome:</strong> ${nomeCompleto}</p>
-                 <p><strong>E-mail:</strong> ${email}</p>
-                 <p><strong>Telefone:</strong> ${telefone}</p>
-                 <p><strong>Mensagem:</strong></p>
-                 <p>${mensagem.replace(/\n/g, '<br>')}</p>`,
+          subject: `Contato do Site — ${nomeCompleto}`,
+          html: tpl.html,
+          text: tpl.text,
+          replyTo: email
         });
         return res.status(200).json({ message: 'Mensagem enviada com sucesso (SMTP fallback)!' });
       } catch (smtpErr) {
