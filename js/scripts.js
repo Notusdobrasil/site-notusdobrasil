@@ -1,4 +1,6 @@
-// Botão Menu Hamburguer para ativação na versão mobile para navegação das páginas
+// -----------------------------
+// Menu hambúrguer (mobile)
+// -----------------------------
 const btnMobile = document.getElementById("btn-mobile");
 const menu = document.getElementById("menu");
 
@@ -9,7 +11,9 @@ if (btnMobile && menu) {
   });
 }
 
-// Botão Fale Conosco da index.html para contato com os vendedores
+// -----------------------------
+// Botão "Fale Conosco" (index)
+// -----------------------------
 const btnFaleConosco = document.getElementById("btn-faleconosco");
 const listaFaleConosco = document.getElementById("lista-faleconosco");
 
@@ -21,7 +25,9 @@ if (btnFaleConosco && listaFaleConosco) {
   });
 }
 
-// Lógica do botão flutuante do WhatsApp
+// -----------------------------
+// Botão flutuante WhatsApp
+// -----------------------------
 const btnWhatsapp = document.getElementById("btn-whatsapp");
 const cardWhatsapp = document.getElementById("card-whatsapp");
 const balaoWhatsapp = document.getElementById("balao-whatsapp");
@@ -43,65 +49,101 @@ if (btnWhatsapp && cardWhatsapp && balaoWhatsapp && whatsappIcon) {
       }
       whatsappIcon.classList.remove("fade-out");
       whatsappIcon.classList.add("pulse");
-      whatsappIcon.addEventListener("animationend", () => {
-        whatsappIcon.classList.remove("pulse");
-      }, { once: true });
+      whatsappIcon.addEventListener(
+        "animationend",
+        () => whatsappIcon.classList.remove("pulse"),
+        { once: true }
+      );
     }, 300);
   });
 }
 
-// Intersection Observer para animar os cards da seção de produtos
+// ---------------------------------------------
+// Intersection Observer: anima cards de produtos
+// ---------------------------------------------
 const cards = document.querySelectorAll(".secao4-grid-card");
 if (cards.length > 0) {
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("active");
-      }
-    });
-  }, { threshold: 0.5 });
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) entry.target.classList.add("active");
+      });
+    },
+    { threshold: 0.5 }
+  );
   cards.forEach((card) => observer.observe(card));
 }
 
-// --- LÓGICA PARA O FORMULÁRIO DE NEWSLETTER ---
+// ===================================================================
+// Helpers gerais
+// ===================================================================
+function show(el, display = "block") {
+  if (el) el.style.display = display;
+}
+function hide(el) {
+  if (el) el.style.display = "none";
+}
+function setText(el, text) {
+  if (el) el.textContent = text;
+}
+async function jsonPost(url, payload) {
+  const resp = await fetch(url, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+  });
+  const data = await resp.json().catch(() => ({}));
+  if (!resp.ok) throw new Error(data?.message || "Falha ao enviar.");
+  return data;
+}
+
+// ===================================================================
+// Newsletter
+// ===================================================================
 (() => {
   const form = document.getElementById("newsletter-form");
   if (!form) return;
+
   const submitButton = form.querySelector(".form-botao");
   const successMessage = document.getElementById("newsletter-ok");
   const errorMessage = document.getElementById("newsletter-err");
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
-    successMessage.style.display = "none";
-    errorMessage.style.display = "none";
-    submitButton.disabled = true;
-    submitButton.value = "Enviando...";
+    hide(successMessage);
+    hide(errorMessage);
+    if (submitButton) {
+      submitButton.disabled = true;
+      if ("value" in submitButton) submitButton.value = "Enviando...";
+      else submitButton.textContent = "Enviando...";
+    }
 
     const formData = new FormData(form);
     const payload = Object.fromEntries(formData.entries());
 
     try {
-      const response = await fetch("https://backend-site-notusdobrasil.onrender.com/api/subscribe", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
-      const result = await response.json();
-      if (!response.ok) throw new Error(result.message || `Falha no cadastro.`);
-      successMessage.style.display = "block";
+      await jsonPost(
+        "https://backend-site-notusdobrasil.onrender.com/api/subscribe",
+        payload
+      );
+      show(successMessage);
       form.reset();
     } catch (err) {
-      errorMessage.textContent = err.message;
-      errorMessage.style.display = "block";
+      setText(errorMessage, err.message);
+      show(errorMessage);
     } finally {
-      submitButton.disabled = false;
-      submitButton.value = "Inscreva-se";
+      if (submitButton) {
+        submitButton.disabled = false;
+        if ("value" in submitButton) submitButton.value = "Inscreva-se";
+        else submitButton.textContent = "Inscreva-se";
+      }
     }
   });
 })();
 
-// --- LÓGICA PARA O FORMULÁRIO DE TRABALHE CONOSCO (CORRIGIDO) ---
+// ===================================================================
+// Trabalhe Conosco — Envio de Currículo (com attachments corretos)
+// ===================================================================
 (() => {
   const formCurriculo = document.getElementById("form-curriculo");
   if (!formCurriculo) return;
@@ -112,159 +154,187 @@ if (cards.length > 0) {
   const successMessage = document.getElementById("curriculo-ok");
   const errorMessage = document.getElementById("curriculo-err");
 
-  const toBase64 = file => new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = () => {
-      let encoded = reader.result.toString().replace(/^data:(.*,)?/, '');
-      if ((encoded.length % 4) > 0) {
-        encoded += '='.repeat(4 - (encoded.length % 4));
-      }
-      resolve(encoded);
-    };
-    reader.onerror = error => reject(error);
-  });
+  // Converte arquivo em Base64 (puro), removendo prefixo data:...;base64,
+  const toBase64 = (file) =>
+    new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        const dataUrl = String(reader.result || "");
+        // split mais robusto que regex — pega a parte após a vírgula
+        const base64 = dataUrl.includes(",") ? dataUrl.split(",")[1] : dataUrl;
+        // padding defensivo (raramente necessário)
+        const padLen = base64.length % 4;
+        resolve(padLen ? base64 + "=".repeat(4 - padLen) : base64);
+      };
+      reader.onerror = (err) => reject(err);
+    });
 
-  if(fileInput) {
+  if (fileInput) {
     fileInput.addEventListener("change", () => {
-      fileNameDisplay.textContent = fileInput.files.length > 0 ? fileInput.files[0].name : "Nenhum arquivo selecionado";
+      const name =
+        fileInput.files && fileInput.files[0]
+          ? fileInput.files[0].name
+          : "Nenhum arquivo selecionado";
+      setText(fileNameDisplay, name);
     });
   }
 
   formCurriculo.addEventListener("submit", async (e) => {
     e.preventDefault();
-    btnEnviarCurriculo.disabled = true;
-    btnEnviarCurriculo.textContent = "Enviando...";
-    successMessage.style.display = "none";
-    errorMessage.style.display = "none";
+    hide(successMessage);
+    hide(errorMessage);
+    if (btnEnviarCurriculo) {
+      btnEnviarCurriculo.disabled = true;
+      btnEnviarCurriculo.textContent = "Enviando...";
+    }
 
-    const nome = formCurriculo.querySelector('[name="nome"]').value;
-    const email = formCurriculo.querySelector('[name="email"]').value;
-    const file = fileInput.files[0];
+    const nomeEl = formCurriculo.querySelector('[name="nome"]');
+    const emailEl = formCurriculo.querySelector('[name="email"]');
+
+    const nome = (nomeEl && nomeEl.value ? nomeEl.value : "").trim();
+    const email = (emailEl && emailEl.value ? emailEl.value : "").trim();
+    const file = fileInput && fileInput.files ? fileInput.files[0] : null;
 
     if (!nome || !email || !file) {
-      errorMessage.textContent = "Por favor, preencha todos os campos e anexe seu currículo.";
-      errorMessage.style.display = "block";
-      btnEnviarCurriculo.disabled = false;
-      btnEnviarCurriculo.textContent = "Enviar";
+      setText(
+        errorMessage,
+        "Por favor, preencha todos os campos e anexe seu currículo."
+      );
+      show(errorMessage);
+      if (btnEnviarCurriculo) {
+        btnEnviarCurriculo.disabled = false;
+        btnEnviarCurriculo.textContent = "Enviar";
+      }
       return;
     }
 
     try {
       const fileContent = await toBase64(file);
       const payload = {
-        nome: nome,
-        email: email,
-        attachments: [{
-          filename: file.name,
-          content: fileContent,
-          content_type: file.type || "application/octet-stream"
-        }]
+        nome,
+        email,
+        attachments: [
+          {
+            filename: file.name || "curriculo",
+            content: fileContent, // base64 puro
+            content_type: file.type || "application/octet-stream",
+          },
+        ],
       };
 
-      const response = await fetch("https://backend-site-notusdobrasil.onrender.com/api/enviar-curriculo", {
-        method: "POST",
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-      });
+      await jsonPost(
+        "https://backend-site-notusdobrasil.onrender.com/api/enviar-curriculo",
+        payload
+      );
 
-      const result = await response.json();
-      if (!response.ok) throw new Error(result.message || "Ocorreu um erro no servidor.");
-
-      successMessage.style.display = "block";
+      show(successMessage);
       formCurriculo.reset();
-      if (fileNameDisplay) fileNameDisplay.textContent = "Nenhum arquivo selecionado";
+      if (fileNameDisplay) setText(fileNameDisplay, "Nenhum arquivo selecionado");
     } catch (error) {
-      errorMessage.textContent = error.message;
-      errorMessage.style.display = "block";
+      setText(errorMessage, error.message);
+      show(errorMessage);
     } finally {
-      btnEnviarCurriculo.disabled = false;
-      btnEnviarCurriculo.textContent = "Enviar";
+      if (btnEnviarCurriculo) {
+        btnEnviarCurriculo.disabled = false;
+        btnEnviarCurriculo.textContent = "Enviar";
+      }
     }
   });
 })();
 
-// --- LÓGICA PARA O FORMULÁRIO DE GARANTIA ---
+// ===================================================================
+// Formulário de Garantia
+// ===================================================================
 (() => {
-  const formGarantia = document.getElementById('form-garantia');
+  const formGarantia = document.getElementById("form-garantia");
   if (!formGarantia) return;
 
-  const btnEnviar = document.getElementById('btn-enviar-garantia');
-  const successMessage = document.getElementById('garantia-ok');
-  const errorMessage = document.getElementById('garantia-err');
+  const btnEnviar = document.getElementById("btn-enviar-garantia");
+  const successMessage = document.getElementById("garantia-ok");
+  const errorMessage = document.getElementById("garantia-err");
 
-  formGarantia.addEventListener('submit', async (e) => {
+  formGarantia.addEventListener("submit", async (e) => {
     e.preventDefault();
-    btnEnviar.disabled = true;
-    btnEnviar.textContent = 'Enviando...';
-    successMessage.style.display = 'none';
-    errorMessage.style.display = 'none';
-    
+    hide(successMessage);
+    hide(errorMessage);
+    if (btnEnviar) {
+      btnEnviar.disabled = true;
+      btnEnviar.textContent = "Enviando...";
+    }
+
     const payload = {
-      nome: formGarantia.querySelector('[name="nome"]').value,
-      email: formGarantia.querySelector('[name="email"]').value,
-      mensagem: formGarantia.querySelector('[name="mensagem"]').value,
+      nome: (formGarantia.querySelector('[name="nome"]')?.value || "").trim(),
+      email: (formGarantia.querySelector('[name="email"]')?.value || "").trim(),
+      mensagem:
+        (formGarantia.querySelector('[name="mensagem"]')?.value || "").trim(),
     };
 
     try {
-      const response = await fetch('https://backend-site-notusdobrasil.onrender.com/api/enviar-garantia', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-      });
-
-      const result = await response.json();
-      if (!response.ok) throw new Error(result.message || 'Ocorreu um erro no servidor.');
-      
-      successMessage.style.display = 'block';
+      await jsonPost(
+        "https://backend-site-notusdobrasil.onrender.com/api/enviar-garantia",
+        payload
+      );
+      show(successMessage);
       formGarantia.reset();
     } catch (error) {
-      errorMessage.textContent = error.message;
-      errorMessage.style.display = 'block';
+      setText(errorMessage, error.message);
+      show(errorMessage);
     } finally {
-      btnEnviar.disabled = false;
-      btnEnviar.textContent = 'Enviar';
+      if (btnEnviar) {
+        btnEnviar.disabled = false;
+        btnEnviar.textContent = "Enviar";
+      }
     }
   });
 })();
 
-// --- LÓGICA PARA O FORMULÁRIO DE CONTATO ---
+// ===================================================================
+// Formulário de Contato
+// ===================================================================
 (() => {
-  const formContato = document.getElementById('form-contato');
+  const formContato = document.getElementById("form-contato");
   if (!formContato) return;
 
-  const btnEnviar = document.getElementById('btn-enviar-contato');
-  const successMessage = document.getElementById('contato-ok');
-  const errorMessage = document.getElementById('contato-err');
+  const btnEnviar = document.getElementById("btn-enviar-contato");
+  const successMessage = document.getElementById("contato-ok");
+  const errorMessage = document.getElementById("contato-err");
 
-  formContato.addEventListener('submit', async (e) => {
+  formContato.addEventListener("submit", async (e) => {
     e.preventDefault();
-    btnEnviar.disabled = true;
-    btnEnviar.textContent = 'Enviando...';
-    successMessage.style.display = 'none';
-    errorMessage.style.display = 'none';
-    
+    hide(successMessage);
+    hide(errorMessage);
+    if (btnEnviar) {
+      btnEnviar.disabled = true;
+      btnEnviar.textContent = "Enviando...";
+    }
+
     const formData = new FormData(formContato);
+    // trim básico
+    if (formData.has("nome"))
+      formData.set("nome", (formData.get("nome") || "").toString().trim());
+    if (formData.has("email"))
+      formData.set("email", (formData.get("email") || "").toString().trim());
+    if (formData.has("mensagem"))
+      formData.set("mensagem", (formData.get("mensagem") || "").toString().trim());
+
     const payload = Object.fromEntries(formData.entries());
 
     try {
-      const response = await fetch('https://backend-site-notusdobrasil.onrender.com/api/enviar-contato', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-      });
-
-      const result = await response.json();
-      if (!response.ok) throw new Error(result.message || 'Ocorreu um erro no servidor.');
-      
-      successMessage.style.display = 'block';
+      await jsonPost(
+        "https://backend-site-notusdobrasil.onrender.com/api/enviar-contato",
+        payload
+      );
+      show(successMessage);
       formContato.reset();
     } catch (error) {
-      errorMessage.textContent = error.message;
-      errorMessage.style.display = 'block';
+      setText(errorMessage, error.message);
+      show(errorMessage);
     } finally {
-      btnEnviar.disabled = false;
-      btnEnviar.textContent = 'Enviar';
+      if (btnEnviar) {
+        btnEnviar.disabled = false;
+        btnEnviar.textContent = "Enviar";
+      }
     }
   });
 })();
