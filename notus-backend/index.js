@@ -56,6 +56,10 @@ function buildSmtpTransport() {
     port: SMTP_PORT,
     secure: SMTP_SECURE,
     auth: { user: SMTP_USER, pass: SMTP_PASS },
+    // timeouts to fail faster and help debugging when provider/host blocks SMTP
+    connectionTimeout: 20000,
+    greetingTimeout: 20000,
+    socketTimeout: 20000,
   });
 }
 
@@ -220,6 +224,14 @@ app.post('/api/enviar-curriculo', async (req, res) => {
       ],
       footerNote: 'Recebido via Trabalhe Conosco — Notus.'
     });
+
+    // verify connection first to catch connection/timeouts early
+    try {
+      await transporter.verify();
+    } catch (verifyErr) {
+      console.error('SMTP verify ERROR:', verifyErr && verifyErr.message ? verifyErr.message : verifyErr);
+      return res.status(500).json({ message: 'SMTP connection failed', details: verifyErr && verifyErr.message ? verifyErr.message : String(verifyErr) });
+    }
 
     await transporter.sendMail({
       from: `"${MAIL_FROM_NAME}" <${MAIL_FROM_ADDR}>`,
