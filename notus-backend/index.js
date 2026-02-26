@@ -161,6 +161,11 @@ app.post('/api/subscribe', async (req, res) => {
   const { name, email } = req.body;
   if (!email) return res.status(400).json({ message: 'O e-mail é obrigatório.' });
 
+  if (!MAILRELAY_HOST || !MAILRELAY_API_KEY || !MAILRELAY_GROUP_ID) {
+    console.error('Subscribe ERROR: Mailrelay não configurado', { MAILRELAY_HOST: !!MAILRELAY_HOST, MAILRELAY_API_KEY: !!MAILRELAY_API_KEY, MAILRELAY_GROUP_ID: !!MAILRELAY_GROUP_ID });
+    return res.status(500).json({ status: 'error', message: 'Serviço de newsletter não configurado no servidor.' });
+  }
+
   try {
     await axios.post(
       `${MAILRELAY_HOST}/api/v1/subscribers`,
@@ -169,7 +174,9 @@ app.post('/api/subscribe', async (req, res) => {
     );
     return res.status(200).json({ status: 'success', message: 'Inscrição realizada com sucesso!' });
   } catch (error) {
-    const details = error?.response?.data?.error?.message || 'Não foi possível completar a inscrição.';
+    const statusCode = error?.response?.status || 500;
+    const details = error?.response?.data || error.message || 'Não foi possível completar a inscrição.';
+    console.error('Subscribe ERROR:', statusCode, details);
     return res.status(500).json({ status: 'error', message: details });
   }
 });
