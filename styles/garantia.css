@@ -1,0 +1,10 @@
+@media (max-width: 1119px) {
+    .grid-1x2-form {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto;
+    }
+
+    .garantia-form-container {
+        padding-bottom: 0;
+    }
+}

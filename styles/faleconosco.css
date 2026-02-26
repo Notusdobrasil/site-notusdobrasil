@@ -1,0 +1,25 @@
+@media (max-width: 985px) {
+    .contato-forms div {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto;
+    }
+}
+
+@media (max-width: 709px) {
+    .container-grid-1x2 {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto;
+    }
+
+    .contato-forms div {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto;
+    }
+}
+
+@media (max-width: 539px) {
+    .contato-forms div {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto;
+    }
+}

@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/reset.css">
+    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="./styles/trabalheconosco.css">
+    <link rel="stylesheet" href="./styles/responsividade.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" href="./images/icone-logosite-quadrado-mask1.webp">
+    <title>Notus do Brasil</title>
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header-container">
+        <!-- NAVEGACAO 1 -->
+        <nav class="nav-contacts">
+            <div class="header-contatos">
+                <a href="tel:+551142101997"><i class="fa-solid fa-phone"></i></a>
+                <a class="header-contacts-text" href="tel:+551142101997">
+                (11) 4210-1997
+                </a>
+                <a href="mailto:contato@notus.ind.br"><i class="fa-solid fa-envelope"></i></a>
+                <a class="header-contacts-text" href="mailto:contato@notus.ind.br">
+                contato@notus.ind.br
+                </a>
+            </div>
+            <div class="header-redessociais">
+
+                <a href="https://www.instagram.com/notusdobrasil" target="_blank">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a href="https://www.facebook.com/profile.php?id=61559166240715" target="_blank">
+                    <i class="fa-brands fa-facebook"></i>
+                </a>
+                <a href="https://www.youtube.com/@NotusdoBrasil" target="_blank">
+                    <i class="fa-brands fa-youtube"></i>
+                </a>
+                <a href="https://www.linkedin.com/company/notus-do-brasil" target="_blank">
+                    <i class="fa-brands fa-linkedin"></i>
+                </a>
+            </div>
+        </nav>
+        <!-- NAVEGACAO 2 -->
+        <nav class="nav-navegacao">
+            <div>
+                <a href="index.html"><img class="header-logo" src="./images/logo-notus-azul.webp" alt="Logo Notus do Brasil"></a>
+            </div>
+            <div class="nav-navegacao-container-text">
+                <a class="nav-navegacao-text" href="sobrenotus.html">Sobre Notus</a>
+                <a class="nav-navegacao-text" href="trabalheconosco.html">Trabalhe Conosco</a>
+                <a class="nav-navegacao-text" href="garantia.html">Garantia</a>
+                <a class="nav-navegacao-text" href="representantes.html">Representantes</a>
+                
+                <a class="nav-navegacao-text" href="contato.html">Contato</a>
+            </div>
+            <div class="row">
+                <a class="nav-navegacao-catalogo" href="https://catalogo.notus.ind.br/" target="_blank">Catálogo</a>
+                <button type="button" class="btn-mobile" id="btn-mobile"><i class="fa-solid fa-bars"></i></button>
+            </div>
+            <ul class="invisible" id="menu">
+                <li><a class="nav-navegacao-text" href="sobrenotus.html">Sobre Notus</a></li>
+                <li><a class="nav-navegacao-text" href="trabalheconosco.html">Trabalhe Conosco</a></li>
+                <li><a class="nav-navegacao-text" href="garantia.html">Garantia</a></li>
+                <li><a class="nav-navegacao-text" href="representantes.html">Representantes</a></li>
+                <li></li>
+                <li><a class="nav-navegacao-text" href="contato.html">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!-- MAIN -->
+    <main>
+        <!-- SECAO 1 - APRESENTACAO -->
+        <section class="comps-secao1-container">
+            <div class="comps-secao1-overlay"></div>
+            <div class="comps-secao1-conteudogeral">
+                <div class="comps-secao1-conteudo-div1">
+                    <h1>ESTÁ INTERESSADO EM TRABALHAR CONOSCO?</h1>
+                    <p>Ficamos muito contentes com seu interesse em trabalhar conosco e fazer parte desta família! confira o vídeo ao lado, ele irá auxiliá-lo melhor neste processo.<br><br>Se ainda não conferiu nossa história, missão, visão e valores… então dá uma olhada lá para ficar por dentro de tudo. Vamos construir juntos o futuro do Brasil.<br><br>Boa sorte, esperamos por você!</p>
+                    <h3>Conheça também as empresas do Grupo Notus!</h3>
+                    <div class="comps-secao1-div-botoes">
+                        <a href="https://www.vipsoft.com.br/" target="_blank"><img src="./images/logo-vipsoft-branco1.webp" alt=""></a>
+                        <a href="https://www.notustooling.com.br/" target="_blank"><img src="./images/logo-notustooling-branco1.webp" alt=""></a>
+                        <a href="#" target="_blank"> <img src="./images/logo-ntr-branco1.webp" alt=""></a>
+                    </div>
+                </div>
+                <div class="comps-secao1-video-container">
+                    <iframe class="iframe-sobrenos comps-secao1-video-shadow" width="480" height="270" src="https://www.youtube.com/embed/0fGUlVtAZ6o?si=71Y-y1lqTs7QIY6W" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+            </div>
+        </section>
+
+        <section class="secao2-container">
+            <h2 class="secao2-titulo">
+                Confira <strong>nossas vagas</strong>
+            </h2>
+        </section>
+        
+        <!-- SEÇÃO DE VAGAS COM LAYOUT DE CARDS -->
+        <section class="vagas-layout-container">
+            <div class="vagas-sidebar">
+                <!-- Card 1 - Auxiliar de Limpeza -->
+                <div class="vaga-card" data-vaga="1">
+                    <div class="vaga-card-badge">NOVA</div>
+                    <h3 class="vaga-card-titulo">Auxiliar de Limpeza</h3>
+                    <div class="vaga-card-info">
+                        <p class="vaga-card-avaliacao">
+                            <span class="vaga-card-empresa">Notus do Brasil</span>
+                        </p>
+                        <p class="vaga-card-local">
+                            <i class="fa-solid fa-location-dot"></i> Salto - SP
+                        </p>
+                        <p class="vaga-card-salario">R$ 1.974,34</p>
+                        <p class="vaga-card-tipo">
+                            <i class="fa-solid fa-building"></i> Presencial
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Card 2 - Auxiliar Logístico -->
+                <div class="vaga-card" data-vaga="2">
+                    <div class="vaga-card-badge">NOVA</div>
+                    <h3 class="vaga-card-titulo">Auxiliar Logístico</h3>
+                    <div class="vaga-card-info">
+                        <p class="vaga-card-avaliacao">
+                            <span class="vaga-card-empresa">Notus do Brasil</span>
+                        </p>
+                        <p class="vaga-card-local">
+                            <i class="fa-solid fa-location-dot"></i> Salto - SP
+                        </p>
+                        <p class="vaga-card-salario">R$ 2.100,00</p>
+                        <p class="vaga-card-tipo">
+                            <i class="fa-solid fa-building"></i> Presencial
+                        </p>
+                    </div>
+                </div>
+
+                 <!-- Card 3 - Cozinheira-->
+                <div class="vaga-card" data-vaga="3">
+                    <div class="vaga-card-badge">NOVA</div>
+                    <h3 class="vaga-card-titulo">Cozinheira</h3>
+                    <div class="vaga-card-info">
+                        <p class="vaga-card-avaliacao">
+                            <span class="vaga-card-empresa">Notus do Brasil</span>
+                        </p>
+                        <p class="vaga-card-local">
+                            <i class="fa-solid fa-location-dot"></i> Salto - SP
+                        </p>
+                        <p class="vaga-card-salario">A combinar</p>
+                        <p class="vaga-card-tipo">
+                            <i class="fa-solid fa-building"></i> Presencial
+                        </p>
+                    </div>
+                </div>
+
+                  <!-- Card 4 - Cozinheira-->
+                <div class="vaga-card" data-vaga="4">
+                    <div class="vaga-card-badge">NOVA</div>
+                    <h3 class="vaga-card-titulo">Auxiliar de montagem informática e telecomunicações</h3>
+                    <div class="vaga-card-info">
+                        <p class="vaga-card-avaliacao">
+                            <span class="vaga-card-empresa">Vip Soft</span>
+                        </p>
+                        <p class="vaga-card-local">
+                            <i class="fa-solid fa-location-dot"></i> Salto - SP
+                        </p>
+                        <p class="vaga-card-salario">R$ 2.179,35</p>
+                        <p class="vaga-card-tipo">
+                            <i class="fa-solid fa-building"></i> Presencial
+                        </p>
+                    </div>
+                </div>
+
+
+                <div class="vaga-card" data-vaga="5">
+                    <div class="vaga-card-badge">NOVA</div>
+                    <h3 class="vaga-card-titulo">Analista de suporte Jr. I</h3>
+                    <div class="vaga-card-info">
+                        <p class="vaga-card-avaliacao">
+                            <span class="vaga-card-empresa">Vip Soft</span>
+                        </p>
+                        <p class="vaga-card-local">
+                            <i class="fa-solid fa-location-dot"></i> Salto - SP
+                        </p>
+                        <p class="vaga-card-salario">R$ 2.179,35</p>
+                        <p class="vaga-card-tipo">
+                            <i class="fa-solid fa-building"></i> Presencial
+                        </p>
+                    </div>
+                </div>
+            </div>    
+
+            
+
+            
+
+            
+
+            <!-- DETALHES DA VAGA -->
+            <div class="vagas-detalhes">
+                <!-- Vaga 1 - Auxiliar de Limpeza -->
+                <div class="vaga-detalhe-content active" id="vaga-1">
+                    <div class="vaga-detalhe-header">
+                        <div>
+                            <h2>Auxiliar de Limpeza</h2>
+                            <p class="vaga-detalhe-avaliacao">
+                            </p>
+                            <p class="vaga-detalhe-local">
+                                <i class="fa-solid fa-location-dot"></i> Salto - SP
+                            </p>
+                            <p class="vaga-detalhe-salario">R$ 1.974,34</p>
+                            <p class="vaga-detalhe-tipo">
+                                <i class="fa-solid fa-building"></i> Presencial
+                            </p>
+                        </div>
+                        <div class="vaga-detalhe-logo">
+                            <img src="./images/logo-notus-azul.webp" alt="Notus do Brasil">
+                        </div>
+                    </div>
+
+                    <button class="btn-candidatar" onclick="window.location.href='#formulario'">
+                        <i class="fa-solid fa-paper-plane"></i> CANDIDATAR-ME
+                    </button>
+
+                    <div class="vaga-detalhe-tabs">
+                        <button class="tab-btn active" data-tab="descricao">VAGA</button>
+                        <button class="tab-btn" data-tab="flyer">FLYER</button>
+                    </div>
+
+                    <div class="vaga-detalhe-body">
+                        <div class="tab-content active" id="descricao">
+                            <h3>Oportunidade de Auxiliar de Limpeza na Notus do Brasil!</h3>
+                            <p>Estamos buscando profissionais dedicados para se juntarem ao nosso time como <strong>Auxiliar de Limpeza</strong></p>
+                            
+                            <p>Esta é uma excelente oportunidade para quem busca ingressar no mercado de trabalho com um ambiente acolhedor e oportunidades de crescimento profissional.</p>
+
+                            <p>Na Notus do Brasil, você terá a chance de aprender e desenvolver habilidades importantes em um ambiente dinâmico e inovador.</p>
+
+                            <h4>Principais Responsabilidades:</h4>
+                            <ul>
+                                <li>Organizar e repor materiais de limpeza e higiene</li>
+                                <li>Garantir a organização e a limpeza dos ambientes</li>
+                                <li>Auxiliar na conservação e manutenção da limpeza</li>
+                                <li>Coleta de lixo e descarte adequado</li>
+                            </ul>
+
+                            <h4>Requisitos:</h4>
+                            <ul>
+                                <li>Ensino médio completo (preferencialmente, mas não obrigatório)</li>
+                                <li>Boa comunicação, agilidade e trabalho em equipe</li>
+                                <li>Vaga para Salto</li>
+                                <li>Perfil pessoal comprometido, experiência mínima na área ou primeiro emprego</li>
+                            </ul>
+
+                            <h4>Benefícios:</h4>
+                            <ul>
+                                <li>Cesta básica</li>
+                                <li>Plano de saúde</li>
+                                <li>Plano odonto</li>
+                                <li>Alimentação no local (Sem custo para o funcionário)</li>
+                                <li>Café da manhã no local</li>
+                                <li>Convênio com instituição de ensino</li>
+                                <li>Seguro de vida em grupo</li>
+                                <li>Possibilidade de bolsa graduação pela empresa</li>
+                                <li>Fretado (Cidade de Salto)</li>
+                            </ul>
+
+                            <p><strong>Salário:</strong> R$ 1.974,34</p>
+                            <p><strong>Salário + Benefícios Aproximadamente:</strong> R$ 3.080,00*</p>
+                            <p class="vaga-nota">*O valor descrito acima, se refere a totalidade dos benefícios + salário, podendo sofrer alterações</p>
+
+                            <p><strong>Horário:</strong> De Seg. a Qui. das 08H às 18H | Sex. das 08H às 17H</p>
+                        </div>
+
+                        <div class="tab-content" id="flyer">
+                            <h3>Flyer da Vaga - Auxiliar de Limpeza</h3>
+                            <div class="flyer-container">
+                                <img src="images/vaga-auxiliar-limpeza.jpeg" alt="Flyer Auxiliar de Limpeza" class="flyer-image" id="flyer-image-1">
+                                <div class="flyer-actions">
+                                    <button class="btn-download-flyer" onclick="downloadFlyer('./images/vaga-auxiliar-limpeza.jpg', 'Vaga-Auxiliar-Limpeza.jpg')">
+                                        <i class="fa-solid fa-download"></i> Baixar Flyer
+                                    </button>
+                                    <button class="btn-share-flyer" onclick="compartilharFlyer()">
+                                        <i class="fa-solid fa-share-nodes"></i> Compartilhar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vaga 2 - Auxiliar Logístico -->
+                <div class="vaga-detalhe-content" id="vaga-2">
+                    <div class="vaga-detalhe-header">
+                        <div>
+                            <h2>Auxiliar Logístico</h2>
+                            <p class="vaga-detalhe-avaliacao">
+                            </p>
+                            <p class="vaga-detalhe-local">
+                                <i class="fa-solid fa-location-dot"></i> Salto - SP
+                            </p>
+                            <p class="vaga-detalhe-salario">R$ 2.100,00</p>
+                            <p class="vaga-detalhe-tipo">
+                                <i class="fa-solid fa-building"></i> Presencial
+                            </p>
+                        </div>
+                        <div class="vaga-detalhe-logo">
+                            <img src="./images/logo-notus-azul.webp" alt="Notus do Brasil">
+                        </div>
+                    </div>
+
+                    <button class="btn-candidatar" onclick="window.location.href='#formulario'">
+                        <i class="fa-solid fa-paper-plane"></i> CANDIDATAR-ME
+                    </button>
+
+                    <div class="vaga-detalhe-tabs">
+                        <button class="tab-btn active" data-tab="descricao-2">VAGA</button>
+                        <button class="tab-btn" data-tab="flyer-2">FLYER</button>
+                    </div>
+
+                    <div class="vaga-detalhe-body">
+                        <div class="tab-content active" id="descricao-2">
+                            <h3>Oportunidade de Auxiliar Logístico na Notus do Brasil!</h3>
+                            <p>Estamos buscando profissionais dedicados para se juntarem ao nosso time como <strong>Auxiliar Logístico</strong></p>
+                            
+                            <p>Esta é uma excelente oportunidade para quem busca ingressar no mercado de trabalho com um ambiente acolhedor e oportunidades de crescimento profissional.</p>
+
+                            <p>Na Notus do Brasil, você terá a chance de aprender e desenvolver habilidades importantes em um ambiente dinâmico e inovador.</p>
+
+                            <h4>Principais Responsabilidades:</h4>
+                            <ul>
+                                <li>Carga e descarga</li>
+                                <li>Separação de pedido</li>
+                                <li>Organização do setor</li>
+                            </ul>
+
+                            <h4>Requisitos:</h4>
+                            <ul>
+                                <li>Ensino médio completo (preferencialmente, mas não obrigatório)</li>
+                                <li>Boa comunicação, agilidade e trabalho em equipe</li>
+                                <li>Vaga para Salto e imediações (Indaiatuba, Itu, Porto Feliz, Elias Fausto)</li>
+                                <li>Perfil pessoal comprometido, experiência mínima na área ou primeiro emprego</li>
+                            </ul>
+
+                            <h4>Benefícios:</h4>
+                            <ul>
+                                <li>Cesta básica</li>
+                                <li>Plano de saúde</li>
+                                <li>Plano odonto</li>
+                                <li>Alimentação no local (Sem custo para o funcionário)</li>
+                                <li>Café da manhã no local</li>
+                                <li>Convênio com instituição de ensino</li>
+                                <li>Seguro de vida em grupo</li>
+                                <li>Possibilidade de bolsa graduação pela empresa</li>
+                                <li>Fretado (Cidade de Salto)</li>
+                                <li>Plano de carreira</li>
+                            </ul>
+
+                            <p><strong>Salário:</strong> R$ 2.100,00</p>
+                            <p><strong>Salário + Benefícios Aproximadamente:</strong> R$ 3.120,00*</p>
+                            <p class="vaga-nota">*O valor descrito acima, se refere a totalidade dos benefícios + salário, podendo sofrer alterações</p>
+
+                            <p><strong>Horário:</strong> De Seg. a Qui. das 08H às 18H | Sex. das 08H às 17H</p>
+                        </div>
+
+                        <div class="tab-content" id="flyer-2">
+                            <h3>Flyer da Vaga - Auxiliar Logístico</h3>
+                            <div class="flyer-container">
+                                <img src="images/Vaga-AuxiliarLogistico.jpg" alt="Flyer Auxiliar Logístico" class="flyer-image" id="flyer-image-2">
+                                <div class="flyer-actions">
+                                    <button class="btn-download-flyer" onclick="downloadFlyer('./images/Vaga-AuxiliarLogistico.jpg', 'Vaga-Auxiliar-Logistico.jpg')">
+                                        <i class="fa-solid fa-download"></i> Baixar Flyer
+                                    </button>
+                                    <button class="btn-share-flyer" onclick="compartilharFlyer()">
+                                        <i class="fa-solid fa-share-nodes"></i> Compartilhar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+
+               <!-- Vaga 3  - Cozinheira -->
+                <div class="vaga-detalhe-content" id="vaga-3">
+                    <div class="vaga-detalhe-header">
+                        <div>
+                            <h2>Cozinheira</h2>
+                            <p class="vaga-detalhe-avaliacao">
+                            </p>
+                            <p class="vaga-detalhe-local">
+                                <i class="fa-solid fa-location-dot"></i> Salto - SP
+                            </p>
+                            <p class="vaga-detalhe-salario">A combinar</p>
+                            <p class="vaga-detalhe-tipo">
+                                <i class="fa-solid fa-building"></i> Presencial
+                            </p>
+                        </div>
+                        <div class="vaga-detalhe-logo">
+                            <img src="./images/logo-notus-azul.webp" alt="Notus do Brasil">
+                        </div>
+                    </div>
+
+                    <button class="btn-candidatar" onclick="window.location.href='#formulario'">
+                        <i class="fa-solid fa-paper-plane"></i> CANDIDATAR-ME
+                    </button>
+
+                    <div class="vaga-detalhe-tabs">
+                        <button class="tab-btn active" data-tab="descricao-2">VAGA</button>
+                        <button class="tab-btn" data-tab="flyer-2">FLYER</button>
+                    </div>
+
+                    <div class="vaga-detalhe-body">
+                        <div class="tab-content active" id="descricao-2">
+                            <h3>Oportunidade de Cozinheira na Notus do Brasil!</h3>
+                            <p>Estamos buscando profissionais dedicados para se juntarem ao nosso time como <strong>Cozinheira</strong></p>
+                            
+                            <p>Esta é uma excelente oportunidade para quem busca ingressar no mercado de trabalho com um ambiente acolhedor e oportunidades de crescimento profissional.</p>
+
+                            <p>Na Notus do Brasil, você terá a chance de aprender e desenvolver habilidades importantes em um ambiente dinâmico e inovador.</p>
+
+                            <h4>Principais Responsabilidades:</h4>
+                            <ul>
+                                <li>Executar receitas com qualidade</li>
+                                <li>Preparar alimentos, se atentando as especificações do cardápio</li>
+                                <li>Auxiliar no desenvolvimento do cardápio semanal</li>
+                            </ul>
+
+                            <h4>Requisitos:</h4>
+                            <ul>
+                                <li>Ensino médio completo (preferencialmente, mas não obrigatório)</li>
+                                <li>Habilidade com cozimento de grande quantidade de alimentos</li>
+                                <li>Conhecimento na manipulação de alimentos</li>
+                                <li>Noções de planejamento</li>
+                                <li>Disponibilidade de horários</li>
+                                <li>Vaga para Salto</li>
+                            </ul>
+
+                            <h4>Benefícios:</h4>
+                            <ul>
+                                <li>Cesta básica</li>
+                                <li>Plano de saúde</li>
+                                <li>Plano odonto</li>
+                                <li>Alimentação no local (Sem custo para o funcionário)</li>
+                                <li>Café da manhã no local</li>
+                                <li>Convênio com instituição de ensino</li>
+                                <li>Seguro de vida em grupo</li>
+                                <li>Possibilidade de bolsa graduação pela empresa</li>
+                                <li>Fretado (Cidade de Salto)</li>
+                                <li>Plano de carreira</li>
+                            </ul>
+
+                            <p><strong>Salário:</strong> A combinar</p>
+                            <p><strong>Salário + Benefícios Aproximadamente:</strong> - </p>
+                            <p class="vaga-nota">*O valor descrito acima, se refere a totalidade dos benefícios + salário, podendo sofrer alterações</p>
+
+                            <p><strong>Horário:</strong> De Seg. a Sex. das 10H às 19H48</p>
+                        </div>
+
+                        <div class="tab-content" id="flyer-2">
+                            <h3>Flyer da Vaga - Auxiliar Logístico</h3>
+                            <div class="flyer-container">
+                                <img src="images/vagaCozinheira.jpg" alt="Flyer Auxiliar Logístico" class="flyer-image" id="flyer-image-2">
+                                <div class="flyer-actions">
+                                    <button class="btn-download-flyer" onclick="downloadFlyer('./images/vagaCozinheira.jpg', 'vagaCozinheira.jpg')">
+                                        <i class="fa-solid fa-download"></i> Baixar Flyer
+                                    </button>
+                                    <button class="btn-share-flyer" onclick="compartilharFlyer()">
+                                        <i class="fa-solid fa-share-nodes"></i> Compartilhar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+
+
+             <!-- Vaga 4  - auxiliar de montagem | vip soft -->
+                <div class="vaga-detalhe-content" id="vaga-4">
+                    <div class="vaga-detalhe-header">
+                        <div>
+                            <h2>Auxiliar de montagem informática e telecomunicações</h2>
+                            <p class="vaga-detalhe-avaliacao">
+                            </p>
+                            <p class="vaga-detalhe-local">
+                                <i class="fa-solid fa-location-dot"></i> Salto - SP
+                            </p>
+                            <p class="vaga-detalhe-salario">R$ 1.179,35</p>
+                            <p class="vaga-detalhe-tipo">
+                                <i class="fa-solid fa-building"></i> Presencial
+                            </p>
+                        </div>
+                        <div class="vaga-detalhe-logo">
+                            <img src="./images/Logo_Vipsoft.webp" alt="Vipsoft">
+                        </div>
+                    </div>
+
+                    <button class="btn-candidatar" onclick="window.location.href='#formulario'">
+                        <i class="fa-solid fa-paper-plane"></i> CANDIDATAR-ME
+                    </button>
+
+                    <div class="vaga-detalhe-tabs">
+                        <button class="tab-btn active" data-tab="descricao-2">VAGA</button>
+                        <button class="tab-btn" data-tab="flyer-2">FLYER</button>
+                    </div>
+
+                    <div class="vaga-detalhe-body">
+                        <div class="tab-content active" id="descricao-2">
+                            <h3>Oportunidade de Auxiliar de montagem na Vipsoft!</h3>
+                            <p>Estamos buscando profissionais dedicados para se juntarem ao nosso time como <strong>Auxiliar de montagem informática e telecomunicações</strong></p>
+                            
+                            <p>Esta é uma excelente oportunidade para quem busca ingressar no mercado de trabalho com um ambiente acolhedor e oportunidades de crescimento profissional.</p>
+
+                            <p>Na Vipsoft, você terá a chance de aprender e desenvolver habilidades importantes em um ambiente dinâmico e inovador.</p>
+
+                            <h4>Principais Responsabilidades:</h4>
+                            <ul>
+                                <li>Apoiar processos de produção e montagem de cabo de rede (patch cords)</li>
+                                <li>Separação de pedidos</li>
+                                <li>Conferir notas fiscais, identificar e colar as etiquetas de envio</li>
+                                <li>Preparar pedidos para coleta</li>
+                            </ul>
+
+                            <h4>Requisitos:</h4>
+                            <ul>
+                                <li>Ensino médio completo (preferencialmente, mas não obrigatório)</li>
+                                <li>Boa comunicação, agilidade e trabalho em equipe</li>
+                                <li>Vaga para Salto</li>
+                            </ul>
+
+                            <h4>Benefícios:</h4>
+                            <ul>
+                                <li>Cesta básica</li>
+                                <li>Plano de saúde</li>
+                                <li>Plano odonto</li>
+                                <li>Alimentação no local (Sem custo para o funcionário)</li>
+                                <li>Café da manhã no local</li>
+                                <li>Convênio com instituição de ensino</li>
+                                <li>Seguro de vida em grupo</li>
+                                <li>Possibilidade de bolsa graduação pela empresa</li>
+                                <li>Fretado (Cidade de Salto)</li>
+                                <li>Plano de carreira</li>
+                            </ul>
+
+                            <p><strong>Salário:</strong>2.179,35</p>
+                            <p><strong>Salário + Benefícios Aproximadamente:</strong> - </p>
+                            <p class="vaga-nota">-</p>
+
+                            <p><strong>Horário:</strong> De Seg. a Sex. das 08H30 às 17H30</p>
+                        </div>
+
+                        <div class="tab-content" id="flyer-2">
+                            <h3>Flyer da Vaga - Auxiliar de montagem</h3>
+                            <div class="flyer-container">
+                                <img src="images/vaga-auxiliarDe-montagem.jpg" alt="Flyer Auxiliar de montagem" class="flyer-image" id="flyer-image-2">
+                                <div class="flyer-actions">
+                                    <button class="btn-download-flyer" onclick="downloadFlyer('./images/vaga-auxiliarDe-montagem.jpg', 'vaga-auxiliarDe-montagem.jpg')">
+                                        <i class="fa-solid fa-download"></i> Baixar Flyer
+                                    </button>
+                                    <button class="btn-share-flyer" onclick="compartilharFlyer()">
+                                        <i class="fa-solid fa-share-nodes"></i> Compartilhar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+              <!-- Vaga 4  - auxiliar de montagem | vip soft -->
+                <div class="vaga-detalhe-content" id="vaga-5">
+                    <div class="vaga-detalhe-header">
+                        <div>
+                            <h2>Analista de suporte Jr. I </h2>
+                            <p class="vaga-detalhe-avaliacao">
+                            </p>
+                            <p class="vaga-detalhe-local">
+                                <i class="fa-solid fa-location-dot"></i> Salto - SP
+                            </p>
+                            <p class="vaga-detalhe-salario">R$ 2.179,35</p>
+                            <p class="vaga-detalhe-tipo">
+                                <i class="fa-solid fa-building"></i> Presencial
+                            </p>
+                        </div>
+                        <div class="vaga-detalhe-logo">
+                            <img src="./images/Logo_Vipsoft.webp" alt="Vipsoft">
+                        </div>
+                    </div>
+
+                    <button class="btn-candidatar" onclick="window.location.href='#formulario'">
+                        <i class="fa-solid fa-paper-plane"></i> CANDIDATAR-ME
+                    </button>
+
+                    <div class="vaga-detalhe-tabs">
+                        <button class="tab-btn active" data-tab="descricao-2">VAGA</button>
+                        <button class="tab-btn" data-tab="flyer-2">FLYER</button>
+                    </div>
+
+                    <div class="vaga-detalhe-body">
+                        <div class="tab-content active" id="descricao-2">
+                            <h3>Oportunidade de Analista de suporte Jr. I na Vipsoft!</h3>
+                            <p>Estamos buscando profissionais dedicados para se juntarem ao nosso time como <strong>Analista de suporte Jr. I</strong></p>
+                            
+                            <p>Esta é uma excelente oportunidade para quem busca ingressar no mercado de trabalho com um ambiente acolhedor e oportunidades de crescimento profissional.</p>
+
+                            <p>Na Vipsoft, você terá a chance de aprender e desenvolver habilidades importantes em um ambiente dinâmico e inovador.</p>
+
+                            <h4>Principais Responsabilidades:</h4>
+                            <ul>
+                                <li>Atender clientes por telefone e ferramentas de acesso remoto para suporte ao sistema ERP</li>
+                                <li>Auxiliar usuários na resolução de dúvidas e problemas relacionados ao sistema</li>
+                                <li>Diagnosticar e solucionar erros técnicos e operacionais</li>
+                                <li>Registrar e acompanhar chamados técnicos até sua conclusão</li>
+                                <li>Orientar os clientes com clareza e paciência sobre o uso do sistema</li>
+                            </ul>
+
+                            <h4>Requisitos:</h4>
+                            <ul>
+                                <li>Conhecimento básico em informática (windows, Office, e acesso remoto)</li>
+                                <li>Boa comunicação verbal e escrita</li>
+                                <li>Facilidade para aprender novas ferramentas e sistemas</li>
+                                <li>Desejo de desenvolver-se na área de suporte técnico</li>
+                            </ul>
+
+                            <h4>Benefícios:</h4>
+                            <ul>
+                                <li>Cesta básica</li>
+                                <li>Plano de saúde</li>
+                                <li>Plano odonto</li>
+                                <li>Alimentação no local (Sem custo para o funcionário)</li>
+                                <li>Café da manhã no local</li>
+                                <li>Convênio com instituição de ensino</li>
+                                <li>Seguro de vida em grupo</li>
+                                <li>Possibilidade de bolsa graduação pela empresa</li>
+                                <li>Fretado (Cidade de Salto)</li>
+                                <li>Plano de carreira</li>
+                            </ul>
+
+                            <p><strong>Salário:</strong>2.179,35</p>
+                            <p><strong>Salário + Benefícios Aproximadamente:</strong> - </p>
+                            <p class="vaga-nota">-</p>
+
+                            <p><strong>Horário:</strong> De Seg. a Sex. das 08H30 às 17H30</p>
+                        </div>
+
+                        <div class="tab-content" id="flyer-2">
+                            <h3>Flyer da Vaga - Analista de suporte Jr. I</h3>
+                            <div class="flyer-container">
+                                <img src="images/vaga-AnalistaSuporte.jpg" alt="Flyer Analista de Suporte" class="flyer-image" id="flyer-image-2">
+                                <div class="flyer-actions">
+                                    <button class="btn-download-flyer" onclick="downloadFlyer('./images/vaga-AnalistaSuporte.jpg', 'vaga-AnalistaSuporte.jpg')">
+                                        <i class="fa-solid fa-download"></i> Baixar Flyer
+                                    </button>
+                                    <button class="btn-share-flyer" onclick="compartilharFlyer()">
+                                        <i class="fa-solid fa-share-nodes"></i> Compartilhar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          
+            
+             
+        </section>
+
+        <section class="container-enviocurriculo" id="formulario">
+            <div class="enviocurriculo-div-text">
+                <h3>Seja avisado de novas vagas</h3>
+                <h4>envie seu currículo</h4>
+            </div>
+            
+            <form class="trabalheconosco-form" id="form-curriculo">
+                <input class="trabalheconosco-form-input" type="text" id="nome-candidato" name="nome" placeholder="Nome completo" required>
+                <input class="trabalheconosco-form-input" type="email" id="email-candidato" name="email" placeholder="E-mail" required>
+                
+                <div class="upload-container">
+                    <input class="none" type="file" name="curriculo" id="envio-curriculo" accept=".pdf,.doc,.docx" required>
+                    <label for="envio-curriculo" class="upload-label">Escolher Arquivo</label>
+                    <span id="file-name" class="file-name-display">Nenhum arquivo selecionado</span>
+                </div>
+
+                <div class="trabalheconosco-botaoenviar">
+                    <input type="submit" id="btn-enviar-curriculo" value="Enviar"></input>
+                </div>
+            </form>
+            
+            <p id="curriculo-ok" style="display:none; color: #0a0; text-align: center; margin-top: 15px;">Currículo enviado com sucesso! Agradecemos o seu interesse.</p>
+            <p id="curriculo-err" style="display:none; color: #c00; text-align: center; margin-top: 15px;"></p>
+        </section>
+    </main>
+        <!-- SECAO 2 - QUEM SOMOS -->
+    <footer class="container-footer">
+        <div class="footer-containersub">
+            <div class="footer-containersub-div">
+                <h3><strong>Menu</strong></h3>
+                <ul class="footer-lista">
+                    <li><a href="sobrenotus.html">Sobre Notus</a></li>
+                    <li><a href="trabalheconosco.html">Trabalhe Conosco</a></li>
+                    <li><a href="garantia.html">Garantia</a></li>
+                    <li><a href="representantes.html">Representantes</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                    <li><a href="https://catalogo.notus.ind.br/" target="_blank">Catálogo</a></li>
+                </ul>
+            </div>
+            <div class="footer-containersub-div">
+                <h3><strong>Lista de Produtos</strong></h3>
+                <ul class="footer-lista">
+                    <li><a href="https://catalogo.notus.ind.br/categoria.html?cat=radiador">Radiador</a></li>
+                    <li><a href="https://catalogo.notus.ind.br/categoria.html?cat=eletroventilador">Eletroventilador</a></li>
+                    <li><a href="https://catalogo.notus.ind.br/categoria.html?cat=gmv">GMV</a></li>
+                    <li><a href="https://catalogo.notus.ind.br/categoria.html?cat=condensador">Condensador</a></li>
+                    <li><a href="https://catalogo.notus.ind.br/categoria.html?cat=evaporadora">Evaporador</a></li>
+                    <li><a href="https://catalogo.notus.ind.br/categoria.html?cat=radiador%20de%20%C3%B3leo%20transmiss%C3%A3o">Radiador de óleo</a></li>
+                    <li><a href="https://catalogo.notus.ind.br/categoria.html?cat=radiador%20de%20aquecimento">Radiador de aquecimento</a></li>
+                </ul>
+            </div>
+            <div class="footer-containersub-div">
+                <h3><strong>Fale Conosco</strong></h3>
+                <ul class="footer-lista">
+                    <li class="footer-lista-faleconosco-separador"><i class="fa-solid fa-phone"></i><a href="tel:+551142101997">(11) 4210-1997</a></li>
+                    <li class="footer-lista-faleconosco-separador"><i class="fa-solid fa-phone"></i><a href="tel:+551142101997">(11) 4210-1998</a></li>
+                    <li class="footer-lista-faleconosco-separador"><i class="fa-solid fa-phone"></i><a href="tel:+551142101997">(11) 2413-6550</a></li>
+                    <li class="footer-lista-faleconosco-separador"><i class="fa-solid fa-envelope"></i></i><a href="mailto:contato@notus.ind.br">contato@notus.ind.br</a></li>
+                </ul>
+                <div class="footer-redessociais">
+                    <a href="https://www.instagram.com/notusdobrasil" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/profile.php?id=61559166240715" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="https://www.youtube.com/@NotusdoBrasil" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="https://www.linkedin.com/company/notus-do-brasil" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div  class="footer-faixa">
+            <div">
+                <p>Notus Sistemas Térmicos Do Brasil © Todos os direitos reservados</p>
+            </div>
+            <div class="faixa-amarela">
+            </div>
+            <div class="faixa-verde">
+            </div>
+        </div>
+    </footer>
+    <script src="./js/scripts.js"></script>
+    <script>
+        // Script para interatividade das vagas
+        document.addEventListener('DOMContentLoaded', function() {
+            const vagaCards = document.querySelectorAll('.vaga-card');
+            const vagaDetalhes = document.querySelectorAll('.vaga-detalhe-content');
+
+            // Adicionar evento de clique em cada card
+            vagaCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    const vagaId = this.getAttribute('data-vaga');
+                    
+                    // Remover classe active de todos os cards
+                    vagaCards.forEach(c => c.classList.remove('active'));
+                    
+                    // Adicionar classe active no card clicado
+                    this.classList.add('active');
+                    
+                    // Esconder todos os detalhes
+                    vagaDetalhes.forEach(detalhe => {
+                        detalhe.classList.remove('active');
+                    });
+                    
+                    // Mostrar detalhe da vaga selecionada
+                    const detalheAtivo = document.getElementById('vaga-' + vagaId);
+                    if (detalheAtivo) {
+                        detalheAtivo.classList.add('active');
+                    }
+                    
+                    // Scroll suave para o topo dos detalhes em mobile
+                    if (window.innerWidth <= 1024) {
+                        detalheAtivo.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            });
+
+            // Ativar o primeiro card por padrão
+            if (vagaCards.length > 0) {
+                vagaCards[0].classList.add('active');
+            }
+
+            // Funcionalidade das tabs
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const parentDetalhe = this.closest('.vaga-detalhe-content');
+                    const tabName = this.getAttribute('data-tab');
+                    
+                    // Remover active de todas as tabs do mesmo detalhe
+                    parentDetalhe.querySelectorAll('.tab-btn').forEach(b => {
+                        b.classList.remove('active');
+                    });
+                    
+                    // Adicionar active na tab clicada
+                    this.classList.add('active');
+                    
+                    // Mostrar conteúdo correspondente
+                    if (tabName) {
+                        parentDetalhe.querySelectorAll('.tab-content').forEach(content => {
+                            content.classList.remove('active');
+                        });
+                        const targetContent = parentDetalhe.querySelector('#' + tabName);
+                        if (targetContent) {
+                            targetContent.classList.add('active');
+                        }
+                    }
+                });
+            });
+        });
+
+        // Função para download do flyer
+        function downloadFlyer(imagemUrl, nomeArquivo) {
+            // Criar um link temporário
+            const link = document.createElement('a');
+            link.href = imagemUrl;
+            link.download = nomeArquivo;
+            link.target = '_blank';
+            
+            // Adicionar ao documento, clicar e remover
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            // Feedback visual
+            alert('Download iniciado! O flyer será salvo em sua pasta de downloads.');
+        }
+
+        // Função para compartilhar o flyer
+        function compartilharFlyer() {
+            const url = window.location.href;
+            
+            // Verificar se a API Web Share está disponível
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Vaga - Notus do Brasil',
+                    text: 'Confira esta vaga disponível na Notus do Brasil!',
+                    url: url
+                })
+                .then(() => console.log('Compartilhamento realizado com sucesso'))
+                .catch((error) => console.log('Erro ao compartilhar:', error));
+            } else {
+                // Fallback: copiar URL para clipboard
+                navigator.clipboard.writeText(url).then(() => {
+                    alert('Link copiado para a área de transferência! Cole e compartilhe com outras pessoas.');
+                }).catch(() => {
+                    alert('Link da página: ' + url);
+                });
+            }
+        }
+    </script>
+</body>
+</html>

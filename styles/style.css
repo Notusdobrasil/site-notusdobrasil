@@ -1,0 +1,2742 @@
+/* IMPORTACAO FONTES */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+/* RESET MARGEM E PADDING */
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+/* ROOTS DE PADRONIZACAO DO SITE */
+:root{
+    --cor-background: #ffff;
+    --cor-background-cinza: #dddddd;
+    --cor-background-cinza-claro1: #f0f0f0;
+    --cor-principal: #134596;
+    --cor-secundaria: #5c5c5c;
+    --cor-terciaria: #818181;
+    --cor-botoes: #1da0ec;
+    --cor-botoes-hover: #6eb9e4;
+    --cor-brasil-verde: #009440;
+    --cor-brasil-amarelo: #ffcb00;
+    --cor-whatsapp: #27b64e;
+
+    --cor-degrade-verde-amarelo-azulNotus: linear-gradient(180deg, var(--cor-brasil-verde) 40%, var(--cor-principal) 65%);
+    --cor-degrade-azulnotus-azulclaro1: linear-gradient(150deg, var(--cor-principal) 45%, var(--cor-botoes) 135%);
+    --cor-degrade-azulnotus-azulclaro2: linear-gradient(120deg, var(--cor-principal) 35%, var(--cor-botoes) 70%);
+
+    --font-principal: "Roboto", sans-serif;
+    --font-secundaria: "Montserrat", sans-serif;
+}
+
+
+
+body {
+    /* height: 100vh; */
+    box-sizing: border-box;
+    background-color: var(--cor-background);
+    font-family: var(--font-principal);
+    color: var(--cor-secundaria);
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(45deg, #134596, #fff, #134596);
+  background-size: 200% 200%;
+  animation: degradeAnimado 10s ease infinite;
+  opacity: 0.05;
+}
+
+@keyframes degradeAnimado {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: 
+    linear-gradient(to bottom,
+      #ffffff 20%,
+      #134596 100%
+    );
+}
+
+/* LINKS ICONES */
+.fa-envelope,
+.fa-phone,
+.fa-instagram,
+.fa-facebook,
+.fa-youtube,
+.fa-linkedin,
+.fa-magnifying-glass,
+.fa-clipboard,
+.fa-list-check,
+.fa-star,
+.fa-money-bill,
+.fa-location-arrow,
+.fa-bars {
+    color: var(--cor-principal);
+    font-size: 120%;
+}
+
+strong {
+    color: var(--cor-principal);
+}
+
+
+
+/* HEADER */
+.header-container {
+    display: flex;
+    flex-direction: column;
+    font-family: var(--font-secundaria);
+}
+
+.nav-contacts {
+    padding: 1rem 15%;
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--cor-background-cinza);
+}
+
+.header-contatos {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+}
+
+.header-redessociais {
+    display: flex;
+    gap: 0.7rem;
+}
+
+.header-contacts-text {
+    font-size: clamp(0.9rem, 0.7176rem + 0.2353vw, 1rem);
+    text-decoration: none;
+    color: #0b2a5c;
+    white-space: nowrap;
+}
+
+.header-contacts-text:hover {
+    color: var(--cor-principal);
+}
+
+.nav-navegacao {
+    padding: 1rem 15%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: clamp(0.5rem, -0.0714rem + 0.8929vw, 1rem);
+    position: relative;
+}
+
+.header-logo {
+    width: clamp(10rem, 0.8824rem + 11.7647vw, 15rem);
+}
+
+.nav-navegacao-container-text {
+    display: flex;
+    gap: clamp(0.4rem, -2.5176rem + 3.7647vw, 2rem);
+}
+
+.nav-navegacao-text {
+    padding: 0.5rem;
+    display: flex;
+    text-decoration: none;
+    font-size: clamp(0.9rem, 0.6714rem + 0.3571vw, 1.1rem);
+    font-weight: 400;
+    color: var(--cor-secundaria);
+    white-space: nowrap;
+}
+
+#menu {
+    top: 4.3rem;
+    right: 10%;
+    padding: 1rem;
+    flex-direction: column;
+    background-color: var(--cor-background);
+    gap: 1rem;
+    position: absolute;
+    z-index: 3;
+}
+
+.nav-navegacao-text:hover {
+    color: var(--cor-principal);
+}
+
+.nav-navegacao-catalogo {
+    padding: clamp(0.5rem, -0.0714rem + 0.8929vw, 1rem) clamp(0.7rem, -1.6706rem + 3.0588vw, 2rem);
+    display: flex;
+    text-decoration: none;
+    font-size: clamp(0.8rem, 0.2529rem + 0.7059vw, 1.1rem);
+    color: var(--cor-background);
+    background-color: var(--cor-principal);
+    border-radius: clamp(1rem, -0.8235rem + 2.3529vw, 2rem);
+    transition: background-color 0.3s ease, color 0.3s ease, font-weight 0.3s ease;
+}
+
+.nav-navegacao-catalogo:hover {
+    padding: clamp(0.4375rem, -0.1339rem + 0.8929vw, 0.9375rem) clamp(0.625rem, -1.7684rem + 3.0882vw, 1.9375rem);
+    color: var(--cor-principal);
+    background-color: transparent;
+    border: solid 1px var(--cor-principal);
+    font-weight: 500;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.btn-mobile, .fa-bars {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 2rem;
+}
+
+.invisible {
+    display: none;
+}
+
+.visible {
+    display: block
+}
+
+
+/* /HEADER */
+
+
+
+/* SECAO 1 - APRESENTACAO */
+.container-secao1 {
+    display: flex;
+    position: relative;
+    overflow: hidden;
+    min-height: 65vh;
+}
+
+.secao1-grid {
+    padding: 5rem 15%;
+    display: flex;
+    position: relative;
+    z-index: 1;
+    color: var(--cor-background);
+    width: 100%;
+}
+
+.secao1-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+}
+
+.secao1-overlay {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(19, 69, 150, 0.7);
+    z-index: 0;
+}
+
+.secao1-grid-div-text {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    gap: 2rem;
+}
+
+.secao1-grid-h1 {
+    font-size: clamp(2rem, 1.9538rem + 1.5385vw, 3.5rem);
+    font-weight: 700;
+}
+
+.secao1-grid-text {
+    font-size: clamp(1.8rem, 1.5077rem + 0.4103vw, 1.3rem);
+    font-weight: 400;
+    line-height: 2.5rem;
+}
+
+.secao1-botao {
+    padding: 1rem 1.5rem;
+    max-width: 10rem;
+    width: clamp(7rem, 6.3077rem + 3.0769vw, 10rem);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-decoration: none;
+    color: var(--cor-background);
+    font-size: clamp(0.9rem, 0.8077rem + 0.4103vw, 1.3rem);
+    background-color: var(--cor-botoes);
+    border-radius: 1rem;
+    border: solid 1px var(--cor-botoes);
+    transition: all 0.5s ease;
+}
+
+.secao1-botao-img {
+    width: clamp(0.9rem, 0.8077rem + 0.4103vw, 1.3rem);
+}
+
+.secao1-botao:hover {
+    background-color: transparent;
+    border: solid 1px var(--cor-background);
+}
+
+.secao1-botao-lista {
+    /* padding: 1rem 1.5rem; */
+    max-width: 13rem;
+    max-height: fit-content;
+    width: clamp(10rem, 9.3077rem + 3.0769vw, 13rem);
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: var(--cor-background);
+    font-size: clamp(0.9rem, 0.8077rem + 0.4103vw, 1.3rem);
+    background-color: var(--cor-botoes);
+    border-radius: 0 0 0.5rem 0.5rem;
+}
+
+.secao1-botao-sembordaembaixo {
+    border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.secao1-botao-lista-objeto {
+    padding: 0.5rem 0;
+    width: clamp(10rem, 9.3077rem + 3.0769vw, 13rem);
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    color: var(--cor-background);
+}
+
+.secao1-botao-lista-objeto:hover {
+    background-color: var(--cor-botoes-hover);
+    border-radius: 0.5rem;
+}
+/* /SECAO 1 - APRESENTACAO */
+
+
+
+/* SECAO 2 - TITULO CARDS */
+.secao2-container {
+    padding: 2.5rem 15% 1.8rem 15%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.secao2-titulo {
+    font-size: clamp(1.8rem, 1.5923rem + 0.9231vw, 2.7rem);
+    font-weight: 550;
+    text-align: center;
+}
+
+.secao2-titulo-cinza {
+    color: var(--cor-secundaria);
+}
+
+.secao2-titulo-azul {
+    color: var(--cor-principal);
+}
+
+.secao2-titulo-degrade {
+    background: linear-gradient(270deg, var(--cor-brasil-verde), var(--cor-principal), var(--cor-brasil-amarelo));
+    background-size: 400% 400%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientAnim 5s ease infinite;
+}
+
+@keyframes gradientAnim {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+.secao2-titulo.hidden-titulo {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.secao2-titulo.show-titulo {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.secao2-titulo.hidden-titulo {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.secao2-titulo.show-titulo {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.5s, transform 0.5s;
+}
+
+/* /SECAO 2 - TITULO CARDS */
+
+
+
+/* SECAO 2 - WHATSAPP */
+.whatsapp-container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 99999;
+}
+
+.whatsapp-botao {
+    right: 2.5vh;
+    bottom: 7vh;
+    max-height: 42px;
+    max-width: 42px;
+    height: clamp(1.5625rem, 1.3173rem + 1.0897vw, 2.625rem);
+    width: clamp(1.5625rem, 1.3173rem + 1.0897vw, 2.625rem);
+    padding: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    object-fit: contain;
+    background-color: var(--cor-whatsapp);
+    border-radius: 100%;
+    box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.5);
+    position: fixed;
+    text-decoration: none;
+}
+
+.whatsapp-icone {
+    display: flex;
+    transform: rotate(0deg);
+    transition: ease 0.125s;
+}
+
+.whatsapp-text-cta {
+    right: 9.1vh;
+    bottom: 6.5vh;
+    height: 3.2rem;
+    width: 7rem;
+    padding: 0.5rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.8rem;
+    font-weight: 500;
+    line-height: 1rem;
+    background-color: var(--cor-background);
+    border-radius: 0.5rem;
+    box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.5);
+    position: fixed;
+}
+
+.card-whatsapp-container {
+    bottom: 15vh;
+    right: 3vh;
+    max-height: 30rem;
+    max-width: 20rem;
+    height: 30rem;
+    width: 20rem;
+    flex-direction: column;
+    background-color: var(--cor-background);
+    border-radius: 1rem;
+    box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.5);
+    position: fixed;
+}
+
+.card-whatsapp-sup {
+    padding: 1rem 1rem 0.5rem 1rem;
+    display: flex;
+    background-color: var(--cor-whatsapp);
+    border-radius: 1rem 1rem 0 0;
+    gap: 0.7rem;
+}
+
+.card-whatsapp-sup-text-container {
+    display: flex;
+    flex-direction: column;
+    color: var(--cor-background);
+    gap: 0.3rem;
+}
+
+.card-whatsapp-sup img {
+    width: 45px;
+}
+
+.card-whatsapp-sup h2 {
+    display: flex;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+.card-whatsapp-sup p {
+    display: flex;
+    text-align: start;
+    font-size: 0.8rem;
+    line-height: 1rem;
+}
+
+.card-whatsapp-bottom {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.card-whatsapp-bottom p {
+    display: flex;
+    font-size: 0.75rem;
+}
+
+.card-whatsapp-bottom-botao {
+    height: 53px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    background-color: var(--cor-background-cinza-claro);
+    border-radius: 0.5rem;
+    gap: 1rem;
+}
+
+.card-whatsapp-bottom-botao:hover {
+    background-color: var(--cor-background-cinza-claro1);
+}
+
+.card-whatsapp-bottom-botao hr {
+    height: 49px;
+    border: 2px solid var(--cor-whatsapp);
+    border-radius: 1rem 0 0 1rem;
+}
+
+.card-whatsapp-bottom-botao img {
+    width: 45px;
+    background-color: var(--cor-whatsapp);
+    border-radius: 100%;
+}
+
+.card-whatsapp-bottom-botao-text {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 0.3rem;
+}
+
+.card-whatsapp-bottom-botao-text h3 {
+    color: var(--cor-secundaria);
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.card-whatsapp-bottom-botao-text p {
+    color: var(--cor-terciaria);
+    font-size: 0.7rem;
+    font-weight: 300;
+}
+/* /SECAO 2 - WHATSAPP */
+
+
+
+/* SECAO 2 - CARDS */
+.container-cards-secao2 {
+    padding: 0% 10%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(23.72rem, 1fr));
+    gap: 1rem;
+}
+
+.secao2-cards {
+    padding: clamp(0.5rem, 0.3846rem + 0.5128vw, 1rem) clamp(3rem, 2.8385rem + 0.7179vw, 3.7rem) clamp(0.5rem, 0.3846rem + 0.5128vw, 1rem) clamp(1rem, 0.7692rem + 1.0256vw, 2rem);
+    background: var(--cor-principal);
+    border-radius: clamp(1rem, 0.7692rem + 1.0256vw, 2rem);
+    background-image: url(../images/card-radiador.webp);
+    background-size: 60%;
+    background-repeat: no-repeat;
+    background-position-y: center;
+    background-position-x: right;
+    min-height: 40rem;
+}
+
+.secao2-cards-div1 {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.secao2-cards-h3 {
+    font-size: clamp(1.8rem, 1.7538rem + 0.2051vw, 2rem);
+    font-weight: 600;
+    color: var(--cor-background);
+}
+
+.secao2-cards-div2 {
+    padding-top: 1.5rem;
+    display: flex;
+    gap: 1rem;
+}
+
+.secao2-cards-icon {
+    width: clamp(2.5rem, 2.1538rem + 1.5385vw, 4rem);
+}
+
+.secao2-cards-div2-conteudo {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.secao2-cards-h4 {
+    font-size: clamp(1.3rem, 1.2538rem + 0.2051vw, 1.5rem);
+    font-weight: 500;
+    color: var(--cor-background);
+}
+
+.secao2-cards-text {
+    font-size: clamp(0.1rem, 0.7308rem + 0.3077vw, 1.3rem);
+    line-height: 1.5rem;
+    font-weight: 300;
+    color: var(--cor-background);
+}
+
+.secao2-cards-div2.hidden-text {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.secao2-cards-div2.show-text {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+/* /SECAO 2 - TITULO CARDS */
+
+
+
+/* SECAO 3 - BANNER */
+.container-banner-secao3 {
+    min-height: 25rem;
+    height: auto;
+    padding: 0% 15%;
+    display: grid;
+    align-items: center;
+    position: relative;
+}
+
+.container-banner-secao3::before {
+    content: '';
+    position: absolute;
+    filter: brightness(20%);
+    background-image: url(../images/imagem-fabrica-vistadoescritorio.webp);
+    background-position-y: 85%;
+    background-repeat: no-repeat;
+    inset: 0;
+}
+
+.secao3-banner-div1 {
+    isolation: isolate;
+    display: flex;
+}
+
+.secao3-banner-h3 {
+    font-size: clamp(2rem, 1.6538rem + 1.5385vw, 3.5rem);
+    font-weight: 500;
+    color: var(--cor-background);
+}
+
+.secao3-banner-div2 {
+    isolation: isolate;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.secao3-banner-h4 {
+    font-size: clamp(1.5rem, 1.3846rem + 0.5128vw, 2rem);
+    font-weight: 400;
+    color: var(--cor-background);
+}
+
+.secao3-banner-text {
+    font-size: clamp(1rem, 0.9308rem + 0.3077vw, 1.3rem);
+    font-weight: 300;
+    color: var(--cor-background);
+}
+/* /SECAO 3 - BANNER */
+
+/* SECAO 4 - LINHAS DE PRODUTOS */
+.container-grid-secao4 {
+    padding: 0% 15%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(294px, 1fr));
+    grid-template-rows: auto;
+    position: relative;
+    gap: 1rem;
+}
+
+.secao4-grid-card {
+    height: clamp(12rem, 11.1923rem + 3.5897vw, 15.5rem);
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--cor-degrade-azulnotus-azulclaro1);
+    position: relative;
+    border-radius: 10px;
+    box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    opacity: 0;
+    transform: translateY(2px);
+    transition: box-shadow opacity 0.5s ease, transform 0.5s ease;
+}
+
+.secao4-grid-card {
+  transform: translateY(50px);
+  opacity: 0;
+  transition: all 0.6s ease;
+}
+.secao4-grid-card.active {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+
+.secao4-grid-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.6);
+}
+
+.secao4-grid-card:hover .secao4-grid-card-img {
+    transform: scale(1.07);
+}
+
+.secao4-grid-card-h3 {
+    font-size: clamp(1.5rem, 1.4538rem + 0.2051vw, 1.7rem);
+    font-weight: 400;
+    text-align: center;
+    color: var(--cor-background);
+}
+
+.secao4-grid-card-img {
+    transition: transform 0.5s ease;
+    max-width: clamp(12rem, 11.0769rem + 4.1026vw, 16rem);
+    max-height: clamp(8rem, 7.5385rem + 2.0513vw, 10rem);
+}
+
+.secao4-grid-card-transparente {
+    padding: 1rem;
+    height: 15rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.secao4-grid-card-transparente-text {
+    display: flex;
+    font-size: clamp(1.9rem, 1.6692rem + 1.0256vw, 2.9rem);
+    font-weight: 600;
+    background: var(--cor-degrade-azulnotus-azulclaro2);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.secao4-grid-card-transparente-div2 {
+    display: flex;
+}
+
+.secao4-grid-card-transparente-botao {
+    padding: 0.8rem 2rem;
+    text-decoration: none;
+    font-size: clamp(1rem, 0.9308rem + 0.3077vw, 1.3rem);
+    color: var(--cor-background);
+    border: 1px solid transparent;
+    background-color: #134596;
+    border-radius: 0.5rem;
+    transition: background-color 0.3s ease, color 0.3s ease, border 0.3s ease;
+}
+
+.secao4-grid-card-transparente-botao:hover {
+    background-color: transparent;
+    color: #134596;
+    border: 1px solid #134596;
+}
+/* /SECAO 4 - LINHAS DE PRODUTOS */
+
+
+
+/* SECAO 5 - POR QUE ESCOLHER NOTUS? */
+.container-secao5 {
+    padding: 5rem 15%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    position: relative;
+    overflow: visible;
+    background-image: url(../images/background-fabrica-desfoque.webp);
+    background-repeat: no-repeat;
+}
+
+.secao5-overlay {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.5);
+    z-index: 2;
+}
+
+.secao5-divcarrossel {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    isolation: isolate;
+    gap: 1rem;
+    z-index: 3;
+}
+
+.secao5-divcarrossel-div {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.secao5-h3 {
+    font-size: clamp(1.5rem, 1.3846rem + 0.5128vw, 2rem);
+    font-weight: 600;
+    color: var(--cor-terciaria);
+}
+
+.secao5-text {
+    font-size: clamp(1rem, 0.9308rem + 0.3077vw, 1.3rem);
+    font-weight: 400;
+    color: var(--cor-terciaria);
+}
+
+.secao5-divimg {
+    display: flex;
+    justify-content: center;
+    isolation: isolate;
+    z-index: 3;
+}
+
+.secao5-img {
+    width: clamp(15rem, 5rem + 20.8333vw, 30rem);
+}
+
+.secao5-selo {
+    left: 80%;
+    transform: translateX(-50%);
+    transform: translateY(-80%);
+    width: clamp(4.6875rem, 3.6058rem + 4.8077vw, 9.375rem);
+    height: auto;
+    display: block;
+    position: absolute;
+    z-index: 3;
+}
+
+.secao5-hr {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    z-index: 3;
+}
+
+.secao5-hr-amarelo {
+    height: 0.7rem;
+    display: flex;
+    border: none;
+    background-color: var(--cor-brasil-amarelo);
+}
+
+.secao5-hr-verde {
+    height: 0.7rem;
+    display: flex;
+    border: none;
+    background-color: var(--cor-brasil-verde);
+}
+/* /SECAO 5 - POR QUE ESCOLHER NOTUS? */
+
+/* SECAO 7 - NEWSLETTER */
+.container-secao7 {
+    margin-top: 8rem;
+    padding: 5rem 15%;
+    min-height: 35vh;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    position: relative;
+}
+
+.container-secao7::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url(../images/imagem-estoque1.webp);
+    background-size: cover;
+    background-repeat: no-repeat;
+    filter: blur(15px);
+    z-index: 1;
+    opacity: 0.7;
+}
+
+.secao7-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.5);
+    filter: blur(5px);
+    z-index: 1;
+}
+
+.secao7-div1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+}
+
+.secao7-div1 h2 {
+    font-size: clamp(2rem, 1.7692rem + 1.0256vw, 3rem);
+    font-weight: 600;
+    color: var(--cor-background);
+}
+
+.secao7-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    gap: 0.5rem;
+    z-index: 2;
+}
+
+.form-text {
+    padding-left: 1rem;
+    height: clamp(1.5rem, 1.1538rem + 1.5385vw, 3rem);
+    width: clamp(15rem, 12.6923rem + 10.2564vw, 25rem) max-content;
+    text-decoration: none;
+    background-color: var(--cor-background);
+    border: solid 1px var(--cor-principal);
+    border-radius: clamp(0.5rem, 0.3846rem + 0.5128vw, 1rem);
+}
+
+.form-botao {
+    height: clamp(1.5rem, 1.1538rem + 1.5385vw, 3rem);
+    width: clamp(8rem, 7.5385rem + 2.0513vw, 10rem);
+    text-decoration: none;
+    font-size: clamp(1rem, 0.9308rem + 0.3077vw, 1.3rem);
+    font-weight: 400;
+    color: var(--cor-background);
+    background-color: #134596;
+    border: 1px solid transparent;
+    border-radius: clamp(0.3rem, 0.1385rem + 0.7179vw, 1rem);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.form-botao:hover {
+    background-color: transparent;
+    color: #134596;
+    border: solid 1px #134596;
+}
+
+.form-botao-contato {
+    height: clamp(1.5rem, 1.1538rem + 1.5385vw, 3rem);
+    width: 100%;
+    text-decoration: none;
+    font-size: clamp(1rem, 0.9308rem + 0.3077vw, 1.3rem);
+    font-weight: 400;
+    color: var(--cor-background);
+    background-color: #134596;
+    border: 1px solid transparent;
+    border-radius: clamp(0.3rem, 0.1385rem + 0.7179vw, 1rem);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 0 auto;
+}
+
+.form-botao-contato:hover {
+    background-color: transparent;
+    color: #134596;
+    border: solid 1px #134596;
+}
+/* /SECAO 7 - NEWSLETTER */
+
+
+
+/* FOOTER */
+.container-footer {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-containersub {
+    padding: 5rem 7%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.footer-containersub-div {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.footer-containersub-div h3 {
+    text-decoration: none;
+    font-size: clamp(1.5rem, 1.4308rem + 0.3077vw, 1.8rem);
+    font-weight: 600;
+}
+
+.footer-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.footer-lista a {
+    text-decoration: none;
+    font-size: clamp(1rem, 0.9308rem + 0.3077vw, 1.3rem);
+    color: var(--cor-terciaria);
+    transition: all 0.3s ease;
+}
+
+.footer-lista a:hover {
+    color: var(--cor-principal);
+}
+
+.footer-lista-faleconosco-separador {
+    display: flex;
+    gap: 1rem;
+}
+
+.footer-lista-faleconosco-separador i {
+    font-size: clamp(1rem, 0.9308rem + 0.3077vw, 1.3rem);
+}
+
+.footer-redessociais {
+    display: flex;
+    gap: 1rem;
+    font-size: 1.1rem;
+}
+
+.faixa-amarela {
+    background-color: yellow;
+    width: 100%;
+    height: 5px;
+}
+
+.faixa-verde {
+    background-color: green;
+    width: 100%;
+    height: 5px;
+}
+
+.footer-faixa {
+    right: 0;
+    left: 0;
+    bottom: 0;
+    height: 1rem;
+    padding: 1rem 7%;
+    display: flex;
+    justify-content: center;
+    align-items:first center;
+    background-color: var(--cor-principal);
+}
+
+.footer-faixa p {
+    font-family: "Roboto", sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #fff;
+    text-align: center;
+}
+/* /FOOTER */
+
+
+
+/* SOBRE NOTUS - SECAO 1 - APRESENTACAO */
+.comps-secao1-container {
+    min-height: 65vh;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+}
+
+.comps-secao1-container::before {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    content: "";
+    position: absolute;
+    filter: blur(10px);
+    background-image: url(../images/imagem-colagem-head.webp);
+    background-position-x: 30%;
+    z-index: 1;
+}
+
+.comps-secao1-overlay {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    content: "";
+    position: absolute;
+    background-color: rgba(19, 69, 150, 0.5);
+    z-index: 1;
+}
+
+.comps-secao1-conteudogeral {
+    padding: 5rem 15%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(23.98rem, 1fr));
+    color: var(--cor-background);
+    gap: clamp(1rem, -2.6471rem + 4.7059vw, 3rem);
+    z-index: 2;
+}
+
+.comps-secao1-conteudo-div1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: clamp(0.8rem, 0.7538rem + 0.2051vw, 1rem);
+}
+
+.comps-secao1-conteudo-div1 h1 {
+    font-size: clamp(2rem, 1.6538rem + 1.5385vw, 3.5rem);
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.comps-secao1-conteudo-div1 p {
+    font-size: clamp(0.9rem, 0.8077rem + 0.4103vw, 1.3rem);
+    font-weight: 300;
+}
+
+.comps-secao1-conteudo-div1 h3 {
+    padding: clamp(0.2rem, 0.1308rem + 0.3077vw, 0.5rem) clamp(1rem, 0.7692rem + 1.0256vw, 2rem);
+    width: fit-content;
+    font-size: clamp(1.1rem, 1.0077rem + 0.4103vw, 1.5rem);
+    font-weight: 400;
+    background-color: var(--cor-principal);
+    border-radius: clamp(0.5rem, 0.3846rem + 0.5128vw, 1rem);
+}
+
+.comps-secao1-div-botoes {
+    display: flex;
+    justify-content: space-between;
+    gap: clamp(0.5rem, 0.3846rem + 0.5128vw, 1rem);
+}
+
+.comps-secao1-div-botoes a {
+    padding: clamp(0.5rem, 0.3846rem + 0.5128vw, 1rem) clamp(0.5rem, 0.3846rem + 0.5128vw, 1rem);
+    height: clamp(1.8rem, 1.5231rem + 1.2308vw, 3rem);
+    width: clamp(10rem, 9.0769rem + 4.1026vw, 14rem);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: var(--cor-background);
+    background-color: var(--cor-botoes);
+    border-radius: clamp(0.5rem, 0.3846rem + 0.5128vw, 1rem);
+    gap: clamp(0.5rem, 0.3846rem + 0.5128vw, 1rem);
+    border: solid 1px var(--cor-botoes);
+    transition: all 0.3s ease;
+}
+
+.comps-secao1-div-botoes a:hover {
+    background-color: transparent;
+    border: solid 1px var(--cor-background);
+}
+
+.comps-secao1-div-botoes img {
+    max-width: 100%;
+    max-height: clamp(1rem, 0.7692rem + 1.0256vw, 2rem);
+    object-fit: contain;
+}
+
+.comps-secao1-video-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.comps-secao1-video-container iframe {
+    /* width="480" height="270" */
+    height: auto;
+    width: 100%;
+    max-height: 270px;
+    max-width: 480px;
+    object-fit: contain;
+    aspect-ratio: 16 / 9;
+}
+
+/* /SOBRE NOTUS - SECAO 1 - APRESENTACAO */
+
+
+
+/* SOBRE NOTUS - SECAO 2 - QUEM SOMOS */
+.comps-titulo-azul {
+    color: var(--cor-principal);
+    font-weight: bold;
+}
+
+.comps-titulo-amarelo {
+    color: var(--cor-brasil-amarelo);
+    font-weight: bold;
+}
+
+.comps-titulo-verde {
+    color: var(--cor-brasil-verde);
+    font-weight: bold;
+}
+
+.comp-secao2-container {
+    min-height: 20vh;
+    height: auto;
+    padding: 5rem 5%;
+    display: flex;
+    background-color: #b3b3b317;
+}
+
+.comp-secao2-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.secao2-grid-img {
+    display: flex;
+    justify-content: center;
+}
+
+.secao2-grid-img img {
+    height: auto;
+    width: 100%;
+    object-fit: contain;
+}
+
+.comp-secao2-grid-text {
+    display: flex;
+    flex-direction: column;
+    color: var(--cor-terciaria);
+    gap: 1rem;
+}
+
+.comp-secao2-grid-text h3 {
+    font-size: clamp(2rem, 1.8846rem + 0.5128vw, 2.5rem);
+    font-weight: 600;
+}
+
+.comp-secao2-grid-text p {
+    font-size: clamp(1rem, 0.9538rem + 0.2051vw, 1.2rem);
+    font-weight: 400;
+    line-height: 20px;
+}
+/* /SOBRE NOTUS - SECAO 2 - QUEM SOMOS */
+
+
+
+/* SOBRE NOTUS - SECAO 3 - MISSÃO, VISÃO E VALORES */
+.container {
+    padding: 0% 15%;
+}
+
+.grid-1x3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+    justify-content: center;
+    gap: 1rem;
+}
+
+.card {
+    min-height: 23rem;
+    padding: 3rem 3.5rem 3rem 2rem;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--cor-principal);
+    background-image: url(../images/card-radiador.webp);
+    background-repeat: no-repeat;
+    background-size: 15rem;
+    background-position-y: center;
+    background-position-x: right;
+    border-radius: 1rem;
+    text-decoration: none;
+    color: var(--cor-background);
+    position: relative;
+    gap: 1rem;
+    box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.4);
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.6);
+}
+
+.card-icon {
+    top: 1rem;
+    right: 1rem;
+    display: flex;
+    position: absolute;
+    font-size: 2rem;
+    color: var(--cor-background);
+}
+
+.card-icon i {
+    color: var(--cor-background);
+}
+
+.card-titulo {
+    display: flex;
+}
+
+.card-titulo h3 {
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.card-titulo p {
+    font-size: 1.3rem;
+    font-weight: 300;
+}
+/* /SOBRE NOTUS - SECAO 3 - MISSÃO, VISÃO E VALORES */
+
+
+
+/* SOBRE NOTUS - SECAO 4 - SIGNIFICADO DA MARCA */
+.grid-1x2 {
+    min-height: 50vh;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+}
+
+.comp-secao4-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: end;
+    gap: 1rem;
+}
+
+.comps-secao4-video-container {
+    display: flex;
+    justify-content: end;
+}
+
+.comps-secao4-video-container iframe {
+    /* width="480" height="270" */
+    height: auto;
+    width: 100%;
+    max-height: 270px;
+    max-width: 480px;
+    object-fit: contain;
+    aspect-ratio: 16 / 9;
+}
+
+.posicionamento-img {
+    height: 1px;
+    display: flex;
+    position: relative;
+}
+
+.posicionamento-img img {
+    bottom: -5rem;
+    right: 10%;
+    display: block;
+    width: clamp(10rem, 7.2rem + 4vw, 12rem);
+    position: absolute;
+}
+/* /SOBRE NOTUS - SECAO 4 - SIGNIFICADO DA MARCA */
+
+
+
+/* SOBRE NOTUS - SECAO 5 - CONHECA UM POUCO DA NOSSA HISTORIA */
+.container-sobrenotus {
+    margin-bottom: 7rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.div-linha {
+    padding: 5rem 15%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    background-size: 50rem auto;
+    background-repeat: no-repeat;
+    background-position-y: bottom;
+    position: relative;
+    z-index: 2;
+}
+
+.div-linha::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: linear-gradient(220deg, transparent 60%, var(--cor-principal) 110%);
+    z-index: 1;
+    filter: blur(35px);
+    opacity: 0.7;
+}
+
+.div-linha-reverse {
+    padding: 5rem 15%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    background-size: 50rem auto;
+    background-repeat: no-repeat;
+    background-position-y: bottom;
+    background-position-x: right;
+    position: relative;
+}
+
+.div-linha-reverse::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: linear-gradient(140deg, transparent 60%, var(--cor-principal) 110%);
+    z-index: 1;
+    filter: blur(35px);
+    opacity: 0.7;
+}
+
+.historia-div-text {
+    position: relative;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.historia-div-text.aparecer {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.historia-div-text h3 {
+    color: #134596;
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.historia-div-text p {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 25px;
+}
+
+.historia-div-text.hidden {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.historia-div-text.show {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.5s, transform 0.5s;
+}
+
+.historia-div-text {
+    padding-right: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.historia-div-img {
+    padding-right: 1rem;
+    display: flex;
+}
+
+.historia-div-img img {
+    height: auto;
+    width: 100%;
+    object-fit: contain;
+}
+/* /SOBRE NOTUS - SECAO 5 - CONHECA UM POUCO DA NOSSA HISTORIA */
+
+/* SOBRE NOTUS - SECAO 6 - CONHECA NOSSA FABRICA  */
+.comps-container-secao6 {
+    min-height: 35vh;
+    padding: 5rem 15%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    background-image: url(../images/background-fabrica-desfoque.webp);
+    background-repeat: no-repeat;
+    align-items: center;
+    position: relative;
+    overflow: visible;
+    gap: clamp(0.5rem, 0.3846rem + 0.5128vw, 1rem);
+}
+
+.secao6-overlay {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.5);
+    z-index: 2;
+}
+
+.secao6-video {
+    height: auto;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    isolation: isolate;
+    z-index: 3;
+}
+
+.secao6-video iframe {
+    /* width="560" height="315" */
+    height: auto;
+    width: 100%;
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    aspect-ratio: 16 / 9;
+}
+
+.secao6-selo {
+    bottom: -2rem;
+    left: 80%;
+    transform: translateX(-50%);
+    width: clamp(4.6875rem, 3.6058rem + 4.8077vw, 9.375rem);
+    height: auto;
+    display: block;
+    position: absolute;
+    z-index: 3;
+}
+
+.secao6-hr {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    z-index: 3;
+}
+
+.secao6-hr-amarelo {
+    height: 0.7rem;
+    display: flex;
+    border: none;
+    background-color: var(--cor-brasil-amarelo);
+}
+
+.secao6-hr-verde {
+    height: 0.7rem;
+    display: flex;
+    border: none;
+    background-color: var(--cor-brasil-verde);
+}
+
+.secao6-div-text {
+    display: flex;
+    z-index: 3;
+}
+
+.secao6-div-text h3 {
+    font-size: clamp(2rem, 1.7692rem + 1.0256vw, 3rem);
+    text-align: center;
+}
+/* /SOBRE NOTUS - SECAO 6 - CONHECA NOSSA FABRICA */
+
+
+
+/* TRABALHE CONOSCO - SECAO 2 - NÃO TEMOS VAGAS  */
+.container-row {
+    padding: 2.8% 15% 1.8% 15%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    justify-items: center;
+    gap: 1rem;
+}
+
+.trabalheconosco-div-img {
+    display: flex;
+    max-width: clamp(22rem, 1.0449rem + 29.9625vw, 37rem);
+}
+
+.trabalheconosco-div-img img {
+    width: 100%;
+}
+
+.trabalheconosco-div-text {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    color: var(--cor-terciaria);
+    gap: 1rem;
+}
+
+.trabalheconosco-div-text a {
+    display: flex;
+    height: fit-content;
+    width: fit-content;
+    padding: 1rem 2rem;
+    background-color: var(--cor-botoes);
+    border-radius: 0.5rem;
+    text-decoration: none;
+    color: var(--cor-background);
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.trabalheconosco-div-text a:hover {
+    background-color: var(--cor-botoes-hover);
+}
+
+.trabalheconosco-div-text h3 {
+    font-size: clamp(1.5rem, 0.6618rem + 1.1985vw, 2.1rem);
+    font-weight: 600;
+}
+/* /TRABALHE CONOSCO - SECAO 2 - NÃO TEMOS VAGAS */
+
+
+
+/* TRABALHE CONOSCO - SECAO 3 - ENVIO DE CURRICULO */
+.container-enviocurriculo {
+    min-height: 25vh;
+    padding: 5% 15%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--cor-background-cinza-claro1);
+    gap: 1.5rem;
+}
+
+.enviocurriculo-div-text {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    color: rgb(0, 0, 83);
+    gap: 0.3rem;
+}
+
+.enviocurriculo-div-text h3 {
+    font-size: clamp(1.8rem, 0.1236rem + 2.397vw, 3rem);
+    font-weight: 600;
+}
+
+.enviocurriculo-div-text h4 {
+    font-size: clamp(1.5rem, 0.8015rem + 0.9988vw, 2rem);
+    font-weight: 550;
+}
+
+.trabalheconosco-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: clamp(0.5rem, 0.2628rem + 1.054vw, 1rem);
+}
+
+input[type="file"] {
+    display: none; /* Esconde o input file */
+}
+
+input[type="file"] + label {
+    padding: 0.5rem 1rem;
+    background-color: #134596;
+    color: white;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    text-align: center;
+    display: inline-block;
+    border: 1px solid transparent;
+    transition: background-color 0.3s, color 0.3s, border 0.3s;
+}
+
+input[type="file"]:hover + label {
+    background-color: #fff;
+    color: #134596;
+    border: 1px solid #134596;
+}
+
+.trabalheconosco-form-input {
+    border-radius: 10px;
+    padding-left: 1rem;
+    height: clamp(2rem, 0.503rem + 1.9975vw, 3rem);
+    width: clamp(10rem, 3.015rem + 9.9875vw, 15rem);
+    text-decoration: none;
+    border: solid 1px rgba(0, 0, 83, 0.2);
+}
+
+.trabalheconosco-botaoenviar {
+    display: flex;
+}
+
+.trabalheconosco-botaoenviar input {
+    height: auto;
+    width: clamp(10rem, 3.015rem + 9.9875vw, 15rem);
+    padding: 1rem 2rem;
+    display: flex;
+    background-color: #134596;
+    border-radius: 1rem;
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: var(--cor-background);
+    text-decoration: none;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, border 0.3s;
+}
+
+.trabalheconosco-botaoenviar input:hover {
+    background-color: #fff;
+    color: #134596;
+    border: 1px solid #134596;
+}
+/* /TRABALHE CONOSCO - SECAO 3 - ENVIO DE CURRICULO */
+
+
+
+/* TRABALHE CONOSCO - SECAO 3 - TEMOS VAGAS */
+.container-temosvagas {
+    margin-bottom: 3rem;
+    padding: 0% 15%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.temosvagas-img {
+    display: flex;
+}
+
+.temosvagas-img img {
+    height: auto;
+    width: 100%;
+    object-fit: contain;
+}
+
+.temosvagas-card {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: var(--cor-background-cinza-claro);
+    gap: 1rem;
+}
+
+.temosvagas-card h3 {
+    font-size: clamp(1.5rem, 0.8015rem + 0.9988vw, 2rem);
+    font-weight: 700;
+    color: var(--cor-terciaria);
+}
+
+.grid-1x4 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-rows: auto;
+    gap: clamp(0.5rem, -0.1985rem + 0.9988vw, 1rem);
+}
+
+.grid-1x4 h4 {
+    font-size: clamp(1.3rem, 0.7412rem + 0.799vw, 1.7rem);
+    font-weight: 600;
+    color: var(--cor-principal);
+    gap: clamp(0.5rem, -0.1985rem + 0.9988vw, 1rem);
+}
+
+.temosvagas-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.container-column {
+    padding: 0 clamp(0.2rem, -0.2154rem + 1.8462vw, 2rem);
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    gap: clamp(0.5rem, 0.2628rem + 1.054vw, 1rem);
+}
+
+.temosvagas-icon {
+    font-size: 2rem;
+}
+
+.temosvagas-card a {
+    padding: 0.5rem;
+    display: flex;
+    background-color: var(--cor-principal);
+    color: var(--cor-background);
+    border-radius: 0.5rem;
+    justify-content: center;
+    text-decoration: none;
+}
+/* /TRABALHE CONOSCO - SECAO 3 - TEMOS VAGAS */
+
+
+
+/* GARANTIA - SECAO 1 - APRESENTACAO */
+.comps-secao1-container1 {
+    min-height: 55vh;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+}
+
+.comps-secao1-container1::before {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    content: "";
+    position: absolute;
+    filter: blur(10px);
+    background-image: url(../images/imagem-colagem-head.webp);
+    background-position-x: 30%;
+    z-index: 1;
+}
+
+.comps-secao1-overlay1 {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    content: "";
+    position: absolute;
+    background-color: rgba(19, 69, 150, 0.5);
+    z-index: 1;
+}
+
+.comps-secao1-conteudogeral1 {
+    padding: 5rem 15%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(23.98rem, 1fr));
+    color: var(--cor-background);
+    gap: clamp(1rem, -2.6471rem + 4.7059vw, 3rem);
+    align-items: center;
+    z-index: 2;
+}
+
+.comps-secao1-conteudo-div1-1 {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(0.8rem, 0.7538rem + 0.2051vw, 1rem);
+}
+
+.comps-secao1-conteudo-div1-1 h1 {
+    font-size: clamp(2rem, 1.6538rem + 1.5385vw, 3.5rem);
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.comps-secao1-conteudo-div1-1 p {
+    font-size: 1.5rem;
+    line-height: 30px;
+    font-weight: 300;
+}
+
+.comps-secao1-conteudo-div1-1 h3 {
+    padding: clamp(0.2rem, 0.1308rem + 0.3077vw, 0.5rem) clamp(1rem, 0.7692rem + 1.0256vw, 2rem);
+    width: fit-content;
+    font-size: clamp(1.1rem, 1.0077rem + 0.4103vw, 1.5rem);
+    font-weight: 400;
+    background-color: var(--cor-principal);
+    border-radius: clamp(0.5rem, 0.3846rem + 0.5128vw, 1rem);
+}
+
+.comps-secao1-video-container1 {
+    max-height: 270px;
+    max-width: 480px;
+    width: 100%;
+    display: flex;
+    object-fit: contain;
+}
+
+.comps-secao1-video-container1 iframe {
+    max-height: auto;
+    max-width: 100%;
+    height: fit-content;
+    width: 100%;
+    object-fit: contain;
+    aspect-ratio: 16/9;
+}
+/* /GARANTIA - SECAO 1 - APRESENTACAO */
+
+
+
+/* GARANTIA - SECAO 2 - CARDS */
+.margin3 {
+    margin-bottom: 3rem;
+}
+
+.card-transparent {
+    min-height: 23rem;
+    padding: 3rem 3.2rem 3rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: solid 1px var(--cor-principal);
+    border-radius: 1rem;
+    text-decoration: none;
+    color: var(--cor-background);
+    box-shadow: 0 0 14px 0 #bbbbbb;
+    position: relative;
+    gap: 2rem;
+    z-index: 1;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.card-transparent:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 24px 0 #bbbbbb;
+}
+
+.card-transparent::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url(../images/card-radiador1.webp);
+    background-repeat: no-repeat;
+    background-size: 15rem;
+    background-position-y: center;
+    background-position-x: right;
+    opacity: 0.5; /* Ajuste a opacidade aqui (0 a 1) */
+    z-index: 0; /* Coloca a imagem abaixo do conteúdo */
+}
+
+.card-transparent h3 {
+    font-size: clamp(1.5rem, 1.3846rem + 0.5128vw, 2rem);
+    font-weight: 600;
+    color: var(--cor-principal);
+    z-index: 1;
+}
+
+.card-transparent p {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--cor-terciaria);
+    z-index: 1;
+}
+
+.card-transparent a {
+    padding: 0.5rem 0.5rem;
+    display: flex;
+    justify-content: center;
+    font-size: clamp(1rem, 0.8846rem + 0.5128vw, 1.5rem);
+    font-weight: 400;
+    color: var(--cor-background);
+    text-decoration: none;
+    background-color: var(--cor-principal);
+    border-radius: 2rem;
+    z-index: 1;
+    transition: color 0.3s ease, background-color 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.card-transparent a:hover {
+    background-color: transparent;
+    color: #134596;
+    border: 1px solid #134596;
+}
+
+/* /GARANTIA - SECAO 2 - CARDS */
+
+
+
+/* GARANTIA - SECAO 3 - FORMULARIO */
+.container-garantia {
+    min-height: 50vh;
+    padding: 0% 15%;
+    display: flex;
+    justify-content: center;
+    background-color: var(--cor-background-cinza-claro1);
+}
+
+.grid-1x2-form {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(21rem, 1fr));
+    grid-template-rows: auto;
+    gap: clamp(1rem, -3.2rem + 6vw, 4rem);
+}
+
+.garantia-form-container {
+    padding: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.formulario-garantia {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    object-fit: contain;
+    gap: 0.5rem;
+}
+
+.formulario-garantia input {
+    border: 1px solid #134596;
+}
+
+.garantia-form-container h3 {
+    font-size: clamp(1.5rem, 0.1rem + 2vw, 2.5rem);
+    font-weight: 600;
+    text-align: center;
+}
+
+.garantia-form-botao {
+    height: 1.5rem;
+    padding: 0.5rem;
+    color: var(--cor-terciaria);
+    text-decoration: none;
+    border: solid 1px;
+    border-radius: 0.3rem;
+    object-fit: contain;
+}
+
+.garantia-form-botao1 {
+    height: 7rem;
+    padding: 0.5rem;
+    color: var(--cor-terciaria);
+    text-decoration: none;
+    border: solid 1px;
+    border-radius: 0.3rem;
+}
+
+.garantia-form-botao-a {
+    height: 2.5rem;
+    padding: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--cor-background);
+    text-decoration: none;
+    background-color: var(--cor-principal);
+    border-radius: 0.3rem;
+    border: 1px solid transparent;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.garantia-form-botao-a:hover {
+    background-color: transparent;
+    color: #134596;
+    border: 1px solid #134596;
+}
+
+.garantia-form-img {
+    padding-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    object-fit: contain;
+}
+
+.garantia-form-img img {
+    min-height: auto;
+    min-width: 100%;
+    height: auto;
+    width: 100%;
+    max-height: auto;
+    max-width: 70rem;
+    object-fit: contain;
+}
+/* /GARANTIA - SECAO 3 - FORMULARIO */
+
+
+
+/* REPRESENTANTES - SECAO 1 - APRESENTACAO */
+.comps-secao1-div-botoes2 {
+    display: flex;
+    gap: 1rem;
+}
+
+.comps-secao1-div-botoes2 a{
+    padding: 0.5rem;
+    height: clamp(1.8rem, 0.8rem + 1vw, 2rem);
+    width: clamp(14rem, -1.2rem + 16vw, 18rem);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: clamp(1rem, 0.58rem + 0.6vw, 1.3rem);
+    font-weight: 300;
+    text-decoration: none;
+    color: var(--cor-background);
+    background-color: var(--cor-botoes);
+    border-radius: clamp(1rem, -1.8rem + 4vw, 3rem);
+    gap: 1rem;
+    transition: all 0.3s ease;
+    border: 1px solid var(--cor-botoes);
+}
+
+.comps-secao1-div-botoes2 a:hover {
+    background-color: transparent;
+    border: solid 1px #fff;
+}
+/* /REPRESENTANTES - SECAO 1 - APRESENTACAO */
+
+
+
+/* REPRESENTANTES - SECAO 2 - ENCONTRE UM REPRESENTANTE */
+.representante-container {
+    padding: clamp(1rem, 0.0769rem + 4.1026vw, 5rem) 10%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    position: relative;
+    gap: 1rem;
+}
+
+.representante-text {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.representante-text h2 {
+    font-size: clamp(2rem, 1.4231rem + 2.5641vw, 4.5rem);
+    font-weight: 500;
+}
+
+.representante-text p {
+    font-size: clamp(1rem, 0.9538rem + 0.2051vw, 1.2rem);
+    color: var(--cor-terciaria);
+    line-height: 1.5rem;
+}
+
+.representante-text a {
+    width: fit-content;
+    height: fit-content;
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: clamp(1rem, 0.9538rem + 0.2051vw, 1.2rem);
+    color: var(--cor-background);
+    text-decoration: none;
+    background-color: #134596;
+    border: 1px solid transparent;
+    border-radius: 2rem;
+    transition: color 0.3s ease, background-color 0.3s ease, border 0.3s ease;
+}
+
+.representante-text a:hover {
+    background-color: transparent;
+    color: #134596;
+    border: 1px solid #134596;
+}
+
+.representante-img {
+    display: flex;
+    position: relative;
+}
+
+.representante-img img {
+    width: 100%;
+}
+
+.item {
+    position: absolute;
+    transform: translate(50%, 50%);
+}
+
+.icon {
+    width: clamp(1.2rem, 0.78rem + 0.6vw, 1.5rem);
+    height: clamp(1.2rem, 0.78rem + 0.6vw, 1.5rem);
+    border-radius: 100%;
+    background: linear-gradient(135deg, #009440 0%, #134596 50%, #ffcb00 100%);
+    background-size: 200% 200%;
+    animation: icon-fade-bg 4s ease-in-out infinite;
+    cursor: pointer;
+}
+
+@keyframes icon-fade-bg {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.icon::after {
+    top: 50%;
+    left: 50%;
+    width: 26.4px;
+    height: 26.4px;
+    transform: translate(-50%, -50%) scale(1, 1);
+    display: block;
+    content: "";
+    position: absolute;
+    pointer-events: none;
+    border-radius: 100%;
+    transition: border-color 1s linear;
+    animation: icon-pulse 4s linear infinite;
+}
+
+@keyframes icon-pulse {
+    0% {
+        transform: translate(-50%, -50%),scale(1, 1);
+        opacity: 0;
+    }
+
+    20% {
+        transform: translate(-50%, -50%),scale(1.5, 1.5);
+        opacity: 0.9;
+    }
+
+    50% {
+        transform: translate(-50%, -50%),scale(2, 2);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translate(-50%, -50%),scale(2, 2);
+        opacity: 0;
+    }
+}
+
+.icon-name {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--cor-background);
+}
+
+.tooltip {
+    height: fit-content;
+    width: fit-content;
+    margin: 0.5rem 0 0 0;
+    padding: 1rem 0.5rem;
+    display: none;
+    flex-direction: column;
+    color: var(--cor-background);
+    line-height: 1.5em;
+    background: linear-gradient(165deg, #134596, #0d2750);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    pointer-events: auto; /* Permite interações no tooltip */
+    border-radius: 15px;
+    gap: 0.5rem;
+    position: absolute;
+    top: 50%;
+    right: calc(100% + 8px); /* 8px de espaço */
+    transform: translateY(-50%);
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.1s linear;
+    box-shadow: 0 0 14px 0 #bbbbbb;
+    transition: box-shadow 0.3s ease;
+}
+
+.tooltip:hover {
+    box-shadow: 0 0 20px 0 #929292;
+}
+
+.item:hover .tooltip {
+    opacity: 1;
+}
+
+.tooltip h3 {
+    font-size: 2rem;
+    font-weight: 400;
+    white-space: nowrap;
+}
+
+.tooltip p {
+    font-size: 1.2rem;
+    font-weight: 300;
+    white-space: nowrap;
+}
+
+.tooltip img {
+    width: 50px;
+    height: auto;
+    border-radius: 5px;
+    display: flex;
+    margin-left: 80%;
+}
+/* /REPRESENTANTES - SECAO 2 - ENCONTRE UM REPRESENTANTE */
+
+
+
+/* CONTATO - SECAO 1 - FALE CONOSCO */
+.comps-secao1-container2 {
+    min-height: 55vh;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.comps-secao1-container2::before {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    content: "";
+    position: absolute;
+    filter: blur(10px);
+    background-image: url(../images/imagem-colagem-head.webp);
+    background-position-x: 30%;
+    z-index: 1;
+}
+
+.comps-secao1-overlay2 {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    content: "";
+    position: absolute;
+    background-color: rgba(19, 69, 150, 0.5);
+    z-index: 1;
+}
+
+.comps-secao1-container-div {
+    display: flex;
+    align-items: center;
+    z-index: 2;
+}
+
+.comps-secao1-container-div h1 {
+    font-size: clamp(2rem, -0.1rem + 3vw, 3.5rem);
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--cor-background);
+}
+/* /CONTATO - SECAO 1 - FALE CONOSCO */
+
+
+
+/* CONTATO - SECAO 2 - NOSSOS CANAIS */
+.container-grid-1x2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+
+.contato-forms {
+    min-width: none;
+    max-width: 38rem;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.contato-forms div {
+    min-width: none;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+    gap: 0.5rem;
+}
+
+.contato-forms-input1 {
+    min-width: none;
+    padding: 1rem 0.5rem;
+    display: flex;
+    text-decoration: none;
+    border: 1px solid #134596;
+    border-radius: 5px;
+    background-color: var(--cor-background-cinza-claro1);
+}
+
+.contato-forms-input2 {
+    height: 7rem;
+    padding:  1rem 0.5rem;
+    display: flex;
+    text-decoration: none;
+    border: 1px solid #134596;
+    border-radius: 5px;
+    background-color: var(--cor-background-cinza-claro1);
+}
+
+.contato-forms a {
+    height: fit-content;
+    width: fit-content;
+    padding: 1rem 4rem;
+    display: flex;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 500;
+    text-decoration: none;
+    color: var(--cor-background);
+    border: 1px solid var(--cor-principal);
+    background-color: var(--cor-principal);
+    border-radius: 2rem;
+    transition: all 0.3s ease;
+}
+
+.contato-forms a:hover {
+    color: var(--cor-principal);
+    background-color: transparent;
+    border: solid 1px var(--cor-principal);
+}
+
+.contato-div-container {
+    max-width: 28rem;
+    padding: 1rem 1.5rem;
+    display: grid;
+    grid-template-rows: repeat(4, 1fr);
+    justify-content: space-between;
+    box-shadow: 0 0 14px 0 #13459662;
+    border: solid 1px var(--cor-principal);
+    border-radius: 1rem;
+    gap: 1rem;
+    transition: all 0.3s ease;
+}
+
+.contato-div-container:hover {
+    box-shadow: 0 0 20px 0 #13459662;
+}
+
+.contato-div-rows {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.contato-div-rows i {
+    display: flex;
+    font-size: clamp(1.3rem, 1.1385rem + 0.7179vw, 2rem);
+    transition: all 0.2s ease;
+}
+
+.contato-div-rows i:hover {
+    transform: translateY(-3px);
+}
+
+.contato-div-rows a {
+    display: flex;
+    font-size: clamp(1rem, 0.9308rem + 0.3077vw, 1.3rem);
+    color: var(--cor-terciaria);
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.contato-div-rows a:hover {
+    color: var(--cor-principal);
+    transform: translateY(-3px);
+}
+
+.contato-numbers {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+#banner-zoom {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.banner-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url(../images/imagem-fabrica-vistadoescritorio.webp);
+  background-size: cover;
+  background-position: center;
+  filter: brightness(50%);
+  z-index: 0;
+  transform: scale(1);
+  transition: transform 0.1s ease-out;
+}
+
+#banner-zoom > *:not(.banner-bg) {
+  position: relative;
+  z-index: 1;
+}
+
+.secao4-grid-card.active {
+    opacity: 1;
+}
+.swiper-slide {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+.secao5-slide-conteudo {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  flex: 1;
+}
+
+.secao5-divcarrossel-div {
+  width: auto;
+  max-width: 300px;
+  flex-shrink: 0;
+}
+
+.secao5-divimg {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.secao5-img {
+  width: 200px;
+  height: auto;
+}
+
+.swiper {
+      width: 100%;
+      height: 100%;
+    }
+
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #444;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .swiper-slide img {
+        display: block;
+        min-width: 50%;
+        max-width: 50%;
+        min-height: 50%;
+        max-height: 50%;
+        object-fit: contain;
+        position: relative;
+        transition: filter 0.3s ease, transform 0.3s ease;
+    }
+
+    .swiper-slide img::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        font-size: 1.5rem;
+        font-weight: bold;
+        text-align: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .swiper-slide img:hover::after {
+        opacity: 1;
+    }
+
+    .swiper-index-wrapper {
+        min-height: 500px;
+        max-height: 500px;
+    }
+
+
+    .swiper-index-slide img {
+        min-height: 260px;
+    }
+
+    .secao5-divcarrossel {
+        text-align: left;
+        min-height: 340px;
+        max-height: 340px;
+        min-width: 400px;
+    }
+
+    .iframe-sobrenos {
+        border-radius: 10px;
+        box-shadow: 0 0 1rem var(--cor-botoes);
+        transition: all 0.3s ease;
+    }
+
+    .iframe-sobrenos:hover {
+        transform: scale(1.01);
+        box-shadow: 0 0 2rem var(--cor-botoes);
+    }
+
+.map-section {
+    margin: 100px 0 0 0;
+    box-shadow: 0 0 14px 0 #bbbbbb;
+    transition: box-shadow 0.3s ease;
+}
+
+.map-section:hover {
+    box-shadow: 0 0 20px 0 #bbbbbb;
+}
+
+.whatsapp-icone {
+  font-size: clamp(1.25rem, 1.0337rem + 0.9615vw, 2.1875rem);
+  color: white;
+  opacity: 1;
+  transition: opacity 0.3s ease; /* só opacidade, sem transform aqui */
+}
+
+.whatsapp-icone.fade-out {
+  opacity: 0;
+}
+
+/* 3 pulsos: 1º maior, 2º médio, 3º leve */
+@keyframes pulse3 {
+  0%   { transform: scale(1);    }
+  12%  { transform: scale(1.22); } /* pulso 1 (maior)   */
+  25%  { transform: scale(1);    }
+
+  45%  { transform: scale(1.14); } /* pulso 2 (médio)   */
+  60%  { transform: scale(1);    }
+
+  78%  { transform: scale(1.07); } /* pulso 3 (menor)   */
+  100% { transform: scale(1);    }
+}
+
+/* aplica a animação */
+.whatsapp-icone.pulse {
+  animation: pulse3 0.75s ease-out both;
+}
+
+/* acessibilidade: reduz movimento se o usuário preferir */
+@media (prefers-reduced-motion: reduce) {
+  .whatsapp-icone { transition: opacity 0.01s linear; }
+  .whatsapp-icone.pulse { animation: none; }
+}
+
+/* 0) Segurança: zera qualquer scroll horizontal acidental */
+html, body { max-width: 100%; overflow-x: hidden; }
+
+/* 1) Herói / seções com grid rígido: suaviza a coluna mínima */
+@media (max-width: 768px){
+  /* Hero "Sobre/Trabalhe/etc." */
+  .comps-secao1-conteudogeral{
+    /* de: repeat(auto-fit, minmax(23.98rem, 1fr)) */
+    display: grid;
+    grid-template-columns: 1fr;              /* 1 coluna no mobile */
+    gap: 1rem;
+  }
+
+  /* Grids 2 colunas viram 1 coluna */
+  .comp-secao2-grid,
+  .grid-1x2,
+  .comp-secao4-grid,
+  .container-grid-1x2,
+  .container-temosvagas,
+  .container-secao5 {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* 2) Paddings muito largos (15%) no mobile: reduza para 5–8%*/
+@media (max-width: 768px){
+  .nav-contacts,
+  .nav-navegacao,
+  .secao2-container,
+  .container,
+  .container-banner-secao3,
+  .container-grid-secao4,
+  .container-secao5,
+  .container-secao7,
+  .comps-secao1-conteudogeral,
+  .container-row,
+  .container-enviocurriculo {
+    padding-left: 6%;
+    padding-right: 6%;
+  }
+}
+
+/* 3) Menu mobile: garante largura e posição seguras */
+#menu{
+  /* já é position:absolute; ajuste para não “vazar” */
+  right: 1rem;
+  left: auto;
+  width: min(85vw, 320px);
+  box-shadow: 0 6px 24px rgba(0,0,0,.12);
+  border-radius: .5rem;
+}
+
+/* 4) Mídia totalmente fluida */
+img, video, iframe{ max-width: 100%; height: auto; }
+.iframe-sobrenos{ width: 100%; height: auto; aspect-ratio: 16/9; }
+
+/* 5) Swiper / carrosséis não estouram o container */
+.swiper{ max-width: 100%; }
+.swiper-slide img{ max-width: 100%; height: auto; }
+
+/* 6) Selo/elementos absolutos: recua no mobile para não gerar overflow */
+@media (max-width: 768px){
+  .secao5-selo, .secao6-selo{
+    left: 85%;
+    transform: translateX(-50%);
+  }
+}
+
+.btn-enviar-contato {
+    background-color: red;
+}
