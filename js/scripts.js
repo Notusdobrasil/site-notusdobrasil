@@ -93,7 +93,10 @@ async function jsonPost(url, payload) {
     body: JSON.stringify(payload),
   });
   const data = await resp.json().catch(() => ({}));
-  if (!resp.ok) throw new Error(data?.message || "Falha ao enviar.");
+  if (!resp.ok) {
+    const detail = data?.details ? ` — ${typeof data.details === 'string' ? data.details : JSON.stringify(data.details)}` : '';
+    throw new Error((data?.message || "Falha ao enviar.") + detail);
+  }
   return data;
 }
 
