@@ -26,6 +26,9 @@ const SMTP_SECURE  = String(process.env.SMTP_SECURE || 'false') === 'true';
 const SMTP_USER    = process.env.SMTP_USER;
 const SMTP_PASS    = process.env.SMTP_PASS;
 
+// Limites de attachment (backend)
+const MAX_ATTACHMENT_BYTES = Number(process.env.MAX_ATTACHMENT_BYTES) || 8 * 1024 * 1024; // 8 MB por arquivo (decodificado)
+
 // 3) Middlewares
 const corsOptions = {
   origin: [
@@ -197,14 +200,42 @@ app.post('/api/enviar-curriculo', async (req, res) => {
     }
 
     // Anexos: base64 -> Buffer
-    const smtpAttachments = attachments.map((att, i) => {
-      if (!att?.content) throw new Error(`Attachment #${i} sem 'content' (base64).`);
-      return {
-        filename: att.filename || att.name || `curriculo-${i + 1}.pdf`,
-        content: Buffer.from(att.content, 'base64'),
-        contentType: att.content_type || 'application/octet-stream',
-      };
-    });
+      // Validações detalhadas dos anexos antes de tentar enviar via SMTP
+      const smtpAttachments = [];
+      for (let i = 0; i < attachments.length; i++) {
+        const att = attachments[i];
+        if (!att || typeof att !== 'object') {
+          return res.status(400).json({ message: 'Attachment inválido.', details: `Attachment #${i + 1} não é um objeto.` });
+        }
+        if (!att.content || typeof att.content !== 'string') {
+          return res.status(400).json({ message: 'Attachment sem conteúdo válido.', details: `Attachment #${i + 1} sem 'content' (base64).` });
+        }
+
+        // remover quebras de linha e espaços que podem aparecer no base64
+        const base64Clean = att.content.replace(/\s+/g, '');
+        if (base64Clean.length % 4 !== 0) {
+          return res.status(400).json({ message: 'Attachment com base64 inválido.', details: `Attachment #${i + 1} base64 com tamanho inválido.` });
+        }
+
+        let buf;
+        try {
+          buf = Buffer.from(base64Clean, 'base64');
+        } catch (err) {
+          return res.status(400).json({ message: 'Falha ao decodificar attachment.', details: `Attachment #${i + 1} não está em base64 válido.` });
+        }
+
+        if (buf.length > MAX_ATTACHMENT_BYTES) {
+          return res.status(400).json({ message: 'Attachment muito grande.', details: `Attachment #${i + 1} tem ${buf.length} bytes (limite ${MAX_ATTACHMENT_BYTES} bytes).` });
+        }
+
+        console.log(`Curriculo Attachment #${i + 1}: filename=${att.filename || att.name || 'unnamed'} type=${att.content_type || 'unknown'} size=${buf.length} bytes`);
+
+        smtpAttachments.push({
+          filename: att.filename || att.name || `curriculo-${i + 1}.pdf`,
+          content: buf,
+          contentType: att.content_type || 'application/octet-stream',
+        });
+      }
 
     const transporter = buildSmtpTransport();
     if (!transporter) {
