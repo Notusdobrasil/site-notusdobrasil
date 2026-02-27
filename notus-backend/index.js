@@ -59,6 +59,9 @@ function buildSmtpTransport() {
     port: SMTP_PORT,
     secure: SMTP_SECURE,
     auth: { user: SMTP_USER, pass: SMTP_PASS },
+    // enable optional debug/logger via env var SMTP_DEBUG=true
+    logger: String(process.env.SMTP_DEBUG || 'false') === 'true',
+    debug: String(process.env.SMTP_DEBUG || 'false') === 'true',
     // timeouts to fail faster and help debugging when provider/host blocks SMTP
     connectionTimeout: 20000,
     greetingTimeout: 20000,
@@ -264,7 +267,7 @@ app.post('/api/enviar-curriculo', async (req, res) => {
       return res.status(500).json({ message: 'SMTP connection failed', details: verifyErr && verifyErr.message ? verifyErr.message : String(verifyErr) });
     }
 
-    await transporter.sendMail({
+    const mailInfo = await transporter.sendMail({
       from: `"${MAIL_FROM_NAME}" <${MAIL_FROM_ADDR}>`,
       to: MAIL_TO_CURRICULO,
       subject: `📎 Novo Currículo — ${nome}`,
@@ -272,6 +275,15 @@ app.post('/api/enviar-curriculo', async (req, res) => {
       text: tpl.text,
       replyTo: email,
       attachments: smtpAttachments,
+      // ensure envelope uses MAIL_FROM_ADDR (bounce/return-path)
+      envelope: { from: MAIL_FROM_ADDR, to: MAIL_TO_CURRICULO }
+    });
+
+    console.log('SMTP sendMail OK:', {
+      messageId: mailInfo && mailInfo.messageId,
+      accepted: mailInfo && mailInfo.accepted,
+      rejected: mailInfo && mailInfo.rejected,
+      envelope: mailInfo && mailInfo.envelope,
     });
 
     return res.status(200).json({ message: 'Currículo enviado com sucesso (SMTP)!' });
@@ -282,6 +294,32 @@ app.post('/api/enviar-curriculo', async (req, res) => {
     const details = error?.response?.data || error.message;
     console.error('Enviar Currículo ERROR:', status, details);
     return res.status(status).json({ message: 'Falha ao enviar o currículo.', details });
+  }
+});
+
+// ====================================================================
+// ROTA: Test Send (diagnóstico)
+// ====================================================================
+app.post('/api/test-send', async (req, res) => {
+  const to = req.body?.to || process.env.TEST_TO;
+  if (!to) return res.status(400).json({ message: 'Campo "to" é obrigatório no corpo.' });
+
+  const transporter = buildSmtpTransport();
+  if (!transporter) return res.status(500).json({ message: 'SMTP não configurado.' });
+
+  try {
+    const info = await transporter.sendMail({
+      from: `"${MAIL_FROM_NAME}" <${MAIL_FROM_ADDR}>`,
+      to,
+      subject: 'Notus Teste de Envio',
+      text: 'Este é um e-mail de teste para diagnosticar envio/entrega.',
+      envelope: { from: MAIL_FROM_ADDR, to }
+    });
+    console.log('TEST SEND mailInfo:', info && { messageId: info.messageId, accepted: info.accepted, rejected: info.rejected });
+    return res.status(200).json({ message: 'Enviado (resultado abaixo).', mailInfo: { messageId: info.messageId, accepted: info.accepted, rejected: info.rejected } });
+  } catch (err) {
+    console.error('TEST SEND ERROR:', err && err.message ? err.message : err);
+    return res.status(500).json({ message: 'Falha no envio de teste.', details: err && err.message ? err.message : String(err) });
   }
 });
 
