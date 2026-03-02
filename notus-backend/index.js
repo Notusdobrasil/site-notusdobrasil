@@ -259,14 +259,6 @@ app.post('/api/enviar-curriculo', async (req, res) => {
       footerNote: 'Recebido via Trabalhe Conosco — Notus.'
     });
 
-    // verify connection first to catch connection/timeouts early
-    try {
-      await transporter.verify();
-    } catch (verifyErr) {
-      console.error('SMTP verify ERROR:', verifyErr && verifyErr.message ? verifyErr.message : verifyErr);
-      return res.status(500).json({ message: 'SMTP connection failed', details: verifyErr && verifyErr.message ? verifyErr.message : String(verifyErr) });
-    }
-
     const mailInfo = await transporter.sendMail({
       from: `"${MAIL_FROM_NAME}" <${MAIL_FROM_ADDR}>`,
       to: MAIL_TO_CURRICULO,
