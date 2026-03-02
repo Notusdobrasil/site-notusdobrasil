@@ -240,67 +240,109 @@ app.post('/api/enviar-curriculo', async (req, res) => {
         });
       }
 
+    // Tentar SMTP primeiro
     console.log('Preparando transporter SMTP...');
     const transporter = buildSmtpTransport();
-    if (!transporter) {
-      console.error('SMTP não configurado:', { SMTP_HOST, SMTP_USER: !!SMTP_USER, SMTP_PASS: !!SMTP_PASS });
-      return res.status(500).json({
-        message: 'SMTP não configurado para envio de currículo.',
-        details: 'Defina SMTP_HOST, SMTP_USER e SMTP_PASS nas variáveis do Render.'
+    let smtpSuccess = false;
+
+    if (transporter) {
+      console.log('Construindo template de e-mail SMTP...');
+      const tpl = buildEmailTemplate({
+        title: `📎 Novo Currículo — ${nome}`,
+        preheader: `${nome} enviou um currículo pelo site.`,
+        sections: [
+          { label: 'Nome', value: nome },
+          { label: 'E-mail', value: email },
+          { label: 'Status', value: 'Arquivo em anexo.' }
+        ],
+        footerNote: 'Recebido via Trabalhe Conosco — Notus.'
       });
+
+      console.log('Tentando enviar e-mail via SMTP...');
+      try {
+        const mailInfo = await transporter.sendMail({
+          from: `"${MAIL_FROM_NAME}" <${MAIL_FROM_ADDR}>`,
+          to: MAIL_TO_CURRICULO,
+          subject: `📎 Novo Currículo — ${nome}`,
+          html: tpl.html,
+          text: tpl.text,
+          replyTo: email,
+          attachments: smtpAttachments,
+          envelope: { from: MAIL_FROM_ADDR, to: MAIL_TO_CURRICULO }
+        });
+        
+        console.log('SMTP sendMail OK:', {
+          messageId: mailInfo && mailInfo.messageId,
+          accepted: mailInfo && mailInfo.accepted,
+        });
+        smtpSuccess = true;
+        return res.status(200).json({ message: 'Currículo enviado com sucesso!' });
+        
+      } catch (smtpError) {
+        console.error('SMTP failed, tentando Mailrelay API como fallback:', {
+          code: smtpError.code,
+          message: smtpError.message
+        });
+        // Continua para tentar Mailrelay abaixo
+      }
     }
 
-    console.log('Construindo template de e-mail...');
-    const tpl = buildEmailTemplate({
-      title: `📎 Novo Currículo — ${nome}`,
-      preheader: `${nome} enviou um currículo pelo site.`,
-      sections: [
-        { label: 'Nome', value: nome },
-        { label: 'E-mail', value: email },
-        { label: 'Status', value: 'Arquivo em anexo.' }
-      ],
-      footerNote: 'Recebido via Trabalhe Conosco — Notus.'
-    });
+    // Fallback: Mailrelay API (sem anexo, mas com link de contato)
+    if (!smtpSuccess) {
+      console.log('Usando Mailrelay API como alternativa...');
+      
+      if (!MAILRELAY_HOST || !MAILRELAY_API_KEY) {
+        return res.status(500).json({
+          message: 'Falha no envio. Serviço de e-mail não disponível.',
+          details: 'Nem SMTP nem Mailrelay estão configurados.'
+        });
+      }
 
-    console.log('Tentando enviar e-mail via SMTP...');
-    let mailInfo;
-    try {
-      mailInfo = await transporter.sendMail({
-        from: `"${MAIL_FROM_NAME}" <${MAIL_FROM_ADDR}>`,
-        to: MAIL_TO_CURRICULO,
+      const attachInfo = smtpAttachments.map((att, i) => 
+        `<li><strong>${escapeHtml(att.filename)}</strong> (${Math.round(att.content.length / 1024)} KB)</li>`
+      ).join('');
+
+      const tpl = buildEmailTemplate({
+        title: `📎 Novo Currículo — ${nome}`,
+        preheader: `${nome} enviou um currículo pelo site.`,
+        sections: [
+          { label: 'Nome', value: nome },
+          { label: 'E-mail', value: email },
+          { 
+            label: 'Arquivos', 
+            html: `<ul style="margin:8px 0;padding-left:20px;">${attachInfo}</ul>
+                   <div style="margin-top:12px;padding:12px;background:#fff3cd;border-left:3px solid #ffc107;border-radius:4px;">
+                     <strong>⚠️ Nota:</strong> Entre em contato diretamente com o candidato no e-mail acima para solicitar o(s) arquivo(s).
+                   </div>` 
+          }
+        ],
+        footerNote: 'Recebido via Trabalhe Conosco — Notus.'
+      });
+
+      const mrPayload = {
+        from: { name: MAIL_FROM_NAME, email: MAIL_FROM_ADDR },
+        to: [{ name: 'RH Notus', email: MAIL_TO_CURRICULO }],
         subject: `📎 Novo Currículo — ${nome}`,
-        html: tpl.html,
-        text: tpl.text,
-        replyTo: email,
-        attachments: smtpAttachments,
-        // ensure envelope uses MAIL_FROM_ADDR (bounce/return-path)
-        envelope: { from: MAIL_FROM_ADDR, to: MAIL_TO_CURRICULO }
-      });
-    } catch (smtpError) {
-      console.error('SMTP sendMail ERROR:', {
-        code: smtpError.code,
-        command: smtpError.command,
-        message: smtpError.message,
-        responseCode: smtpError.responseCode,
-        response: smtpError.response
-      });
-      return res.status(500).json({ 
-        message: 'Falha ao enviar o currículo via SMTP.', 
-        details: smtpError.message || String(smtpError),
-        code: smtpError.code
-      });
+        html_part: tpl.html,
+        text_part: tpl.text,
+        reply_to: { email }
+      };
+
+      try {
+        await mrSendEmail(mrPayload);
+        console.log('Mailrelay API OK (sem anexo)');
+        return res.status(200).json({ 
+          message: 'Currículo enviado com sucesso! O RH entrará em contato.' 
+        });
+      } catch (mrError) {
+        console.error('Mailrelay API ERROR:', mrError.message);
+        return res.status(500).json({ 
+          message: 'Falha ao enviar currículo.', 
+          details: mrError.message 
+        });
+      }
     }
 
-    console.log('SMTP sendMail OK:', {
-      messageId: mailInfo && mailInfo.messageId,
-      accepted: mailInfo && mailInfo.accepted,
-      rejected: mailInfo && mailInfo.rejected,
-      envelope: mailInfo && mailInfo.envelope,
-    });
-
-    return res.status(200).json({ message: 'Currículo enviado com sucesso (SMTP)!' });
-
-    // (Opcional) quando Mailrelay liberar anexos por API, reativar bloco original aqui.
   } catch (error) {
     console.error('Enviar Currículo ERROR (catch externo):', {
       name: error.name,
