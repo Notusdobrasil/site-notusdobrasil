@@ -4,6 +4,7 @@ const express = require('express');
 const axios = require('axios');
 const cors = require('cors');
 const nodemailer = require('nodemailer');
+const sgMail = require('@sendgrid/mail');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -25,6 +26,12 @@ const SMTP_PORT    = Number(process.env.SMTP_PORT || 587);
 const SMTP_SECURE  = String(process.env.SMTP_SECURE || 'false') === 'true';
 const SMTP_USER    = process.env.SMTP_USER;
 const SMTP_PASS    = process.env.SMTP_PASS;
+
+// SendGrid (alternativa SMTP para produção)
+const SENDGRID_API_KEY = process.env.SENDGRID_API_KEY;
+if (SENDGRID_API_KEY) {
+  sgMail.setApiKey(SENDGRID_API_KEY);
+}
 
 // Limites de attachment (backend)
 const MAX_ATTACHMENT_BYTES = Number(process.env.MAX_ATTACHMENT_BYTES) || 8 * 1024 * 1024; // 8 MB por arquivo (decodificado)
@@ -67,6 +74,34 @@ function buildSmtpTransport() {
     greetingTimeout: 10000,
     socketTimeout: 10000,
   });
+}
+
+// Helper SendGrid
+async function sendViaSendGrid({ from, to, subject, html, text, replyTo, attachments = [] }) {
+  if (!SENDGRID_API_KEY) {
+    throw new Error('SENDGRID_API_KEY não configurada');
+  }
+
+  const msg = {
+    from: { email: from.email || from, name: from.name || MAIL_FROM_NAME },
+    to: Array.isArray(to) ? to : [{ email: to }],
+    subject,
+    html,
+    text,
+    replyTo: replyTo ? { email: replyTo } : undefined,
+  };
+
+  // Adicionar anexos se houver
+  if (attachments && attachments.length > 0) {
+    msg.attachments = attachments.map(att => ({
+      content: att.content.toString('base64'),
+      filename: att.filename,
+      type: att.contentType || 'application/octet-stream',
+      disposition: 'attachment'
+    }));
+  }
+
+  return sgMail.send(msg);
 }
 
 // 5) Template de e-mail (fundo azul + logo)
@@ -240,56 +275,71 @@ app.post('/api/enviar-curriculo', async (req, res) => {
         });
       }
 
-    // Tentar SMTP primeiro
-    console.log('Preparando transporter SMTP...');
-    const transporter = buildSmtpTransport();
-    let smtpSuccess = false;
+    // Template de e-mail
+    const tpl = buildEmailTemplate({
+      title: `📎 Novo Currículo — ${nome}`,
+      preheader: `${nome} enviou um currículo pelo site.`,
+      sections: [
+        { label: 'Nome', value: nome },
+        { label: 'E-mail', value: email },
+        { label: 'Status', value: 'Arquivo em anexo.' }
+      ],
+      footerNote: 'Recebido via Trabalhe Conosco — Notus.'
+    });
 
-    if (transporter) {
-      console.log('Construindo template de e-mail SMTP...');
-      const tpl = buildEmailTemplate({
-        title: `📎 Novo Currículo — ${nome}`,
-        preheader: `${nome} enviou um currículo pelo site.`,
-        sections: [
-          { label: 'Nome', value: nome },
-          { label: 'E-mail', value: email },
-          { label: 'Status', value: 'Arquivo em anexo.' }
-        ],
-        footerNote: 'Recebido via Trabalhe Conosco — Notus.'
-      });
+    let emailSent = false;
 
-      console.log('Tentando enviar e-mail via SMTP...');
+    // 1) Tentar SendGrid primeiro (mais confiável em produção)
+    if (SENDGRID_API_KEY && !emailSent) {
+      console.log('Tentando enviar via SendGrid...');
       try {
-        const mailInfo = await transporter.sendMail({
-          from: `"${MAIL_FROM_NAME}" <${MAIL_FROM_ADDR}>`,
+        await sendViaSendGrid({
+          from: { email: MAIL_FROM_ADDR, name: MAIL_FROM_NAME },
           to: MAIL_TO_CURRICULO,
           subject: `📎 Novo Currículo — ${nome}`,
           html: tpl.html,
           text: tpl.text,
           replyTo: email,
-          attachments: smtpAttachments,
-          envelope: { from: MAIL_FROM_ADDR, to: MAIL_TO_CURRICULO }
+          attachments: smtpAttachments
         });
-        
-        console.log('SMTP sendMail OK:', {
-          messageId: mailInfo && mailInfo.messageId,
-          accepted: mailInfo && mailInfo.accepted,
-        });
-        smtpSuccess = true;
+        console.log('SendGrid OK - E-mail enviado com anexo!');
+        emailSent = true;
         return res.status(200).json({ message: 'Currículo enviado com sucesso!' });
-        
-      } catch (smtpError) {
-        console.error('SMTP failed, tentando Mailrelay API como fallback:', {
-          code: smtpError.code,
-          message: smtpError.message
-        });
-        // Continua para tentar Mailrelay abaixo
+      } catch (sgError) {
+        console.error('SendGrid failed:', sgError.message);
+        // Continua para próximo método
       }
     }
 
-    // Fallback: Mailrelay API (sem anexo, mas com link de contato)
-    if (!smtpSuccess) {
-      console.log('Usando Mailrelay API como alternativa...');
+    // 2) Fallback: SMTP tradicional
+    if (!emailSent) {
+      console.log('Tentando SMTP...');
+      const transporter = buildSmtpTransport();
+      if (transporter) {
+        try {
+          const mailInfo = await transporter.sendMail({
+            from: `"${MAIL_FROM_NAME}" <${MAIL_FROM_ADDR}>`,
+            to: MAIL_TO_CURRICULO,
+            subject: `📎 Novo Currículo — ${nome}`,
+            html: tpl.html,
+            text: tpl.text,
+            replyTo: email,
+            attachments: smtpAttachments,
+            envelope: { from: MAIL_FROM_ADDR, to: MAIL_TO_CURRICULO }
+          });
+          console.log('SMTP OK:', { messageId: mailInfo.messageId });
+          emailSent = true;
+          return res.status(200).json({ message: 'Currículo enviado com sucesso!' });
+        } catch (smtpError) {
+          console.error('SMTP failed:', { code: smtpError.code, message: smtpError.message });
+          // Continua para Mailrelay
+        }
+      }
+    }
+
+    // 3) Último fallback: Mailrelay API (sem anexo)
+    if (!emailSent) {
+      console.log('Usando Mailrelay API como última alternativa...');
       
       if (!MAILRELAY_HOST || !MAILRELAY_API_KEY) {
         return res.status(500).json({
