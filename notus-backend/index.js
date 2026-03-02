@@ -4,7 +4,7 @@ const express = require('express');
 const axios = require('axios');
 const cors = require('cors');
 const nodemailer = require('nodemailer');
-const sgMail = require('@sendgrid/mail');
+const { Resend } = require('resend');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -27,10 +27,11 @@ const SMTP_SECURE  = String(process.env.SMTP_SECURE || 'false') === 'true';
 const SMTP_USER    = process.env.SMTP_USER;
 const SMTP_PASS    = process.env.SMTP_PASS;
 
-// SendGrid (alternativa SMTP para produção)
-const SENDGRID_API_KEY = process.env.SENDGRID_API_KEY;
-if (SENDGRID_API_KEY) {
-  sgMail.setApiKey(SENDGRID_API_KEY);
+// Resend (alternativa SMTP para produção)
+const RESEND_API_KEY = process.env.RESEND_API_KEY;
+let resend = null;
+if (RESEND_API_KEY) {
+  resend = new Resend(RESEND_API_KEY);
 }
 
 // Limites de attachment (backend)
@@ -76,32 +77,29 @@ function buildSmtpTransport() {
   });
 }
 
-// Helper SendGrid
-async function sendViaSendGrid({ from, to, subject, html, text, replyTo, attachments = [] }) {
-  if (!SENDGRID_API_KEY) {
-    throw new Error('SENDGRID_API_KEY não configurada');
+// Helper Resend
+async function sendViaResend({ from, to, subject, html, text, replyTo, attachments = [] }) {
+  if (!resend) {
+    throw new Error('RESEND_API_KEY não configurada');
   }
 
-  const msg = {
-    from: { email: from.email || from, name: from.name || MAIL_FROM_NAME },
-    to: Array.isArray(to) ? to : [{ email: to }],
+  const emailData = {
+    from: `${from.name || MAIL_FROM_NAME} <${from.email || from}>`,
+    to: Array.isArray(to) ? to : [to],
     subject,
     html,
-    text,
-    replyTo: replyTo ? { email: replyTo } : undefined,
+    reply_to: replyTo || undefined,
   };
 
   // Adicionar anexos se houver
   if (attachments && attachments.length > 0) {
-    msg.attachments = attachments.map(att => ({
-      content: att.content.toString('base64'),
+    emailData.attachments = attachments.map(att => ({
+      content: att.content,
       filename: att.filename,
-      type: att.contentType || 'application/octet-stream',
-      disposition: 'attachment'
     }));
   }
 
-  return sgMail.send(msg);
+  return resend.emails.send(emailData);
 }
 
 // 5) Template de e-mail (fundo azul + logo)
@@ -289,11 +287,11 @@ app.post('/api/enviar-curriculo', async (req, res) => {
 
     let emailSent = false;
 
-    // 1) Tentar SendGrid primeiro (mais confiável em produção)
-    if (SENDGRID_API_KEY && !emailSent) {
-      console.log('Tentando enviar via SendGrid...');
+    // 1) Tentar Resend primeiro (mais confiável em produção)
+    if (resend && !emailSent) {
+      console.log('Tentando enviar via Resend...');
       try {
-        await sendViaSendGrid({
+        await sendViaResend({
           from: { email: MAIL_FROM_ADDR, name: MAIL_FROM_NAME },
           to: MAIL_TO_CURRICULO,
           subject: `📎 Novo Currículo — ${nome}`,
@@ -302,11 +300,11 @@ app.post('/api/enviar-curriculo', async (req, res) => {
           replyTo: email,
           attachments: smtpAttachments
         });
-        console.log('SendGrid OK - E-mail enviado com anexo!');
+        console.log('Resend OK - E-mail enviado com anexo!');
         emailSent = true;
         return res.status(200).json({ message: 'Currículo enviado com sucesso!' });
-      } catch (sgError) {
-        console.error('SendGrid failed:', sgError.message);
+      } catch (resendError) {
+        console.error('Resend failed:', resendError.message);
         // Continua para próximo método
       }
     }
