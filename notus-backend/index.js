@@ -63,9 +63,9 @@ function buildSmtpTransport() {
     logger: String(process.env.SMTP_DEBUG || 'false') === 'true',
     debug: String(process.env.SMTP_DEBUG || 'false') === 'true',
     // timeouts to fail faster and help debugging when provider/host blocks SMTP
-    connectionTimeout: 20000,
-    greetingTimeout: 20000,
-    socketTimeout: 20000,
+    connectionTimeout: 10000,
+    greetingTimeout: 10000,
+    socketTimeout: 10000,
   });
 }
 
@@ -240,14 +240,17 @@ app.post('/api/enviar-curriculo', async (req, res) => {
         });
       }
 
+    console.log('Preparando transporter SMTP...');
     const transporter = buildSmtpTransport();
     if (!transporter) {
+      console.error('SMTP não configurado:', { SMTP_HOST, SMTP_USER: !!SMTP_USER, SMTP_PASS: !!SMTP_PASS });
       return res.status(500).json({
         message: 'SMTP não configurado para envio de currículo.',
         details: 'Defina SMTP_HOST, SMTP_USER e SMTP_PASS nas variáveis do Render.'
       });
     }
 
+    console.log('Construindo template de e-mail...');
     const tpl = buildEmailTemplate({
       title: `📎 Novo Currículo — ${nome}`,
       preheader: `${nome} enviou um currículo pelo site.`,
@@ -259,17 +262,34 @@ app.post('/api/enviar-curriculo', async (req, res) => {
       footerNote: 'Recebido via Trabalhe Conosco — Notus.'
     });
 
-    const mailInfo = await transporter.sendMail({
-      from: `"${MAIL_FROM_NAME}" <${MAIL_FROM_ADDR}>`,
-      to: MAIL_TO_CURRICULO,
-      subject: `📎 Novo Currículo — ${nome}`,
-      html: tpl.html,
-      text: tpl.text,
-      replyTo: email,
-      attachments: smtpAttachments,
-      // ensure envelope uses MAIL_FROM_ADDR (bounce/return-path)
-      envelope: { from: MAIL_FROM_ADDR, to: MAIL_TO_CURRICULO }
-    });
+    console.log('Tentando enviar e-mail via SMTP...');
+    let mailInfo;
+    try {
+      mailInfo = await transporter.sendMail({
+        from: `"${MAIL_FROM_NAME}" <${MAIL_FROM_ADDR}>`,
+        to: MAIL_TO_CURRICULO,
+        subject: `📎 Novo Currículo — ${nome}`,
+        html: tpl.html,
+        text: tpl.text,
+        replyTo: email,
+        attachments: smtpAttachments,
+        // ensure envelope uses MAIL_FROM_ADDR (bounce/return-path)
+        envelope: { from: MAIL_FROM_ADDR, to: MAIL_TO_CURRICULO }
+      });
+    } catch (smtpError) {
+      console.error('SMTP sendMail ERROR:', {
+        code: smtpError.code,
+        command: smtpError.command,
+        message: smtpError.message,
+        responseCode: smtpError.responseCode,
+        response: smtpError.response
+      });
+      return res.status(500).json({ 
+        message: 'Falha ao enviar o currículo via SMTP.', 
+        details: smtpError.message || String(smtpError),
+        code: smtpError.code
+      });
+    }
 
     console.log('SMTP sendMail OK:', {
       messageId: mailInfo && mailInfo.messageId,
@@ -282,9 +302,14 @@ app.post('/api/enviar-curriculo', async (req, res) => {
 
     // (Opcional) quando Mailrelay liberar anexos por API, reativar bloco original aqui.
   } catch (error) {
+    console.error('Enviar Currículo ERROR (catch externo):', {
+      name: error.name,
+      message: error.message,
+      stack: error.stack,
+      response: error?.response?.data
+    });
     const status = error?.response?.status || 500;
-    const details = error?.response?.data || error.message;
-    console.error('Enviar Currículo ERROR:', status, details);
+    const details = error?.response?.data || error.message || String(error);
     return res.status(status).json({ message: 'Falha ao enviar o currículo.', details });
   }
 });
