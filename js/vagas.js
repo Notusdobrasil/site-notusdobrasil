@@ -1,5 +1,5 @@
 /**
- * Script para carregar e exibir vagas dinamicamente
+ * Script para carregar e exibir vagas dinamicamente - v2.0
  */
 
 // Configuração da API
@@ -7,7 +7,10 @@ const API_BASE_URL = window.location.hostname === "localhost" || window.location
     ? "http://localhost:3000"
     : "https://backend-site-notusdobrasil.onrender.com";
 
-console.log("Vagas API Base URL:", API_BASE_URL);
+console.log("🔧 Vagas Script Version: 2.0");
+console.log("🌐 Current hostname:", window.location.hostname);
+console.log("📡 Vagas API Base URL:", API_BASE_URL);
+console.log("🔗 Full API example:", API_BASE_URL + "/api/vagas");
 
 let vagasGlobal = [];
 

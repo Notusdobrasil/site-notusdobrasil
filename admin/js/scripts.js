@@ -1,14 +1,24 @@
-// Configuração da URL base da API
+// ============================================
+// Configuração da URL base da API - v2.0
+// ============================================
 const isLocalhost = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
 const isBackendPort = window.location.port === "3000";
 
-window.API_BASE_URL = isLocalhost && isBackendPort
-	? "" // Mesma origem (servido pelo backend na porta 3000)
-	: isLocalhost
-	? "http://localhost:3000" // Live Server ou outra porta local
-	: "https://backend-site-notusdobrasil.onrender.com"; // Produção
+// SEMPRE usar backend do Render em produção, exceto se estiver rodando localmente
+if (isLocalhost) {
+	// Ambiente local
+	window.API_BASE_URL = isBackendPort 
+		? "" // Mesma origem (servido pelo backend na porta 3000)
+		: "http://localhost:3000"; // Live Server ou outra porta local
+} else {
+	// Produção - SEMPRE usar backend do Render
+	window.API_BASE_URL = "https://backend-site-notusdobrasil.onrender.com";
+}
 
-console.log("Admin API Base URL:", window.API_BASE_URL);
+console.log("🔧 Admin Script Version: 2.0");
+console.log("🌐 Current hostname:", window.location.hostname);
+console.log("📡 Admin API Base URL:", window.API_BASE_URL);
+console.log("🔗 Full API example:", window.API_BASE_URL + "/api/admin/session");
 
 async function adminRequest(path, options = {}) {
 	const response = await fetch(`${window.API_BASE_URL}${path}`, {
