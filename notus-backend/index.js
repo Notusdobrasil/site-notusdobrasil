@@ -5,6 +5,12 @@ const axios = require('axios');
 const cors = require('cors');
 const nodemailer = require('nodemailer');
 const { Resend } = require('resend');
+const session = require('express-session');
+const multer = require('multer');
+const path = require('path');
+const fs = require('fs').promises;
+const { authenticateUser, closeSqlPool } = require('./sqlServerAuth');
+const vagasManager = require('./vagasManager');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -43,11 +49,75 @@ const corsOptions = {
     'https://www.notus.ind.br',
     'https://notus.ind.br',
     'http://127.0.0.1:5500',
+    'http://localhost:5500',
+    'http://localhost:3000',
   ],
+  credentials: true, // Importante para sessões
 };
 app.use(cors(corsOptions));
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ limit: '10mb', extended: true }));
+
+// Configuração de sessão
+app.use(session({
+  secret: process.env.SESSION_SECRET || 'notus-secret-key-change-in-production',
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    secure: process.env.NODE_ENV === 'production', // HTTPS em produção
+    httpOnly: true,
+    maxAge: 24 * 60 * 60 * 1000, // 24 horas (ou 7 dias se rememberMe)
+    sameSite: 'lax'
+  }
+}));
+
+// Configuração de upload de arquivos (Multer)
+const UPLOADS_DIR = path.join(__dirname, 'uploads', 'flyers');
+
+// Criar diretório de uploads se não existir
+(async () => {
+  try {
+    await fs.mkdir(UPLOADS_DIR, { recursive: true });
+    console.log('DEBUG: Diretório de uploads verificado/criado');
+  } catch (error) {
+    console.error('ERRO ao criar diretório de uploads:', error);
+  }
+})();
+
+// Configuração do Multer
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, UPLOADS_DIR);
+  },
+  filename: function (req, file, cb) {
+    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+    cb(null, 'flyer-' + uniqueSuffix + path.extname(file.originalname));
+  }
+});
+
+const upload = multer({
+  storage: storage,
+  limits: { fileSize: 5 * 1024 * 1024 }, // 5MB
+  fileFilter: function (req, file, cb) {
+    const allowedTypes = /jpeg|jpg|png|gif|pdf|webp/;
+    const extname = allowedTypes.test(path.extname(file.originalname).toLowerCase());
+    const mimetype = allowedTypes.test(file.mimetype);
+    
+    if (mimetype && extname) {
+      return cb(null, true);
+    } else {
+      cb(new Error('Tipo de arquivo não permitido. Use: JPG, PNG, GIF, PDF ou WEBP'));
+    }
+  }
+});
+
+// Log e servir arquivos estáticos (uploads) com CORS habilitado
+app.use('/uploads', (req, res, next) => {
+  console.log(`DEBUG: Acesso a arquivo estático: ${req.url}`);
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Cross-Origin-Resource-Policy', 'cross-origin');
+  next();
+}, express.static(path.join(__dirname, 'uploads')));
 
 // 4) Helpers Mailrelay + SMTP
 function mrHeaders() {
@@ -196,6 +266,291 @@ function buildEmailTemplate({ title, preheader, sections = [], footerNote = 'Men
 
   return { html, text };
 }
+
+// ====================================================================
+// Middleware de autenticação
+// ====================================================================
+function requireAuth(req, res, next) {
+  if (!req.session || !req.session.user) {
+    return res.status(401).json({ message: 'Não autenticado. Faça login primeiro.' });
+  }
+  next();
+}
+
+// ====================================================================
+// ROTAS: Autenticação Admin
+// ====================================================================
+
+/**
+ * POST /api/admin/login
+ * Autentica um usuário usando SQL Server
+ */
+app.post('/api/admin/login', async (req, res) => {
+  console.log('\n--- Recebida requisição POST /api/admin/login ---');
+  
+  try {
+    const { username, password, rememberMe } = req.body;
+    
+    if (!username || !password) {
+      return res.status(400).json({ message: 'Usuário e senha são obrigatórios.' });
+    }
+    
+    // Autenticar usuário no SQL Server
+    const authResult = await authenticateUser(username.trim(), password);
+    
+    if (!authResult) {
+      console.log(`DEBUG: Falha na autenticação para usuário '${username}'`);
+      return res.status(401).json({ message: 'Usuário ou senha incorretos.' });
+    }
+    
+    if (authResult.error === 'INACTIVE') {
+      return res.status(403).json({ message: authResult.message });
+    }
+    
+    // Definir duração da sessão
+    if (rememberMe) {
+      req.session.cookie.maxAge = 7 * 24 * 60 * 60 * 1000; // 7 dias
+    } else {
+      req.session.cookie.maxAge = 24 * 60 * 60 * 1000; // 24 horas
+    }
+    
+    // Criar sessão do usuário
+    req.session.user = {
+      userId: authResult.userId,
+      username: authResult.userName,
+      isAdmin: authResult.isAdmin
+    };
+    
+    console.log(`DEBUG: Login bem-sucedido para usuário '${username}' (ID: ${authResult.userId})`);
+    
+    return res.status(200).json({
+      message: 'Login realizado com sucesso!',
+      user: {
+        userId: authResult.userId,
+        username: authResult.userName,
+        isAdmin: authResult.isAdmin
+      }
+    });
+    
+  } catch (error) {
+    console.error('ERRO ao processar login:', error);
+    return res.status(500).json({ 
+      message: 'Erro ao processar login. Tente novamente.' 
+    });
+  }
+  
+  console.log('--- Fim da requisição POST /api/admin/login ---');
+});
+
+/**
+ * GET /api/admin/session
+ * Verifica se existe uma sessão ativa
+ */
+app.get('/api/admin/session', (req, res) => {
+  if (!req.session || !req.session.user) {
+    return res.status(401).json({ message: 'Sem sessão ativa.' });
+  }
+  
+  return res.status(200).json({
+    user: req.session.user
+  });
+});
+
+/**
+ * POST /api/admin/logout
+ * Encerra a sessão do usuário
+ */
+app.post('/api/admin/logout', (req, res) => {
+  console.log('\n--- Recebida requisição POST /api/admin/logout ---');
+  
+  if (req.session) {
+    const username = req.session.user?.username || 'desconhecido';
+    req.session.destroy((err) => {
+      if (err) {
+        console.error('ERRO ao destruir sessão:', err);
+        return res.status(500).json({ message: 'Erro ao fazer logout.' });
+      }
+      console.log(`DEBUG: Logout bem-sucedido para usuário '${username}'`);
+      return res.status(200).json({ message: 'Logout realizado com sucesso.' });
+    });
+  } else {
+    return res.status(200).json({ message: 'Nenhuma sessão ativa.' });
+  }
+});
+
+// ====================================================================
+// ROTAS: Vagas (CRUD)
+// ====================================================================
+
+/**
+ * GET /api/vagas
+ * Lista todas as vagas (pública)
+ */
+app.get('/api/vagas', async (req, res) => {
+  console.log('\n--- Recebida requisição GET /api/vagas ---');
+  
+  try {
+    const vagas = await vagasManager.getAllVagas();
+    console.log(`DEBUG: Retornando ${vagas.length} vagas`);
+    return res.status(200).json(vagas);
+  } catch (error) {
+    console.error('ERRO ao listar vagas:', error);
+    return res.status(500).json({ message: 'Erro ao carregar vagas.' });
+  }
+});
+
+/**
+ * POST /api/admin/vagas
+ * Cria uma nova vaga (requer autenticação)
+ */
+app.post('/api/admin/vagas', requireAuth, upload.single('flyer'), async (req, res) => {
+  console.log('\n--- Recebida requisição POST /api/admin/vagas ---');
+  
+  try {
+    const {
+      titulo,
+      empresa,
+      local,
+      salario,
+      tipo,
+      horario,
+      descricao,
+      responsabilidades,
+      requisitos,
+      beneficios,
+      nova
+    } = req.body;
+    
+    // Validação básica
+    if (!titulo || !empresa || !local) {
+      return res.status(400).json({ message: 'Título, empresa e local são obrigatórios.' });
+    }
+    
+    // Preparar dados da vaga
+    const vagaData = {
+      titulo,
+      empresa,
+      local,
+      salario: salario || 'A combinar',
+      tipo: tipo || 'Tempo Integral',
+      horario: horario || 'Segunda a Sexta',
+      descricao: descricao || '',
+      responsabilidades: responsabilidades ? JSON.parse(responsabilidades) : [],
+      requisitos: requisitos ? JSON.parse(requisitos) : [],
+      beneficios: beneficios ? JSON.parse(beneficios) : [],
+      nova: nova === 'true' || nova === true,
+      flyerUrl: req.file ? `/uploads/flyers/${req.file.filename}` : null
+    };
+    
+    const novaVaga = await vagasManager.createVaga(vagaData);
+    
+    console.log(`DEBUG: Vaga criada com sucesso - ID: ${novaVaga.id}`);
+    return res.status(201).json(novaVaga);
+    
+  } catch (error) {
+    console.error('ERRO ao criar vaga:', error);
+    return res.status(500).json({ message: 'Erro ao criar vaga.' });
+  }
+});
+
+/**
+ * PUT /api/admin/vagas/:id
+ * Atualiza uma vaga existente (requer autenticação)
+ */
+app.put('/api/admin/vagas/:id', requireAuth, upload.single('flyer'), async (req, res) => {
+  console.log('\n--- Recebida requisição PUT /api/admin/vagas/:id ---');
+  
+  try {
+    const { id } = req.params;
+    const {
+      titulo,
+      empresa,
+      local,
+      salario,
+      tipo,
+      horario,
+      descricao,
+      responsabilidades,
+      requisitos,
+      beneficios,
+      nova
+    } = req.body;
+    
+    // Buscar vaga existente
+    const vagaExistente = await vagasManager.getVagaById(id);
+    if (!vagaExistente) {
+      return res.status(404).json({ message: 'Vaga não encontrada.' });
+    }
+    
+    // Preparar dados da vaga
+    const vagaData = {
+      titulo,
+      empresa,
+      local,
+      salario: salario || 'A combinar',
+      tipo: tipo || 'Tempo Integral',
+      horario: horario || 'Segunda a Sexta',
+      descricao: descricao || '',
+      responsabilidades: responsabilidades ? JSON.parse(responsabilidades) : [],
+      requisitos: requisitos ? JSON.parse(requisitos) : [],
+      beneficios: beneficios ? JSON.parse(beneficios) : [],
+      nova: nova === 'true' || nova === true,
+      flyerUrl: req.file ? `/uploads/flyers/${req.file.filename}` : vagaExistente.flyerUrl
+    };
+    
+    const vagaAtualizada = await vagasManager.updateVaga(id, vagaData);
+    
+    console.log(`DEBUG: Vaga atualizada com sucesso - ID: ${id}`);
+    return res.status(200).json(vagaAtualizada);
+    
+  } catch (error) {
+    console.error('ERRO ao atualizar vaga:', error);
+    return res.status(500).json({ message: 'Erro ao atualizar vaga.' });
+  }
+});
+
+/**
+ * DELETE /api/admin/vagas/:id
+ * Exclui uma vaga (requer autenticação)
+ */
+app.delete('/api/admin/vagas/:id', requireAuth, async (req, res) => {
+  console.log('\n--- Recebida requisição DELETE /api/admin/vagas/:id ---');
+  
+  try {
+    const { id } = req.params;
+    
+    // Buscar vaga para excluir arquivo de flyer se existir
+    const vaga = await vagasManager.getVagaById(id);
+    if (!vaga) {
+      return res.status(404).json({ message: 'Vaga não encontrada.' });
+    }
+    
+    // Excluir arquivo de flyer se existir
+    if (vaga.flyerUrl) {
+      const flyerPath = path.join(__dirname, vaga.flyerUrl);
+      try {
+        await fs.unlink(flyerPath);
+        console.log(`DEBUG: Arquivo de flyer excluído: ${flyerPath}`);
+      } catch (error) {
+        console.log(`DEBUG: Não foi possível excluir o flyer (pode já estar excluído): ${error.message}`);
+      }
+    }
+    
+    // Excluir vaga
+    const sucesso = await vagasManager.deleteVaga(id);
+    
+    if (sucesso) {
+      console.log(`DEBUG: Vaga excluída com sucesso - ID: ${id}`);
+      return res.status(200).json({ message: 'Vaga excluída com sucesso.' });
+    } else {
+      return res.status(404).json({ message: 'Vaga não encontrada.' });
+    }
+    
+  } catch (error) {
+    console.error('ERRO ao excluir vaga:', error);
+    return res.status(500).json({ message: 'Erro ao excluir vaga.' });
+  }
+});
 
 // ====================================================================
 // ROTA: Newsletter
@@ -562,4 +917,17 @@ app.post('/api/enviar-contato', async (req, res) => {
 // ====================================================================
 app.listen(port, () => {
   console.log(`Servidor rodando na porta ${port}`);
+});
+
+// Cleanup para encerrar conexões SQL ao finalizar o processo
+process.on('SIGINT', async () => {
+  console.log('\nEncerrando servidor...');
+  await closeSqlPool();
+  process.exit(0);
+});
+
+process.on('SIGTERM', async () => {
+  console.log('\nEncerrando servidor...');
+  await closeSqlPool();
+  process.exit(0);
 });
