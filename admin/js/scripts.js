@@ -1,24 +1,30 @@
 // ============================================
-// Configuração da URL base da API - v2.0
+// Configuração da URL base da API - v3.0
+// Backend híbrido:
+// - Admin routes: Backend LOCAL (acessa SQL Server)
+// - Forms routes: Backend RENDER (newsletter, contato, etc)
 // ============================================
 const isLocalhost = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
 const isBackendPort = window.location.port === "3000";
 
-// SEMPRE usar backend do Render em produção, exceto se estiver rodando localmente
+// ADMIN: Sempre usa backend local (onde SQL Server está acessível)
 if (isLocalhost) {
-	// Ambiente local
+	// Desenvolvimento local
 	window.API_BASE_URL = isBackendPort 
 		? "" // Mesma origem (servido pelo backend na porta 3000)
 		: "http://localhost:3000"; // Live Server ou outra porta local
 } else {
-	// Produção - SEMPRE usar backend do Render
-	window.API_BASE_URL = "https://backend-site-notusdobrasil.onrender.com";
+	// Produção - Backend LOCAL da empresa
+	// TODO: Substituir pelo seu IP/domínio real quando configurar
+	// Exemplo: "https://backend.notus.ind.br" ou "http://seu-ip:3000"
+	window.API_BASE_URL = "http://SEU_IP_OU_DOMINIO:3000";
 }
 
-console.log("🔧 Admin Script Version: 2.0");
+console.log("🔧 Admin Script Version: 3.0 (Hybrid Backend)");
 console.log("🌐 Current hostname:", window.location.hostname);
 console.log("📡 Admin API Base URL:", window.API_BASE_URL);
 console.log("🔗 Full API example:", window.API_BASE_URL + "/api/admin/session");
+console.log("💡 Admin → Backend Local | Forms → Backend Render");
 
 async function adminRequest(path, options = {}) {
 	const response = await fetch(`${window.API_BASE_URL}${path}`, {

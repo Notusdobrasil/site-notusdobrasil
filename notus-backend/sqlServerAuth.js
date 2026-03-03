@@ -5,6 +5,7 @@
 
 const sql = require('mssql');
 const crypto = require('crypto');
+const { authenticateFallback } = require('./fallbackAuth');
 
 // Configuração do SQL Server
 const sqlConfig = {
@@ -16,8 +17,8 @@ const sqlConfig = {
     encrypt: true,
     trustServerCertificate: true,
     enableArithAbort: true,
-    connectionTimeout: 30000,
-    requestTimeout: 30000
+    connectionTimeout: 15000,
+    requestTimeout: 15000
   },
   pool: {
     max: 10,
@@ -28,6 +29,7 @@ const sqlConfig = {
 
 // Pool de conexões global
 let pool = null;
+let sqlServerAvailable = null; // Cache do status de disponibilidade
 
 /**
  * Obtém ou cria o pool de conexões SQL Server
@@ -36,13 +38,17 @@ async function getSqlPool() {
   try {
     if (!pool) {
       console.log('DEBUG: Criando novo pool de conexões SQL Server...');
+      console.log(`DEBUG: Servidor: ${sqlConfig.server}`);
       pool = await sql.connect(sqlConfig);
-      console.log('DEBUG: Pool de conexões SQL Server criado com sucesso');
+      console.log('✅ DEBUG: Pool de conexões SQL Server criado com sucesso');
+      sqlServerAvailable = true;
     }
     return pool;
   } catch (error) {
-    console.error('ERRO ao criar pool SQL Server:', error);
+    console.error('❌ ERRO ao criar pool SQL Server:', error.message);
+    console.error('💡 Dica: Verifique se o SQL Server está acessível e as credenciais estão corretas');
     pool = null;
+    sqlServerAvailable = false;
     throw error;
   }
 }
@@ -75,6 +81,12 @@ async function authenticateUser(username, password) {
     return null;
   }
 
+  // Se já sabemos que o SQL Server não está disponível, usar fallback direto
+  if (sqlServerAvailable === false) {
+    console.log('⚠️  SQL Server marcado como indisponível, usando fallback');
+    return authenticateFallback(username, password);
+  }
+
   let connection = null;
   
   try {
@@ -104,7 +116,7 @@ async function authenticateUser(username, password) {
     if (result.recordset && result.recordset.length > 0) {
       const user = result.recordset[0];
       
-      console.log(`DEBUG: Usuário encontrado - ID: ${user.idUsuario}, btAtivo: ${user.btAtivo}, btAdministrador: ${user.btAdministrador}`);
+      console.log(`✅ DEBUG: Usuário encontrado via SQL Server - ID: ${user.idUsuario}`);
       
       // Validar se o usuário está ativo
       if (user.btAtivo === 0 || user.btAtivo === false) {
@@ -125,12 +137,23 @@ async function authenticateUser(username, password) {
     }
     
   } catch (error) {
-    console.error('ERRO ao autenticar usuário:', error);
-    // Em caso de erro de conexão, resetar o pool
-    if (error.message && error.message.includes('connection')) {
-      console.log('DEBUG: Resetando pool de conexões devido a erro de conexão');
+    console.error('❌ ERRO ao autenticar usuário:', error.message);
+    
+    // Em caso de erro de conexão, resetar o pool e tentar fallback
+    if (error.message && (
+      error.message.includes('connection') || 
+      error.message.includes('ENOTFOUND') ||
+      error.message.includes('ETIMEDOUT') ||
+      error.message.includes('Failed to connect')
+    )) {
+      console.log('⚠️  Erro de conexão SQL Server detectado, usando fallback');
       pool = null;
+      sqlServerAvailable = false;
+      
+      // Tentar autenticação via fallback
+      return authenticateFallback(username, password);
     }
+    
     throw error;
   }
   
