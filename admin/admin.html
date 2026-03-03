@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Administrativo - Notus</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/adminStyle.css">
+    <link rel="icon" href="../images/icone-logosite-quadrado-mask1.webp">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+</head>
+<body>
+    <div class="admin-layout">
+        <!-- Sidebar -->
+        <aside class="admin-sidebar">
+            <div class="sidebar-header">
+                <img src="../images/logo-notus-branco.png" alt="Logo Notus" class="sidebar-logo">
+            </div>
+
+            <nav class="sidebar-nav">
+                <button class="sidebar-nav-item active" data-tab="vagas">
+                    <span>Gerenciar Vagas</span>
+                </button>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="sidebar-user">
+                    <i class="fa-solid fa-circle-user"></i>
+                    <div class="sidebar-user-info">
+                        <strong id="loggedUser">Administrador</strong>
+                        <span>Admin</span>
+                    </div>
+                </div>
+                <button type="button" class="btn-logout" id="logoutBtn">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    <span>Sair</span>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="admin-main">
+
+            <!-- TAB: Gerenciar Vagas -->
+            <div class="admin-content active" id="tab-vagas">
+                <div class="admin-header">
+                    <h1>Gerenciamento de Vagas</h1>
+                    <p class="admin-subtitle">Gerencie todas as vagas publicadas no site</p>
+                </div>
+                <div class="vagas-admin-header">
+                    <h2>Vagas Abertas</h2>
+                    <button class="btn-primary" id="btnNovaVaga">
+                        <i class="fa-solid fa-plus-circle"></i> Nova Vaga
+                    </button>
+                </div>
+
+                <div class="vagas-list" id="vagasList">
+                    <div class="loading-spinner">
+                        <i class="fa-solid fa-spinner fa-spin"></i> Carregando vagas...
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal: Nova/Editar Vaga -->
+    <div class="modal" id="modalVaga">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Nova Vaga</h3>
+                <button class="modal-close" id="btnCloseModal">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <form id="formVaga" class="vaga-form">
+                <input type="hidden" id="vagaId">
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="vagaTitulo"><i class="fa-solid fa-heading"></i> Título da Vaga *</label>
+                        <input type="text" id="vagaTitulo" required placeholder="Ex: Auxiliar de Limpeza">
+                    </div>
+                    <div class="form-group">
+                        <label for="vagaEmpresa"><i class="fa-solid fa-building"></i> Empresa *</label>
+                        <select id="vagaEmpresa" required>
+                            <option value="">Selecione...</option>
+                            <option value="Notus do Brasil">Notus do Brasil</option>
+                            <option value="Vip Soft">Vip Soft</option>
+                            <option value="Notus Tooling">Notus Tooling</option>
+                            <option value="NTR">NTR</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="vagaLocal"><i class="fa-solid fa-location-dot"></i> Localização *</label>
+                        <input type="text" id="vagaLocal" required placeholder="Ex: Salto - SP">
+                    </div>
+                    <div class="form-group">
+                        <label for="vagaSalario"><i class="fa-solid fa-dollar-sign"></i> Salário *</label>
+                        <input type="text" id="vagaSalario" required placeholder="Ex: R$ 2.100,00 ou A combinar">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="vagaTipo"><i class="fa-solid fa-briefcase"></i> Tipo *</label>
+                        <select id="vagaTipo" required>
+                            <option value="Presencial">Presencial</option>
+                            <option value="Remoto">Remoto</option>
+                            <option value="Híbrido">Híbrido</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="vagaHorario"><i class="fa-solid fa-clock"></i> Horário *</label>
+                        <input type="text" id="vagaHorario" required placeholder="Ex: Seg. a Qui. 08H às 18H">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="vagaDescricao"><i class="fa-solid fa-align-left"></i> Descrição *</label>
+                    <textarea id="vagaDescricao" rows="4" required placeholder="Descrição geral da vaga"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="vagaResponsabilidades"><i class="fa-solid fa-tasks"></i> Responsabilidades *</label>
+                    <textarea id="vagaResponsabilidades" rows="5" required placeholder="Uma responsabilidade por linha"></textarea>
+                    <small>Digite uma responsabilidade por linha</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="vagaRequisitos"><i class="fa-solid fa-check-circle"></i> Requisitos *</label>
+                    <textarea id="vagaRequisitos" rows="5" required placeholder="Um requisito por linha"></textarea>
+                    <small>Digite um requisito por linha</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="vagaBeneficios"><i class="fa-solid fa-star"></i> Benefícios *</label>
+                    <textarea id="vagaBeneficios" rows="5" required placeholder="Um benefício por linha"></textarea>
+                    <small>Digite um benefício por linha</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="vagaFlyer"><i class="fa-solid fa-image"></i> Flyer da Vaga (opcional)</label>
+                    <input type="file" id="vagaFlyer" accept="image/*">
+                    <small id="flyerAtual" style="display: none; color: #666; margin-top: 5px;">Arquivo atual: <span id="flyerNome"></span></small>
+                </div>
+
+                <div class="form-group checkbox-group">
+                    <label>
+                        <input type="checkbox" id="vagaNova">
+                        <span><i class="fa-solid fa-badge-check"></i> Marcar como "NOVA"</span>
+                    </label>
+                </div>
+
+                <div class="modal-actions">
+                    <button type="button" class="btn-secondary" id="btnCancelar">Cancelar</button>
+                    <button type="submit" class="btn-primary" id="btnSalvarVaga">
+                        <i class="fa-solid fa-save"></i> Salvar Vaga
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/scripts.js"></script>
+    <script src="js/vagas.js"></script>
+</body>
+</html>

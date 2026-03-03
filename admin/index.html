@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>Login - Painel Administrador</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="icon" href="../images/icone-logosite-quadrado-mask1.webp">
+    <script src="https://kit.fontawesome.com/5ad3c49421.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="login-container">
+        <div class="login-header">
+            <div class="logo-container">
+                <img src="../images/logo-notus-branco.png" alt="Logo Notus" class="logo">
+            </div>
+        </div>
+
+        <div class="login-body">
+            <div class="error-message" id="errorMessage">
+                ⚠️ Usuário ou senha incorretos
+            </div>
+
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="username">Usuário</label>
+                    <div class="input-wrapper">
+                        <span class="input-icon"><i class="fa-solid fa-user" style="color: #134596;"></i></span>
+                        <input type="text" id="username" name="username" placeholder="Digite seu usuário" required
+                            autocomplete="username">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Senha</label>
+                    <div class="input-wrapper">
+                        <span class="input-icon"><i class="fa-solid fa-lock" style="color: #134596"></i></span>
+                        <input type="password" id="password" name="password" placeholder="Digite sua senha" required
+                            autocomplete="current-password">
+                    </div>
+                </div>
+
+                <div class="remember-forgot">
+                    <div class="remember-me">
+                        <input type="checkbox" id="rememberMe" name="rememberMe">
+                        <label for="rememberMe">Lembrar-me</label>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-login" id="loginBtn">
+                    <span id="btnText">Entrar</span>
+                </button>
+            </form>
+        </div>
+
+        <div class="login-footer">
+            © 2026 Notus Sistemas Térmicos Do Brasil
+        </div>
+    </div>
+
+    <script src="js/scripts.js"></script>
+</body>
+
+</html>

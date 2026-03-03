@@ -100,110 +100,20 @@
         <!-- SEÇÃO DE VAGAS COM LAYOUT DE CARDS -->
         <section class="vagas-layout-container">
             <div class="vagas-sidebar">
-                <!-- Card 1 - Auxiliar de Limpeza -->
-                <div class="vaga-card" data-vaga="1">
-                    <div class="vaga-card-badge">NOVA</div>
-                    <h3 class="vaga-card-titulo">Auxiliar de Limpeza</h3>
-                    <div class="vaga-card-info">
-                        <p class="vaga-card-avaliacao">
-                            <span class="vaga-card-empresa">Notus do Brasil</span>
-                        </p>
-                        <p class="vaga-card-local">
-                            <i class="fa-solid fa-location-dot"></i> Salto - SP
-                        </p>
-                        <p class="vaga-card-salario">R$ 1.974,34</p>
-                        <p class="vaga-card-tipo">
-                            <i class="fa-solid fa-building"></i> Presencial
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Card 2 - Auxiliar Logístico -->
-                <div class="vaga-card" data-vaga="2">
-                    <div class="vaga-card-badge">NOVA</div>
-                    <h3 class="vaga-card-titulo">Auxiliar Logístico</h3>
-                    <div class="vaga-card-info">
-                        <p class="vaga-card-avaliacao">
-                            <span class="vaga-card-empresa">Notus do Brasil</span>
-                        </p>
-                        <p class="vaga-card-local">
-                            <i class="fa-solid fa-location-dot"></i> Salto - SP
-                        </p>
-                        <p class="vaga-card-salario">R$ 2.100,00</p>
-                        <p class="vaga-card-tipo">
-                            <i class="fa-solid fa-building"></i> Presencial
-                        </p>
-                    </div>
-                </div>
-
-                 <!-- Card 3 - Cozinheira-->
-                <div class="vaga-card" data-vaga="3">
-                    <div class="vaga-card-badge">NOVA</div>
-                    <h3 class="vaga-card-titulo">Cozinheira</h3>
-                    <div class="vaga-card-info">
-                        <p class="vaga-card-avaliacao">
-                            <span class="vaga-card-empresa">Notus do Brasil</span>
-                        </p>
-                        <p class="vaga-card-local">
-                            <i class="fa-solid fa-location-dot"></i> Salto - SP
-                        </p>
-                        <p class="vaga-card-salario">A combinar</p>
-                        <p class="vaga-card-tipo">
-                            <i class="fa-solid fa-building"></i> Presencial
-                        </p>
-                    </div>
-                </div>
-
-                  <!-- Card 4 - Cozinheira-->
-                <div class="vaga-card" data-vaga="4">
-                    <div class="vaga-card-badge">NOVA</div>
-                    <h3 class="vaga-card-titulo">Auxiliar de montagem informática e telecomunicações</h3>
-                    <div class="vaga-card-info">
-                        <p class="vaga-card-avaliacao">
-                            <span class="vaga-card-empresa">Vip Soft</span>
-                        </p>
-                        <p class="vaga-card-local">
-                            <i class="fa-solid fa-location-dot"></i> Salto - SP
-                        </p>
-                        <p class="vaga-card-salario">R$ 2.179,35</p>
-                        <p class="vaga-card-tipo">
-                            <i class="fa-solid fa-building"></i> Presencial
-                        </p>
-                    </div>
-                </div>
-
-
-                <div class="vaga-card" data-vaga="5">
-                    <div class="vaga-card-badge">NOVA</div>
-                    <h3 class="vaga-card-titulo">Analista de suporte Jr. I</h3>
-                    <div class="vaga-card-info">
-                        <p class="vaga-card-avaliacao">
-                            <span class="vaga-card-empresa">Vip Soft</span>
-                        </p>
-                        <p class="vaga-card-local">
-                            <i class="fa-solid fa-location-dot"></i> Salto - SP
-                        </p>
-                        <p class="vaga-card-salario">R$ 2.179,35</p>
-                        <p class="vaga-card-tipo">
-                            <i class="fa-solid fa-building"></i> Presencial
-                        </p>
-                    </div>
+                <!-- Os cards de vagas serão carregados dinamicamente via JavaScript -->
+                <div class="loading-state" style="padding: 40px; text-align: center;">
+                    <i class="fa-solid fa-spinner fa-spin" style="font-size: 48px; color: #134596; margin-bottom: 16px;"></i>
+                    <p style="color: #666; font-size: 16px;">Carregando vagas...</p>
                 </div>
             </div>    
 
-            
-
-            
-
-            
-
             <!-- DETALHES DA VAGA -->
             <div class="vagas-detalhes">
-                <!-- Vaga 1 - Auxiliar de Limpeza -->
-                <div class="vaga-detalhe-content active" id="vaga-1">
-                    <div class="vaga-detalhe-header">
-                        <div>
-                            <h2>Auxiliar de Limpeza</h2>
+                <!-- Os detalhes das vagas serão carregados dinamicamente via JavaScript -->
+            </div>
+        </section>
+
+        <section class="container-enviocurriculo" id="formulario">
                             <p class="vaga-detalhe-avaliacao">
                             </p>
                             <p class="vaga-detalhe-local">
@@ -662,9 +572,6 @@
                     </div>
                 </div>
             </div>
-          
-            
-             
         </section>
 
         <section class="container-enviocurriculo" id="formulario">
@@ -745,114 +652,6 @@
         </div>
     </footer>
     <script src="./js/scripts.js"></script>
-    <script>
-        // Script para interatividade das vagas
-        document.addEventListener('DOMContentLoaded', function() {
-            const vagaCards = document.querySelectorAll('.vaga-card');
-            const vagaDetalhes = document.querySelectorAll('.vaga-detalhe-content');
-
-            // Adicionar evento de clique em cada card
-            vagaCards.forEach(card => {
-                card.addEventListener('click', function() {
-                    const vagaId = this.getAttribute('data-vaga');
-                    
-                    // Remover classe active de todos os cards
-                    vagaCards.forEach(c => c.classList.remove('active'));
-                    
-                    // Adicionar classe active no card clicado
-                    this.classList.add('active');
-                    
-                    // Esconder todos os detalhes
-                    vagaDetalhes.forEach(detalhe => {
-                        detalhe.classList.remove('active');
-                    });
-                    
-                    // Mostrar detalhe da vaga selecionada
-                    const detalheAtivo = document.getElementById('vaga-' + vagaId);
-                    if (detalheAtivo) {
-                        detalheAtivo.classList.add('active');
-                    }
-                    
-                    // Scroll suave para o topo dos detalhes em mobile
-                    if (window.innerWidth <= 1024) {
-                        detalheAtivo.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }
-                });
-            });
-
-            // Ativar o primeiro card por padrão
-            if (vagaCards.length > 0) {
-                vagaCards[0].classList.add('active');
-            }
-
-            // Funcionalidade das tabs
-            const tabBtns = document.querySelectorAll('.tab-btn');
-            tabBtns.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const parentDetalhe = this.closest('.vaga-detalhe-content');
-                    const tabName = this.getAttribute('data-tab');
-                    
-                    // Remover active de todas as tabs do mesmo detalhe
-                    parentDetalhe.querySelectorAll('.tab-btn').forEach(b => {
-                        b.classList.remove('active');
-                    });
-                    
-                    // Adicionar active na tab clicada
-                    this.classList.add('active');
-                    
-                    // Mostrar conteúdo correspondente
-                    if (tabName) {
-                        parentDetalhe.querySelectorAll('.tab-content').forEach(content => {
-                            content.classList.remove('active');
-                        });
-                        const targetContent = parentDetalhe.querySelector('#' + tabName);
-                        if (targetContent) {
-                            targetContent.classList.add('active');
-                        }
-                    }
-                });
-            });
-        });
-
-        // Função para download do flyer
-        function downloadFlyer(imagemUrl, nomeArquivo) {
-            // Criar um link temporário
-            const link = document.createElement('a');
-            link.href = imagemUrl;
-            link.download = nomeArquivo;
-            link.target = '_blank';
-            
-            // Adicionar ao documento, clicar e remover
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            
-            // Feedback visual
-            alert('Download iniciado! O flyer será salvo em sua pasta de downloads.');
-        }
-
-        // Função para compartilhar o flyer
-        function compartilharFlyer() {
-            const url = window.location.href;
-            
-            // Verificar se a API Web Share está disponível
-            if (navigator.share) {
-                navigator.share({
-                    title: 'Vaga - Notus do Brasil',
-                    text: 'Confira esta vaga disponível na Notus do Brasil!',
-                    url: url
-                })
-                .then(() => console.log('Compartilhamento realizado com sucesso'))
-                .catch((error) => console.log('Erro ao compartilhar:', error));
-            } else {
-                // Fallback: copiar URL para clipboard
-                navigator.clipboard.writeText(url).then(() => {
-                    alert('Link copiado para a área de transferência! Cole e compartilhe com outras pessoas.');
-                }).catch(() => {
-                    alert('Link da página: ' + url);
-                });
-            }
-        }
-    </script>
+    <script src="./js/vagas.js"></script>
 </body>
 </html>
