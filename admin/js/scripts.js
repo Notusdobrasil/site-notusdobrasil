@@ -1,9 +1,15 @@
-window.API_BASE_URL =
-	window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"
-		? window.location.port === "3000" 
-			? "" // Mesma origem (servido pelo backend)
-			: "http://localhost:3000" // Live Server ou outra porta
-		: "https://backend-site-notusdobrasil.onrender.com"; // Produção
+// Configuração da URL base da API
+const isLocalhost = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
+const isBackendPort = window.location.port === "3000";
+
+window.API_BASE_URL = isLocalhost && isBackendPort
+	? "" // Mesma origem (servido pelo backend na porta 3000)
+	: isLocalhost
+	? "http://localhost:3000" // Live Server ou outra porta local
+	: "https://backend-site-notusdobrasil.onrender.com"; // Produção
+
+console.log("Admin API Base URL:", window.API_BASE_URL);
+
 async function adminRequest(path, options = {}) {
 	const response = await fetch(`${window.API_BASE_URL}${path}`, {
 		credentials: "include",

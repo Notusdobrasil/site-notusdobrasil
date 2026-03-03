@@ -7,6 +7,8 @@ const API_BASE_URL = window.location.hostname === "localhost" || window.location
     ? "http://localhost:3000"
     : "https://backend-site-notusdobrasil.onrender.com";
 
+console.log("Vagas API Base URL:", API_BASE_URL);
+
 let vagasGlobal = [];
 
 /**
